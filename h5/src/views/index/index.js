@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'antd-mobile'
 
 // 生命周期
 class Index extends React.Component{
@@ -43,6 +44,7 @@ class Index extends React.Component{
     return (
       <div>
         生命周期
+        <Button type="warning">warning</Button>
       </div>
     )
   }
