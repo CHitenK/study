@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css","App.css"],"names":[],"mappings":"AAAA,KACE,QAAS,CACT,mJAEY,CACZ,kCAAmC,CACnC,iCACF,CAEA,KACE,yEAEF,CCZA,KACE,UAAW,CACX,WACF,CDHA,KACE,SACF","file":"main.9f910234.chunk.css","sourcesContent":[".red{\r\n  color: red;\r\n}",".App{\n  width: 100%;\n  height: 100%;\n}"]}
