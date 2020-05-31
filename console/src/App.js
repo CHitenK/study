@@ -4,7 +4,6 @@ import {  Route } from 'react-router-dom'
 import router from './route/index'
 
 function App() {
-  console.log(router)
   return (
     <div className="App">
        {
