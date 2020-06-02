@@ -1,9 +1,7 @@
 import React from 'react'
-import './index.css'
-import { Button } from 'antd-mobile'
 
 // 生命周期
-class Index extends React.Component{
+class LifeCycle extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
@@ -45,9 +43,8 @@ class Index extends React.Component{
     return (
       <div>
         生命周期
-        <Button className="btn" type="warning">warning</Button>
       </div>
     )
   }
 }
-export default Index
+export default LifeCycle

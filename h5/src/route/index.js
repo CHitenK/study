@@ -6,4 +6,5 @@ const router = [
     component: Index
   }
 ]
+
 export default router
