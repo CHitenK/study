@@ -1,5 +1,6 @@
 import React from 'react'
-class Page1 extends React.Component{
+import './index.css'
+class Left extends React.Component{
   constructor(props) {
     super(props)
   }
@@ -9,10 +10,10 @@ class Page1 extends React.Component{
   }
   render() {
     return (
-      <div>
-        page
+      <div className="left-box">
+      
       </div>
     )
   }
 }
-export default Page1
+export default Left

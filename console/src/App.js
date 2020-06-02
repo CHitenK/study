@@ -1,17 +1,16 @@
 import React from 'react';
 import './App.css';
-import {  Route } from 'react-router-dom'
-import router from './route/index'
+import {  Route, Redirect  } from 'react-router-dom'
+import Layout from './layout/index'
+import Login from './../src/views/login/index'
 
 function App() {
-  console.log(router)
   return (
     <div className="App">
-       {
-         router.map((item, i) => {
-           return <Route key={i} path={item.path} component={item.component}  />
-         })
-       }
+      <Route exact path='/' component={Login}  />
+      <Route path='/login' component={Login}  />
+      <Route path='/content' component={Layout}  />
+      {/* <Redirect to="/login" /> */}
     </div>
   );
 }

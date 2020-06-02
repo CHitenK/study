@@ -1,5 +1,6 @@
 import React from 'react'
-class Page1 extends React.Component{
+
+class Login extends React.Component{
   constructor(props) {
     super(props)
   }
@@ -10,9 +11,9 @@ class Page1 extends React.Component{
   render() {
     return (
       <div>
-        page
+        登录
       </div>
     )
   }
 }
-export default Page1
+export default Login
