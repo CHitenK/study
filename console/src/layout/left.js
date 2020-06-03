@@ -11,7 +11,10 @@ class Left extends React.Component{
   render() {
     return (
       <div className="left-box">
-      
+        <div className="logo-img-box f-c">
+           {/* <img className="logo-img" src="" /> */}
+           <span className="fs-20 clr-w">cmk-test</span>
+        </div>
       </div>
     )
   }

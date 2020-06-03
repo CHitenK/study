@@ -11,3 +11,63 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.f-c{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clr-I{
+  color: #333333;
+}
+.clr-II{
+  color: #666666;
+}
+.clr-III{
+  color: #999999;
+}
+.clr-b{
+  color: #E8D098;
+}
+.clr-w{
+  color: #ffffff;
+}
+.fs-10{
+  font-size: 10px;
+}
+.fs-12{
+  font-size: 12px;
+}
+.fs-16{
+  font-size: 16px;
+}
+.fs-14{
+  font-size: 14px;
+}
+.fs-18{
+  font-size: 18px;
+}
+.fs-20{
+  font-size: 20px;
+}
+.fs-22{
+  font-size: 22px;
+}
+.fs-24{
+  font-size: 24px;
+}
+.fs-26{
+  font-size: 26px;
+}
+.fs-28{
+  font-size: 28px;
+}
+.fs-30{
+  font-size: 30px;
+}
+.fs-32{
+  font-size: 32px;
+}
+.f-w{
+  font-weight: 600;
+}
