@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'antd'
 class Page1 extends React.Component{
   constructor(props) {
     super(props)
@@ -10,7 +11,7 @@ class Page1 extends React.Component{
   render() {
     return (
       <div>
-        page
+        <Button>测试</Button>
       </div>
     )
   }
