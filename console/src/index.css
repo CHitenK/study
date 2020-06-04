@@ -71,3 +71,48 @@ code {
 .f-w{
   font-weight: 600;
 }
+.mr-l-5{
+  margin-left: 5px;
+}
+.mr-l-10{
+  margin-left: 10px;
+}
+.mr-l-15{
+  margin-left: 15px;
+}
+.mr-l-20{
+  margin-left: 20px;
+}
+.mr-l-25{
+  margin-left: 25px;
+}
+.mr-l-30{
+  margin-left: 30px;
+}
+
+.mr-t-5{
+  margin-top: 5px;
+}
+.mr-t-10{
+  margin-top: 10px;
+}
+.mr-t-15{
+  margin-top: 15px;
+}
+.mr-t-20{
+  margin-top: 20px;
+}
+.mr-t-25{
+  margin-top: 25px;
+}
+.mr-t-30{
+  margin-top: 30px;
+}
+.pd-30{
+  box-sizing: border-box;
+  padding: 0 30px;
+}
+.pd-15{
+  box-sizing: border-box;
+  padding: 0 15px;
+}

@@ -1,0 +1,34 @@
+import React from "react"
+import './index.less'
+import { Input, Button } from 'antd';
+import { UserOutlined, UnlockOutlined, ScheduleOutlined } from '@ant-design/icons';
+
+export default ()=>{
+    let handleAdd = ()=> {
+
+    }
+    return (
+        <div className="register-box pd-15">
+            <div className="f-c fs-16 clr-I f-w mr-t-20">注 册</div>
+                <div className="mr-t-20">
+                   <Input size="large" className="fs-14 clr-II" placeholder="输注册用户手机号码" prefix={<UserOutlined />} />
+                </div>
+                <div className="mr-t-10">
+                   <Input.Password size="large" className="fs-14 clr-II" placeholder="输入密码" prefix={<UnlockOutlined />} />
+                </div>
+                <div className="mr-t-10">
+                   <Input.Password size="large" className="fs-14 clr-II" placeholder="再次输入密码" prefix={<UnlockOutlined />} />
+                </div>
+                <div className="mr-t-5 error fs-12">
+                    密码不能为空
+                </div>
+                <div className="mr-t-20">
+                  <Button type="primary" >确 定</Button >
+                  <Button  className="mr-l-10">取 消</Button >
+                </div>
+                <div className="mr-t-10">
+                   <a className="fs-12 clr-II" onClick="">去登录？</a>
+                </div>
+        </div>
+    )
+}
