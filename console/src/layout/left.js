@@ -17,8 +17,6 @@ class Left extends React.Component{
     console.log(data)
   }
   render() {
-    console.log(this.state.muneList)
-
     return (
       <div className="left-box">
         <div className="logo-img-box f-c pd-15">
