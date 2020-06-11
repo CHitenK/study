@@ -10,6 +10,7 @@ const mime = require('mime-types') //需npm安装
 const router = new Router()
 var http = require('http')
 var url = require('url')
+const userRoter = require('./serve_modules/user')
 
 router.get('/image', async (ctx, next) => {
   // ctx.response.body = '<h5>Index</h5>';
@@ -57,7 +58,8 @@ router.get('/image', async (ctx, next) => {
 })
 
 
-app.use(router.routes())
+app.use(router.routes()) 
+app.use(userRoter.routes())
 app.listen(2020, function() {
   console.log('----------------------2020端口启动了-------------------------')
 })
