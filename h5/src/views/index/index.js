@@ -46,6 +46,7 @@ class Index extends React.Component{
       <div>
         生命周期
         <Button className="btn" type="warning">warning</Button>
+        <img className="bg" src="https://api.crossplus.topgoods.mobi/static/images/d2oIcons/qr_code_daren.png" />
       </div>
     )
   }

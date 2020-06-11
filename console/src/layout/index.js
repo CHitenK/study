@@ -17,7 +17,7 @@ class Layout extends React.Component{
       const menu = (
         <Menu>
             <Menu.Item>
-            <a >
+            <a>
                 退出登录
             </a>
             </Menu.Item>
