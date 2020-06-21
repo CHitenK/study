@@ -24,7 +24,7 @@ const muneList = [
       {
         name: '分享图管理',
         id: 201,
-        path: '/content/share'
+        path: '/content/makeimg'
       }
     ]
   }

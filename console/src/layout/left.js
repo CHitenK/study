@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.less'
 import { Menu } from 'antd'
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { SettingOutlined } from '@ant-design/icons';
 import muneList from './../utils/menu'
 
 const { SubMenu } = Menu
@@ -16,6 +16,11 @@ class Left extends React.Component{
   handleEvent(data) {
     console.log(data)
   }
+  goLink(path) {
+    if (!path) return false
+    console.log(path)
+    this.props.history.push(path)
+  }
   render() {
     return (
       <div className="left-box">
@@ -24,16 +29,16 @@ class Left extends React.Component{
            <span className="fs-20 clr-w">cmk-test</span>
         </div>
         <div>
-            <div className="index-box  f-c  fs-14 clr-w">
+            <div className="index-box  f-c  fs-14 clr-w" onClick={() => this.goLink('/content/index')}>
                 首页
             </div>
-            <Menu className="menu-box" mode="inline" theme="dark"  > 
+            <Menu className="menu-box" mode="inline" theme="dark" history={this.props.history} > 
               {
                 this.state.muneList.map((item, index) => {
-                 return (<SubMenu key={item.id} icon={<SettingOutlined />} title={item.groupName}>
+                 return (<SubMenu key={item.id} icon={<SettingOutlined />} title={item.groupName}  >
                       {
                        item.children && item.children.map(gitem => {
-                          return <Menu.Item key={gitem.id}>{gitem.name}</Menu.Item>
+                          return <Menu.Item key={gitem.id} onClick={() => this.goLink(gitem.path)}>{gitem.name}</Menu.Item>
                         })
                       }
                   </SubMenu>)

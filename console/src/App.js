@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {  Route, Redirect   } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Layout from './layout/index'
 import Login from './../src/views/login/index'
 

@@ -116,3 +116,16 @@ code {
   box-sizing: border-box;
   padding: 0 15px;
 }
+.cont-box{
+  height: calc(100vh - 110px);
+  width: 100%;
+}
+.t-r{
+  text-align: right;
+}
+.t-c{
+  text-align: center;
+}
+.t-l{
+  text-align: left;
+}

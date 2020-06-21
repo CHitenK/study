@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Route  } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import router from './../route/index'
 import Left from './left'
 import { Menu, Dropdown } from 'antd'
@@ -25,14 +25,14 @@ class Layout extends React.Component{
       )
     return (
       <div className="content-box">
-        <Left />
+        <Left  history={this.props.history} />
         <div className="content-right">
           <div className="f-c content-right-head pd-15">
-          <Dropdown overlay={menu}>
-                <a className="clr-w" onClick={e => e.preventDefault()}>
-                chiMu <DownOutlined />
-                </a>
-          </Dropdown>
+            <Dropdown overlay={menu}>
+                  <a className="clr-w" onClick={e => e.preventDefault()}>
+                  chiMu <DownOutlined />
+                  </a>
+            </Dropdown>
           </div>
           <div className="content-right-content">
                 {

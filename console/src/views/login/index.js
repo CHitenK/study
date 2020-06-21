@@ -70,7 +70,7 @@ class Login extends React.Component{
             </div>
             <div className="yanzheng-ma-box mr-t-10">
                 <Input  className="fs-14 clr-II" placeholder="输入验证码" prefix={<ScheduleOutlined />} />
-                <img className="yanzheng-ma" src="" />
+                <img className="yanzheng-ma" src="" alt="" />
             </div>
             <div className="mr-t-5 error fs-12">
                 密码不能为空

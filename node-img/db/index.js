@@ -1,7 +1,7 @@
 // db/db.js
 const mongoose = require('mongoose')
 
-const DB_URL = 'mongodb://122.51.162.240:27017'
+const DB_URL = 'mongodb://122.51.162.240:27017/myPro'
 
 mongoose.connect(DB_URL)
 

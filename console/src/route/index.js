@@ -1,9 +1,13 @@
-
-import Page from './../views/page/index'
+import Index from './../views/index/index'
+import Makeimg from './../views/makeimg/index'
 const router = [
   {
-    path: "/content/page",
-    component: Page
+    path: "/content/index",
+    component: Index
+  },
+  {
+    path: "/content/makeimg",
+    component: Makeimg
   }
 ]
 
