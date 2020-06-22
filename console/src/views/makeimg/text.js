@@ -44,7 +44,7 @@ const Text = () => {
     // Function 选择颜色
     const handleChangeComplete = (color, key, index) => {
         setBgData(color.hex, key, index)
-        setInterval(() => {
+        setTimeout(() => {
             handleShowColorBox(index)
         }, 1500)
     }

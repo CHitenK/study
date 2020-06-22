@@ -12,7 +12,9 @@ import { save } from './../../api/index'
 const Makeimg = () => {
    //useState的参数为初始状态值，返回了一个长度为2的数组，第一个元素就是我们类组件里的state对象，第二个元素是个函数，作用相当于类组件里用的setState。这两个元素的名字随便是什么都可以
    const [state, setState] = useState({ active: 'bgNex' })
-   // 
+   const bgData = useStore(s => s.bgData)
+   const textOpt = useStore(s => s.textOpt)
+   const normalOpt = useStore(s => s.normalOpt)
    const rederForm = () => {
       const active = state.active
       switch(active) {
@@ -39,12 +41,12 @@ const Makeimg = () => {
       dispatch('swicthShowNet')
    }
    const commit = () => {
-    const data = {
-      name: 12
-    }
-    save(data).then(res => {
-      console.log(res)
-    })
+      const data = {
+         bgData, textOpt, normalOpt
+      }
+      save(data).then(res => {
+         console.log(res)
+      })
    }
    return (
         <div className="cont-box route-box">

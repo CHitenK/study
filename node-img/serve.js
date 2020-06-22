@@ -1,6 +1,6 @@
 const Koa = require('koa')
 const app = new Koa()
-
+const bodyParser = require('koa-bodyparser')
 const sharp = require('sharp')
 const textToSVG = require('text-to-svg').loadSync()
 const Router = require('koa-router')
@@ -57,12 +57,10 @@ router.get('/image', async (ctx, next) => {
   }
   
 })
-
+app.use(bodyParser())
 app.use(router.routes()) 
-
 app.use(userRoter.routes())
 app.use(makeImgRoter.routes())
-
 app.listen(2020, function() {
   console.log('----------------------2020端口启动了-------------------------')
 })
