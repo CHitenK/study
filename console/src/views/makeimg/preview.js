@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useStore } from './../../store/makeimg'
 import './index.less'
-
+import Drag from './../../utils/drag'
 const PreView = () => {
     const [state, setState] = useState({
         scale: 'scale(1,1)'
@@ -55,10 +55,18 @@ const PreView = () => {
         }
         return array
     }
-   
+    useEffect(() => {
+        if (normalOpt[0] && normalOpt[0].src) {
+            var oBox1 = document.getElementById("t") // document.getElementsByTagName("img")[0]
+            var oBox2 = document.getElementById("b")
+            var oDrag2 = new Drag(oBox2, { handle: oBox1  })
+            console.log(122)
+        }
+    })
     return (
       <div className="route-box-r">
-        <div className="mobile" style={{ 'width': bgData.width + 'px', 'height':  bgData.height + 'px', 'transform': state.scale, 'background': bgData.bgColor  }}>
+        <div id="handel-view"></div>
+        <div id="view" className="mobile" style={{ 'width': bgData.width + 'px', 'height':  bgData.height + 'px', 'transform': state.scale, 'background': bgData.bgColor  }}>
            {
                normalOpt && normalOpt.map(item => {
                    if (item.src) {
@@ -67,6 +75,10 @@ const PreView = () => {
                 
                })
            }
+           <div id="b" className="img-j img-j-12 ">
+               <span id="t"></span>
+           </div >
+
            {
                 textOpt && textOpt.map(item => {
                     if (item.des) {
