@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { useStore } from './../../store/makeimg'
 import './index.less'
-import Drag from './../../utils/drag'
+// import Drag from './../../utils/drag'
 const PreView = () => {
     const [state, setState] = useState({
         scale: 'scale(1,1)'
@@ -55,13 +55,36 @@ const PreView = () => {
         }
         return array
     }
+    const drag = (ev, d) => {
+        console.log(d)
+        // console.log(ev)
+        
+//        var oevent = ev || window.event;
+
+// 　　　　var distanceX = oevent.clientX - div1.offsetLeft;
+// 　　　　var distanceY = oevent.clientY - div1.offsetTop;
+
+// 　　　　document.onmousemove = function(ev){
+// 　　　　　　var oevent = ev || window.event
+// 　　　　　　div1.style.left = oevent.clientX - distanceX + 'px';
+// 　　　　　　div1.style.top = oevent.clientY - distanceY + 'px'; 
+// 　　　　};
+// 　　　　document.onmouseup = function(){
+// 　　　　　　document.onmousemove = null;
+// 　　　　　　document.onmouseup = null;
+// 　　　　};
+    }
     useEffect(() => {
-        if (normalOpt[0] && normalOpt[0].src) {
-            var oBox1 = document.getElementById("t") // document.getElementsByTagName("img")[0]
-            var oBox2 = document.getElementById("b")
-            var oDrag2 = new Drag(oBox2, { handle: oBox1  })
-            console.log(122)
-        }
+        // if (normalOpt[0] && normalOpt[0].src) {
+        //     var oBox1 = document.getElementById("t") // document.getElementsByTagName("img")[0]
+        //     var oBox2 = document.getElementById("b")
+        //     var oDrag2 = new Drag(oBox2, { handle: oBox1  })
+        //     console.log(122)
+        // }
+//         var div1 = document.getElementById("b");
+// 　　     div1.onmousedown = function(ev){
+// 　　　　
+//          }
     })
     return (
       <div className="route-box-r">
@@ -75,8 +98,8 @@ const PreView = () => {
                 
                })
            }
-           <div id="b" className="img-j img-j-12 ">
-               <span id="t"></span>
+           <div id="b" className="img-j img-j-12 " onMouseDown={ (ev, j) => drag(ev, j) }>
+              
            </div >
 
            {
