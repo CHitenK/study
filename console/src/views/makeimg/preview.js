@@ -55,36 +55,29 @@ const PreView = () => {
         }
         return array
     }
-    const drag = (ev, d) => {
-        console.log(d)
-        // console.log(ev)
-        
-//        var oevent = ev || window.event;
-
-// 　　　　var distanceX = oevent.clientX - div1.offsetLeft;
-// 　　　　var distanceY = oevent.clientY - div1.offsetTop;
-
-// 　　　　document.onmousemove = function(ev){
-// 　　　　　　var oevent = ev || window.event
-// 　　　　　　div1.style.left = oevent.clientX - distanceX + 'px';
-// 　　　　　　div1.style.top = oevent.clientY - distanceY + 'px'; 
-// 　　　　};
-// 　　　　document.onmouseup = function(){
-// 　　　　　　document.onmousemove = null;
-// 　　　　　　document.onmouseup = null;
-// 　　　　};
-    }
     useEffect(() => {
-        // if (normalOpt[0] && normalOpt[0].src) {
-        //     var oBox1 = document.getElementById("t") // document.getElementsByTagName("img")[0]
-        //     var oBox2 = document.getElementById("b")
-        //     var oDrag2 = new Drag(oBox2, { handle: oBox1  })
-        //     console.log(122)
-        // }
-//         var div1 = document.getElementById("b");
-// 　　     div1.onmousedown = function(ev){
-// 　　　　
-//          }
+        // 拖动
+        const domes = document.getElementsByClassName('img-j-12')
+        if (domes && domes.length > 0) {
+            for (let i = 0; i < domes.length; i++) {
+                domes[i].onmousedown = function(ev){
+            　　　　var oevent = ev || window.event
+
+            　　　　var distanceX = oevent.clientX - domes[i].offsetLeft;
+            　　　　var distanceY = oevent.clientY - domes[i].offsetTop;
+            
+            　　　　document.onmousemove = function(ev){
+            　　　　　　var oevent = ev || window.event
+                       domes[i].style.left = oevent.clientX - distanceX + 'px';
+                       domes[i].style.top = oevent.clientY - distanceY + 'px'; 
+            　　　　};
+            　　　　document.onmouseup = function(){
+            　　　　　　document.onmousemove = null;
+            　　　　　　document.onmouseup = null;
+            　　　　};
+                }
+            }
+        }
     })
     return (
       <div className="route-box-r">
@@ -98,9 +91,15 @@ const PreView = () => {
                 
                })
            }
-           <div id="b" className="img-j img-j-12 " onMouseDown={ (ev, j) => drag(ev, j) }>
+           <div  className="img-j img-j-12 " >
               
            </div >
+           <div  className="img-j img-j-12 " >
+              
+              </div >
+              <div className="img-j img-j-12 " >
+              
+              </div >
 
            {
                 textOpt && textOpt.map(item => {
