@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { useStore } from './../../store/makeimg'
+import { useStore, dispatch } from './../../store/makeimg'
 import './index.less'
 // import Drag from './../../utils/drag'
 const PreView = () => {
@@ -57,24 +57,42 @@ const PreView = () => {
     }
     useEffect(() => {
         // 拖动
-        const domes = document.getElementsByClassName('img-j-12')
+        const domes = document.getElementsByClassName('img-j')
         if (domes && domes.length > 0) {
             for (let i = 0; i < domes.length; i++) {
                 domes[i].onmousedown = function(ev){
             　　　　var oevent = ev || window.event
-
             　　　　var distanceX = oevent.clientX - domes[i].offsetLeft;
             　　　　var distanceY = oevent.clientY - domes[i].offsetTop;
-            
-            　　　　document.onmousemove = function(ev){
-            　　　　　　var oevent = ev || window.event
-                       domes[i].style.left = oevent.clientX - distanceX + 'px';
-                       domes[i].style.top = oevent.clientY - distanceY + 'px'; 
-            　　　　};
-            　　　　document.onmouseup = function(){
-            　　　　　　document.onmousemove = null;
-            　　　　　　document.onmouseup = null;
-            　　　　};
+                   const callBack = (ev) => {
+                        var oevent = ev || window.event
+                        const px = oevent.clientX - distanceX
+                        const py = oevent.clientY - distanceY
+                        const data = JSON.parse(JSON.stringify(normalOpt[i]))
+                        data.px = px
+                        data.py = py
+                        dispatch('updateNormalOpt', { i, data } )
+                   }
+                   document.addEventListener('mousemove',() => {
+                       
+                   });
+                   document.addEventListener('mouseup',() => {
+
+                   });
+            // 　　　　document.onmousemove = function(ev){
+            // 　　　　　　var oevent = ev || window.event
+            //            const px = oevent.clientX - distanceX
+            //            const py = oevent.clientY - distanceY
+            //            const data = JSON.parse(JSON.stringify(normalOpt[i]))
+            //            data.px = px
+            //            data.py = py
+            //            dispatch('updateNormalOpt', { i, data } )
+            // 　　　　};
+            // 　　　　document.onmouseup = function(){
+            //            console.log(122)
+            // 　　　　　　document.onmousemove = null
+            // 　　　　　　document.onmouseup = null
+            // 　　　　};
                 }
             }
         }
@@ -84,39 +102,30 @@ const PreView = () => {
         <div id="handel-view"></div>
         <div id="view" className="mobile" style={{ 'width': bgData.width + 'px', 'height':  bgData.height + 'px', 'transform': state.scale, 'background': bgData.bgColor  }}>
            {
-               normalOpt && normalOpt.map(item => {
+               normalOpt && normalOpt.map((item, i) => {
                    if (item.src) {
-                    return (<img className="img-j" alt="" src={item.src} style={ {'left' : item.px + 'px', top: item.py + 'px', width: item.width + 'px', height: item.height  + 'px'}} />)
+                    return (<img className="img-j" alt="" key={i} src={item.src} style={ {'left' : item.px + 'px', top: item.py + 'px', width: item.width + 'px', height: item.height  + 'px'}} />)
                    }
                 
                })
            }
-           <div  className="img-j img-j-12 " >
-              
-           </div >
-           <div  className="img-j img-j-12 " >
-              
-              </div >
-              <div className="img-j img-j-12 " >
-              
-              </div >
 
            {
-                textOpt && textOpt.map(item => {
+                textOpt && textOpt.map((item, i) => {
                     if (item.des) {
-                     return (<span className="des" style={ {'left' : item.px + 'px', top: item.py + 'px', 'color': item.fsColor, 'font-size': item.fontSize + 'px'}} >{item.des}</span> )
+                     return (<span className="des" key={i} style={ {'left' : item.px + 'px', top: item.py + 'px', 'color': item.fsColor, 'font-size': item.fontSize + 'px'}} >{item.des}</span> )
                     }
                  
                 })
            }
            {
-             isShowNet && renderLineX().map(item => {
-                  return (<span className="line-x" style={ {'left' : item }}></span>)
+             isShowNet && renderLineX().map((item, i) => {
+                  return (<span className="line-x" key={i} style={ {'left' : item }}></span>)
               })
            }
            {
-               isShowNet && renderLineY().map(item => {
-                    return (<span className="line-Y" style={ {'top' : item }}></span>)
+               isShowNet && renderLineY().map((item, i) => {
+                    return (<span className="line-Y" key={i} style={ {'top' : item }}></span>)
                 })
            }
         </div>

@@ -13,7 +13,7 @@ const Normal = () => {
     const setBgData = (val, key, index) => {
       const data = JSON.parse(JSON.stringify(normalOpt[index]))
       data[key] = val
-      dispatch('updateNormalOpt', { index, data} )
+      dispatch('updateNormalOpt', { index, data } )
     }
     // Funtion 是否传参
     const switchTransmit = (e, index) => {
