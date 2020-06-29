@@ -1,32 +1,26 @@
+import React from 'react'
+import { HomeOutlined, InsertRowAboveOutlined, SaveOutlined } from '@ant-design/icons'
 const muneList = [
-  // {
-  //   groupName: '首页',
-  //   id: 0,
-  //   path: '/content/index'
-  // },
   {
-    groupName: '系统管理',
-    id: 10,
-    path: '',
-    children: [
-      {
-        name: '用户列表',
-        id: 101,
-        path: '/content/user'
-      }
-    ]
+    name: '首  页',
+    id: 100,
+    path: '/content/index',
+    isMenu: true,
+    icon: <HomeOutlined />
   },
   {
-    groupName: '业务管理',
-    id: 20,
-    path: '',
-    children: [
-      {
-        name: '分享图管理',
-        id: 201,
-        path: '/content/makeimg'
-      }
-    ]
+    name: '分享图管理',
+    id: 101,
+    path: '/content/list',
+    icon: <InsertRowAboveOutlined />,
+    isMenu: true
+  },
+  {
+    name: '生成分享图',
+    id: 102,
+    path: '/content/makeimg',
+    isMenu: true,
+    icon: <SaveOutlined />
   }
 ]
 export default muneList

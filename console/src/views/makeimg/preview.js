@@ -55,47 +55,53 @@ const PreView = () => {
         }
         return array
     }
-    useEffect(() => {
-        // 拖动
-        const domes = document.getElementsByClassName('img-j')
-        if (domes && domes.length > 0) {
-            for (let i = 0; i < domes.length; i++) {
-                domes[i].onmousedown = function(ev){
-            　　　　var oevent = ev || window.event
-            　　　　var distanceX = oevent.clientX - domes[i].offsetLeft;
-            　　　　var distanceY = oevent.clientY - domes[i].offsetTop;
-                   const callBack = (ev) => {
-                        var oevent = ev || window.event
-                        const px = oevent.clientX - distanceX
-                        const py = oevent.clientY - distanceY
-                        const data = JSON.parse(JSON.stringify(normalOpt[i]))
-                        data.px = px
-                        data.py = py
-                        dispatch('updateNormalOpt', { i, data } )
-                   }
-                   document.addEventListener('mousemove',() => {
-                       
-                   });
-                   document.addEventListener('mouseup',() => {
-
-                   });
-            // 　　　　document.onmousemove = function(ev){
-            // 　　　　　　var oevent = ev || window.event
-            //            const px = oevent.clientX - distanceX
-            //            const py = oevent.clientY - distanceY
-            //            const data = JSON.parse(JSON.stringify(normalOpt[i]))
-            //            data.px = px
-            //            data.py = py
-            //            dispatch('updateNormalOpt', { i, data } )
-            // 　　　　};
-            // 　　　　document.onmouseup = function(){
-            //            console.log(122)
-            // 　　　　　　document.onmousemove = null
-            // 　　　　　　document.onmouseup = null
-            // 　　　　};
-                }
+    const drag = (index, type) => {
+        const dom = document.getElementById('target')
+        console.log(index, type)
+        dom.onmousedown = function(ev){
+    　　　　var oevent = ev || window.event
+    　　　　var distanceX = oevent.clientX - dom.offsetLeft;
+    　　　　var distanceY = oevent.clientY - dom.offsetTop;
+    
+            document.onmousemove = function(event) {
+                var oevent = event || window.event
+                const px = oevent.clientX - distanceX
+                const py = oevent.clientY - distanceY
+                const data = type === 'updateNormalOpt' ? JSON.parse(JSON.stringify(normalOpt[index])) : JSON.parse(JSON.stringify(textOpt[index]))
+                data.px = px
+                data.py = py
+                console.log(data)
+                dispatch(type, { index, data } )
+            }
+            // document.addEventListener('mousemove', callBack);
+            document.onmouseup = function(event){
+                this.onmousemove = null
+                this.onmouseup = null
             }
         }
+    }
+    const dbClick = (e) => {
+        const target = e.target
+        if (!e.target) return false
+        const oldTarget = document.getElementById('target')
+        if (oldTarget) {
+            oldTarget.setAttribute('id', '')
+        }
+        target.setAttribute('id', 'target')
+        const type = target.getAttribute('type')
+        const index = target.getAttribute('index')
+        if (!type) return false
+        drag(index, type)
+    }
+    useEffect(() => {
+        // 拖动
+        // const domes = document.getElementsByClassName('img-j')
+        // if (domes && domes.length > 0) {
+        //     for (let i = 0; i < domes.length; i++) {
+                
+        //         }
+        //     }
+        // }
     })
     return (
       <div className="route-box-r">
@@ -104,16 +110,18 @@ const PreView = () => {
            {
                normalOpt && normalOpt.map((item, i) => {
                    if (item.src) {
-                    return (<img className="img-j" alt="" key={i} src={item.src} style={ {'left' : item.px + 'px', top: item.py + 'px', width: item.width + 'px', height: item.height  + 'px'}} />)
+                    return (<img className="img-j" alt="" index={i} onDoubleClick={(e) => dbClick(e)} type="updateNormalOpt"  key={i} src={item.src} style={ {'left' : item.px + 'px', top: item.py + 'px', width: item.width + 'px', height: item.height  + 'px'}} />)
                    }
                 
                })
            }
+           {/* <div className="img-j img-j-12" onDoubleClick={(e) => dbClick(e)}>
 
+           </div> */}
            {
                 textOpt && textOpt.map((item, i) => {
                     if (item.des) {
-                     return (<span className="des" key={i} style={ {'left' : item.px + 'px', top: item.py + 'px', 'color': item.fsColor, 'font-size': item.fontSize + 'px'}} >{item.des}</span> )
+                     return (<span className="des" onDoubleClick={(e) => dbClick(e)} type="updateTextOpt" index={i} key={i} style={ {'left' : item.px + 'px', top: item.py + 'px', 'color': item.fsColor, 'fontSize': item.fontSize + 'px'}} >{item.des}</span> )
                     }
                  
                 })

@@ -79,5 +79,5 @@ const { useStore, dispatch } = createStore({
         state.textOpt = textOpt
       }
     } 
-  })
+})
 export { useStore, dispatch }
