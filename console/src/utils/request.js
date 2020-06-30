@@ -22,9 +22,9 @@ axios.interceptors.response.use(function (response) {
     if (res.code === 401) { // 未登录
 
     } else if (res.code === 200) {
-        return response
+        return res
     } else {
-        return Promise.reject(response)
+        return Promise.reject(res)
     }
     
 }, function (error) {

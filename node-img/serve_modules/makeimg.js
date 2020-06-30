@@ -63,6 +63,17 @@ router.get("/list", async (content, next) => {
   console.log(kk);
   content.response.body = "success";
 });
+router.post("/makeimg/list", async (content, next) => {
+  try {
+    const array = await getList()
+    const total = array[0]
+    const content = array[1]
+    content.response.body = { ...success, data: { total, content }}
+  } catch {
+    content.response.body = error
+  }
+ 
+});
 // 插入
 function inset(data) {
   const makeimg = new MakeImg({

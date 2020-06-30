@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { Input, DatePicker, Button, Table } from "antd";
-import "./index.less";
-
-const { RangePicker } = DatePicker;
+import React, { useState, useEffect } from "react"
+import { Input, DatePicker, Button, Table } from "antd"
+import "./index.less"
+import { dispatch } from './../../store/config'
+import { getList } from './../../api/index'
+const { RangePicker } = DatePicker
 
 const List = () => {
   const [state, setState] = useState({
     dataSource: [],
   })
+  // 配置数据
   const data = {
     columns: [
       {
@@ -68,6 +70,22 @@ const List = () => {
       }
     ]
   }
+  const setLoading = (op) => {
+    dispatch('setShowLoading', op)
+  }
+  const getListApi = () => {
+    setLoading(true)
+    getList().then(res => {
+      console.log(res)
+    }).catch(err => {
+
+    }).finally(() => {
+        setLoading(false)
+    })
+  }
+  useEffect(() => {
+    getListApi()
+  })
   return (
     <div className="page-box">
       <div className="search-box">
