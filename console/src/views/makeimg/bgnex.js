@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 
-import { InputNumber, Input, Switch, Radio, Upload, message, Button  } from 'antd'
+import { InputNumber, Input, Switch, Radio, Upload, message, Button, DatePicker } from 'antd'
 import { SketchPicker } from 'react-color'
 import { useStore, dispatch } from './../../store/makeimg'
 import { UploadOutlined } from '@ant-design/icons'
+import moment from 'moment'
 import './index.less'
 
+const { TextArea } = Input
 const BgNex = () => {
    const [ state, setState ] = useState({
         background: '#fff',
@@ -43,7 +45,12 @@ const BgNex = () => {
     const val = e.target.value || ''
     setBgData(val, key)
   }
-
+  // 选择启用时间
+  const setTime = (t) => {
+    if (!t) return false
+    console.log(t)
+    setBgData(t, 'starTime')
+  }
   const upLoadProps = {
     name: 'file',
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -129,13 +136,24 @@ const BgNex = () => {
   }
   return (
     <div>
-        <div className="fs-16 clr-I">底框</div>
+        <div className="fs-16 clr-I">基础配置</div>
+        <div className="form-list clr-II fs-14 mr-t-15">
+            <span className="form-label t-r">名称:</span>
+            <Input  value={bgData.name || ''}  onChange={(val) => changeValue(val,'name')} />
+        </div>
+        <div className="form-list form-list-ot clr-II fs-14 mr-t-15">
+            <span className="form-label t-r">描述:</span>
+            <TextArea rows={3}  value={bgData.describe || ''} onChange={(val) => changeValue(val,'describe')}   />
+        </div>
+        <div className="form-list clr-II fs-14 mr-t-15">
+            <span className="form-label t-r">启用时间 :</span>
+            <DatePicker value={moment(bgData.starTime)} showTime format="YYYY/MM/DD HH:mm:ss"  onChange={(e, t) => setTime(t) }/>
+        </div>
+        <div className="fs-16 clr-I mr-t-30">底框</div>
         <div className="form-list clr-II fs-14 mr-t-15">
             <span className="form-label t-r">宽 :</span>
             <InputNumber  value={bgData.width || ''} onChange={(val) => setBgData(val,'width')} min={200}  />
             &nbsp;&nbsp;&nbsp;&nbsp;px
-        </div>
-        <div className="form-list clr-II fs-14 mr-t-15">
             <span className="form-label t-r">高 :</span>
             <InputNumber value={bgData.height || ''} onChange={(val) => setBgData(val,'height')}   />
             &nbsp;&nbsp;&nbsp;&nbsp;px

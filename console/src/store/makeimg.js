@@ -10,7 +10,10 @@ const { useStore, dispatch } = createStore({
           isBgColor: 1,
           bgImgSrc: '',
           transmitName: 'bg_color',
-          deflautColor: '#FFFFFF'
+          deflautColor: '#FFFFFF',
+          name: '',
+          describe: '',
+          starTime: '2020-06-27 19:42:28'
       },
       isShowNet: false,
       normalOpt: [
