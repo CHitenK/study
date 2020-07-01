@@ -63,14 +63,14 @@ router.get("/list", async (content, next) => {
   console.log(kk);
   content.response.body = "success";
 });
-router.post("/makeimg/list", async (content, next) => {
+router.post("/makeimg/list", async (ctx, next) => {
   try {
     const array = await getList()
     const total = array[0]
     const content = array[1]
-    content.response.body = { ...success, data: { total, content }}
+    ctx.response.body = { ...success, data: { total, content }}
   } catch {
-    content.response.body = error
+    ctx.response.body = error
   }
  
 });
@@ -126,8 +126,7 @@ function getImgs(imgurl) {
 function getList(opt = {}) {
   const P1 = new Promise((s, r) => {
     MakeImg.find(opt)
-      .count()
-      .exec((err, data) => {
+      .count((err, data) => {
         if (err) {
           r(0)
         } else {

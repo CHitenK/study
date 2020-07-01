@@ -25,7 +25,7 @@ const  Layout = () => {
         <div className="f-c content-right-head pd-15">
           <Dropdown overlay={menu}>
                 <a className="clr-w" onClick={e => e.preventDefault()}>
-                chiMu <DownOutlined />
+                chiMu {showLoading ? '324' : '00'} <DownOutlined />
                 </a>
           </Dropdown>
         </div>
