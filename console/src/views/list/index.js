@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { Input, DatePicker, Button, Table } from "antd"
+import zhCN from 'antd/es/locale/zh_CN'
+import { Input, DatePicker, Button, Table,Pagination, ConfigProvider } from "antd"
 import "./index.less"
 import { useStore, dispatch } from './../../store/config'
 import { getList } from './../../api/index'
@@ -12,7 +13,13 @@ const List = () => {
     totals: 100,
     pageSize: 4,
     pageNum: 1,
+    id: '',
+    name: '',
+    createUser: '',
+    startDate: '',
+    endDate: '',
   })
+  
   const showLoading = useStore(s => s.showLoading)
   // 配置数据
   const data = {
@@ -95,10 +102,13 @@ const List = () => {
   const setLoading = (op) => {
     dispatch('setShowLoading', op)
   }
- //  setLoading(true)
-  const getListApi = () => {
+ // 获取数据
+  const getListApi = (page=1, size=10) => {
+    const data = {
+      page,
+      size
+    }
     getList().then(res => {
-      console.log(res)
       const dataSource = []
       res.data.content.forEach(item => {
         dataSource.push({
@@ -115,12 +125,25 @@ const List = () => {
     
     })
   }
+  // 分页
   const changePageSize = (pageSize,current) => {
     console.log(pageSize,current)
   }
-  const changePage = (current) => {
-    console.log(current)
-  } 
+  // c
+  const changePage = (c) => {
+    console.log(c, 2132)
+  }
+  // 选择日期
+  const changeDate = (t, d) => {
+    console.log(d)
+  }
+  // 修改属性
+  const changeValue = (e, key) => {
+    const val = e.target.value || ''
+    setState({
+      [key]: val
+    })
+  }
   // 表格分页属性
   const paginationProps = {
     showSizeChanger: false,
@@ -133,7 +156,6 @@ const List = () => {
   }
   useEffect(() => {
     getListApi()
-    console.log(paginationProps)
   },  [])
   return (
     <div className="page-box">
@@ -141,19 +163,19 @@ const List = () => {
         <div className="search-box-item fs-14 clr-II">
           <span className="">编号:</span>
           <div className="for-item">
-            <Input />
+            <Input value={state.id} onChange={(e) => changeValue(e, 'id')}/>
           </div>
         </div>
         <div className="search-box-item fs-14 clr-II">
           <span className="">名称:</span>
           <div className="for-item">
-            <Input />
+            <Input value={state.name} onChange={(e) => changeValue(e, 'name')} />
           </div>
         </div>
         <div className="search-box-item fs-14 clr-II">
           <span className="">创建人:</span>
           <div className="for-item">
-            <Input />
+            <Input value={state.createUser} onChange={(e) => changeValue(e, 'createUser')} />
           </div>
         </div>
         <div className="search-box-item fs-14 clr-II">
@@ -162,6 +184,8 @@ const List = () => {
             <RangePicker
               placeholder={["开始日期", "结束日期"]}
               format="YYYY-MM-DD"
+              value={state.date}
+              onChange={(t, d) => changeDate(t, d)}
             />
           </div>
         </div>
@@ -182,6 +206,20 @@ const List = () => {
           columns={data.columns}
         />
       </div>
+      <div className="mr-t-20 flex-l">
+        <ConfigProvider local={zhCN}>
+          <Pagination
+            showTitle={false}
+            total={85}
+            showSizeChanger
+            showQuickJumper
+            pageSizeOptions={[10]}
+            showTotal={total => `Total ${total} items`}
+            onChange={(page, size) => changePageSize(page, size)}
+          />
+         </ConfigProvider>
+      </div>
+     
     </div>
   );
 };
