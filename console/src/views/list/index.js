@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react"
 import zhCN from 'antd/es/locale/zh_CN'
-import { Input, DatePicker, Button, Table,Pagination, ConfigProvider } from "antd"
+import { Input, DatePicker, Button, Table,Pagination, ConfigProvider, message, Modal  } from "antd"
 import "./index.less"
 import { useStore, dispatch } from './../../store/config'
-import { getList } from './../../api/index'
+import { getList, deleData, updateData } from './../../api/index'
 import { transformTime } from './../../utils/tool'
+import { reset } from "ansi-colors";
 const { RangePicker } = DatePicker
 
 const List = () => {
   const [state, setState] = useState({
     dataSource: [],
-    totals: 100,
+    total: 0,
     pageSize: 4,
-    pageNum: 1,
+    pageNo: 1,
     id: '',
     name: '',
     createUser: '',
@@ -20,7 +21,105 @@ const List = () => {
     endDate: '',
   })
   
-  const showLoading = useStore(s => s.showLoading)
+ // 获取数据
+  const getListApi = (page=1, size = 5) => {
+    const hide = message.loading('加载中...', 0)
+    const data = {
+      page,
+      size: state.pageSize,
+      id: state.id,
+      name: state.name,
+      createUser: state.createUser,
+    }
+    getList(data).then(res => {
+      const dataSource = []
+      res.data.content.forEach(item => {
+        dataSource.push({
+          ...item,
+          ...item.bgData
+        })
+      })
+      setState({
+        dataSource: dataSource,
+        total: res.data.total,
+        pageNo: page
+      })
+    }).catch(err => {
+      setState({
+        dataSource: [],
+        total: 0,
+        pageNo: 1
+      })
+    }).finally(() => {
+      setTimeout(hide, 0);
+    })
+  }
+  // 分页
+  const changePageSize = (current, pageSize,) => {
+    getListApi(current)
+  }
+  // 选择日期
+  const changeDate = (t, d) => {
+    console.log(d)
+  }
+  // 修改属性
+  const changeValue = (e, key) => {
+    const val = e.target.value || ''
+    setState({
+      [key]: val
+    })
+  }
+  // 删除
+  const dele = (id) => {
+    const data = { 'id': id }
+    deleData(data).then(res => {
+      if (res.data.falge) {
+        message.success('删除成功')
+        getListApi(state.pageNo)
+      }
+    }).catch(err => {
+
+    })
+  }
+  // 启用/停用
+  const update = (data) => {
+   if (data.isUse) { // 停用
+    Modal.confirm({
+      title: '提示',
+      content: '确定停用该图片吗？',
+      cancelText: '取消',
+      onOk: () => {
+        const param = { id:  data.id, isUse: false, updateTime: Date.now(), editor: sessionStorage.getItem('userName') }
+        updateData(param).then(res => {
+          message.success('操作成功')
+          getListApi(state.pageNo)
+        }).catch(res => {
+          message.error(res.msg)
+        })
+      }
+    })
+   } else { // 启用
+    const param = { id:  data.id, isUse: true, updateTime: Date.now(), editor: sessionStorage.getItem('userName') }
+    updateData(param).then(res => {
+      message.success('操作成功')
+        getListApi(state.pageNo)
+    }).catch(res => {
+      message.error(res.msg)
+    })
+   }
+  }
+  // 重置
+  const reset = () => {
+    setState({
+      name: '',
+      createUser: '',
+      id: ''
+    })
+    getListApi(1)
+  }
+  useEffect(() => {
+    getListApi()
+  },  [])
   // 配置数据
   const data = {
     columns: [
@@ -56,32 +155,33 @@ const List = () => {
         key: 'creator',
         align: 'center',
         width: 120,
-        render: (ext,record,index) => <span>张山</span>
+        render: (ext,record,index) => <span>{record.creatName || '- -'}</span>
       },
       {
         title: '创建时间',
-        key: 'creaTime',
+        key: 'creatTime',
         dataIndex: 'creaTime',
         align: 'center',
-        render: (ext,record,index) => <span>{transformTime(record.creaTime, '-')}</span>
+        render: (ext,record,index) => <span>{transformTime(record.creatTime, '-')}</span>
       },
       {
         title: '启用状态',
         key: 'isUse',
         align: 'center',
-        width: 120
+        width: 120,
+        render: (ext,record,index) => <span>{record.isUse ? '启用' : '停用'}</span>
       },
       {
         title: '最近编辑时间',
-        key: 'uodateTime',
+        key: 'updateTime',
         align: 'center',
-        render: (ext,record,index) => <span>{transformTime(record.uodateTime, '-')}</span>
+        render: (ext,record,index) => <span>{transformTime(record.updateTime, '-')}</span>
       },
       {
         title: '最近编辑人',
         key: 'editor',
         align: 'center',
-        render: (ext,record,index) => <span>李四</span>
+        render: (ext,record,index) => <span>{record.editor || '- -'}</span>
       },
       {
         title: '操作',
@@ -90,73 +190,14 @@ const List = () => {
         render: (ext,record,index) => ( 
           <div className="fs-12 clr-gr tool">
             <span>编辑</span>
-            <span>停用</span>
-            <span>查看</span>
-            <span>删除</span>
+            <span  onClick={() => update(record)}>{record.isUse ? '停用' : '启用'}</span>
+            {record.isUse && <span><a href={'http://localhost:2020/makeimg?id=' + record.id} target="_blank">查看</a></span>}
+            <span onClick={() => dele(record.id)}>删除</span>
         </div>
         )
       }
     ]
   }
-  // 分页配置
-  const setLoading = (op) => {
-    dispatch('setShowLoading', op)
-  }
- // 获取数据
-  const getListApi = (page=1, size=10) => {
-    const data = {
-      page,
-      size
-    }
-    getList().then(res => {
-      const dataSource = []
-      res.data.content.forEach(item => {
-        dataSource.push({
-          ...item,
-          ...item.bgData
-        })
-      })
-      setState({
-        dataSource: dataSource
-      })
-    }).catch(err => {
-
-    }).finally(() => {
-    
-    })
-  }
-  // 分页
-  const changePageSize = (pageSize,current) => {
-    console.log(pageSize,current)
-  }
-  // c
-  const changePage = (c) => {
-    console.log(c, 2132)
-  }
-  // 选择日期
-  const changeDate = (t, d) => {
-    console.log(d)
-  }
-  // 修改属性
-  const changeValue = (e, key) => {
-    const val = e.target.value || ''
-    setState({
-      [key]: val
-    })
-  }
-  // 表格分页属性
-  const paginationProps = {
-    showSizeChanger: false,
-    showQuickJumper: true,
-    total: state.totals,
-    pageSize: state.pageSize,
-    current: state.pageNum,
-    onShowSizeChange: (current,pageSize) => changePageSize(pageSize,current),
-    onChange: (current) => changePage(current)
-  }
-  useEffect(() => {
-    getListApi()
-  },  [])
   return (
     <div className="page-box">
       <div className="search-box">
@@ -191,9 +232,9 @@ const List = () => {
         </div>
         <div className="search-box-item fs-14 clr-II">
           <span className="">
-            <Button type="primary">查询</Button>
+            <Button type="primary" onClick={() => getListApi(1)}>查询</Button>
           </span>
-          <span className="">
+          <span className="" onClick={() => reset()} >
             <Button>重置</Button>
           </span>
         </div>
@@ -206,15 +247,17 @@ const List = () => {
           columns={data.columns}
         />
       </div>
-      <div className="mr-t-20 flex-l">
+      <div className="mr-t-30 flex-l">
         <ConfigProvider local={zhCN}>
           <Pagination
             showTitle={false}
-            total={85}
+            total={state.total}
+            current={state.pageNo}
+            defaultPageSize={state.pageSize}
             showSizeChanger
             showQuickJumper
-            pageSizeOptions={[10]}
-            showTotal={total => `Total ${total} items`}
+            pageSizeOptions={[4]}
+            showTotal={total => `共 ${total} 条`}
             onChange={(page, size) => changePageSize(page, size)}
           />
          </ConfigProvider>

@@ -7,6 +7,7 @@ const MakeImgSchema = new Schema({
     updateTime: {type: Number},
     creatName : { type: String}, 
     editor: { type: String},
+    isUse: { type: Boolean, default: false },
     bgData: { type: Object, default: {} },
     normalOpt: { type: Array, default: [] },
     textOpt: { type: Array, default: [] }

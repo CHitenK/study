@@ -15,3 +15,27 @@ export function getList(data){
         data: data
     })
 }
+/**
+ * @description 删除数据
+ * @param {String} id  /makeing/delete
+ */
+export function deleData(data){
+    console.log(data)
+    return request({
+        url: '/makeimg/delete',
+        method: 'post',
+        data: data
+    })
+}
+/**
+ * @description 修改数据
+ * @param {String} id  /makeing/delete
+ */
+export function updateData(data){
+    console.log(data)
+    return request({
+        url: '/makeimg/update',
+        method: 'post',
+        data: data
+    })
+}

@@ -15,57 +15,19 @@ router.post("/makeimg/save", async (ctx, next) => {
   const flage = await inset(request);
   ctx.response.body = flage ? res : error;
 });
-// 数据查找
-router.get("/makeimg", async (content, next) => {
-  const query = content.query;
-  const dbData = await find({ id: query.id });
-  const options = dbData[0];
-  console.log(options);
-  if (!options.id) {
-    content.response.body = error;
-    return false;
-  }
-  const { bgData, normalOpt, textOpt } = options;
-  const canvas = createCanvas(bgData.width, bgData.height, "jpg");
-  const ctx = canvas.getContext("2d");
-  // 绘制底框
-  let bgColor = "",
-    bgImgSrc = bgData.bgImgSrc;
-  bgColor = bgData.isTransmit
-    ? "#" + query[bgData.transmitName]
-    : bgData.bgColor;
-  ctx.fillStyle = bgColor;
-  ctx.fillRect(0, 0, bgData.width, bgData.height);
-  ctx.save();
-  // 绘制常规图片
-  for (let i = 0; i < normalOpt.length; i++) {
-    const item = normalOpt[i];
-    let src = item.isTransmit ? query[transmitName] : item.src;
-    const myimg = await loadImage(src);
-    ctx.drawImage(myimg, item.px, item.py, item.width, item.height);
-    ctx.save();
-  }
-  // 绘制文字
-  for (let i = 0; i < textOpt.length; i++) {
-    const item = textOpt[i];
-    let des = item.isTransmit ? query[transmitName] : item.des;
-    ctx.font = item.fontSize + "px" + ' "Microsoft YaHei"';
-    ctx.fillStyle = item.fsColor;
-    ctx.fillText(des, item.px, +item.py + 8);
-    ctx.save();
-  }
-  content.set("content-type", "image/jpg");
-  content.response.body = canvas.toBuffer();
-});
 // 列表分页
 router.get("/list", async (content, next) => {
+  console.log()
   const kk = await getList();
-  console.log(kk);
   content.response.body = "success";
 });
 router.post("/makeimg/list", async (ctx, next) => {
   try {
-    const array = await getList()
+    const query = ctx.request.body // 获取请求参数
+    const page = { page: query.page, size: query.size }
+    delete query.page
+    delete query.size
+    const array = await getList(page, query)
     const total = array[0]
     const content = array[1]
     ctx.response.body = { ...success, data: { total, content }}
@@ -74,6 +36,42 @@ router.post("/makeimg/list", async (ctx, next) => {
   }
  
 });
+/**
+ * @default 通过id删除数据
+ * @param {String} id 
+ */
+router.post('/makeimg/delete', async (ctx, next) => {
+  try {
+    const query = ctx.request.body
+    console.log('删除，传入数据', query)
+    const data = await deleteData({ 'id': query.id })
+    if (data === true) {
+      ctx.response.body = { ...success, data: { falge: true }}
+    } else {
+      ctx.response.body = { ...error, data: { falge: false }}
+    }
+  }catch {
+    ctx.response.body = error
+  }
+})
+/**
+ * @description 修改数据
+ */
+router.post('/makeimg/update', async (ctx, next) => {
+  try {
+    const query = ctx.request.body
+    const id = query.id
+    delete query.id
+    const data = await update(id,  query)
+    if (data === true) {
+      ctx.response.body = { ...success, data: { falge: true }}
+    } else {
+      ctx.response.body = { ...error, data: { falge: false }}
+    }
+  }catch {
+    ctx.response.body = error
+  }
+})
 // 插入
 function inset(data) {
   const makeimg = new MakeImg({
@@ -88,18 +86,6 @@ function inset(data) {
         reject("error");
       } else {
         resoved(true);
-      }
-    });
-  });
-}
-// 查找
-function find(opt) {
-  return new Promise((s, r) => {
-    MakeImg.find(opt, (err, res) => {
-      if (err) {
-        r(err);
-      } else {
-        s(res);
       }
     });
   });
@@ -123,7 +109,7 @@ function getImgs(imgurl) {
   });
 }
 // 列表查找
-function getList(opt = {}) {
+function getList({page, size}, opt = {}) {
   const P1 = new Promise((s, r) => {
     MakeImg.find(opt)
       .count((err, data) => {
@@ -135,9 +121,11 @@ function getList(opt = {}) {
       })
   })
   const P2 = new Promise((s, r) => {
+    const size = size || 5
+    const page = (page -1) || 0
     MakeImg.find(opt)
-      .limit(4)
-      .skip(4)
+      .limit(size)
+      .skip(page * size)
       .exec((err, data) => {
         if (err) {
           r(false)
@@ -147,5 +135,45 @@ function getList(opt = {}) {
       })
   })
   return Promise.all([P1, P2])
+}
+// 删除数据
+function deleteData(opt) {
+  return  new Promise((s, r) => {
+    MakeImg.deleteOne(opt, (err, data) => {
+      if (err) {
+        console.log('删除数据出错：', err)
+        r(false)
+      } else {
+        console.log('删除数据成功：', data)
+        if (data.deletedCount > 0) {
+          s(true)
+        } else {
+          r(false)
+        }
+      }
+    })
+  })
+}
+/**
+ * @description 更新数据
+ */
+function update(id, opt) {
+  console.log(id, opt )
+  return  new Promise((s, r) => { 
+    MakeImg.updateOne({ id: id }, opt, (err,doc) => {
+      if(err) {
+        console.log('更新数据报错', err)
+        r(false)
+        return false
+      }
+      console.log('更新数据成功', doc)
+      if (doc.nModified > 0 ) {
+        s(true)
+      } else {
+        r(false)
+      }
+      
+    })
+  })
 }
 module.exports = router

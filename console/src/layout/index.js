@@ -9,6 +9,11 @@ import { useStore } from './../store/config'
 const  Layout = () => {
   const [state, setState ] = useState({})
   const showLoading = useStore(s => s.showLoading)
+  let userName  = useStore(s => s.userName)
+  if (sessionStorage.getItem('userName')) {
+    userName = sessionStorage.getItem('userName')
+  }
+  sessionStorage.setItem('userName', userName)
   const menu = (
       <Menu>
           <Menu.Item>
@@ -25,7 +30,7 @@ const  Layout = () => {
         <div className="f-c content-right-head pd-15">
           <Dropdown overlay={menu}>
                 <a className="clr-w" onClick={e => e.preventDefault()}>
-                chiMu {showLoading ? '324' : '00'} <DownOutlined />
+                {userName} <DownOutlined />
                 </a>
           </Dropdown>
         </div>
