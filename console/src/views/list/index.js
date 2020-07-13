@@ -16,20 +16,20 @@ const List = () => {
     pageNo: 1,
     id: '',
     name: '',
-    createUser: '',
+    creatName: '',
     startDate: '',
     endDate: '',
   })
   
  // 获取数据
   const getListApi = (page=1, size = 5) => {
-    const hide = message.loading('加载中...', 0)
+    // const hide = message.loading('加载中...', 0)
     const data = {
       page,
       size: state.pageSize,
       id: state.id,
       name: state.name,
-      createUser: state.createUser,
+      creatName: state.creatName,
     }
     getList(data).then(res => {
       const dataSource = []
@@ -40,18 +40,20 @@ const List = () => {
         })
       })
       setState({
+        ...state,
         dataSource: dataSource,
         total: res.data.total,
         pageNo: page
       })
     }).catch(err => {
       setState({
+        ...state,
         dataSource: [],
         total: 0,
         pageNo: 1
       })
     }).finally(() => {
-      setTimeout(hide, 0);
+      // setTimeout(hide, 0);
     })
   }
   // 分页
@@ -66,6 +68,7 @@ const List = () => {
   const changeValue = (e, key) => {
     const val = e.target.value || ''
     setState({
+      ...state,
       [key]: val
     })
   }
@@ -111,6 +114,7 @@ const List = () => {
   // 重置
   const reset = () => {
     setState({
+      ...state,
       name: '',
       createUser: '',
       id: ''
@@ -216,7 +220,7 @@ const List = () => {
         <div className="search-box-item fs-14 clr-II">
           <span className="">创建人:</span>
           <div className="for-item">
-            <Input value={state.createUser} onChange={(e) => changeValue(e, 'createUser')} />
+            <Input value={state.createUser} onChange={(e) => changeValue(e, 'creatName')} />
           </div>
         </div>
         <div className="search-box-item fs-14 clr-II">

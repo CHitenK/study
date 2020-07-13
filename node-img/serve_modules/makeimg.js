@@ -25,9 +25,15 @@ router.post("/makeimg/list", async (ctx, next) => {
   try {
     const query = ctx.request.body // 获取请求参数
     const page = { page: query.page, size: query.size }
-    delete query.page
-    delete query.size
-    const array = await getList(page, query)
+    const queryData = {}
+    if (query.id) {
+      queryData.id = query.id
+    } else if (query.name) {
+      queryData.bgData.name = query.name
+    } else if (query.creatName) {
+      queryData.creatName = query.creatName
+    }
+    const array = await getList(page, queryData)
     const total = array[0]
     const content = array[1]
     ctx.response.body = { ...success, data: { total, content }}
@@ -109,7 +115,8 @@ function getImgs(imgurl) {
   });
 }
 // 列表查找
-function getList({page, size}, opt = {}) {
+function getList(pageData = {}, opt = {}) {
+  console.log(pageData, opt)
   const P1 = new Promise((s, r) => {
     MakeImg.find(opt)
       .count((err, data) => {
@@ -121,8 +128,8 @@ function getList({page, size}, opt = {}) {
       })
   })
   const P2 = new Promise((s, r) => {
-    const size = size || 5
-    const page = (page -1) || 0
+    const size = pageData.size || 5
+    const page = (pageData.page -1) || 0
     MakeImg.find(opt)
       .limit(size)
       .skip(page * size)
