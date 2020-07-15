@@ -8,6 +8,48 @@ var https = require("https");
 var url = require("url");
 const { createCanvas, loadImage } = require("canvas");
 const path = require("path");
+// 生成图片
+router.get("/makeimg", async (content, next) => {
+  const query = content.query;
+  const dbData = await find({ id: query.id });
+  const options = dbData[0];
+  console.log(options);
+  if (!options.id) {
+    content.response.body = error;
+    return false;
+  }
+  const { bgData, normalOpt, textOpt } = options;
+  const canvas = createCanvas(bgData.width, bgData.height, "jpg");
+  const ctx = canvas.getContext("2d");
+  // 绘制底框
+  let bgColor = "",
+    bgImgSrc = bgData.bgImgSrc;
+  bgColor = bgData.isTransmit
+    ? "#" + query[bgData.transmitName]
+    : bgData.bgColor;
+  ctx.fillStyle = bgColor;
+  ctx.fillRect(0, 0, bgData.width, bgData.height);
+  ctx.save();
+  // 绘制常规图片
+  for (let i = 0; i < normalOpt.length; i++) {
+    const item = normalOpt[i];
+    let src = item.isTransmit ? query[transmitName] : item.src;
+    const myimg = await loadImage(src);
+    ctx.drawImage(myimg, item.px, item.py, item.width, item.height);
+    ctx.save();
+  }
+  // 绘制文字
+  for (let i = 0; i < textOpt.length; i++) {
+    const item = textOpt[i];
+    let des = item.isTransmit ? query[transmitName] : item.des;
+    ctx.font = item.fontSize + "px" + ' "Microsoft YaHei"';
+    ctx.fillStyle = item.fsColor;
+    ctx.fillText(des, item.px, +item.py + 8);
+    ctx.save();
+  }
+  content.set("content-type", "image/jpg");
+  content.response.body = canvas.toBuffer();
+});
 // 数据插入
 router.post("/makeimg/save", async (ctx, next) => {
   const res = { ...success, data: { flage: true } };
@@ -16,11 +58,6 @@ router.post("/makeimg/save", async (ctx, next) => {
   ctx.response.body = flage ? res : error;
 });
 // 列表分页
-router.get("/list", async (content, next) => {
-  console.log()
-  const kk = await getList();
-  content.response.body = "success";
-});
 router.post("/makeimg/list", async (ctx, next) => {
   try {
     const query = ctx.request.body // 获取请求参数
@@ -83,8 +120,7 @@ function inset(data) {
   const makeimg = new MakeImg({
     ...data,
     id: "MKI" + Date.now(),
-    creatTime: Date.now(),
-    updateTime: Date.now(),
+    updateTime: Date.now()
   });
   return new Promise((resoved, reject) => {
     makeimg.save((err, res) => {
@@ -182,5 +218,17 @@ function update(id, opt) {
       
     })
   })
+}
+// 查找
+function find(opt) {
+  return new Promise((s, r) => {
+    MakeImg.find(opt, (err, res) => {
+      if (err) {
+        r(err);
+      } else {
+        s(res);
+      }
+    });
+  });
 }
 module.exports = router

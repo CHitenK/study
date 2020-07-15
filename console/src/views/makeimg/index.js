@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Button,Switch  } from 'antd'
+import { Button, Switch, message  } from 'antd'
 import BgNex from './bgnex'
 import Text from './text'
 import NormalImg from './normalImg'
@@ -15,6 +15,7 @@ const Makeimg = () => {
    const bgData = useStore(s => s.bgData)
    const textOpt = useStore(s => s.textOpt)
    const normalOpt = useStore(s => s.normalOpt)
+   let canSave = true
    const rederForm = () => {
       const active = state.active
       switch(active) {
@@ -41,11 +42,44 @@ const Makeimg = () => {
       dispatch('swicthShowNet')
    }
    const commit = () => {
+      if (!canSave) return false
+      canSave = false
+      // 校验
+      if (!bgData.name) {
+        message.error('名称不能为空')
+        return false
+      }
+      if (!bgData.describe) {
+        message.error('描述不能为空')
+        return false
+      }
+      if (!bgData.width || bgData.width <= 0) {
+        message.error('底框宽高不能为空，且不小于0')
+        return false
+      }
+      if (!bgData.height || bgData.height <= 0) {
+        message.error('底框宽高不能为空，且不小于0')
+        return false
+      }
+      if (bgData.isBgColor == 1 && !bgData.bgColor) {
+        message.error('底框底色不能为空')
+        return false
+      }
+      if (bgData.isBgColor == 2 && !bgData.bgImgSrc) {
+        message.error('底框底图地址不能为空')
+        return false
+      }
       const data = {
-         bgData, textOpt, normalOpt
+        bgData, textOpt, normalOpt, creatName: sessionStorage.getItem('userName'),
+        isUse: false
       }
       save(data).then(res => {
-         console.log(res)
+         message.success('保存成功')
+         
+      }).catch(res => {
+        message.error(res.msg)
+      }).finally(() => {
+        canSave = true
       })
    }
    return (

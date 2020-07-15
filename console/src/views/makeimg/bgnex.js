@@ -145,10 +145,6 @@ const BgNex = () => {
             <span className="form-label t-r">描述:</span>
             <TextArea rows={3}  value={bgData.describe || ''} onChange={(val) => changeValue(val,'describe')}   />
         </div>
-        <div className="form-list clr-II fs-14 mr-t-15">
-            <span className="form-label t-r">启用时间 :</span>
-            <DatePicker value={moment(bgData.starTime)} showTime format="YYYY/MM/DD HH:mm:ss"  onChange={(e, t) => setTime(t) }/>
-        </div>
         <div className="fs-16 clr-I mr-t-30">底框</div>
         <div className="form-list clr-II fs-14 mr-t-15">
             <span className="form-label t-r">宽 :</span>
