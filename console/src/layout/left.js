@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import './index.less'
 import muneList from './../utils/menu'
 import { useStore, dispatch } from './../store/config'
-import Item from '../../node_modules/_antd@4.3.1@antd/lib/list/Item';
 const Left = () => {
   const [ state, setState ] = useState({
     muneList
