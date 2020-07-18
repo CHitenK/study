@@ -4,16 +4,15 @@ import './index.less'
 import muneList from './../utils/menu'
 import { useStore, dispatch } from './../store/config'
 const Left = () => {
-  const [ state, setState ] = useState({
+  const [ state ] = useState({
     muneList
   })
   const history = useHistory()
-  const activeRoute = useStore(s => s.activeRoute)
+  const url = window.location.href
   // 跳转
   const goLink = (data) => {
     if (!data.path) return false
     history.push(data.path)
-    dispatch('updateActiveRoute', data )
   }
   return (
     <div className="left-box">
@@ -25,7 +24,7 @@ const Left = () => {
           state.muneList.map((item, index) => {
             if (item.isMenu) {
               return (
-                <div className={ activeRoute.id === item.id ? 'index-box f-c fs-14 index-box-active' : 'index-box f-c fs-14'} key={item.id} onClick={() => goLink(item)}>
+                <div className={ url.indexOf(item.path) > -1 ? 'index-box f-c fs-14 index-box-active' : 'index-box f-c fs-14'} key={item.id} onClick={() => goLink(item)}>
                   {item.icon}<span className="index-box-item">{item.name}</span>
                 </div>
               )

@@ -7,6 +7,7 @@ import Login from './../src/views/login/index'
 function App() {
   return (
     <div className="App">
+      <Route path="/" component={Login} exact />
       {/* <Redirect path="/" to={{pathname: '/login'}} /> */}
       <Route path='/login' component={Login}  />
       <Route path='/content' component={Layout}  />
