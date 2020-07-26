@@ -5,13 +5,13 @@ const sharp = require('sharp')
 const textToSVG = require('text-to-svg').loadSync()
 const Router = require('koa-router')
 const fs = require('fs')
-const path = require('path')
 const mime = require('mime-types') //需npm安装
 const router = new Router()
 var http = require('http')
 var url = require('url')
 const userRoter = require('./serve_modules/user')
 const makeImgRoter = require('./serve_modules/makeimg')
+const uploadRoute = require('./serve_modules/upload')
 
 router.get('/image', async (ctx, next) => {
   // ctx.response.body = '<h5>Index</h5>';
@@ -61,6 +61,7 @@ app.use(bodyParser())
 app.use(router.routes()) 
 app.use(userRoter.routes())
 app.use(makeImgRoter.routes())
+app.use(uploadRoute.routes())
 app.listen(2020, function() {
   console.log('----------------------2020端口启动了-------------------------')
 })

@@ -5,7 +5,6 @@ import "./index.less"
 import { useStore, dispatch } from './../../store/config'
 import { getList, deleData, updateData } from './../../api/index'
 import { transformTime } from './../../utils/tool'
-import { reset } from "ansi-colors";
 const { RangePicker } = DatePicker
 
 const List = () => {
@@ -19,6 +18,7 @@ const List = () => {
     creatName: '',
     startDate: '',
     endDate: '',
+    imgLookSrc: process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8089/makeimg?id=' : 'http://localhost:2020/makeimg?id='
   })
   
  // 获取数据
@@ -195,7 +195,7 @@ const List = () => {
           <div className="fs-12 clr-gr tool">
             <span>编辑</span>
             <span  onClick={() => update(record)}>{record.isUse ? '停用' : '启用'}</span>
-            {record.isUse && <span><a href={'http://localhost:2020/makeimg?id=' + record.id} target="_blank">查看</a></span>}
+            {record.isUse && <span><a href={state.imgLookSrc + record.id} target="_blank">查看</a></span>}
             <span onClick={() => dele(record.id)}>删除</span>
         </div>
         )

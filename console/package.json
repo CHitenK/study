@@ -70,6 +70,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "start:local": "cross-env REACT_APP_ENV=local node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
@@ -146,6 +147,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "less": "^3.11.2",
     "less-loader": "^6.1.0"
   },

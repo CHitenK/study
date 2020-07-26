@@ -3,7 +3,7 @@ import './App.css';
 import { Route } from 'react-router-dom'
 import Layout from './layout/index'
 import Login from './../src/views/login/index'
-
+console.log(process.env, 424)
 function App() {
   return (
     <div className="App">

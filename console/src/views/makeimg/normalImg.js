@@ -26,18 +26,25 @@ const Normal = () => {
     }
     const upLoadProps = {
         name: 'file',
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        accept: 'image/*',
+        action: '/makeimg/upload',
         headers: {
-          authorization: 'authorization-text',
+        },
+        beforeUpload(e, flie) {
+            if (flie.size > 100 * 1024 ) {
+                message.error(`图片大小不能超过100kb`);
+                return false
+            }
+            return true
         },
         onChange(info) {
-          if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
-          }
           if (info.file.status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully`);
+            console.log(info, 21342)
+            const { file } = info
+            const fineNane = file.response.filename
+            message.success(`上传成功`);
           } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
+            message.error(`上传失败，稍后重试`);
           }
         }
     }
