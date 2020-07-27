@@ -1,0 +1,21 @@
+// /user/info
+{
+	"msg": "执行成功",
+	"code": 1,
+	"body": {
+		"id": 166601,
+		"userName": "23-LCERYC5iCjzub",
+		"nickName": "chi_dev",
+		"mobilePhone": "183****2460",
+		"puLuoSiStaff": 0,
+		"icon": "/user/icon/20200704/160057_229335.jpg",
+		"userType": "Staff",
+		"userTypeName": "店主",
+		"realName": "池敏可",
+		"identityCode": "440921199303107459",
+		"waitPay": 9,
+		"waitDeclare": 0,
+		"waitDeliver": 0,
+		"delivering": 0
+	}
+}
