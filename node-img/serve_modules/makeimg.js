@@ -57,6 +57,13 @@ router.post("/makeimg/save", async (ctx, next) => {
   const flage = await inset(request);
   ctx.response.body = flage ? res : error;
 });
+//修改用餐人数的接口
+router.put('/makeimg/test',async (ctx, next)=>{
+  const res = { ...success, data: { flage: true } };
+  const request = ctx.request.body;
+  const flage = await inset(request);
+  ctx.response.body = flage ? res : error;
+})
 // 列表分页
 router.post("/makeimg/list", async (ctx, next) => {
   try {

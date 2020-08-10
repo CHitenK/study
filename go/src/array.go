@@ -10,5 +10,14 @@ func main()  {
 	// 一维数组 var 变量 = [长度] 类型 {...}
 	// 一维数组 变量 := [长度] 类型 {...}
 	var arr_1  = [5] int {1,2,3,4,5}
+	var balance = [...] float32 {1000.0, 2.0, 3.4, 7.0, 50.0} // 不设置长度
 	fmt.Println(arr_1)
+	fmt.Println(balance)
+	// 遍历
+	var intArray [10] int
+	var i int
+	for i = 0; i < 10; i++ {
+		intArray[i] = i
+		fmt.Println(intArray[i])
+	}
 }

@@ -12,7 +12,7 @@ var url = require('url')
 const userRoter = require('./serve_modules/user')
 const makeImgRoter = require('./serve_modules/makeimg')
 const uploadRoute = require('./serve_modules/upload')
-
+const productRoute = require('./serve_modules/product')
 router.get('/image', async (ctx, next) => {
   // ctx.response.body = '<h5>Index</h5>';
   try {
@@ -62,6 +62,7 @@ app.use(router.routes())
 app.use(userRoter.routes())
 app.use(makeImgRoter.routes())
 app.use(uploadRoute.routes())
+app.use(productRoute.routes())
 app.listen(2020, function() {
   console.log('----------------------2020端口启动了-------------------------')
 })

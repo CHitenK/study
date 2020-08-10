@@ -26,4 +26,5 @@ router.post('/makeimg/upload', upload.single('file'), async(ctx, next) => {
         filename: ctx.req.file.filename //返回文件名
     }
 })
+
 module.exports = router
