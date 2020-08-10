@@ -34,7 +34,7 @@ function getList(pageData = {}, opt = {}) {
   const P2 = new Promise((s, r) => {
     const size = pageData.size || 5
     const page = (pageData.page -1) || 0
-    productList.find()
+    productList.find({})
       .limit(size)
       .skip(page * size)
       .exec((err, data) => {
