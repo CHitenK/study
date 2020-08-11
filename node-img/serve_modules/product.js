@@ -15,8 +15,17 @@ router.get("/product/list", async (ctx, next) => {
     ctx.response.body = error
   }
 })
+router.get("/product/detail", async (ctx, next) => {
+  try {
+    const { id } = ctx.query // 获取请求参数
+    const array = await getDetail({ id: +id })
+    const data = array ? array[0] : null
+    ctx.response.body = { ...success, data: data || null }
+  } catch {
+    ctx.response.body = error
+  }
+})
 
-console.log(productList)
 // 列表查找
 function getList(pageData = {}, opt = {}) {
   console.log(pageData, opt)
@@ -48,4 +57,16 @@ function getList(pageData = {}, opt = {}) {
   return Promise.all([P1, P2])
 }
 
+// 详情查找
+function getDetail(opt) {
+  return new Promise((resolve, reject) => {
+    productDetail.find({ id: 83556 }, (err, data) => {
+      if (err) {
+        reject(false)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
 module.exports = router
