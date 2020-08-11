@@ -35,7 +35,6 @@ function getList(pageData = {}, opt = {}) {
         if (err) {
           r(0)
         } else {
-          console.log(data, '12444')
           s(data)
         }
       })
