@@ -10,6 +10,7 @@ router.get("/product/list", async (ctx, next) => {
     const array = await getList(page)
     const total = array[0]
     const content = array[1]
+    insetMany()
     ctx.response.body = { ...success, data: { total, content }}
   } catch {
     ctx.response.body = error
@@ -67,5 +68,23 @@ function getDetail(opt) {
       }
     })
   })
+}
+// insetMany 一次插入多条数据
+function insetMany() {
+  const array = []
+  array.forEach(item => {
+    inset(item)
+  })
+}
+// 插入
+function inset(data) {
+  const makeimg = new productList(data);
+  makeimg.save((err, res) => {
+    if (err) {
+      console.log('fail')
+    } else {
+      console.log('success')
+    }
+  });
 }
 module.exports = router

@@ -42,10 +42,25 @@ export default Vue.extend({
 <style>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  border: solid 1px red;
+  height: 100vh;
+  overflow-y: auto;
+}
+/* 移动端 */
+@media screen and (max-width: 767px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .container {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 1181px) {
+    .container {
+        width: 1180px;
+    }
 }
 </style>
