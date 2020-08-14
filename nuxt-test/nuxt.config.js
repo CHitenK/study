@@ -22,7 +22,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'http://chimke.cn/images/logo/favicon.ico' }
     ]
   },
   /*
@@ -53,10 +53,8 @@ export default {
   ** Nuxt.js modules
   */
  modules: [
+  '@nuxtjs/proxy'
  ],
-​
-  plugins: [
-  ],
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
@@ -65,9 +63,10 @@ export default {
     transpile: [/^element-ui/],
   },
   // 代理
-  proxyTable: {
-    '/': { 
-      target: 'http://chimke.cn:8088'
+  proxy: {
+    '/api/': { 
+      target: 'http://chimke.cn:8088',
+      pathRewrite: { '^/api': '/' }
     }
   }
 }

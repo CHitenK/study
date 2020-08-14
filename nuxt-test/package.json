@@ -16,6 +16,13 @@
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.0",
-    "@nuxt/typescript-build": "^2.0.2"
+    "@nuxt/typescript-build": "^2.0.2",
+    "@nuxtjs/proxy": "^2.0.1"
+  },
+  "config": {
+    "nuxt": {
+        "host": "0.0.0.0",
+        "port": "3333"
+    }
   }
 }

@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const service = axios.create({
-  // baseURL: '/',
+  baseURL: 'http://192.168.31.116:3333/',
+  // baseURL: 'http://192.168.31.116:3333/',
   timeout: 15000
 })
 // 请求拦截 可在请求头中加入token等
@@ -18,6 +19,7 @@ service.interceptors.response.use(resp => {
   }
   return Promise.reject(res)
 }, error => {
+  console.log(error)
   return Promise.reject(error.response)
 })
 

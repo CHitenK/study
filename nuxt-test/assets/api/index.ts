@@ -1,7 +1,10 @@
 import request from './../../plugins/axios'
 
-function getList(data:object = {}): any {
+export function getList(data:object = {}): any {
+  console.log(23)
    return request({
-     url: '/product/list'
+     url: '/api/product/list',
+     method: 'get',
+     params: data
    })
 }
