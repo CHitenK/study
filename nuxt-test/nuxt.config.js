@@ -66,7 +66,7 @@ export default {
   // 代理
   proxy: {
     '/api/': { 
-      target: 'http://chimke.cn:8088',
+      target: 'http://chimke.cn:8088', // 'http://localhost:2020', 
       pathRewrite: { '^/api': '/' }
     }
   }

@@ -5,8 +5,9 @@ const { success, error } = require("./../utils/config");
 
 router.get("/product/list", async (ctx, next) => {
   try {
-    const query = ctx.request.body // 获取请求参数
+    const query = ctx.request.query // 获取请求参数
     const page = { page: query.page || 1, size: query.size || 5 }
+    console.log(ctx.request.query)
     const array = await getList(page)
     const total = array[0]
     const content = array[1]
@@ -41,8 +42,8 @@ function getList(pageData = {}, opt = {}) {
       })
   })
   const P2 = new Promise((s, r) => {
-    const size = pageData.size || 5
-    const page = (pageData.page -1) || 0
+    const size = +pageData.size || 5
+    const page = (+pageData.page -1) || 0
     productList.find({})
       .limit(size)
       .skip(page * size)
