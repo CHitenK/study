@@ -62,7 +62,6 @@ function getList(pageData = {}, opt = {}) {
 function getDetail(opt) {
   return new Promise((resolve, reject) => {
     productDetail.find(opt, (err, data) => {
-      console.log(data, 2234)
       if (err) {
         reject(false)
       } else {
