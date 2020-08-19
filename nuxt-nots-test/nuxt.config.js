@@ -15,7 +15,7 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'nuxt-test',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -36,7 +36,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/nuxt-axios'
   ],
   /*
   ** Auto import components
@@ -52,7 +53,8 @@ export default {
   ** Nuxt.js modules
   */
  modules: [
-  '@nuxtjs/proxy'
+  '@nuxtjs/proxy',
+  '@nuxtjs/axios'
  ],
   /*
   ** Build configuration
@@ -60,6 +62,12 @@ export default {
   */
   build: {
     transpile: [/^element-ui/],
+  },
+  axios: {
+    proxy: true,
+    prefix: '/api/',
+    credentials: true
+    // See https://github.com/nuxt-community/axios-module#options
   },
   // 代理
   proxy: {

@@ -16,11 +16,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getList } from '@/assets/api/index'
 export default Vue.extend({
   async asyncData(context) {
     try {
-      const res = await getList({page: 1, size: 12})
+      const res = await context.$axios.$get('/product/list', {params: {page: 1, size: 12} }) //getList({page: 1, size: 12})
       let list = []
       let total = -1
       if (res.data && res.data.content) {
@@ -40,7 +39,7 @@ export default Vue.extend({
   },
   mounted () {
     window.onscroll = () => {
-      if (this.total < this.list.length) return false
+      if (Math.ceil(this.total / 12) <= this.page) return false
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       const targetDom = document.getElementById('container-item')
       const hei = targetDom.clientHeight
@@ -55,14 +54,13 @@ export default Vue.extend({
   },
   methods: {
     getListData(page) {
-      getList({page: page, size: 12}).then((res) =>{
-        if (res.data.content) {
+      this.$axios.$get('/product/list', {params: {page: page, size: 12} }).then((res) =>{
+        if (res.data.content && res.code === 200) {
           this.list = [...this.list, ...res.data.content]
           this.total = res.data.total
           this.page = page
         }
       }).catch((res) => {
-
       }).finally(() => {
         setTimeout(() => {
           this.cando = true
