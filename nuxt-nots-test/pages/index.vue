@@ -70,6 +70,7 @@ export default Vue.extend({
     },
     // 跳转详情
     linkTo(id) {
+      console.log(id)
       window.open('/product/detail?id=' + id, '_blank')
     }
  }
