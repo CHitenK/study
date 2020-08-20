@@ -2,7 +2,7 @@
   <div class="container">
       <el-row :gutter="10" id="container-item">
          <el-col :xs="12" :sm="6" v-for="item in list" :key="item._id">
-           <div class="product-item" @click="linkTo(item.id)" >
+           <div class="product-item" v-on:click="linkTo(item.id)" >
              <img :src="item.imageUrl" />
              <div class="des">
                 <span class="name" v-html="item.name" :title="item.name"  ></span>

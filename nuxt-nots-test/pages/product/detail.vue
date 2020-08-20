@@ -42,7 +42,7 @@
             <p class="for-you">
               为你推荐
             </p>
-            <div class="product-list-item" v-for="(item, i) in list" :key="i" @click="linkTo(item.id)"> 
+            <div class="product-list-item" v-for="(item, i) in list" :key="i" v-on:click="linkTo(item.id)"> 
               <img :src="item.imageUrl" />
               <p class="product-list-item-name" v-html="item.name">
               </p>
