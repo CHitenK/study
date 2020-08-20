@@ -1,7 +1,6 @@
 <template>
-import { constants } from 'zlib';
   <div class="container">
-       <el-row :gutter="15" id="container-item">
+       <el-row :gutter="30" id="container-item">
         <el-col  :xs="24" :sm="20">
           <el-row :gutter="15">
             <el-col  :xs="24" :sm="11">
@@ -43,7 +42,7 @@ import { constants } from 'zlib';
             <p class="for-you">
               为你推荐
             </p>
-            <div class="product-list-item" v-for="(item, i) in list" :key="i">
+            <div class="product-list-item" v-for="(item, i) in list" :key="i" @click="linkTo(item.id)"> 
               <img :src="item.imageUrl" />
               <p class="product-list-item-name" v-html="item.name">
               </p>
@@ -60,20 +59,27 @@ import { constants } from 'zlib';
 export default {
     async asyncData(context) {
     try {
-      console.log(context.$route)
+      // 传参获取 context.params  context.query
+      let { id } = context.query // ?id=12132, 
+      const usefuliIds = ['63276', '63279', '77198', '83549', '83555']
+      if (!usefuliIds.includes(id)) {
+        const roundNum = Date.now()
+        id = usefuliIds[roundNum % 5]
+      }
       // 商品信息
-      const res = await context.$axios.$get('/product/detail?id=' + 63276)
+      const res = await context.$axios.$get('/product/detail?id=' + id)
       let detail = {}
       if (res.code === 200 && res.data) {
         detail = res.data
       }
       // 为你推荐
+      // const roundNum1 = Date.now()
+      // page = usefuliIds[roundNum1 % 3] + 1
       const res1 = await context.$axios.$get('/product/list', {params: {page: 1, size: 16 } })
       let list = []
       if (res1.code === 200 && res1.data.content) {
         list = res1.data.content || []
       }
-      console.log(detail)
       return { detail, list}
     } catch (err) {
       return { detail: {}, list: [] }
@@ -85,7 +91,10 @@ export default {
     }
   },
   methods: {
-
+    // 跳转详情
+    linkTo(id) {
+      window.open('/product/detail?id=' + id, '_blank')
+    }
   }
 }
 </script>
@@ -176,6 +185,8 @@ export default {
 }
 .jia-shao-box{
   width: 100%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 .jia-shao-box img{
   display: block;

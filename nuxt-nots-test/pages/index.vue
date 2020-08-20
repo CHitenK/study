@@ -2,7 +2,7 @@
   <div class="container">
       <el-row :gutter="10" id="container-item">
          <el-col :xs="12" :sm="6" v-for="item in list" :key="item._id">
-           <div class="product-item" >
+           <div class="product-item" @click="linkTo(item.id)" >
              <img :src="item.imageUrl" />
              <div class="des">
                 <span class="name" v-html="item.name" :title="item.name"  ></span>
@@ -53,6 +53,7 @@ export default Vue.extend({
   created() {
   },
   methods: {
+    // 请求列表数据
     getListData(page) {
       this.$axios.$get('/product/list', {params: {page: page, size: 12} }).then((res) =>{
         if (res.data.content && res.code === 200) {
@@ -66,6 +67,10 @@ export default Vue.extend({
           this.cando = true
         }, 1500)
       })
+    },
+    // 跳转详情
+    linkTo(id) {
+      window.open('/product/detail?id=' + id, '_blank')
     }
  }
 })

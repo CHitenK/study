@@ -24,7 +24,6 @@ function setRem () {
   }
 </script>
 <style>
-<style>
 html {
   font-family:
     'Source Sans Pro',
