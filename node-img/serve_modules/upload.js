@@ -20,7 +20,7 @@ var upload = multer({
    storage: storage
 })
 //  上传图片
-router.post('/makeimg/upload', upload.single('file'), async(ctx, next) => {
+router.post('/api/file/upload', upload.single('file'), async(ctx, next) => {
     console.log(path.resolve('./') + '/images/'    )
     ctx.body = {
         filename: ctx.req.file.filename //返回文件名

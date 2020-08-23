@@ -22,18 +22,24 @@ router.get("/makeimg", async (content, next) => {
   const canvas = createCanvas(bgData.width, bgData.height, "jpg");
   const ctx = canvas.getContext("2d");
   // 绘制底框
-  let bgColor = "",
+  if (bgData.isBgColor == 2 && bgData.bgImgSrc) { // 底图
+    ctx.drawImage(bgData.bgImgSrc, 0, 0, bgData.width, bgData.height);
+    ctx.save();
+  } else { // 底色
+    let bgColor = ""
     bgImgSrc = bgData.bgImgSrc;
-  bgColor = bgData.isTransmit
+    bgColor = bgData.isTransmit
     ? "#" + query[bgData.transmitName]
     : bgData.bgColor;
-  ctx.fillStyle = bgColor;
-  ctx.fillRect(0, 0, bgData.width, bgData.height);
-  ctx.save();
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, bgData.width, bgData.height);
+    ctx.save();
+  } 
+
   // 绘制常规图片
   for (let i = 0; i < normalOpt.length; i++) {
     const item = normalOpt[i];
-    let src = item.isTransmit ? query[transmitName] : item.src;
+    let src = item.isTransmit ? query[transmitName] || item.defaultSrc  : item.src;
     const myimg = await loadImage(src);
     ctx.drawImage(myimg, item.px, item.py, item.width, item.height);
     ctx.save();
@@ -41,7 +47,7 @@ router.get("/makeimg", async (content, next) => {
   // 绘制文字
   for (let i = 0; i < textOpt.length; i++) {
     const item = textOpt[i];
-    let des = item.isTransmit ? query[transmitName] : item.des;
+    let des = item.isTransmit ? query[transmitName] || item.defaultDes : item.des;
     ctx.font = item.fontSize + "px" + ' "Microsoft YaHei"';
     ctx.fillStyle = item.fsColor;
     ctx.fillText(des, item.px, +item.py + 8);
@@ -51,21 +57,21 @@ router.get("/makeimg", async (content, next) => {
   content.response.body = canvas.toBuffer();
 });
 // 数据插入
-router.post("/makeimg/save", async (ctx, next) => {
+router.post("/api/makeimg/save", async (ctx, next) => {
   const res = { ...success, data: { flage: true } };
   const request = ctx.request.body;
   const flage = await inset(request);
   ctx.response.body = flage ? res : error;
 });
 //修改用餐人数的接口
-router.put('/makeimg/test',async (ctx, next)=>{
+router.put('/api/makeimg/test',async (ctx, next)=>{
   const res = { ...success, data: { flage: true } };
   const request = ctx.request.body;
   const flage = await inset(request);
   ctx.response.body = flage ? res : error;
 })
 // 列表分页
-router.post("/makeimg/list", async (ctx, next) => {
+router.post("/api/makeimg/list", async (ctx, next) => {
   try {
     const query = ctx.request.body // 获取请求参数
     const page = { page: query.page, size: query.size }
@@ -90,7 +96,7 @@ router.post("/makeimg/list", async (ctx, next) => {
  * @default 通过id删除数据
  * @param {String} id 
  */
-router.post('/makeimg/delete', async (ctx, next) => {
+router.post('/api/makeimg/delete', async (ctx, next) => {
   try {
     const query = ctx.request.body
     console.log('删除，传入数据', query)
@@ -107,7 +113,7 @@ router.post('/makeimg/delete', async (ctx, next) => {
 /**
  * @description 修改数据
  */
-router.post('/makeimg/update', async (ctx, next) => {
+router.post('/api/makeimg/update', async (ctx, next) => {
   try {
     const query = ctx.request.body
     const id = query.id

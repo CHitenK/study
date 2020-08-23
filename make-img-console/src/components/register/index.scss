@@ -1,0 +1,24 @@
+
+.register-box{
+    width: 320px;
+    height: 320px;
+    background: #ffffff;
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    margin-top: -160px;
+    z-index: 2022;
+    opacity: 1;
+    transform: scaleX(1);
+    transition: opacity .6s, transform .6s;
+    transition-timing-function: linear;
+  }
+  .register-box-out {
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity .6s, transform .6s;
+    transition-timing-function: linear;
+  }
+  .error{
+    color: red;
+  }

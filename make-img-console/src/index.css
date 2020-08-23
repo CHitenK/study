@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.f-c{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clr-I{
+  color: #333333;
+}
+.clr-II{
+  color: #666666;
+}
+.clr-III{
+  color: #999999;
+}
+.clr-b{
+  color: #E8D098;
+}
+.clr-w{
+  color: #ffffff;
+}
+.clr-gr{
+  color: #339aef;
+}
+.fs-10{
+  font-size: 10px;
+}
+.fs-12{
+  font-size: 12px;
+}
+.fs-16{
+  font-size: 16px;
+}
+.fs-14{
+  font-size: 14px;
+}
+.fs-18{
+  font-size: 18px;
+}
+.fs-20{
+  font-size: 20px;
+}
+.fs-22{
+  font-size: 22px;
+}
+.fs-24{
+  font-size: 24px;
+}
+.fs-26{
+  font-size: 26px;
+}
+.fs-28{
+  font-size: 28px;
+}
+.fs-30{
+  font-size: 30px;
+}
+.fs-32{
+  font-size: 32px;
+}
+.f-w{
+  font-weight: 600;
+}
+.mr-l-5{
+  margin-left: 5px;
+}
+.mr-l-10{
+  margin-left: 10px;
+}
+.mr-l-15{
+  margin-left: 15px;
+}
+.mr-l-20{
+  margin-left: 20px;
+}
+.mr-l-25{
+  margin-left: 25px;
+}
+.mr-l-30{
+  margin-left: 30px;
+}
+
+.mr-t-5{
+  margin-top: 5px;
+}
+.mr-t-10{
+  margin-top: 10px;
+}
+.mr-t-15{
+  margin-top: 15px;
+}
+.mr-t-20{
+  margin-top: 20px;
+}
+.mr-t-25{
+  margin-top: 25px;
+}
+.mr-t-30{
+  margin-top: 30px;
+}
+.pd-30{
+  box-sizing: border-box;
+  padding: 0 30px;
+}
+.pd-15{
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+.cont-box{
+  height: calc(100vh - 110px);
+  width: 100%;
+}
+.t-r{
+  text-align: right;
+}
+.t-c{
+  text-align: center;
+}
+.t-l{
+  text-align: left;
+}

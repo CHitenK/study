@@ -1,0 +1,84 @@
+.content-box{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.left-box{
+    width: 180px;
+    height: 100%;
+    background: rgb(20,69,106);
+    overflow-y: auto;
+    .menu-box{
+        background: rgb(20,69,106);
+     }
+    .ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub {
+         color: rgba(255, 255, 255, 0.65);
+         background: #036564;
+     }
+     .ant-menu-dark .ant-menu-inline.ant-menu-sub {
+         background:#093a5e;
+     }
+}
+.content-right{
+    width: calc(100% - 180px);
+    height: 100%;
+}
+.content-right-head{
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    background: rgb(3,101,100);
+    justify-content: flex-end;
+}
+.content-right-content{
+    width: 100%;
+    height: calc(100% - 80px);
+    box-sizing: border-box;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+/* left */
+.logo-img-box{
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+}
+.logo-img{
+    height: 60px;
+    width: auto;
+}
+/* left end */
+.index-box{
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    color: #fefefe;
+    .index-box-item{
+        display: inline-block;
+        width: 120px;
+        margin-left: 10px;
+    }
+    &:hover{
+        color: #339aef;
+    }
+}
+.index-box-active{
+    background: #ffffff;
+    color: #339aef;
+}
+.loading-box{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    color: #339aef;
+}
