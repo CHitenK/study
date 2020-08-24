@@ -57,7 +57,7 @@
 </template>
 <script>
 export default {
-    async asyncData(context) {
+  async asyncData(context) {
     try {
       // 传参获取 context.params  context.query
       let { id } = context.query // ?id=12132, 
@@ -84,6 +84,18 @@ export default {
     } catch (err) {
       return { detail: {}, list: [] }
     }
+  },
+  head() {
+      return {
+        title: '详情',
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: '这是个商品详情'
+          }
+        ]
+      }
   },
   data() {
     return {

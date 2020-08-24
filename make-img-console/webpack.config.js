@@ -34,7 +34,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
     },
     devServer: {
         contentBase: './build',
-        port: 8081,
+        port: 7777,
         inline: true,
         hot: true,
         open: true,

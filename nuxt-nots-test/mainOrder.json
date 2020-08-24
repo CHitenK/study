@@ -1,0 +1,10 @@
+{
+  "pollingTime": 1000,
+  "closePollTime": 15000,
+  "sessionExpired": 39600000,
+  "orderListDelay": 1000,
+  "orderPayTimes": 900000,
+  "yonghu": "https://img.e111.com.cn/group1/M00/04/47/Cg1F-V8_RJOAGX0RACAZOXnoG4Y243.jpg",
+  "geren": "https://img.e111.com.cn/group1/M00/04/47/Cg1F-V8_SmCAFqadACMwzuBwDD8899.jpg",
+  "ziyou": "https://img.e111.com.cn/group1/M00/04/47/Cg1F-V8_QZqASx8TAA4bqzlwMbc946.jpg"
+}
