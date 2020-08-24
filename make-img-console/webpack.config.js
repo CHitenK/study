@@ -42,7 +42,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
         historyApiFallback: true,
         proxy: {
             '/api': {
-                target: 'http://localhost:2020',
+                // target: 'http://localhost:2020',
+                target: 'http://chimke.cn:8089'
                 changeOrigin: true,
               }
         }

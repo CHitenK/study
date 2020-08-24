@@ -7,7 +7,8 @@ const multer = require('koa-multer');//加载koa-multer模块
 var storage = multer.diskStorage({
     //文件保存路径
     destination: function(req, file, cb) {
-        cb(null, path.resolve('./') + '/images/')
+        // cb(null, path.resolve('./') + '/images/')
+        cb(null, path.resolve('./../../') + '/images/upload/' )
     },
     //修改文件名称
     filename: function(req, file, cb) {
@@ -21,9 +22,10 @@ var upload = multer({
 })
 //  上传图片
 router.post('/api/file/upload', upload.single('file'), async(ctx, next) => {
-    console.log(path.resolve('./../../') + '/images/upload/'    )
+    console.log(path.resolve('./../../') + '/images/upload/')
     ctx.body = {
-        filename: ctx.req.file.filename //返回文件名
+        filename: ctx.req.file.filename, //返回文件名
+        kk: path.resolve('./../../') + '/images/upload/'
     }
 })
 
