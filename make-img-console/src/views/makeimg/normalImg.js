@@ -6,7 +6,7 @@ import './index.scss'
 
 const Normal = () => {
     const [state, setState ] = useState({
-      filenNameArr: []
+        fileNameArr: []
     })
     const normalOpt = useStore(s => s.normalOpt)
     // 更新数据
@@ -55,31 +55,31 @@ const Normal = () => {
     }
     // 图片上传完成
     const upload = (info, index) => {
-        const filenNameArr = state.filenNameArr
-        let fineName = ''
+        const fileNameArr = state.fileNameArr
+        let filename = ''
         if (info.file.status === 'done') {
           const { file } = info
-          fineName = file.response.filename
+          filename = 'http://chimke.cn/images/upload/'  + file.response.filename
           message.success(`上传成功`);
-          filenNameArr[index] = fineName
+          fileNameArr[index] = filename
         } else if (info.file.status === 'error') {
           message.error(`上传失败，稍后重试`);
-          filenNameArr[index] = ''
-          fineName = ''
+          fileNameArr[index] = ''
+          filename = ''
         }
         setState(oldSate =>({
             ...oldSate,
-            filenNameArr
+            fileNameArr
         }))
-        setBgData(fineName, 'src', index)
+        setBgData(filename, 'src', index)
     }
     // 删除上传成功的图片
     const uploadRemove = (index) => {
-        const filenNameArr = state.filenNameArr
-        filenNameArr[index] = ''
+        const fileNameArr = state.fileNameArr
+        fileNameArr[index] = ''
         setState(oldSate =>({
             ...oldSate,
-            filenNameArr
+            fileNameArr
         }))
         setBgData('', 'src', index)
     }
@@ -131,7 +131,7 @@ const Normal = () => {
                                        <div>
                                             <div className="form-list clr-II fs-14 mr-t-15">
                                                 <span className="form-label t-r need">图片地址 :</span>
-                                                <Input disabled={!!state.filenNameArr[index]} placeholder="https://api.crossplus.topgoods.mobi/image//item/image/20200620/104539_876530.jpg" value={item.src}  onChange={(e) => changeValue(e, 'src', index) } />
+                                                <Input disabled={!!state.fileNameArr[index]} placeholder="https://api.crossplus.topgoods.mobi/image//item/image/20200620/104539_876530.jpg" value={item.src}  onChange={(e) => changeValue(e, 'src', index) } />
                                             </div>
                                             <div className="form-list form-list-ot clr-II fs-14 mr-t-15">
                                                 <span className="form-label t-r need">上传图片 :</span>
@@ -141,7 +141,7 @@ const Normal = () => {
                                                 onChange={(info) => upload(info, index) }
                                                 onRemove={() => uploadRemove(index)}
                                                 >
-                                                    <Button disabled={!!state.filenNameArr[index]}>
+                                                    <Button disabled={!!state.fileNameArr[index]}>
                                                       <UploadOutlined  /> 选择文件
                                                     </Button>
                                                 </Upload>

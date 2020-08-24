@@ -100,13 +100,22 @@ const PreView = () => {
         //     for (let i = 0; i < domes.length; i++) {
                 
         //         }
-        //     }
-        // }
+        //     }'url(http://chimke.cn/images/upload/1598279483616.jpg)',
+        // 
+
     })
     return (
       <div className="route-box-r">
         <div id="handel-view"></div>
-        <div id="view" className="mobile" style={{ 'width': bgData.width + 'px', 'height':  bgData.height + 'px', 'transform': state.scale, 'background': bgData.bgColor  }}>
+        <div id="view" className="mobile" style={{ 
+            'width': bgData.width + 'px', 
+            'height':  bgData.height + 'px', 
+            'transform': state.scale, 
+            'backgroundColor': bgData.bgColor,
+            'backgroundImage': bgData.bgImgSrc ? 'url(' + bgData.bgImgSrc +')' : 'none',
+            'backgroundSize': '100% 100%',
+            'backgroundRepeat': 'no-repeat'
+             }}>
            {
                normalOpt && normalOpt.map((item, i) => {
                    if (item.src) {

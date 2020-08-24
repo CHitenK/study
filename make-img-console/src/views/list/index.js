@@ -18,7 +18,7 @@ const List = () => {
     creatName: '',
     startDate: '',
     endDate: '',
-    imgLookSrc: process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8089/makeimg?id=' : 'http://localhost:2020/makeimg?id='
+    imgLookSrc: process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8088/api/makeimg?id=' : '/api/makeimg?id='
   })
   
  // 获取数据

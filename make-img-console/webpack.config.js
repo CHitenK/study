@@ -43,7 +43,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
         proxy: {
             '/api': {
                 // target: 'http://localhost:2020',
-                target: 'http://chimke.cn:8089'
+                target: 'http://chimke.cn:8088',
                 changeOrigin: true,
               }
         }

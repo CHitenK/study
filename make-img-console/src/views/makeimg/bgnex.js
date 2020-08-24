@@ -75,7 +75,7 @@ const BgNex = () => {
       let fineName = ''
       if (info.file.status === 'done') {
         const { file } = info
-        fineName = file.response.filename
+        fineName = 'http://chimke.cn/images/upload/' + file.response.filename
         message.success(`上传成功`);
       } else if (info.file.status === 'error') {
         message.error(`上传失败，稍后重试`);
