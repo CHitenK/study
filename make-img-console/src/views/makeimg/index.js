@@ -131,7 +131,7 @@ const Makeimg = () => {
       canSave = false
       const data = {
         bgData, textOpt, normalOpt, creatName: sessionStorage.getItem('userName'),
-        isUse: false
+        isUse: true
       }
       save(data).then(res => {
          message.success('保存成功')

@@ -143,7 +143,7 @@ const BgNex = () => {
                 <span className="form-label t-r">上传图片 :</span>
                 <Upload {...upLoadProps}>
                     <Button disabled={!!state.fineName}>
-                      <UploadOutlined /> Click to Upload
+                      <UploadOutlined /> 选择文件
                     </Button>
                 </Upload>
             </div>

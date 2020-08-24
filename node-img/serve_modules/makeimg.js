@@ -9,7 +9,7 @@ var url = require("url");
 const { createCanvas, loadImage } = require("canvas");
 const path = require("path");
 // 生成图片
-router.get("/makeimg", async (content, next) => {
+router.get("/api/makeimg", async (content, next) => {
   const query = content.query;
   const dbData = await find({ id: query.id });
   const options = dbData[0];

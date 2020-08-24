@@ -1,5 +1,5 @@
 import React from 'react'
-import { HomeOutlined, InsertRowAboveOutlined, SaveOutlined } from '@ant-design/icons'
+import { HomeOutlined, InsertRowAboveOutlined, SaveOutlined, DatabaseOutlined } from '@ant-design/icons'
 const muneList = [
   {
     name: '首  页',
@@ -21,6 +21,13 @@ const muneList = [
     path: '/content/makeimg',
     isMenu: true,
     icon: <SaveOutlined />
+  },
+  {
+    name: '图片压缩',
+    id: 103,
+    path: '/content/compress',
+    isMenu: true,
+    icon: <DatabaseOutlined />
   }
 ]
 export default muneList

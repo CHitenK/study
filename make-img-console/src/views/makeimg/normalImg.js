@@ -142,7 +142,7 @@ const Normal = () => {
                                                 onRemove={() => uploadRemove(index)}
                                                 >
                                                     <Button disabled={!!state.filenNameArr[index]}>
-                                                      <UploadOutlined  /> Click to Upload
+                                                      <UploadOutlined  /> 选择文件
                                                     </Button>
                                                 </Upload>
                                             </div>

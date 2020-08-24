@@ -9,6 +9,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
         index: './src/index.js'
     },
     output: {
+        publicPath: '/',
         filename: 'bundle.js',
         path: __dirname + '/build' //path.resolve(__dirname, 'build')
     },
@@ -40,8 +41,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
         open: true,
         historyApiFallback: true,
         proxy: {
-            '/': {
-          
+            '/api': {
                 target: 'http://localhost:2020',
                 changeOrigin: true,
               }
