@@ -63,7 +63,7 @@ app.use(userRoter.routes())
 app.use(makeImgRoter.routes())
 app.use(uploadRoute.routes())
 app.use(productRoute.routes())
-app.listen(2020, function() {
+app.listen(2020, '0.0.0.0', function() {
   console.log('----------------------2020端口启动了-------------------------')
 })
 
