@@ -23,7 +23,8 @@ router.get("/api/makeimg", async (content, next) => {
   const ctx = canvas.getContext("2d");
   // 绘制底框
   if (bgData.isBgColor == 2 && bgData.bgImgSrc) { // 底图
-    ctx.drawImage(bgData.bgImgSrc, 0, 0, bgData.width, bgData.height);
+    const bgImgSrc = await loadImage(bgData.bgImgSrc);
+    ctx.drawImage(bgImgSrc, 0, 0, bgData.width, bgData.height);
     ctx.save();
   } else { // 底色
     let bgColor = ""
@@ -39,7 +40,7 @@ router.get("/api/makeimg", async (content, next) => {
   // 绘制常规图片
   for (let i = 0; i < normalOpt.length; i++) {
     const item = normalOpt[i];
-    let src = item.isTransmit ? query[transmitName] || item.defaultSrc  : item.src;
+    let src = item.isTransmit ? query[item.transmitName] || item.defaultSrc  : item.src;
     const myimg = await loadImage(src);
     ctx.drawImage(myimg, item.px, item.py, item.width, item.height);
     ctx.save();
@@ -47,8 +48,8 @@ router.get("/api/makeimg", async (content, next) => {
   // 绘制文字
   for (let i = 0; i < textOpt.length; i++) {
     const item = textOpt[i];
-    let des = item.isTransmit ? query[transmitName] || item.defaultDes : item.des;
-    ctx.font = item.fontSize + "px" + ' "Microsoft YaHei"';
+    let des = item.isTransmit ? query[item.transmitName] || item.defaultDes : item.des;
+    ctx.font = item.fontSize + "px" + ''; // "Microsoft YaHei" 
     ctx.fillStyle = item.fsColor;
     ctx.fillText(des, item.px, +item.py + 8);
     ctx.save();
