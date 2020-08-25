@@ -49,7 +49,7 @@ router.get("/api/makeimg", async (content, next) => {
   for (let i = 0; i < textOpt.length; i++) {
     const item = textOpt[i];
     let des = item.isTransmit ? query[item.transmitName] || item.defaultDes : item.des;
-    ctx.font = item.fontSize + "px" + ''; // "Microsoft YaHei" 
+    ctx.font = item.fontSize + "px" + '"Microsoft YaHei"'; // "Microsoft YaHei" 
     ctx.fillStyle = item.fsColor;
     ctx.fillText(des, item.px, +item.py + 8);
     ctx.save();
