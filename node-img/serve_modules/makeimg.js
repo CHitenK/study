@@ -40,7 +40,8 @@ router.get("/api/makeimg", async (content, next) => {
   // 绘制常规图片
   for (let i = 0; i < normalOpt.length; i++) {
     const item = normalOpt[i];
-    let src = item.isTransmit ? query[item.transmitName] || item.defaultSrc  : item.src;
+    let src = item.isTransmit ? query[item.transmitName] || item.defaultSrc : item.src;
+    if (!src) continue
     const myimg = await loadImage(src);
     ctx.drawImage(myimg, item.px, item.py, item.width, item.height);
     ctx.save();
@@ -49,6 +50,7 @@ router.get("/api/makeimg", async (content, next) => {
   for (let i = 0; i < textOpt.length; i++) {
     const item = textOpt[i];
     let des = item.isTransmit ? query[item.transmitName] || item.defaultDes : item.des;
+    if (!des) continue
     ctx.font = item.fontSize + "px" + '"Microsoft YaHei"'; // "Microsoft YaHei" 
     ctx.fillStyle = item.fsColor;
     ctx.fillText(des, item.px, +item.py + 8);

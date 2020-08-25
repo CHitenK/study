@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from "react-router-dom"
+
 import { Button, Switch, message  } from 'antd'
 import BgNex from './bgnex'
 import Text from './text'
@@ -15,7 +15,6 @@ const Makeimg = () => {
    const bgData = useStore(s => s.bgData)
    const textOpt = useStore(s => s.textOpt)
    const normalOpt = useStore(s => s.normalOpt)
-   const history = useHistory()
    let canSave = true
    const rederForm = () => {
       const active = state.active
@@ -108,8 +107,6 @@ const Makeimg = () => {
       }
       save(data).then(res => {
          message.success('保存成功')
-         history.push('/content/list')
-         dispatch('reset')
       }).catch(res => {
         message.error(res.msg)
       }).finally(() => {

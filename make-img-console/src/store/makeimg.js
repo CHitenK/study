@@ -80,6 +80,48 @@ const { useStore, dispatch } = createStore({
         const textOpt = state.textOpt
         textOpt.splice(index, 1)
         state.textOpt = textOpt
+      },
+      reset(state) {
+        const data = {
+          bgData: { // 底框配置项
+            width: 320,
+            height: 480,
+            bgColor: '#FFFFFF',
+            isTransmit: false,
+            isBgColor: 1,
+            bgImgSrc: '',
+            transmitName: 'bg_color',
+            deflautColor: '#FFFFFF',
+            name: '',
+            describe: '',
+            starTime: '2020-06-27 19:42:28'
+          },
+          isShowNet: false,
+          normalOpt: [
+              {
+                  px: 0,
+                  py: 0,
+                  src: '',
+                  isTransmit: false,
+                  transmitName: '',
+                  width: 100,
+                  height: 100
+              }
+          ],
+          textOpt: [
+            {
+                px: 0,
+                py: 0,
+                des: '',
+                isTransmit: false,
+                transmitName: '',
+                fontSize: 14,
+                fsColor: '#666666',
+                showColorBox: false
+            }
+          ]
+        }
+        state = data
       }
     } 
 })

@@ -2,7 +2,7 @@ import React from 'react'
 import './index.scss'
 import Register from './../../components/register/index'
 import { Input, Button } from 'antd';
-import { UserOutlined, UnlockOutlined, ScheduleOutlined } from '@ant-design/icons';
+import { UserOutlined, UnlockOutlined, ScheduleOutlined } from '@ant-design/icons'
 class Login extends React.Component{
   constructor(props) {
     super(props)
@@ -13,6 +13,7 @@ class Login extends React.Component{
     }
     this.handleEvent = this.handleEvent.bind(this)
   }
+
   // 处理子组件向父组件传值
   handleEvent(type) {
     if (type === 'isRegiste') {
