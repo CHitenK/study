@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Button, InputNumber, Input, Upload, Switch, message  } from 'antd'
-import { useStore, dispatch } from './../../store/makeimg'
+import { Button, InputNumber, Input, Switch  } from 'antd'
+import { useStore, dispatch } from './../../store/edit'
 import { SketchPicker } from 'react-color'
 import './index.scss'
 
 const Text = () => {
-    const [state, setState ] = useState({
+    const [state ] = useState({
       name: ''
     })
     const textOpt = useStore(s => s.textOpt)

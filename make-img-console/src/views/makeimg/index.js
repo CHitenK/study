@@ -5,6 +5,7 @@ import BgNex from './bgnex'
 import Text from './text'
 import NormalImg from './normalImg'
 import PreView from './preview'
+import Badge from './../../components/badge/index'
 import { useStore, dispatch } from './../../store/makeimg'
 import './index.scss'
 import { save } from './../../api/index'
@@ -119,6 +120,7 @@ const Makeimg = () => {
    return (
         <div className="cont-box route-box">
            <div className="route-box-l">
+              <Badge name="新建图片" />
               <div className="tool-box">
                  <Button type={state.active === 'bgNex' ? 'primary' : ''} className="mr-l-15"  onClick={() => handdleTab('bgNex')}>底框</Button>
                  {/* <Button type={state.active === 'qr' ? 'primary' : ''} className="mr-l-15" onClick={() => handdleTab('qr')}>小程序码</Button> */}

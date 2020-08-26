@@ -1,0 +1,121 @@
+
+* {
+  box-sizing: border-box;
+}
+.badge-box{
+  position: absolute;
+  top: -30px;
+  right: 0;
+  width: 280px;
+  height: 170px;
+  transform: scale(0.7) rotate(-30deg);
+  background-color: #ffffff;
+}
+.space-label {
+  width: 280px;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: ffffff;
+  
+}
+.space-label .top,
+.space-label .bottom {
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+  width: 170px;
+  margin: 0 auto;
+}
+.space-label .top .ring,
+.space-label .bottom .ring {
+  border-radius: 100%;
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border: 3px solid #14456a;
+  border-width: 8px;
+}
+.space-label .top .ring:nth-child(2),
+.space-label .bottom .ring:nth-child(2) {
+  border-width: 4px;
+  width: 154px;
+}
+.space-label .top .ring:nth-child(3),
+.space-label .bottom .ring:nth-child(3) {
+  border-width: 2px;
+  width: 139px;
+}
+.space-label .top .ring:nth-child(3):after,
+.space-label .bottom .ring:nth-child(3):after {
+  content: '';
+  width: 18px;
+  position: absolute;
+  border-top: 1px solid #14456a;
+  left: 50%;
+  margin-left: -9px;
+}
+.space-label .top .ring:nth-child(3):before,
+.space-label .bottom .ring:nth-child(3):before {
+  content: '';
+  width: 32px;
+  position: absolute;
+  border-top: 1px solid #14456a;
+  margin-left: -16px;
+  left: 50%;
+}
+.space-label .top .ring:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+.space-label .top .ring:nth-child(2) {
+  top: 10px;
+  left: 8px;
+}
+.space-label .top .ring:nth-child(3) {
+  top: 20px;
+  left: 16px;
+}
+.space-label .top .ring:nth-child(3):after {
+  top: 17px;
+}
+.space-label .top .ring:nth-child(3):before {
+  top: 22px;
+}
+.space-label .bottom .ring:nth-child(1) {
+  bottom: 0;
+  left: 0;
+}
+.space-label .bottom .ring:nth-child(2) {
+  bottom: 10px;
+  left: 8px;
+}
+.space-label .bottom .ring:nth-child(3) {
+  bottom: 20px;
+  left: 16px;
+}
+.space-label .bottom .ring:nth-child(3):after {
+  bottom: 17px;
+}
+.space-label .bottom .ring:nth-child(3):before {
+  bottom: 22px;
+}
+.space-label .text {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #14456a;
+  height: 55px;
+  vertical-align: middle;
+  display: table-cell;
+  width: 170px;
+  position: relative;
+  left: 57px;
+  letter-spacing: 14px;
+  background-color: #ffffff;
+}

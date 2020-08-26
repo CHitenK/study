@@ -1,22 +1,32 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
 import { Button, Switch, message  } from 'antd'
 import BgNex from './bgnex'
 import Text from './text'
 import NormalImg from './normalImg'
 import PreView from './preview'
-import { useStore, dispatch } from './../../store/makeimg'
+import Badge from './../../components/badge/index'
+import { useStore, dispatch } from './../../store/edit'
 import './index.scss'
-import { save } from './../../api/index'
+import { getImgDetail } from './../../api/index'
 
-const Makeimg = () => {
+const EditImg =  (opt) => {
+  const  { params } = opt.match // 获取路由参数
    //useState的参数为初始状态值，返回了一个长度为2的数组，第一个元素就是我们类组件里的state对象，第二个元素是个函数，作用相当于类组件里用的setState。这两个元素的名字随便是什么都可以
-   const [state, setState] = useState({ active: 'bgNex' })
+   const [state, setState] = useState({ 
+     active: 'bgNex',
+     canRender: false,
+     bgData: {},
+     textOpt: [],
+     normalOpt: []
+   })
    const bgData = useStore(s => s.bgData)
    const textOpt = useStore(s => s.textOpt)
-   const normalOpt = useStore(s => s.normalOpt)
+   const normalOpt =  useStore(s => s.normalOpt)
    let canSave = true
    const rederForm = () => {
+      if (!state.canRender){
+        return ''
+      }
       const active = state.active
       switch(active) {
         case 'bgNex': {
@@ -113,9 +123,29 @@ const Makeimg = () => {
         canSave = true
       })
    }
+   const getData = () => {
+     getImgDetail({ id: params.id }).then(res => {
+       const targetData = res.data || {}
+       dispatch('updateBg', targetData.bgData)
+       dispatch('resetNormalOpt', targetData.normalOpt)
+       dispatch('resetTextOpt', targetData.textOpt)
+       setState(oldState => ({
+        ...oldState,
+        canRender: true
+      }))
+     }).catch(res => {
+       message.error(res)
+     })
+   }
+   // 传入空数组的作用 effect 只会在组件 mount 和 unmount 时期执行
+   useEffect(() => {
+     getData()
+   },  [])
    return (
         <div className="cont-box route-box">
+           
            <div className="route-box-l">
+              <Badge name="编辑图片" />
               <div className="tool-box">
                  <Button type={state.active === 'bgNex' ? 'primary' : ''} className="mr-l-15"  onClick={() => handdleTab('bgNex')}>底框</Button>
                  {/* <Button type={state.active === 'qr' ? 'primary' : ''} className="mr-l-15" onClick={() => handdleTab('qr')}>小程序码</Button> */}
@@ -144,5 +174,4 @@ const Makeimg = () => {
         </div>
    )
 }
-
-export default Makeimg
+export default EditImg

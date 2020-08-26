@@ -8,6 +8,7 @@ var https = require("https");
 var url = require("url");
 const { createCanvas, loadImage } = require("canvas");
 const path = require("path");
+// ------------------------------------ 接口 ---------------------------------------
 // 生成图片
 router.get("/api/makeimg", async (content, next) => {
   const query = content.query;
@@ -131,6 +132,22 @@ router.post('/api/makeimg/update', async (ctx, next) => {
     ctx.response.body = error
   }
 })
+/**
+ * @description 通过id获取图片的配置数据
+ * @param {String} id  
+ */
+router.get('/api/makeimg/detail', async (ctx, next) => {
+  const query = ctx.query;
+  const dbData = await find({ id: query.id });
+  const options = dbData[0];
+  console.log(options);
+  if (!options.id) {
+    ctx.response.body = error;
+    return false;
+  }
+  ctx.response.body = { ...success, data: options }
+})
+ // ----------------------------------------- 函数------------------------------------
 // 插入
 function inset(data) {
   const makeimg = new MakeImg({

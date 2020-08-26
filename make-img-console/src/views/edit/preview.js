@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { useStore, dispatch } from './../../store/makeimg'
+import { useStore, dispatch } from './../../store/edit'
 import './index.scss'
 // import Drag from './../../utils/drag'
 const PreView = () => {

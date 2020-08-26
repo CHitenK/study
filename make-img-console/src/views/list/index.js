@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import zhCN from 'antd/es/locale/zh_CN'
 import { Input, DatePicker, Button, Table,Pagination, ConfigProvider, message, Modal  } from "antd"
 import "./index.scss"
-import { useStore, dispatch } from './../../store/config'
 import { getList, deleData, updateData } from './../../api/index'
 import { transformTime } from './../../utils/tool'
+import Lay from './editOpitions'
 const { RangePicker } = DatePicker
 
 const List = () => {
@@ -18,9 +19,10 @@ const List = () => {
     creatName: '',
     startDate: '',
     endDate: '',
+    showLookLay: false,
     imgLookSrc: process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8088/api/makeimg?id=' : '/api/makeimg?id='
   })
-  
+  const history = useHistory()
  // 获取数据
   const getListApi = (page=1, size = 5) => {
     // const hide = message.loading('加载中...', 0)
@@ -121,6 +123,23 @@ const List = () => {
     })
     getListApi(1)
   }
+  // 显示/隐藏 填写参数的弹窗
+  const setLookLay = () => {
+    setState({
+      ...state,
+      showLookLay: !state.showLookLay
+    })
+  }
+  // 查看图片
+  const lookImg = (data) => {
+    const arr = []
+    if (data.bgData.isTransmit) {
+      const t = {}
+      t[data.bgData.transmitName] = data.bgData.deflautColor
+      arr.push(t)
+    }
+    setLookLay()
+  }
   useEffect(() => {
     getListApi()
   },  [])
@@ -193,9 +212,10 @@ const List = () => {
         width: 160,
         render: (ext,record,index) => ( 
           <div className="fs-12 clr-gr tool">
-            <span>编辑</span>
+            <span onClick={() => history.push('/content/edit/' + record.id )}>编辑</span>
             <span  onClick={() => update(record)}>{record.isUse ? '停用' : '启用'}</span>
-            {record.isUse && <span><a href={state.imgLookSrc + record.id} target="_blank">查看</a></span>}
+            {/* <a href={state.imgLookSrc + record.id} target="_blank"></a> */}
+              {record.isUse && <span onClick={() => lookImg(record) }>查看</span>}
             <span onClick={() => dele(record.id)}>删除</span>
         </div>
         )
@@ -241,6 +261,9 @@ const List = () => {
           <span className="" onClick={() => reset()} >
             <Button>重置</Button>
           </span>
+          <span  onClick={() => history.push('/content/makeimg')} >
+            <Button type="primary">新建图片</Button>
+          </span>
         </div>
       </div>
       <div className="mr-t-30 table-box">
@@ -266,7 +289,10 @@ const List = () => {
           />
          </ConfigProvider>
       </div>
-     
+      {
+        state.showLookLay ? (<Lay setLookLay={setLookLay} />) : ''
+      }
+      
     </div>
   );
 };

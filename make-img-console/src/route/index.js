@@ -1,5 +1,6 @@
 import Index from './../views/index/index'
 import Makeimg from './../views/makeimg/index'
+import EditImg from './../views/edit/index'
 import List from './../views/list/index'
 import Compress from './../views/compress/index'
 const router = [
@@ -22,6 +23,11 @@ const router = [
     path: "/content/compress",
     component: Compress,
     name: '图片压缩'
+  },
+  {
+    path: "/content/edit/:id",
+    component: EditImg,
+    name: '编辑'
   }
 ]
 

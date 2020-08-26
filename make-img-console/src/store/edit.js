@@ -2,12 +2,17 @@ import { createStore } from 'stamen'
 
 const { useStore, dispatch } = createStore({
     state: {
-     
+      bgData: {
+      },
+      normalOpt: [],
+      textOpt: []
     },
     reducers: {
       // 更新底数据
       updateBg(state, data) {
-        state.bgData = { ...state.bgData, ...data }
+        const old = JSON.parse(JSON.stringify(state.bgData))
+        state.bgData = ''
+        state.bgData = { ...old, ...data }
       },
       // 清除
       reseBg(state) {
@@ -26,6 +31,9 @@ const { useStore, dispatch } = createStore({
       insetNormalOpt(state, data) {
         state.normalOpt.push(data)
       },
+      resetNormalOpt(state, data) {
+        state.normalOpt = [ ...data ]
+      },
       deleteNormalOpt(state, index) {
         const normalOpt = state.normalOpt
         normalOpt.splice(index, 1)
@@ -40,13 +48,13 @@ const { useStore, dispatch } = createStore({
       insetTextOpt(state, data) {
         state.textOpt.push(data)
       },
+      resetTextOpt(state, data) {
+        state.textOpt = [ ...data ]
+      },
       deleteTextOpt(state, index) {
         const textOpt = state.textOpt
         textOpt.splice(index, 1)
         state.textOpt = textOpt
-      },
-      reset(state, data) {
-        state = data
       }
     } 
 })

@@ -37,3 +37,14 @@ export function updateData(data){
         data: data
     })
 }
+/**
+ * @description 获取图片的配置数据
+ * @param {String} id
+ */
+export function getImgDetail(data) {
+    return request({
+        url: '/api/makeimg/detail',
+        method: 'get',
+        params: data
+    })
+}

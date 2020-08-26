@@ -14,7 +14,6 @@ const { useStore, dispatch } = createStore({
       },
       setShowLoading(state, bl) {
         state.showLoading = bl
-        console.log(state.showLoading)
       }
     } 
 })

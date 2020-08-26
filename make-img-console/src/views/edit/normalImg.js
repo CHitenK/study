@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, InputNumber, Input, Upload, Switch, message } from 'antd'
-import { useStore, dispatch } from './../../store/makeimg'
+import { useStore, dispatch } from './../../store/edit'
 import { UploadOutlined } from '@ant-design/icons'
 import './index.scss'
 

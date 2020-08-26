@@ -2,19 +2,22 @@ import React, { useState } from 'react'
 
 import { InputNumber, Input, Switch, Radio, Upload, message, Button, DatePicker } from 'antd'
 import { SketchPicker } from 'react-color'
-import { useStore, dispatch } from './../../store/makeimg'
+import { useStore, dispatch } from './../../store/edit'
 import { UploadOutlined } from '@ant-design/icons'
 import moment from 'moment'
 import './index.scss'
 
 const { TextArea } = Input
-const BgNex = () => {
+const BgNex = (props) => {
    const [ state, setState ] = useState({
         background: '#fff',
         showColorBox: false,
         fineName: ''
    })
    const bgData = useStore(s => s.bgData)
+   setTimeout(() => {
+    console.log(props, 900)
+   }, 5000)
    // 赋值 Funtion
    const setBgData = (val, key) => {
         const data = {}

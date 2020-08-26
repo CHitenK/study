@@ -47,3 +47,64 @@
     flex-direction: row;
     justify-content: flex-end;
 }
+
+.list-lay-out{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-lay-content{
+    width:800px;
+    max-height: 60vh;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: 15px;
+    border-radius: 10px;
+}
+.lay-name-box{
+    width: 100%;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.lay-list-cont{
+    width: 100%;
+    max-height: calc(100% - 80px);
+    overflow: auto;
+    min-height: 200px;
+}
+.lay-tool-box{
+    height: 42px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .jiange {
+       display: inline-block;
+       width: 15px;
+    }
+}
+.lay-list-item{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .item-lable{
+        width: 120px;
+        display: inline-block;
+        text-align: right;
+    }
+    .lay-input-box{
+        width: calc(100% - 140px);
+        margin-left: 10px;
+    }
+}
