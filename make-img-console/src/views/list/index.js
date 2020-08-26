@@ -20,6 +20,7 @@ const List = () => {
     startDate: '',
     endDate: '',
     showLookLay: false,
+    optArray: [],
     imgLookSrc: process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8088/api/makeimg?id=' : '/api/makeimg?id='
   })
   const history = useHistory()
@@ -134,11 +135,39 @@ const List = () => {
   const lookImg = (data) => {
     const arr = []
     if (data.bgData.isTransmit) {
-      const t = {}
-      t[data.bgData.transmitName] = data.bgData.deflautColor
+      const t = { key: data.bgData.transmitName, value: data.bgData.deflautColor }
       arr.push(t)
     }
-    setLookLay()
+    data.normalOpt.forEach(item => {
+      if (item.isTransmit) {
+        const t = { key: item.transmitName, value:  item.defaultSrc }
+        arr.push(t)
+      }
+    })
+    data.textOpt.forEach(item => {
+      if (item.isTransmit) {
+        const t = {key: item.transmitName, value: item.defaultDes }
+        arr.push(t)
+      }
+    })
+    if (arr.length > 0) {
+      setState({
+        ...state,
+        optArray: arr,
+        showLookLay: true
+      })
+    } else {
+      window.open(state.imgLookSrc + data.id , '_blank')
+    }
+  }
+  // 修改图片访问参数
+  const updateOptArray = (data, index) => {
+    const optArray = state.optArray
+    const newArr = optArray.splice(index, 1, data)
+    setState({
+      ...state,
+      optArray: optArray
+    })
   }
   useEffect(() => {
     getListApi()
@@ -290,7 +319,7 @@ const List = () => {
          </ConfigProvider>
       </div>
       {
-        state.showLookLay ? (<Lay setLookLay={setLookLay} />) : ''
+        state.showLookLay ? (<Lay setLookLay={setLookLay} optArray={state.optArray} updateOptArray={updateOptArray} />) : ''
       }
       
     </div>

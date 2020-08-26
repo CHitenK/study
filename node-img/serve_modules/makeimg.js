@@ -14,7 +14,6 @@ router.get("/api/makeimg", async (content, next) => {
   const query = content.query;
   const dbData = await find({ id: query.id });
   const options = dbData[0];
-  console.log(options);
   if (!options.id) {
     content.response.body = error;
     return false;

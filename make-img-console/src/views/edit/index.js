@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from "react-router-dom"
 import { Button, Switch, message  } from 'antd'
 import BgNex from './bgnex'
 import Text from './text'
@@ -7,7 +8,7 @@ import PreView from './preview'
 import Badge from './../../components/badge/index'
 import { useStore, dispatch } from './../../store/edit'
 import './index.scss'
-import { getImgDetail } from './../../api/index'
+import { getImgDetail, updateData } from './../../api/index'
 
 const EditImg =  (opt) => {
   const  { params } = opt.match // 获取路由参数
@@ -17,11 +18,13 @@ const EditImg =  (opt) => {
      canRender: false,
      bgData: {},
      textOpt: [],
-     normalOpt: []
+     normalOpt: [],
+     oldImgData: {}
    })
    const bgData = useStore(s => s.bgData)
    const textOpt = useStore(s => s.textOpt)
    const normalOpt =  useStore(s => s.normalOpt)
+   const history = useHistory()
    let canSave = true
    const rederForm = () => {
       if (!state.canRender){
@@ -112,11 +115,16 @@ const EditImg =  (opt) => {
       if (!canSave) return false
       canSave = false
       const data = {
-        bgData, textOpt, normalOpt, creatName: sessionStorage.getItem('userName'),
-        isUse: true
+        ...state.oldImgData,
+        bgData, textOpt, 
+        normalOpt, 
+        editor: sessionStorage.getItem('userName'),
+        isUse: true,
+        updateTime: Date.now()
       }
-      save(data).then(res => {
+      updateData(data).then(res => {
          message.success('保存成功')
+         history.push('/content/list')
       }).catch(res => {
         message.error(res.msg)
       }).finally(() => {
@@ -126,6 +134,10 @@ const EditImg =  (opt) => {
    const getData = () => {
      getImgDetail({ id: params.id }).then(res => {
        const targetData = res.data || {}
+       setState({
+         ...state,
+         oldImgData: targetData
+       })
        dispatch('updateBg', targetData.bgData)
        dispatch('resetNormalOpt', targetData.normalOpt)
        dispatch('resetTextOpt', targetData.textOpt)

@@ -15,9 +15,6 @@ const BgNex = (props) => {
         fineName: ''
    })
    const bgData = useStore(s => s.bgData)
-   setTimeout(() => {
-    console.log(props, 900)
-   }, 5000)
    // 赋值 Funtion
    const setBgData = (val, key) => {
         const data = {}
