@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react'
 import { Button, Input } from 'antd'
 
 const Lay = (prams) => {
-  const { optArray, setLookLay, updateOptArray } = prams
+  const { optArray, setLookLay, updateOptArray, id } = prams
   const setvalue = (e, index) => {
     const target = optArray[index]
     updateOptArray({ key: target.key, value: e.target.value || '' }, index)
   }
-  const imgLookSrc = process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8088/api/makeimg?id=' :  window.location.host + '/api/makeimg?id='
+  const imgLookSrc = process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8088/api/makeimg?id=' + id : 'http://' +  window.location.host + '/api/makeimg?id=' + id
   let url = ''
   optArray.map(item => {
     url += `&${item.key}=${item.value}`
   })
   url = imgLookSrc + url
+  // 立即查看
+  const lookNow = () => {
+    window.open(url, '_blank')
+    setLookLay()
+  }
   return(
     <div className="list-lay-out">
         <div className="list-lay-content">
@@ -24,7 +29,7 @@ const Lay = (prams) => {
            </div>
            <div className="lay-list-cont">
               <div className="show-can">
-                图片访问路径： <a href={url}>{url}</a>
+                图片访问路径： <a href={url} target="_blank">{url}</a>
               </div>
               {
                 optArray && optArray.map((item, index) => {
@@ -40,7 +45,7 @@ const Lay = (prams) => {
               }
            </div>
            <div className="lay-tool-box">
-             <Button type="primary">立即查看</Button>
+             <Button type="primary" onClick={() => lookNow()}>立即查看</Button>
              <span className="jiange"></span>
              <Button onClick={() => setLookLay()}>关闭</Button>
            </div>

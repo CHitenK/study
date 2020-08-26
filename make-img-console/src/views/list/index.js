@@ -21,6 +21,7 @@ const List = () => {
     endDate: '',
     showLookLay: false,
     optArray: [],
+    targetiId: '',
     imgLookSrc: process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8088/api/makeimg?id=' : '/api/makeimg?id='
   })
   const history = useHistory()
@@ -154,7 +155,8 @@ const List = () => {
       setState({
         ...state,
         optArray: arr,
-        showLookLay: true
+        showLookLay: true,
+        targetiId: data.id
       })
     } else {
       window.open(state.imgLookSrc + data.id , '_blank')
@@ -319,7 +321,7 @@ const List = () => {
          </ConfigProvider>
       </div>
       {
-        state.showLookLay ? (<Lay setLookLay={setLookLay} optArray={state.optArray} updateOptArray={updateOptArray} />) : ''
+        state.showLookLay ? (<Lay setLookLay={setLookLay} optArray={state.optArray} updateOptArray={updateOptArray} id={state.targetiId} />) : ''
       }
       
     </div>
