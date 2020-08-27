@@ -9,11 +9,15 @@ class Login extends React.Component{
     this.state = {
         isLogin: true,
         Login: true,
-        isRegiste: false
+        isRegiste: false,
+        imgSrc: '',
+        tips: '',
+        random: '',
+        yanZheng: ''
     }
     this.handleEvent = this.handleEvent.bind(this)
   }
-
+  
   // 处理子组件向父组件传值
   handleEvent(type) {
     if (type === 'isRegiste') {
@@ -38,11 +42,35 @@ class Login extends React.Component{
   }
   // 去登录
   sumbit() {
-    // window.location.href = '/content/index'
+    this.setState({
+      tips: ''
+    })
+    if (this.state.yanZheng !== this.state.random) {
+      this.setState({
+        tips: '验证码有误'
+      })
+      return false
+    }
     this.props.history.push("/content/index");
   }
-  init() {
-    
+  // 验证码
+  getYanZheng() {
+    const t = Math.random() + ''
+    const n = t.substring(3, 7)
+    const imgLookSrc = window.location.origin + '/api/makeimg?id=MKI1598350477880'
+    this.setState({
+      random: n,
+      imgSrc: imgLookSrc + '&n=' + n
+    })
+  }
+  // 设置验证码
+  setYan(e) {
+    this.setState({
+      yanZheng: e.target.value
+    })
+  }
+  componentDidMount() {
+    this.getYanZheng()
   }
   render() {
     return (
@@ -64,17 +92,17 @@ class Login extends React.Component{
         <div className={this.state.isLogin ? 'login-box pd-15' : 'login-box pd-15 login-box-out'} >
             <div className="f-c fs-16 clr-I f-w mr-t-20">登 录</div>
             <div className="mr-t-20">
-                <Input size="large" className="fs-14 clr-II" placeholder="输入用户名称" prefix={<UserOutlined />} />
+                <Input size="large" value="用户1" className="fs-14 clr-II" placeholder="输入用户名称" prefix={<UserOutlined />} />
             </div>
             <div className="mr-t-10">
-                <Input.Password size="large" className="fs-14 clr-II" placeholder="输入密码" prefix={<UnlockOutlined />} />
+                <Input.Password size="large" value="0987654321" className="fs-14 clr-II" placeholder="输入密码" prefix={<UnlockOutlined />} />
             </div>
             <div className="yanzheng-ma-box mr-t-10">
-                <Input  className="fs-14 clr-II" placeholder="输入验证码" prefix={<ScheduleOutlined />} />
-                <img className="yanzheng-ma" src="" alt="" />
+                <Input  className="fs-14 clr-II" value={this.state.yanZheng} onChange={(e) => this.setYan(e)} placeholder="输入验证码" prefix={<ScheduleOutlined />} />
+                <img className="yanzheng-ma" onClick={() => this.getYanZheng() } src={this.state.imgSrc} alt="" />
             </div>
             <div className="mr-t-5 error fs-12">
-                密码不能为空
+                {this.state.tips}
             </div>
             <div className="mr-t-20">
                 <Button type="primary" onClick={() => this.sumbit()} >确 定</Button >

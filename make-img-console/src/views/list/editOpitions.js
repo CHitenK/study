@@ -7,7 +7,7 @@ const Lay = (prams) => {
     const target = optArray[index]
     updateOptArray({ key: target.key, value: e.target.value || '' }, index)
   }
-  const imgLookSrc = process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8088/api/makeimg?id=' + id : 'http://' +  window.location.host + '/api/makeimg?id=' + id
+  const imgLookSrc = window.location.origin + '/api/makeimg?id=' + id
   let url = ''
   optArray.map(item => {
     url += `&${item.key}=${item.value}`

@@ -22,7 +22,7 @@ const List = () => {
     showLookLay: false,
     optArray: [],
     targetiId: '',
-    imgLookSrc: process.env.NODE_ENV === 'production' ?  'http://chimke.cn:8088/api/makeimg?id=' : '/api/makeimg?id='
+    imgLookSrc:  window.location.origin + '/api/makeimg?id='
   })
   const history = useHistory()
  // 获取数据

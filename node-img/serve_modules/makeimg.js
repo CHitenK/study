@@ -20,7 +20,7 @@ router.get("/api/makeimg", async (content, next) => {
   }
   const { bgData, normalOpt, textOpt } = options;
   const canvas = createCanvas(bgData.width, bgData.height, "jpg");
-  const ctx = canvas.getContext("2d", { pixelFormat: 'RGBA30' });
+  const ctx = canvas.getContext("2d");
   // 绘制底框
   if (bgData.isBgColor == 2 && bgData.bgImgSrc) { // 底图
     const bgImgSrc = await loadImage(bgData.bgImgSrc);
@@ -53,7 +53,10 @@ router.get("/api/makeimg", async (content, next) => {
     if (!des) continue
     ctx.font = item.fontSize + "px" + '"Microsoft YaHei"'; // "Microsoft YaHei" 
     ctx.fillStyle = item.fsColor;
-    ctx.fillText(des, item.px, item.py + 8);
+    ctx.moveTo(item.px, item.py)
+    const y = item.py + parseInt(100 / item.py) // (item.py + 8)
+    console.log( (item.py + parseInt(100 / item.py)))
+    ctx.fillText(des, item.px, y);
     ctx.save();
   }
   content.set("content-type", "image/jpg");

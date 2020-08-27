@@ -118,7 +118,7 @@ const BgNex = (props) => {
                     <div className="w-90">
                     <Input value={bgData.bgColor}  placeholder="#FFFFFF" onChange={(e) => changeValue(e, 'bgColor')}  />
                     </div>
-                    <span className="color-box mr-l-10 clor-III" style={ {'background': state.background}} onClick={() => handleShowColorBox()}>选择</span>
+                    <span className="color-box mr-l-10 clor-III" style={ {'background': bgData.bgColor}} onClick={() => handleShowColorBox()}>选择</span>
                     {
                         state.showColorBox ? (
                         <SketchPicker

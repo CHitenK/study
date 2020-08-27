@@ -45,8 +45,9 @@ const Text = () => {
     const handleChangeComplete = (color, key, index) => {
         setBgData(color.hex, key, index)
         setTimeout(() => {
-            handleShowColorBox(index)
+            setBgData(false, 'showColorBox', index)
         }, 1500)
+        console.log(12)
     }
     // 删除
     const deleteOpt = (index) => {
@@ -84,8 +85,9 @@ const Text = () => {
                                     {
                                         item.showColorBox ? (
                                         <SketchPicker
-                                        color={item.fsColor}
-                                        onChange ={ (color, event) => handleChangeComplete(color, 'fsColor', index) }
+                                         color={item.fsColor}
+                                         onChange ={ (color, event) => handleChangeComplete(color, 'fsColor', index) }
+                                         onChangeComplete={(color, event) => closePicker(color, event, index)}
                                         />
                                         ) : ''
                                     }

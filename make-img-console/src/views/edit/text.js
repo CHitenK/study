@@ -45,7 +45,7 @@ const Text = () => {
     const handleChangeComplete = (color, key, index) => {
         setBgData(color.hex, key, index)
         setTimeout(() => {
-            handleShowColorBox(index)
+            setBgData(false, 'showColorBox', index)
         }, 1500)
     }
     // 删除

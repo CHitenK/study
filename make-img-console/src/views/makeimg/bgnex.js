@@ -46,11 +46,6 @@ const BgNex = () => {
     const val = e.target.value || ''
     setBgData(val, key)
   }
-  // 选择启用时间
-  const setTime = (t) => {
-    if (!t) return false
-    setBgData(t, 'starTime')
-  }
   const upLoadProps = {
     name: 'file',
     accept: 'image/*',
@@ -118,7 +113,7 @@ const BgNex = () => {
                     <div className="w-90">
                     <Input value={bgData.bgColor}  placeholder="#FFFFFF" onChange={(e) => changeValue(e, 'bgColor')}  />
                     </div>
-                    <span className="color-box mr-l-10 clor-III" style={ {'background': state.background}} onClick={() => handleShowColorBox()}>选择</span>
+                    <span className="color-box mr-l-10 clor-III" style={ {'background': bgData.bgColor}} onClick={() => handleShowColorBox()}>选择</span>
                     {
                         state.showColorBox ? (
                         <SketchPicker
