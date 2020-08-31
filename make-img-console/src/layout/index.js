@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import { Route } from 'react-router-dom'
 import router from './../route/index'
 import Left from './left'
@@ -34,19 +34,25 @@ const  Layout = () => {
                 </a>
           </Dropdown>
         </div>
-        <div className="content-right-content">
-              {
-                  router.map((item, i) => {
-                      return <Route key={i} path={item.path} component={item.component}  />
-                  })
-              }
-              {  showLoading && (
-                <div className="loading-box">
-                  <SyncOutlined spin />
-                </div>
-                )
-              }
-        </div>
+        <Suspense fallback={
+               <div className="loading-box">
+                    <SyncOutlined spin />
+                  </div>}
+        >
+          <div className="content-right-content">
+                {
+                    router.map((item, i) => {
+                        return <Route key={i} path={item.path} component={item.component}  />
+                    })
+                }
+                {  showLoading && (
+                  <div className="loading-box">
+                    <SyncOutlined spin />
+                  </div>
+                  )
+                }
+          </div>
+        </Suspense>
       </div> 
     </div>
   )

@@ -1,8 +1,9 @@
-import Index from './../views/index/index'
-import Makeimg from './../views/makeimg/index'
-import EditImg from './../views/edit/index'
-import List from './../views/list/index'
-import Compress from './../views/compress/index'
+import { lazy } from 'react'
+const Index = lazy(() =>  import('./../views/index/index'))
+const Makeimg = lazy(() =>  import('./../views/makeimg/index'))
+const EditImg = lazy(() =>  import('./../views/edit/index'))
+const List = lazy(() =>  import('./../views/list/index'))
+const Compress = lazy(() =>  import('./../views/compress/index'))
 const router = [
   {
     path: "/content/index",
