@@ -118,10 +118,10 @@ const PreView = () => {
              }}>
            {
                normalOpt && normalOpt.map((item, i) => {
-                   if (item.src) {
-                    return (<img className="img-j" alt="" index={i} onDoubleClick={(e) => dbClick(e)} type="updateNormalOpt"  key={i} src={item.src} style={ {'left' : item.px + 'px', top: item.py + 'px', width: item.width + 'px', height: item.height  + 'px'}} />)
+                   const src = item.isTransmit && item.defaultSrc ? item.defaultSrc || '' : item.src || ''
+                   if (src) {
+                    return (<img className="img-j" alt="" index={i} onDoubleClick={(e) => dbClick(e)} type="updateNormalOpt"  key={src} src={src} style={ {'left' : item.px + 'px', top: item.py + 'px', width: item.width + 'px', height: item.height  + 'px'}} />)
                    }
-                
                })
            }
            {/* <div className="img-j img-j-12" onDoubleClick={(e) => dbClick(e)}>
