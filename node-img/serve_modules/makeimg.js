@@ -1,13 +1,13 @@
 const Router = require("koa-router");
 const router = new Router();
 const MakeImg = require("./../db/makeimg_db");
-const { success, error } = require("./../utils/config");
-
+const { success, error } = require("./../utils/config")
 var http = require("http");
 var https = require("https");
 var url = require("url");
 const { createCanvas, loadImage } = require("canvas");
 const path = require("path");
+const Moment = require('moment')
 // ------------------------------------ 接口 ---------------------------------------
 // 生成图片
 router.get("/api/makeimg", async (content, next) => {
@@ -19,6 +19,7 @@ router.get("/api/makeimg", async (content, next) => {
     return false;
   }
   const { bgData, normalOpt, textOpt } = options;
+  const handledData = handleCodeUrl(content.request.url, query, [...normalOpt, ...textOpt])
   const canvas = createCanvas(bgData.width, bgData.height, "jpg");
   const ctx = canvas.getContext("2d");
   // 绘制底框
@@ -35,12 +36,16 @@ router.get("/api/makeimg", async (content, next) => {
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, bgData.width, bgData.height);
     ctx.save();
-  } 
-
+  }
   // 绘制常规图片
   for (let i = 0; i < normalOpt.length; i++) {
     const item = normalOpt[i];
-    let src = item.isTransmit ? query[item.transmitName] || item.defaultSrc : item.src;
+    let src  = ''
+    if (item.isTransmit) {
+      src = handledData.key === item.transmitName && handledData.imgUrl ? handledData.imgUrl : query[item.transmitName] || item.defaultSrc
+    } else {
+      src = item.src
+    }
     if (!src) continue
     const myimg = await loadImage(src);
     ctx.drawImage(myimg, item.px, item.py, item.width, item.height);
@@ -55,12 +60,13 @@ router.get("/api/makeimg", async (content, next) => {
     ctx.fillStyle = item.fsColor;
     ctx.moveTo(item.px, item.py)
     const y = item.py + parseInt(100 / item.py) // (item.py + 8)
-    console.log( (item.py + parseInt(100 / item.py)))
-    ctx.fillText(des, item.px, y);
+    drawtext(ctx, des, item.px, item.py, bgData.width - item.px + 3, item.fontSize)
+    // ctx.fillText(des, item.px, y);
     ctx.save();
   }
   content.set("content-type", "image/jpg");
   content.response.body = canvas.toBuffer();
+  console.log(Moment().format('YYYY-MM-DD HH:mm:ss'), encodeURI(content.request.url))
 });
 // 数据插入
 router.post("/api/makeimg/save", async (ctx, next) => {
@@ -92,9 +98,11 @@ router.post("/api/makeimg/list", async (ctx, next) => {
     const array = await getList(page, queryData)
     const total = array[0]
     const content = array[1]
+    console.log(Moment().format('YYYY-MM-DD HH:mm:ss'), '请求列表数据', content)
     ctx.response.body = { ...success, data: { total, content }}
   } catch {
     ctx.response.body = error
+    console.log(Moment().format('YYYY-MM-DD HH:mm:ss'), '请求列表数据出粗', query)
   }
  
 });
@@ -105,7 +113,7 @@ router.post("/api/makeimg/list", async (ctx, next) => {
 router.post('/api/makeimg/delete', async (ctx, next) => {
   try {
     const query = ctx.request.body
-    console.log('删除，传入数据', query)
+    console.log(Moment().format('YYYY-MM-DD HH:mm:ss'), '删除，传入数据', query)
     const data = await deleteData({ 'id': query.id })
     if (data === true) {
       ctx.response.body = { ...success, data: { falge: true }}
@@ -265,5 +273,47 @@ function find(opt) {
       }
     });
   });
+}
+// 文字换行
+//参数说明 ctx：canvas的 2d 对象，t：绘制的文字，x,y:文字坐标，w：文字最大宽度  文字大小
+function drawtext(ctx,t,x,y,w, fs) {
+  let chr = t.split("")
+  let temp = ""
+  let row = []
+  for (let a = 0; a<chr.length;a++){
+      if( ctx.measureText(temp).width < w && ctx.measureText(temp+(chr[a])).width <= w){
+          temp += chr[a];
+      }else{
+          row.push(temp);
+          temp = chr[a];
+      }
+  }
+  row.push(temp)
+  for(let b=0;b<row.length;b++){
+    ctx.fillText(row[b],x,y+(b+1)*20);//每行字体y坐标间隔20
+  }
+}
+// 处理小程序码
+function handleCodeUrl(url, query, array) {
+  let imgUrl = ''
+  let key = ''
+  if (url.indexOf('scene=') > 0 && url.indexOf('page=pages/') > 0) {
+    const whiteArray = ['id']
+    array.forEach(item => {
+      if (item.isTransmit && item.transmitName && query[item.transmitName] && query[item.transmitName].indexOf('scene=') > 0) {
+        imgUrl = query[item.transmitName]
+        key = item.transmitName
+        whiteArray.push(item.transmitName)
+      } else if (item.isTransmit && item.transmitName && query[item.transmitName]) {
+        whiteArray.push(item.transmitName)
+      }
+    })
+    for (let i in query) {
+      if (!whiteArray.includes(i)) {
+        imgUrl += `&${i}=${query[i]}`
+      }
+    }
+  }
+  return { key, imgUrl }
 }
 module.exports = router
