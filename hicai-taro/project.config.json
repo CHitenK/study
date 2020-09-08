@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "HiCai",
   "description": "好项目",
-  "appid": "touristappid",
+  "appid": "wx05a2067f40b82ef1",
   "setting": {
     "urlCheck": true,
     "es6": false,
