@@ -1,7 +1,6 @@
 module.exports = {
   env: {
-    NODE_ENV: '"production"',
-    CHANNEL_ID: 12 // 渠道号
+    NODE_ENV: '"production"'
   },
   defineConstants: {
   },

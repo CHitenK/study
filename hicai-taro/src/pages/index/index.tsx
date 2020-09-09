@@ -1,9 +1,18 @@
-import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components'
+import React, { Component } from "react"
+import { View } from "@tarojs/components"
+import { observer, inject } from "mobx-react"
+import Taro from '@tarojs/taro'
+import config from "@/config.read"
+
 import './index.scss'
 
-export default class Index extends Component {
-
+@inject('store')
+@observer
+class Index extends Component {
+  constructor(props) {
+    super(props)
+    this.appStore = props.store.appStore
+  }
   componentWillMount () { }
 
   componentDidMount () { }
@@ -11,16 +20,24 @@ export default class Index extends Component {
   componentWillUnmount () { }
 
   componentDidShow () {
-    console.log(process)
+    setTimeout(() => {
+      this.appStore.setToken('123456')
+      Taro.navigateTo({
+        url: '/pages/login/index'
+      })
+    }, 3000)
+    console.log(config)
    }
 
   componentDidHide () { }
-
   render () {
     return (
       <View className='index'>
-        <Text>Hello world!</Text>
+        Hellow Taro
+        {this.appStore.authToken}
       </View>
     )
   }
 }
+
+export default Index

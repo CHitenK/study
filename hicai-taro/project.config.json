@@ -1,13 +1,1 @@
-{
-  "miniprogramRoot": "./dist",
-  "projectname": "HiCai",
-  "description": "好项目",
-  "appid": "wx05a2067f40b82ef1",
-  "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "postcss": false,
-    "minified": false
-  },
-  "compileType": "miniprogram"
-}
+{"miniprogramRoot":"dist/","projectname":"mini-app","description":"无","appid":"wx957666991e212703","setting":{"urlCheck":true,"es6":false,"postcss":false,"preloadBackgroundData":false,"minified":false,"newFeature":true,"autoAudits":false,"coverView":true,"showShadowRootInWxmlPanel":true,"scopeDataCheck":false,"useCompilerModule":true},"compileType":"miniprogram","simulatorType":"wechat","simulatorPluginLibVersion":{},"condition":{}}
