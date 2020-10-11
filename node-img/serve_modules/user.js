@@ -74,7 +74,7 @@ function getTac(data) {
         }).then(res => {
             console.log('ticket', res.data)
             if (res.data.ticket) {
-                resoved(res.data)
+                resoved(res.data.ticket)
             } else {
                 reject(null)
             }
