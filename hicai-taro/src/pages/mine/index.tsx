@@ -11,7 +11,7 @@ import './index.scss'
 class Index extends Component {
   constructor(props) {
     super(props)
-    //this.appStore = props.store.appStore
+    // this.appStore = props.store.appStore
   }
   componentWillMount () { }
 
@@ -33,8 +33,8 @@ class Index extends Component {
   render () {
     return (
       <View className='index'>
-        Hellow Taro
-        {/* {this.appStore.authToken} */}
+        Hellow Taro1233242
+       {/* // {this.appStore.authToken} */}
       </View>
     )
   }
