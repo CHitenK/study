@@ -11,8 +11,8 @@ router.get('/user/info', async (ctx, next) => {
 router.get('/user/token', async (ctx, next) => {
   const data1 = await getWxToken()
   const data2 = await getTac(data1)
-  const noncestr = 'wrerewOqpekichLKeu'
-  const timestamp = Date.now()
+  const noncestr = 'OIfKqwerujhfTyui'
+  const timestamp = parseInt(Date.now())
   const url = 'http://chimke.cn:8083/pages/login/index'
   const str = `jsapi_ticket=${data2}&noncestr=${noncestr}&timestamp=${timestamp}&url=${url}`
   const sh = sha1(str)
