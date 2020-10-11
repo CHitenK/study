@@ -15,14 +15,18 @@ router.get('/user/token', async (ctx, next) => {
   const timestamp = Date.now()
   const url = 'http://chimke.cn:8083/pages/login/index'
   const str = `jsapi_ticket=${data2}&noncestr=${noncestr}&timestamp=${timestamp}&url=${url}`
-  const sh = sha1(url)
+  const sh = sha1(str)
   const yaya = {
     appId: 'wx17d304d815b5193f', // 必填，公众号的唯一标识
     timestamp: timestamp, // 必填，生成签名的时间戳
     nonceStr: noncestr, // 必填，生成签名的随机串
     signature: sh
   }
-  ctx.response.body = yaya
+  ctx.response.body = {
+    resultCode: "0",
+    resultMsg: "success",
+    data: yaya
+  }
 })
 function inset() {
     const user = new User({
