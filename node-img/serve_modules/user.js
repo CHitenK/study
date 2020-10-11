@@ -13,7 +13,7 @@ router.get('/user/token', async (ctx, next) => {
   const data2 = await getTac(data1)
   const noncestr = 'OIfKqwerujhfTyui'
   const timestamp = parseInt(Date.now() / 1000)
-  const url = 'http://chimke.cn:8083/pages/login/index'
+  const url = 'http://192.168.1.103:10086/pages/index/index'
   const str = `jsapi_ticket=${data2}&noncestr=${noncestr}&timestamp=${timestamp}&url=${url}`
   const sh = sha1(str)
   const yaya = {
