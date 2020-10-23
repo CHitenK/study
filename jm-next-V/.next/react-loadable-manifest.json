@@ -1,4 +1,14 @@
 {
+  "./../components/commomBus/index": [
+    {
+      "id": "./components/commomBus/index.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/_weixin-js-sdk@1.6.0@weixin-js-sdk/index.js",
+      "file": "static/chunks/1.js"
+    }
+  ],
   "./dev/noop": [
     {
       "id": "./node_modules/_next@9.5.5@next/dist/client/dev/noop.js",
