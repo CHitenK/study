@@ -6,6 +6,7 @@ import { Toast } from 'antd-mobile'
 
 import Head from './../components/head/index'
 import Banner from './../components/banner/index'
+import Products from './../components/products/index'
 
 
 import  './../style/index.scss'
@@ -19,15 +20,15 @@ class Index extends React.Component {
   }
   constructor(props){
     super(props)
-    console.log(props)
     this.state = {
       isShowCom: false
     }
   }
   componentDidMount() {
+    // 延时加载微信jsdk, 保证window存在
     setTimeout(() => {
       this.setState({ isShowCom: true })
-    }, 3000)
+    }, 1500)
   }
   // 跳转
   navigateToComBUs(url, type) {
@@ -44,6 +45,10 @@ class Index extends React.Component {
     switch (data.name) {
       case 'jm-banner': {
         return <Banner key={data.uuid} {...data} {...bus} />
+      }
+      case 'jm-products': {
+        console.log(12)
+        return <Products key={data.uuid} {...data} {...bus} />
       }
       default: { 
         return ''
