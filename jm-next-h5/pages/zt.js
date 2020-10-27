@@ -16,7 +16,7 @@ import { getDetail } from './../api/index'
 class Index extends React.Component {
   static async getInitialProps({ query }) {
     const detail = await getDetail({ id: query.id })
-    return { detail: detail.code === 200 ? detail.data : {}, query }
+    return { detail: detail.code === 200 ? detail.data : null, query, loading: true }
   }
   constructor(props){
     super(props)
@@ -47,7 +47,6 @@ class Index extends React.Component {
         return <Banner key={data.uuid} {...data} {...bus} />
       }
       case 'jm-products': {
-        console.log(12)
         return <Products key={data.uuid} {...data} {...bus} />
       }
       default: { 
@@ -60,7 +59,7 @@ class Index extends React.Component {
     this.CommomBus = ref
   }
   render() {
-    const { isShowCom } = this.state
+    const { isShowCom, loading, loadingText } = this.state
     const { query, detail } = this.props
     const showPage = !detail || !query.id
     if (!showPage) {
@@ -77,6 +76,10 @@ class Index extends React.Component {
           }
         </div>
       )
+    } else if (!loading) {
+      return (<div className="no-data">
+        载入中...
+        </div>)
     } else {
       return <div className="no-data">数据加载出错！~~</div>
     }

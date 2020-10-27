@@ -6,7 +6,6 @@ import { Carousel } from 'antd-mobile'
 import './index.scss'
 
 const Products = (props) => {
-  console.log(props)
  // 抄底三列
  const productType1 = () => {
    const target = props.businessData
