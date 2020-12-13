@@ -1,6 +1,7 @@
+const path = require('path')
 const config = {
-  projectName: 'HiCai',
-  date: '2020-9-6',
+  projectName: 'mini-app',
+  date: '2020-9-9',
   designWidth: 750,
   deviceRatio: {
     640: 2.34 / 2,
@@ -11,6 +12,13 @@ const config = {
   outputRoot: 'dist',
   plugins: [],
   defineConstants: {
+  },
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src'),
+    '@comp': path.resolve(__dirname, '..', 'src/components'),
+    '@util': path.resolve(__dirname, '..', 'src/utils'),
+    '@api': path.resolve(__dirname, '..', 'src/api'),
+    '@img': path.resolve(__dirname, '..', 'src/assets/images')
   },
   copy: {
     patterns: [

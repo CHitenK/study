@@ -1,0 +1,28 @@
+.product-box{
+  width: 100%;
+  height: auto;
+}
+.product-box-I{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 10px;
+  .product-box-I-item{
+    width: 32.4%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 10px 0.4%;
+    background-color: #ffffff;
+    img{
+      width: 100%;
+    }
+    .name{
+      font-size: 12px;
+      color: #333333;
+      box-sizing: border-box;
+      padding: 0 10px;
+    }
+  }
+}

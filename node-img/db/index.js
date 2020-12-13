@@ -1,6 +1,6 @@
 // db/db.js
 const mongoose = require('mongoose')
-const DB_URL = 'mongodb://cmk:chiminke@122.51.162.240:27017/myproject'
+const DB_URL = 'mongodb://chiminke:20201212chiminke@121.4.66.64:27017/db_pro'
 
 mongoose.connect(DB_URL)
 
