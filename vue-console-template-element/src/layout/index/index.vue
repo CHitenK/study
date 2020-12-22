@@ -22,7 +22,9 @@ import rightTop from './components/rightTop'
 import rightTag from './components/tag'
 export default {
   components: {
-    leftMenu
+    leftMenu,
+    rightTop,
+    rightTag
   },
   data () {
     return {}
