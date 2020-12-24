@@ -11,7 +11,12 @@
         <right-tag />
       </div>
       <div class="page-right-route">
-
+        <router-view  />
+        <!-- <transition name="fade-transform" mode="out-in">
+          <keep-alive :include="cachedViews">
+            <router-view :key="key" />
+          </keep-alive>
+        </transition> -->
       </div>
     </div>
   </div>
@@ -26,14 +31,24 @@ export default {
     rightTop,
     rightTag
   },
+  computed: {
+    // cachedViews() {
+    //   return [] // this.$store.state.tagsView.cachedViews
+    // },
+    // key() {
+    //   return this.$route.path
+    // }
+  },
   data () {
-    return {}
+    return {
+      cachedViews: []
+    }
   }
 }
 </script>
 <style lang="scss">
 // 左边菜单栏宽度
-$leftMenuWid: 220px;
+$leftMenuWid: 200px;
 // 左边菜单栏高度
 $leftMenuHei: 100vh;
 // 右侧顶部高度
@@ -51,7 +66,7 @@ $tabHei: 48px;
 .app-page-left{
   width: $leftMenuWid;
   height: $leftMenuHei;
-  background-color: #eaeaea;
+  background-color: #008080;
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
@@ -70,20 +85,21 @@ $tabHei: 48px;
 .page-right-top{
   height: $topHei;
   width: 100%;
-  background-color: #eaeaea;
+  background-color: #ffffff;
 }
 /* 右侧头部 end **************/
 .page-right-tag{
   height: $tabHei;
   width: 100%;
-  background-color: #ccc;
+  border-top: solid 1px #f8f8f8;
+  box-sizing: border-box;
 }
 .page-right-route{
   width: 100%;
   height: calc(100% - #{$topHei} - #{$tabHei});
   box-sizing: border-box;
   padding: 15px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   overflow-x: scroll;
 }
 </style>
