@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MenuList from './menul-route'
+import MenuList from './menu-route'
 
 Vue.use(Router)
 
@@ -10,19 +10,14 @@ const routes = [
     redirect: '/content/home'
   },
   {
-    path: '/content',
-    name: 'content',
-    component: () => import('@/layout/index/index'),
-    children: MenuList
-  },
-  {
     path: '/404',
     component: () => import('@/layout/404/index')
   },
   {
     path: '*',
     redirect: '/404'
-  }
+  },
+  ...MenuList
 ]
 const router = new Router({
   mode: 'history',

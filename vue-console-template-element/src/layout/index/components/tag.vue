@@ -36,8 +36,8 @@ export default {
     }
   },
   watch: {
-    $route(to,from){
-      console.log(to.path);
+    $route (to, from) {
+      console.log(to.path, from)
     }
   },
   mounted () {
