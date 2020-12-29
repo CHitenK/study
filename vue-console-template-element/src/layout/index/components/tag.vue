@@ -2,9 +2,14 @@
   <div class="right-tag-box">
     <div class="item-bx" ref="tagbx">
       <div class="item-tag-bx" >
-        <!-- <div class="item-tag" v-for="(item, i ) in 30">
-         {{i}}
-        </div> -->
+        <div class="item-tag item-tag-act">
+          首页1首页1首页1
+          <i class="el-icon-circle-close"></i>
+        </div>
+        <div class="item-tag">
+          首页1
+          <i class="el-icon-circle-close"></i>
+        </div>
       </div>
     </div>
     <div class="tool-bx">
@@ -86,15 +91,45 @@ $toobWid: 46px;
     display: none; /* Chrome Safari */
   }
 }
-.item-tag{
-  display: inline-block;
-  width: 120px;
-  height: calc(100% - 4px);
-  border: solid 1px red;
-}
 .item-tag-bx{
   height: 100%;
   width: 10000px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+.item-tag{
+  padding: 5px 10px;
+  border: solid 1px #eaeaea;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  font-size: 12px;
+  color: #999;
+  i {
+    margin-left: 3px;
+    font-size: 14px;
+  }
+  &:hover{
+    color: #00BFFF;
+    border: solid 1px #00BFFF;
+  }
+}
+.item-tag-act{
+  color: #00BFFF;
+  border: solid 1px #00BFFF;
+  &::before{
+    display: inline-block;
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #00BFFF;
+    border-radius: 50%;
+    margin-right: 3px;
+  }
 }
 .tool-list{
   display: none;

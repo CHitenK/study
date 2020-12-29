@@ -52,9 +52,9 @@ $leftMenuWid: 200px;
 // 左边菜单栏高度
 $leftMenuHei: 100vh;
 // 右侧顶部高度
-$topHei: 80px;
+$topHei: 70px;
 // tab栏高度
-$tabHei: 48px;
+$tabHei: 40px;
 .app-page{
   width: 100%;
   height: 100%;
@@ -85,7 +85,7 @@ $tabHei: 48px;
 .page-right-top{
   height: $topHei;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #00BFFF;
 }
 /* 右侧头部 end **************/
 .page-right-tag{

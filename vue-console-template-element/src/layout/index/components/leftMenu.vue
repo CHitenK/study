@@ -10,7 +10,7 @@
       <!-- 一级菜单  redirect-->
       <div v-for="(lev1, l1) in routeList" :key="l1">
         <el-submenu :index="lev1.path" v-if="!lev1.redirect">
-          <template slot="title">
+          <template slot="title" @click="linkTo">
             <i class="el-icon-location"></i>
             <span>{{lev1.meta.title}}</span>
           </template>
@@ -20,17 +20,19 @@
               <template slot="title">{{lev2.meta.title}}</template>
               <!-- 三级级菜单 -->
               <div v-for="(lev3, l3) in lev2.children" :key="l3" >
-                <el-menu-item :index="lev3.path" v-if="!lev3.meta.hide">{{lev3.meta.title}}</el-menu-item>
+                <el-menu-item :index="lev3.path" v-if="!lev3.meta.hide" @click="linkTo(lev3)" >{{lev3.meta.title}}</el-menu-item>
               </div>
               <!-- 三级级菜单 end -->
             </el-submenu>
-            <el-menu-item v-else-if="!lev2.meta.hide" :index="lev2.path" >{{lev2.meta.title}}</el-menu-item>
+            <el-menu-item v-else-if="!lev2.meta.hide" :index="lev2.path" @click="linkTo(lev2)" >{{lev2.meta.title}}</el-menu-item>
           </div>
           <!-- 二级级菜单 end -->
         </el-submenu>
         <el-menu-item :index="lev1.path" v-else>
-          <i class="el-icon-setting"></i>
-          <span>{{lev1.meta.title}}</span>
+          <div @click="linkTo(lev1, redirect)">
+            <i class="el-icon-setting"></i>
+            <span>{{lev1.meta.title}}</span>
+          </div>
         </el-menu-item>
       </div>
       <!-- 一级菜单 end-->
@@ -62,6 +64,12 @@ export default {
     },
     handleClose () {
 
+    },
+    linkTo(data, key="path") {
+      const path = data[key]
+      if (this.activeMenu !== path) {
+        this.$router.push(path)
+      }
     }
   }
 }
@@ -70,6 +78,9 @@ export default {
 .left-mune-box-content{
   width: 100%;
   min-height: 100vh;
+  .el-menu{
+    border: 0;
+  }
   .el-submenu__title i, .el-menu-item i, .el-icon-arrow-down{
     color: #ffffff;
   }
