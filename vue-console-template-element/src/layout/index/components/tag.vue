@@ -1,14 +1,11 @@
 <template>
   <div class="right-tag-box">
     <div class="item-bx" ref="tagbx">
-      <div class="item-tag-bx" >
-        <div class="item-tag item-tag-act">
-          首页1首页1首页1
-          <i class="el-icon-circle-close"></i>
-        </div>
-        <div class="item-tag">
-          首页1
-          <i class="el-icon-circle-close"></i>
+      <div class="item-tag-bx" :style="{ 'width': tagBxWidth }">
+        <div v-for="(item, index) in tags" :key="index" :class="activePath === item.path ? 'item-tag item-tag-act' : 'item-tag'" @click.prevent="linkTo(item)">
+          <!-- customTitle 自定定义的tag 名称  -->
+          {{ item.customTitle || item.meta.title }}
+          <i class="el-icon-circle-close" v-if="!item.meta.affix"></i>
         </div>
       </div>
     </div>
@@ -37,20 +34,55 @@
 export default {
   data () {
     return {
-      baseWid: 1000
+      baseWid: 0,
+      tagBxWidth: 'calc(80px * 10)'
+    }
+  },
+  computed: {
+    tags () {
+      return this.$store.getters.tagsList
+    },
+    activePath () {
+      return this.$route.path
     }
   },
   watch: {
     $route (to, from) {
-      console.log(to.path, from)
+      console.log(to, 122)
+      const flage = this.tags.some(item => item.path === to.path)
+      if (!flage) {
+        this.$store.dispatch('tags/AC_ADD_TAGS_LIST', to)
+      }
+    },
+    tags (data) {
+      const len = data.length > 10 ? data.length : 10
+      this.tagBxWidth =  `calc(80px * ${len})`
+      this.$nextTick(() => {
+        const doms = document.getElementsByClassName('item-tag') // offsietWidth
+        console.log(23)
+        if (doms && doms.length > 0) {
+          let wd = 0
+          for (let i = 0; i < doms.length; i++) {
+            console.log(doms[i].offsietWidth)
+           // wd += (doms[i].offsietWidth + 6)
+          }
+        }
+      })
     }
   },
   mounted () {
-    this.baseWid = this.$refs.tagbx.offsetWidth
-    console.log(this.baseWid)
+    // this.baseWid = this.$refs.tagbx.offsetWidth
+    // this.tagBxWidth = this.baseWid + 10
+    // console.log(this.baseWid)
     // setTimeout(() => {
     //   this.$refs.tagbx.scrollLeft = 3000
     // }, 3000)
+  },
+  methods: {
+    linkTo (data) {
+      console.log(data, 43)
+      this.$router.push(data)
+    }
   }
 }
 </script>
@@ -93,16 +125,16 @@ $toobWid: 46px;
 }
 .item-tag-bx{
   height: 100%;
-  width: 10000px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  background-color: red;
 }
 .item-tag{
   padding: 5px 10px;
   border: solid 1px #eaeaea;
-  height: 40%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;

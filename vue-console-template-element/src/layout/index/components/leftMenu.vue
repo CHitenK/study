@@ -29,7 +29,7 @@
           <!-- 二级级菜单 end -->
         </el-submenu>
         <el-menu-item :index="lev1.path" v-else>
-          <div @click="linkTo(lev1, redirect)">
+          <div @click="linkTo(lev1, 'redirect')">
             <i class="el-icon-setting"></i>
             <span>{{lev1.meta.title}}</span>
           </div>
@@ -51,11 +51,8 @@ export default {
     }
   },
   computed: {
-    activeMenu() {
-      const route = this.$route
-      const { meta, path } = route
-      console.log(path)
-      return path
+    activeMenu () {
+      return this.$route.path
     }
   },
   methods: {
@@ -65,7 +62,7 @@ export default {
     handleClose () {
 
     },
-    linkTo(data, key="path") {
+    linkTo (data, key = 'path') {
       const path = data[key]
       if (this.activeMenu !== path) {
         this.$router.push(path)
