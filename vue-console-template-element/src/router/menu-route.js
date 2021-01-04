@@ -44,7 +44,7 @@ const route = [
         component: () => import('@v/home/page2'), // 页面
         name: 'home-page2', // 名称
         meta: {
-          title: '页面2',
+          title: '是否不展现在菜单栏',
           hide: false // 是否不展现在菜单栏
         }
       },
@@ -72,7 +72,7 @@ const route = [
         path: '/mine/index', // 路径
         component: () => import('@v/mine/index'), // 页面
         meta: {
-          title: '菜单二',
+          title: '是否不展现在',
           hide: true // 是否不展现在菜单栏
         }
       }
@@ -104,11 +104,115 @@ const route = [
         }
       },
       {
+        path: '/main/page4', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单1'
+        }
+      },
+      {
         path: '/main/page3/:id', // 路径
         component: () => import('@v/mine/page3'), // 页面
-        name: 'main-page3', // 名称
         meta: {
-          title: 'caier3'
+          title: '测试菜单擦1'
+        }
+      },
+      {
+        path: '/main/page4', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单3'
+        }
+      },
+      {
+        path: '/main/page5', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单32'
+        }
+      },
+      {
+        path: '/main/page6', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单6'
+        }
+      },
+      {
+        path: '/main/page7', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单7'
+        }
+      },
+      {
+        path: '/main/page8', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单8'
+        }
+      },
+      {
+        path: '/main/page9', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单32'
+        }
+      },
+      {
+        path: '/main/page10', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单11'
+        }
+      },
+      {
+        path: '/main/page12', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单12'
+        }
+      },
+      {
+        path: '/main/pag13', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单13'
+        }
+      },
+      {
+        path: '/main/page14', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单14'
+        }
+      },
+      {
+        path: '/main/page15', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单15'
+        }
+      },
+      {
+        path: '/main/page16', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单16'
+        }
+      },
+      {
+        path: '/main/page17', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单17'
+        }
+      },
+      {
+        path: '/main/page18', // 路径
+        component: () => import('@v/mine/page3'), // 页面
+        meta: {
+          title: '测试菜单18'
         }
       }
     ]

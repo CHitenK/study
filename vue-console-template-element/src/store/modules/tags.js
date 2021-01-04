@@ -20,7 +20,9 @@ function mapTree (data) {
 mapTree(route)
 
 const state = {
-  tagsList: initTags // tag
+  tagsList: initTags, // tag list
+  tagBxWidth: 'calc(160px * 5)', // tag栏宽度 默认
+  tagScrollLeft: 0 // tag 滚动长度
 }
 
 const mutations = {
@@ -34,6 +36,9 @@ const mutations = {
     const tagsList = state.tagsList
     tagsList.splice(index, 1)
     state.tagsList = tagsList
+  },
+  UPDATE_STATE: (state, data) => {
+    state[data.key] = data.value
   }
 }
 
@@ -46,6 +51,9 @@ const actions = {
   },
   AC_DELETE_TAGS_LIST ({ commit }, index) {
     commit('DELETE_TAGS_LIST', index)
+  },
+  AC_UPDATE_STATE ({ commit }, data) {
+    commit('UPDATE_STATE', data)
   }
 }
 

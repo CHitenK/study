@@ -2,7 +2,7 @@
   <div class="right-tag-box">
     <div class="item-bx" ref="tagbx">
       <div class="item-tag-bx" :style="{ 'width': tagBxWidth }">
-        <div v-for="(item, index) in tags" :key="index" :class="activePath === item.path ? 'item-tag item-tag-act' : 'item-tag'" @click.prevent="linkTo(item)">
+        <div v-for="(item, index) in tags" :key="index" :class="activePath === item.path ? 'item-tag item-tag-act' : 'item-tag'" @click.prevent="linkTo(item)" :id="item.path">
           <!-- customTitle 自定定义的tag 名称  -->
           {{ item.customTitle || item.meta.title }}
           <i class="el-icon-circle-close" v-if="!item.meta.affix"></i>
@@ -21,8 +21,8 @@
         <div class="tool-list-item-ot">
           切换标签
           <div class="link-list">
-            <span class="link-list-item">
-              我的
+            <span v-for="(item, index) in tags" :key="index" :class="activePath === item.path ? 'link-list-item link-list-item-atc' : 'link-list-item'" @click.prevent="linkTo(item)" >
+               {{ item.customTitle || item.meta.title }}
             </span>
           </div>
         </div>
@@ -31,11 +31,12 @@
   </div>
 </template>
 <script>
+let _timer = null
+// let _timer1 = null
 export default {
   data () {
     return {
-      baseWid: 0,
-      tagBxWidth: 'calc(80px * 10)'
+      baseWid: 0
     }
   },
   computed: {
@@ -44,39 +45,48 @@ export default {
     },
     activePath () {
       return this.$route.path
+    },
+    tagBxWidth () {
+      return this.$store.getters.tagBxWidth
     }
   },
   watch: {
     $route (to, from) {
-      console.log(to, 122)
       const flage = this.tags.some(item => item.path === to.path)
       if (!flage) {
         this.$store.dispatch('tags/AC_ADD_TAGS_LIST', to)
       }
-    },
-    tags (data) {
-      const len = data.length > 10 ? data.length : 10
-      this.tagBxWidth =  `calc(80px * ${len})`
       this.$nextTick(() => {
-        const doms = document.getElementsByClassName('item-tag') // offsietWidth
-        console.log(23)
-        if (doms && doms.length > 0) {
-          let wd = 0
-          for (let i = 0; i < doms.length; i++) {
-            console.log(doms[i].offsietWidth)
-           // wd += (doms[i].offsietWidth + 6)
+        const dom = document.getElementById(this.activePath) // offsietWidth
+        if (dom) {
+          if (dom.offsetLeft + 160 > this.baseWid ) {
+            this.$refs.tagbx.scrollLeft = dom.offsetLeft
+          } else {
+            this.$refs.tagbx.scrollLeft = 0
           }
         }
       })
+    },
+    tags (data) {
+      const len = data.length > 5 ? data.length : 5
+      this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagBxWidth', value: `calc(160px * ${len})` })
+      clearTimeout(_timer)
+      _timer = setTimeout(() => {
+        this.$nextTick(() => {
+          const doms = document.getElementsByClassName('item-tag') // offsietWidth
+          if (doms && doms.length > 0) {
+            let wd = 0
+            for (let i = 0; i < doms.length; i++) {
+              wd = wd + doms[i].offsetWidth + 6
+            }
+            this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagBxWidth', value: wd + 'px' })
+          }
+        })
+      }, 300)
     }
   },
   mounted () {
-    // this.baseWid = this.$refs.tagbx.offsetWidth
-    // this.tagBxWidth = this.baseWid + 10
-    // console.log(this.baseWid)
-    // setTimeout(() => {
-    //   this.$refs.tagbx.scrollLeft = 3000
-    // }, 3000)
+    this.baseWid = this.$refs.tagbx.offsetWidth
   },
   methods: {
     linkTo (data) {
@@ -129,7 +139,6 @@ $toobWid: 46px;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
-  background-color: red;
 }
 .item-tag{
   padding: 5px 10px;
@@ -199,7 +208,7 @@ $toobWid: 46px;
 }
 .link-list{
   display: none;
-  width: 90px;
+  width: 120px;
   max-height: 50vh;
   overflow-y: scroll;
   background-color: #ffffff;
@@ -219,5 +228,17 @@ $toobWid: 46px;
   text-align: center;
   height: 40px;
   line-height: 40px;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  &:hover{
+    color: #00BFFF;
+  }
+}
+.link-list-item-atc{
+  color: #00BFFF;
 }
 </style>
