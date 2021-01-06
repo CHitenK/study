@@ -1,9 +1,12 @@
 import Vue from 'vue'
+import NProgress from 'nprogress'
 import Router from 'vue-router'
 import MenuList from './menu-route'
-
+import 'nprogress/nprogress.css'
+// NProgress.configure({ parent: '#00BFFF' })
 Vue.use(Router)
 
+NProgress.configure({ showSpinner: false })
 const routes = [
   {
     path: '/',
@@ -25,8 +28,11 @@ const router = new Router({
 })
 // 全局路由守卫
 router.beforeEach(async (to, from, next) => {
-  console.log(23)
+  NProgress.start()
   next()
 })
 
+router.afterEach(() => {
+  NProgress.done()
+})
 export default router

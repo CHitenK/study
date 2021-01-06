@@ -2,20 +2,20 @@
   <div class="right-tag-box">
     <div class="item-bx" ref="tagbx">
       <div class="item-tag-bx" :style="{ 'width': tagBxWidth }">
-        <div v-for="(item, index) in tags" :key="index" :class="activePath === item.path ? 'item-tag item-tag-act' : 'item-tag'" @click.prevent="linkTo(item)" :id="item.path">
+        <div v-for="(item, index) in tags" :key="index" :class="activePath === item.path ? 'item-tag item-tag-act' : 'item-tag'" @click.self="linkTo(item)" :id="item.path">
           <!-- customTitle 自定定义的tag 名称  -->
           {{ item.customTitle || item.meta.title }}
-          <i class="el-icon-circle-close" v-if="!item.meta.affix"></i>
+          <i class="el-icon-circle-close" v-if="!item.meta.affix" @click.self="close(index)"></i>
         </div>
       </div>
     </div>
     <div class="tool-bx">
       <span class="tool-bx-dian">...</span>
       <div class="tool-list">
-        <div class="tool-list-item b-n">
+        <div class="tool-list-item b-n" @click="closeAll">
           关闭全部
         </div>
-        <div class="tool-list-item">
+        <div class="tool-list-item" @click="closeOthers">
           关闭其他区
         </div>
         <div class="tool-list-item-ot">
@@ -32,7 +32,6 @@
 </template>
 <script>
 let _timer = null
-// let _timer1 = null
 export default {
   data () {
     return {
@@ -40,13 +39,13 @@ export default {
     }
   },
   computed: {
-    tags () {
+    tags () { // tag栏数据
       return this.$store.getters.tagsList
     },
-    activePath () {
+    activePath () { // 当前路由
       return this.$route.path
     },
-    tagBxWidth () {
+    tagBxWidth () { // tab栏宽度
       return this.$store.getters.tagBxWidth
     }
   },
@@ -56,10 +55,11 @@ export default {
       if (!flage) {
         this.$store.dispatch('tags/AC_ADD_TAGS_LIST', to)
       }
+      // 设置滚动距离
       this.$nextTick(() => {
         const dom = document.getElementById(this.activePath) // offsietWidth
         if (dom) {
-          if (dom.offsetLeft + 160 > this.baseWid ) {
+          if (dom.offsetLeft + 160 > this.baseWid) {
             this.$refs.tagbx.scrollLeft = dom.offsetLeft
           } else {
             this.$refs.tagbx.scrollLeft = 0
@@ -69,8 +69,10 @@ export default {
     },
     tags (data) {
       const len = data.length > 5 ? data.length : 5
+      // 先粗略设置tag栏宽度
       this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagBxWidth', value: `calc(160px * ${len})` })
-      clearTimeout(_timer)
+      clearTimeout(_timer) // 用于快速切换点击时，清除上次延时器
+      // 延时器 精确计算tag栏宽度
       _timer = setTimeout(() => {
         this.$nextTick(() => {
           const doms = document.getElementsByClassName('item-tag') // offsietWidth
@@ -90,8 +92,40 @@ export default {
   },
   methods: {
     linkTo (data) {
-      console.log(data, 43)
+      if (data.path === this.activePath) return false
       this.$router.push(data)
+    },
+    // 关闭单个
+    close (index) {
+      const tags = this.tags
+      if (tags[index].path === this.activePath) {
+        const len = tags.length
+        this.linkTo(tags[len - 2])
+      }
+      tags.splice(index, 1)
+      this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagsList', value: tags })
+    },
+    // 关闭全部
+    closeAll () {
+      let target = []
+      this.tags.map(item => {
+        if (item.meta.affix) {
+          target.push(item)
+        }
+      })
+      console.log(target)
+      this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagsList', value: target })
+      this.linkTo(target[0])
+    },
+    // 关闭其他
+    closeOthers () {
+      let target = []
+      this.tags.map(item => {
+        if (item.path === this.activePath || item.meta.affix) {
+          target.push(item)
+        }
+      })
+      this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagsList', value: target })
     }
   }
 }
@@ -228,7 +262,7 @@ $toobWid: 46px;
   text-align: center;
   height: 40px;
   line-height: 40px;
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
   overflow: hidden;
   text-overflow:ellipsis;
