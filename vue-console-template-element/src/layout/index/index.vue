@@ -11,7 +11,9 @@
         <right-tag />
       </div>
       <div class="page-right-route">
-        <router-view  />
+        <transition name="fade" mode="out-in">
+           <router-view  />
+        </transition>
         <!-- <transition name="fade-transform" mode="out-in">
           <keep-alive :include="cachedViews">
             <router-view :key="key" />
