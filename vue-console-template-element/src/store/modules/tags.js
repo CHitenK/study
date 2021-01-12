@@ -2,6 +2,7 @@ import route from '@/router/menu-route'
 
 const initTags = [] // 是一个树结构的数据
 
+// 获取在tag栏无法删除的tab
 function mapTree (data) {
   data.map(items => {
     if ((!items.children || items.children.length < 1) && items.meta.affix) {

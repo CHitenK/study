@@ -33,8 +33,7 @@ const route = [
             component: () => import('@v/home/page1'), // 页面
             name: 'home-page1', // 名称
             meta: {
-              title: '默认首页',
-              affix: true
+              title: '默认首页'
             }
           }
         ]

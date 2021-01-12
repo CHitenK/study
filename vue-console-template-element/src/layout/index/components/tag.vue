@@ -1,7 +1,7 @@
 <template>
   <div class="right-tag-box">
     <div class="item-bx" ref="tagbx">
-      <div class="item-tag-bx" :style="{ 'width': tagBxWidth }">
+      <div class="item-tag-bx" :style="{ 'width': tagBxWidth }" ref="all-tags">
         <div v-for="(item, index) in tags" :key="index" :class="activePath === item.path ? 'item-tag item-tag-act' : 'item-tag'" @click.self="linkTo(item)" :id="item.path">
           <!-- customTitle 自定定义的tag 名称  -->
           {{ item.customTitle || item.meta.title }}
@@ -32,6 +32,8 @@
 </template>
 <script>
 let _timer = null
+let _timer1 = null
+import { throttle, debounce } from '@/utils/tool'
 export default {
   data () {
     return {
@@ -57,20 +59,13 @@ export default {
       }
       // 设置滚动距离
       this.$nextTick(() => {
-        const dom = document.getElementById(this.activePath) // offsietWidth
-        if (dom) {
-          if (dom.offsetLeft + 160 > this.baseWid) {
-            this.$refs.tagbx.scrollLeft = dom.offsetLeft
-          } else {
-            this.$refs.tagbx.scrollLeft = 0
-          }
-        }
+        this.setScrollLeft()
       })
     },
     tags (data) {
-      const len = data.length > 5 ? data.length : 5
+      const len = data.length < 5 ? 5 : data.length
       // 先粗略设置tag栏宽度
-      this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagBxWidth', value: `calc(160px * ${len})` })
+      this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagBxWidth', value: `calc(200px * ${len})` })
       clearTimeout(_timer) // 用于快速切换点击时，清除上次延时器
       // 延时器 精确计算tag栏宽度
       _timer = setTimeout(() => {
@@ -113,7 +108,6 @@ export default {
           target.push(item)
         }
       })
-      console.log(target)
       this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagsList', value: target })
       this.linkTo(target[0])
     },
@@ -126,7 +120,24 @@ export default {
         }
       })
       this.$store.dispatch('tags/AC_UPDATE_STATE', { key: 'tagsList', value: target })
-    }
+    },
+    // 设置tab栏滚动距离
+    setScrollLeft: debounce(function() {
+      const dom = document.getElementById(this.activePath) // offsietWidth
+      if (dom) {
+        if (dom.offsetLeft + 160 > this.baseWid) {
+          this.$refs.tagbx.scrollLeft = this.$refs['all-tags'].clientWidth
+        } else {
+          this.$refs.tagbx.scrollLeft = 0
+        }
+      }
+    }, 200)
+  },
+  destroyed() {
+    clearTimeout(_timer)
+    clearInterval(_timer1)
+    _timer = null
+    _timer1 = null
   }
 }
 </script>
