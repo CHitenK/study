@@ -22,7 +22,8 @@ const List = () => {
     showLookLay: false,
     optArray: [],
     targetiId: '',
-    imgLookSrc:  window.location.origin + '/api/makeimg?id='
+    imgLookSrc:  window.location.protocol + '//' + window.location.hostname + ':2020/api/makeimg?id=',
+    whiteIds: ['MKI1598350477880', 'MKI1598930966762', 'MKI1612190113415'] // 白名单 不能删除/禁用
   })
   const history = useHistory()
  // 获取数据
@@ -33,7 +34,7 @@ const List = () => {
       size: state.pageSize,
       id: state.id,
       name: state.name,
-      creatName: state.creatName,
+      creatName: state.creatName
     }
     getList(data).then(res => {
       const dataSource = []
@@ -78,6 +79,10 @@ const List = () => {
   }
   // 删除
   const dele = (id) => {
+    if (state.whiteIds.includes(id)) {
+      message.error('无权限操作哟！')
+      return false
+    }
     const data = { 'id': id }
     deleData(data).then(res => {
       if (res.data.falge) {
@@ -90,11 +95,16 @@ const List = () => {
   }
   // 启用/停用
   const update = (data) => {
+   if (state.whiteIds.includes(data.id)) {
+     message.error('无权限操作哟！')
+     return false
+   }
    if (data.isUse) { // 停用
     Modal.confirm({
       title: '提示',
       content: '确定停用该图片吗？',
       cancelText: '取消',
+      confirmText: '确定',
       onOk: () => {
         const param = { id:  data.id, isUse: false, updateTime: Date.now(), editor: sessionStorage.getItem('userName') }
         updateData(param).then(res => {
@@ -159,8 +169,17 @@ const List = () => {
         targetiId: data.id
       })
     } else {
+      console.log(state.imgLookSrc)
       window.open(state.imgLookSrc + data.id , '_blank')
     }
+  }
+  // 编辑
+  const editImg = (record) => {
+    if (state.whiteIds.includes(record.id)) {
+      message.error('无权限操作哟！')
+      return false
+    }
+    history.push('/content/edit/' + record.id )
   }
   // 修改图片访问参数
   const updateOptArray = (data, index) => {
@@ -241,12 +260,11 @@ const List = () => {
         title: '操作',
         align: 'center',
         width: 160,
-        render: (ext,record,index) => ( 
+        render: (ext,record,index) => (
           <div className="fs-12 clr-gr tool">
-            <span onClick={() => history.push('/content/edit/' + record.id )}>编辑</span>
+            <span onClick={() => editImg(record)}>编辑</span>
             <span  onClick={() => update(record)}>{record.isUse ? '停用' : '启用'}</span>
-            {/* <a href={state.imgLookSrc + record.id} target="_blank"></a> */}
-              {record.isUse && <span onClick={() => lookImg(record) }>查看</span>}
+            {record.isUse && <span onClick={() => lookImg(record) }>查看</span>}
             <span onClick={() => dele(record.id)}>删除</span>
         </div>
         )
