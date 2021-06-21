@@ -1,0 +1,4252 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>卓志经分销系统</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/retail.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.0.0-beta.2/echarts.common.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.5.6/layui.all.min.js"></script> -->
+    <script src="./laydate/laydate.js"></script>
+</head>
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <section class="x_container flex">
+        <!-- 左边内容区域start -->
+        <div class="x_content flex1">
+            <!-- 事业群销售达成start -->
+            <div class="x_itembox" id="point1">
+                <div class="x_titlebox flex_align x_pd_lr x_pd_tb">
+                    <div class="flex1">
+                        <span class="x_title">事业群销售达成</span>
+                        <span class="x_time">统计月份：<i id="TimeVal0">2020-01</i></span>
+                    </div>
+                    <div class="x_righttitle flex_align">
+                        <span><i>币种：人民币</i></span>
+                        <div class="layui-inline flex_align">
+                            <i>统计月份：</i>
+                            <!-- <input type="text" class="layui-input" placeholder="请选择统计时间" readonly="readonly"
+                                id="histogramTime"> -->
+                            <div class="layui-input date-day" type="month" id="histogramTime" placeholder="请选择"></div>
+                            <em class="x_date flex_center" type="month"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_tab_content flex">
+                    <ul class="x_tab flex_align">
+                        <li class="on">事业群汇总</li>
+                        <li>宝信事业部</li>
+                        <li>品牌拓展事业部</li>
+                        <li>元森泰事业部</li>
+                        <li>万代事业部</li>
+                        <li>贸融事业部</li>
+                    </ul>
+                    <div class="export-btn fs-16">
+                        <img src="./imgs/round.png" />
+                        导 出
+                    </div>
+                    <ul class="x_right_tab flex_align">
+                        <li>销售汇总</li>
+                        <li class="on">细分对比</li>
+                    </ul>
+                </div>
+                <!-- 柱形图start -->
+                <div id="histogram" class="x_chart"></div>
+                <!-- 柱形图end -->
+                <!-- 饼状图 -->
+                <div id="histogram1" class="x_chart x_chart-right" style="width: 38%;margin-left: 8%;"></div>
+                <!-- 饼状图 end-->
+            </div>
+            <!-- 事业群销售达成end -->
+            <!-- 年度进销存分析 -->
+            <div class="x_itembox" id="point2">
+                <div class="x_titlebox flex_align x_pd_lr x_pd_tb">
+                    <div class="flex1">
+                        <span class="x_title">年度进销存分析</span>
+                        <span class="x_time">统计月份：<i id="TimeVal1">2020-01</i></span>
+                    </div>
+                    <div class="x_righttitle flex_align">
+                        <span><i>币种：人民币</i></span>
+                        <div class="layui-inline flex_align">
+                            <i>统计月份：</i>
+                            <div class="layui-input" type="month"  id="histogramTime1" placeholder="请选择"></div>
+                            <em class="x_date flex_center" type="month"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_tab_content flex">
+                    <ul class="x_tab flex_align">
+                        <li class="on">事业群汇总</li>
+                        <li>宝信事业部</li>
+                        <li>品牌拓展事业部</li>
+                        <li>元森泰事业部</li>
+                        <li>万代事业部</li>
+                        <li>贸融事业部</li>
+                    </ul>
+                    <div class="export-btn fs-16">
+                        <img src="./imgs/round.png" />
+                        导 出
+                    </div>
+                </div>
+                <div class="fen-lei-bx">
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check1.png"  />
+                        <span>全部品牌</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>美赞臣</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>拜耳</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>ONE A DAY</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>潘婷</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>欧莱雅</span>
+                    </span>
+                   <span style="float: right;">
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check1.png" />
+                            <span>按母品牌</span>
+                        </span>
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>按标准品牌</span>
+                        </span>
+                   </span>
+                </div>
+                <!-- 柱形, 折线start -->
+                <div id="enter-sale-l" class="x_chart"></div>
+                <!-- 柱形图end -->
+                <!-- 饼状图 -->
+                <div id="enter-sale-r" class="x_chart x_chart-right" style="width: 38%;margin-left: 8%;"></div>
+                <!-- 饼状图 end-->
+            </div>
+            <!-- 年度进销存分析 end-->
+            <!-- 品牌销量TOP8分析start -->
+            <div class="x_itembox" id="point3">
+                <div class="x_titlebox flex_align x_pd_lr x_pd_tb">
+                    <div class="flex1">
+                        <span class="x_title">品牌销量TOP8分析</span>
+                        <span class="x_time fs-16">统计时间段：<i id="TimeVal2">2020-01-01~2020-08-14</i></span>
+                    </div>
+                    <div class="x_righttitle flex_align fs-16">
+                        <span><i>币种：人民币</i></span>
+                        <div class="layui-inline flex_align fs-16">
+                            <i>统计时间：</i>
+                            <!-- <input type="text" class="layui-input" placeholder="请选择统计时间" readonly="readonly"
+                                id="brandTime"> -->
+                            <div class="layui-input" id="brandTime" range="~" type="date" placeholder="请选择统计时间"></div>
+                            <em class="x_date flex_center" range="~" type="date"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_tab_content flex">
+                    <ul class="x_tab flex_align">
+                        <li class="on">事业群汇总</li>
+                        <li>宝信事业部</li>
+                        <li>品牌拓展事业部</li>
+                        <li>元森泰事业部</li>
+                        <li>万代事业部</li>
+                        <li>贸融事业部</li>
+                    </ul>
+                    <div class="export-btn fs-16">
+                        <img src="./imgs/round.png" />
+                        导 出
+                    </div>
+                </div>
+                <div class="fen-lei-bx" style="margin-bottom: 15px;">
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check1.png"  />
+                        <span>按母品牌统计</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>按标准品牌统计</span>
+                    </span>
+                </div>
+                <!-- 折线图start -->
+                <div id="brand_broken" class="x_chart"></div>
+                <!-- 折线图end -->
+                <!-- 饼图start -->
+                <div id="brand_pie" class="x_chart" style="width: 38%;margin-left: 8%;"></div>
+                <!-- 饼图end -->
+            </div>
+            <!-- 品牌销量TOP8分析end -->
+            <!-- 客户销量TOP8分析start -->
+            <div class="x_itembox" id="point4">
+                <div class="x_titlebox flex_align x_pd_lr x_pd_tb">
+                    <div class="flex1">
+                        <span class="x_title">客户销量TOP8分析</span>
+                        <span class="x_time">统计时间段：<i id="TimeVal3">2020-01-01~2020-08-14</i></span>
+                    </div>
+                    <div class="x_righttitle flex_align">
+                        <span><i>币种：人民币</i></span>
+                        <div class="layui-inline flex_align">
+                            <i>统计时间：</i>
+                            <!-- <input type="text" class="layui-input" placeholder="请选择统计时间" readonly="readonly"
+                                id="salesTime"> -->
+                            <div class="layui-input" id="salesTime" type="date" range="~" placeholder="请选择统计时间"></div>
+                            <em class="x_date flex_center" type="date" range="~"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_tab_content flex">
+                    <ul class="x_tab flex_align">
+                        <li class="on">事业群汇总</li>
+                        <li>宝信事业部</li>
+                        <li>品牌拓展事业部</li>
+                        <li>元森泰事业部</li>
+                        <li>万代事业部</li>
+                        <li>贸融事业部</li>
+                    </ul>
+                    <div class="export-btn fs-16">
+                        <img src="./imgs/round.png" />
+                        导 出
+                    </div>
+                </div>
+                <div class="fen-lei-bx">
+                    <span class="fs-16 mr-l-25">
+                        <span>渠道类型</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check1.png" />
+                        <span>统计全部</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>只看ToB渠道</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>只看ToC平台</span>
+                    </span>
+                </div>
+                <!-- 折线图start -->
+                <div id="sales_broken" class="x_chart"></div>
+                <!-- 折线图end -->
+                <!-- 饼图start -->
+                <div id="sales_pie" class="x_chart" style="width: 38%;margin-left: 8%;"></div>
+                <!-- 饼图end -->
+            </div>
+            <!-- 客户销量TOP8分析分析end -->
+            <!-- 库存量分析 start -->
+            <div class="x_itembox" id="point5">
+                <div class="x_titlebox flex_align x_pd_lr x_pd_tb">
+                    <div class="flex1">
+                        <span class="x_title">库存量分析</span>
+                        <span class="x_time">统计日期：<i id="TimeVal4">2020-01-01</i></span>
+                    </div>
+                    <div class="x_righttitle flex_align">
+                        <span><i>币种：人民币</i></span>
+                        <div class="layui-inline flex_align">
+                            <i>统计日期：</i>
+                            <!-- <input type="text" class="layui-input" id="stockTime" placeholder="请选择统计时间"
+                                readonly="readonly"> -->
+                            <div class="layui-input" id="stockTime" type="date" placeholder="请选择统计时间"></div>
+                            <em class="x_date flex_center" type="date"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_tab_content flex">
+                    <ul class="x_tab flex_align">
+                        <li class="on">事业群汇总</li>
+                        <li>宝信事业部</li>
+                        <li>品牌拓展事业部</li>
+                        <li>元森泰事业部</li>
+                        <li>万代事业部</li>
+                        <li>贸融事业部</li>
+                    </ul>
+                    <div class="export-btn fs-16">
+                        <img src="./imgs/round.png" />
+                        导 出
+                    </div>
+                </div>
+                <div class="x_checktab x_pd_lr flex_align">
+                    <span class="fs-16">渠道类型</span>
+                    <span class="fs-16"><em class="x_checkicon on" onclick="onChange(this,'stock')"></em>按品牌</span>
+                    <span class="fs-16"><em class="x_checkicon" onclick="onChange(this,'stock')"></em>按仓库</span>
+                    <span class="fs-16"><em class="x_checkicon" onclick="onChange(this,'stock')"></em>按公司</span>
+                </div>
+                <!-- 折线图start -->
+                <div id="stock_broken" class="x_chart"></div>
+                <!-- 折线图end -->
+                <!-- 饼图start -->
+                <div id="stock_pie" class="x_chart" style="width: 38%;margin-left: 8%;"></div>
+                <!-- 饼图end -->
+            </div>
+            <!-- 库存量分析 end -->
+            <!-- 商品在库天数分析 start -->
+            <div class="x_itembox" id="point6">
+                <div class="x_titlebox flex_align x_pd_lr x_pd_tb">
+                    <div class="flex1">
+                        <span class="x_title">商品在库天数分析</span>
+                        <span class="x_time">统计日期：<i id="TimeVal5">2020-01-01</i></span>
+                    </div>
+                    <div class="x_righttitle flex_align">
+                        <span><i>币种：人民币</i></span>
+                        <div class="layui-inline flex_align">
+                            <i>统计日期：</i>
+                            <!-- <input type="text" class="layui-input" placeholder="请选择统计时间" readonly="readonly"
+                                id="waresTime"> -->
+                            <div class="layui-input" id="waresTime" type="date" placeholder="请选择统计时间"></div>
+                            <em class="x_date flex_center" type="date"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_tab_content flex">
+                    <ul class="x_tab flex_align">
+                        <li class="on">事业群汇总</li>
+                        <li>宝信事业部</li>
+                        <li>品牌拓展事业部</li>
+                        <li>元森泰事业部</li>
+                        <li>万代事业部</li>
+                        <li>贸融事业部</li>
+                    </ul>
+                    <div class="export-btn fs-16">
+                        <img src="./imgs/round.png" />
+                        导 出
+                    </div>
+                </div>
+                <!-- 折线图start -->
+                <div id="wares_broken" class="x_chart"></div>
+                <!-- 折线图end -->
+                <!-- 饼图start -->
+                <div id="wares_pie" class="x_chart" style="width: 38%;margin-left: 8%;"></div>
+                <!-- 饼图end -->
+                 <!-- 品牌在库天数TOP8分析 -->
+                <div class="brand-kucun">品牌在库天数TOP8分析</div>
+                <div class="fen-lei-bx" style="margin: 15px 0;">
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check1.png"  />
+                        <span>按母品牌</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>按标准品牌</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <span>在库天数</span>
+                        <select class="select-bx">
+                            <option value="saab">120天以上</option>
+                        </select>
+                    </span>
+                </div>
+                <!-- 柱状图start -->
+                <div id="brand-broken" class="x_chart"></div>
+                <!-- 柱状图end -->
+                <!-- 饼图start -->
+                <div id="brand-pie" class="x_chart" style="width: 38%;margin-left: 8%;"></div>
+               <!-- 饼图end -->
+                <!-- 品牌在库天数TOP8分析 end -->
+            </div>
+            <!-- 商品在库天数分析 end -->
+            <!-- 仓库滞销预警 -->
+            <div class="x_itembox" id="point7">
+                <div class="x_titlebox flex_align x_pd_lr x_pd_tb">
+                    <div class="flex1">
+                        <span class="x_title">仓库滞销预警</span>
+                        <span class="x_time">统计月份：<i id="TimeVal6">2020-01~2020-12</i></span>
+                    </div>
+                    <div class="x_righttitle flex_align">
+                        <span><i>币种：人民币</i></span>
+                        <div class="layui-inline flex_align">
+                            <i>统计月份：</i>
+                            <!-- <input type="text" class="layui-input" id="stockTime" placeholder="请选择统计时间"
+                                readonly="readonly"> -->
+                            <div class="layui-input" id="stockTime" type="month" range="~" placeholder="请选择"></div>
+                            <em class="x_date flex_center" type="month" range="~"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_tab_content flex" style="padding-left: 0;">
+                    <div class="fen-lei-bx">
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check1.png"  />
+                            <span>全部公司</span>
+                        </span>
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>宝信</span>
+                        </span>
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>健太</span>
+                        </span><span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>卓烨</span>
+                        </span><span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>香港元森泰</span>
+                        </span><span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>广旺</span>
+                        </span><span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>润佰</span>
+                        </span>
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>万代国际</span>
+                        </span>
+                    </div>
+                    <div class="export-btn fs-16">
+                        <img src="./imgs/round.png" />
+                        导 出
+                    </div>
+                </div>
+                <div class="fen-lei-bx">
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check1.png"  />
+                        <span>全部仓库</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>卓志南沙保税仓</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>小红书POP保税仓</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>卓志香港海外仓</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>欧莱雅</span>
+                    </span>
+                </div>
+                <!-- 折线图start -->
+                <div class="yujing-bx" id="zhixiao-yujing"></div>
+                <!-- 折线图end -->
+            </div>
+            <!-- 仓库滞销预警 end -->
+            <!-- 仓库效期预警 -->
+            <div class="x_itembox" id="point8">
+                <div class="x_titlebox flex_align x_pd_lr x_pd_tb">
+                    <div class="flex1">
+                        <span class="x_title">仓库效期预警</span>
+                        <span class="x_time">统计月份：<i id="TimeVal7">2020-01~2020-12</i></span>
+                    </div>
+                    <div class="x_righttitle flex_align">
+                        <span><i>币种：人民币</i></span>
+                        <div class="layui-inline flex_align">
+                            <i>统计月份：</i>
+                            <!-- <input type="text" class="layui-input" id="stockTime" placeholder="请选择统计时间"
+                                readonly="readonly"> -->
+                            <div class="layui-input" id="stockTime1" type="month" range="~" placeholder="请选择"></div>
+                            <em class="x_date flex_center" type="month" range="~"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_tab_content flex" style="padding-left: 0;">
+                    <div class="fen-lei-bx">
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check1.png"  />
+                            <span>全部公司</span>
+                        </span>
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>宝信</span>
+                        </span>
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>健太</span>
+                        </span><span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>卓烨</span>
+                        </span><span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>香港元森泰</span>
+                        </span><span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>广旺</span>
+                        </span><span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>润佰</span>
+                        </span>
+                        <span class="fs-16 mr-l-25">
+                            <img src="./imgs/check2.png" />
+                            <span>万代国际</span>
+                        </span>
+                    </div>
+                    <div class="export-btn fs-16">
+                        <img src="./imgs/round.png" />
+                        导 出
+                    </div>
+                </div>
+                <div class="fen-lei-bx">
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check1.png"  />
+                        <span>全部品牌</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>美赞臣</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>拜耳</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>ONE A DAY</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>潘婷</span>
+                    </span>
+                    <span class="fs-16 mr-l-25">
+                        <img src="./imgs/check2.png" />
+                        <span>欧莱雅</span>
+                    </span>
+                </div>
+                <!-- 折线图start -->
+                <div class="yujing-bx" id="ck-yujing"></div>
+                <!-- 折线图end -->
+            </div>
+            <!-- 仓库效期预警 end-->
+        </div>
+        <!-- 左边内容区域end -->
+        <!-- 导航start -->
+        <div class="x_box">
+            <ul class="x_right_menu">
+                <!-- <em class="icon"></em> -->
+                <li>返回顶部</li>
+                <li class="on">事业群销售达成</li>
+                <li>年度进销存分析</li>
+                <li>品牌销量TOP8分析</li>
+                <li>客户销量TOP8分析</li>
+                <li>库存量分析</li>
+                <li>商品在库天数分析</li>
+                <li>仓库滞销预警</li>
+                <li>仓库效期预警</li>
+            </ul>
+        </div>
+        <!-- 导航end -->
+    </section>
+    <script type="text/javascript">
+        /**公用变量 start**/
+        var fontSize = 14
+        var fontSizeMiddle = 16
+        var fontSizeLarge = 18
+
+        // 柱形图大小
+        var barWidth = 22
+        var barWidthMin = 25
+
+        // 事业群销售对比（销售汇总图表）
+        var barGap = '70%' //柱形边距
+
+        // 折线图线宽
+        var lineWidth = 2.5
+
+        // 圆的间距
+        var borderWidth = 1
+        var borderColor = '#fff'
+
+        // 标记的图形
+        var symbolSize = 4
+        var symbol1 = 'image://./imgs/symbol1.png'//'emptyCircle' 空心 'circle'圆点
+        var symbol2 = 'image://./imgs/symbol2.png'//'emptyCircle' 空心 'circle'圆点
+
+        // 图例标签tab
+        var itemWidth = 40 // 37
+        var itemHeight = 10 // 11
+        var itemGap = 56 // 76
+
+        // 饼图大小
+        var radius = ['38%', '70%']
+
+        // 柱形图圆角
+        var barBorderRadius = [2, 2, 0, 0]
+
+        // 柱状渐变色调
+        // 蓝色
+        var barColorBlue = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0,
+            color: '#399BFF'
+        }, {
+            offset: 1,
+            color: '#0069E0' 
+        }])
+        // 黄色
+        var barColorYellow = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0,
+            color: '#FFB10B'
+        }, {
+            offset: 1,
+            color: '#FF720B'
+        }])
+        // 折线阴影
+        var lineStyle = {
+            width: 4,
+            shadowColor: 'rgba(0,0,0,0.1)',
+            shadowBlur: 6,
+            shadowOffsetY: 7
+        }
+        var offset = 4
+        /**公用变量 end**/
+        /************************************** mock数据start(仅供对接数据时参考，对接完删掉) ****************************************/
+        // 事业销售数据
+        // 细分对比
+        var histogramLegendData = [{ name: '月度达成' }, { name: '月度目标' }, { name: '年度达成'}, { name: '年度目标' }]
+        var histogramXAxisData = ['购销A', '购销B', 'POP', '代发', '代销']
+        var histogramSeriesData1 = ["17", "28", "33", "40", "53"]
+        var histogramSeriesData2 = ["47", "59", "95", "74", '87']
+        var histogramSeriesData3 = ["27", "24", "43", "10", "73"]
+        var histogramSeriesData4 = ["57", "69", "75", "84", '97']
+        // 销售总额
+        var histogramTotalData = [["57"], ["169"], ["75"], ["184"]]
+
+        //品牌销量TOP8分析数据
+        // 折线图    
+        var brandBrokenXAxis = ['美赞臣', '雅诗兰黛', '拜耳', '宝洁', '雀巢', 'BRAUER', 'Lifespace', '冠能', '其他']
+        var brandBrokenSeriesData = [480, 360, 270, 210, 180, 150, 128, 90, 20]
+        //饼图
+        var brandPieLegendData = ['卓志南沙保税仓', '雅诗沙保税仓', '拜耳2沙保税仓', '宝洁沙保税仓', '雀巢沙保税仓', 'Lifespace', 'BRAUER', '冠能']
+        var brandPieValue = [10, 5, 5, 5, 5, 5, 5, 5]
+
+        // 客户销量
+        // 折线图
+        var salesBrokenXAxisData = ['拼多多', '天猫', '红人海外购', '京东', '网易考拉', '蜜芽', 'e仓福利社', '唯品会', '其他']
+        var salesBrokenSeriesData = [650, 500, 470, 400, 340, 280, 248, 185, 120, 90]
+        //饼图
+        var salesPieLegendData = ['拼多多', '天猫', '红人海外购', '京东', '网易考拉', '蜜芽', 'e仓福利社', '唯品会']
+        var salesPieValue = [10, 5, 5, 5, 5, 5, 5, 5]
+
+        // 库存量分析
+        // 折线图
+        // 备注 icon到时请求数据时图片链接线上链接格式为'image://http://xxx.xxx.xxx/a/b.png'
+        // var stockBrokenLegendData = ['库存量', '库存金额', '预计清空天数']
+        var stockBrokenLegendData = [{ name: '库存量', icon: 'image://./imgs/stock1.png' }, { name: '库存金额', icon: 'image://./imgs/stock2.png' }, { name: '预计清空天数', icon: 'image://./imgs/stock3.png' }]
+        var stockBrokenXAxisData = ['葛莱', '宝洁', 'JM', '美赞臣', '拜耳']
+        var stockBrokenseriesData1 = [12, 23, 58, 45, 49]//库存量
+        var stockBrokenseriesData2 = [10, 20, 78, 45, 89]//库存金额
+        var stockBrokenseriesData3 = [2, 30, 70, 40, 79]//预计清空天数
+        // 饼图
+        var stockPieLegendData = ['南沙仓', '黄埔仓', '义乌仓', '大连仓', '香港仓', '其他']
+        var stockPieValue = [80, 60, 50, 40, 30, 40]
+
+        // 商品在库分析
+        // 折线图
+        // 备注 icon到时请求数据时图片链接线上链接格式为'image://http://xxx.xxx.xxx/a/b.png'
+        // var waresBrokenLegendData = ['库存量', '库存金额']
+        var waresBrokenLegendData = [{ name: '库存量', icon: 'image://./imgs/wases1.png' }, { name: '库存金额', icon: 'image://./imgs/wases2.png' }]
+        var waresBrokenXAxisData = ['0-30天', '31-60天', '61-90天', '91-120天', '121-150天', '150天以上']
+        var waresBrokenSeriesData1 = [12, 20, 40, 45, 20, 30]
+        var waresBrokenSeriesData2 = [58, 89, 63, 45, 60, 89]
+
+        // 饼图
+        var waresPieLegendData = ['0-30天', '31-60天', '61-90天', '91-120天', '121-150天', '150天以上']
+        var waresPieValue = [80, 40, 30, 70, 60, 20]
+
+        // 柱状图
+        var ckBrandBrokenXAxis = ['宝洁', '美赞臣', '拜耳', 'JM', '亿滋', '悦诗风吟', '雀巢', 'Lifespace', '其他']
+        var ckBrandBrokenSeriesData = [230, 280, 70, 180, 90, 120, 40, 130, 20]
+        /************************************** mock数据end ******************************************/
+        // window.onload = function () {
+        /**事业群销售达成柱形图表 start**/
+        // 基于准备好的dom，初始化echarts实例
+        var histogram = echarts.init(document.getElementById('histogram'));
+        // 指定图表的配置项和数据（细分对比）
+        var option1 = {
+            tooltip: {//提示框组件。
+                trigger: 'axis',//坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .03)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    // 数组排序
+                    function createComprisonFunction(propertyName) {
+                        return function (object1, object2) {
+                            var value1 = object1[propertyName];
+                            var value2 = object2[propertyName];
+                            if (value1 < value2) {
+                                return -1;
+                            } else if (value1 > value2) {
+                                return 1;
+                            } else {
+                                return 0;
+                            }
+                        }
+                    }
+
+                    // 小数转百分数
+                    function toPercent(point) {
+                        var str = Number(point * 100).toFixed(0);
+                        str += "%";
+                        return str;
+                    }
+
+                    let arr2 = param.sort(createComprisonFunction("seriesName")).reverse();
+                    var str = ''
+                    let val1 = toPercent(arr2[0].value / arr2[1].value)
+                    let val2 = toPercent(arr2[2].value / arr2[3].value)
+                    arr2.forEach((item, index) => {
+                        str += '<div>' + item.marker + item.seriesName + ':' + item.value + '<div>'
+                        if (index === 1) {
+                            str += '<div style="color:#AFD6FF;padding:5px 0;">达成率：' + val1 + '</div>'
+                            str += '<div style="background:#fff;width:100%;height:1px;margin:6px 0 8px 0;"></div>'
+                        }
+                        if (index === 3) {
+                            str += '<div style="color:#AFD6FF;padding:5px 0 0 0;">达成率：' + val2 + '</div>'
+                        }
+                    })
+                    return str;
+                }
+            },//提示框组件
+            grid: {
+                left: '1%',
+                right: '0',
+                bottom: '3%',
+                top: '30%',
+                containLabel: true//grid 区域是否包含坐标轴的刻度标签。
+            },
+            // 图表上面tab标签栏
+            legend: {
+                data: ['月度达成', '月度目标', '年度达成', '年度目标'],
+                textStyle: {//图例的公用文本样式。(标签栏)
+                    // fontSize: fontSize,
+                    color: 'rgba(124, 139, 146, 1)',
+                    fontSize: 16,
+                },
+                selectedMode: false,//图例选择的模式，控制是否可以通过点击图例改变系列的显示状态
+                itemWidth: itemWidth,
+                itemHeight: itemHeight,
+                left: 0,
+                icon:'rect',
+                orient: 'horizontal',
+                itemGap: itemGap,//图例每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    offset: offset,
+                    axisTick: { //y轴刻度线
+                        show: false
+                    },
+                    axisLine: {//坐标轴轴线相关设置。
+                        lineStyle: {//坐标轴线线的颜色。
+                            color: '#F3F6FA'
+                        }
+                    },
+                    axisLabel: {//坐标轴刻度标签的相关设置。
+                      color: '#757B80',
+                    },
+                    data: histogramXAxisData,// x轴标题
+                },
+                {
+                    type: 'category',
+                    data: histogramXAxisData,// x轴标题
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    splitArea: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                }
+            ],
+            yAxis: {
+                name: '单位：万',//坐标轴名称
+                nameTextStyle: {//坐标轴名称的文字样式
+                    color: 'rgba(117, 123, 128, 1)'
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {//坐标轴刻度标签的相关设置。
+                        color: '#F3F6FA'
+                    }
+                },
+                splitArea: { show: false },
+                splitLine: {//坐标轴在 grid 区域中的分隔线。
+                    show: false //是否显示分隔线。默认数值轴显示，类目轴不显示。
+                },
+                axisTick: {
+                    show: true
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                }
+            },
+            series: [
+                {
+                    data: histogramSeriesData1,
+                    name: histogramLegendData[0].name,
+                    type: "bar",
+                    barWidth: barWidth,
+                    // stack: '1',//数据堆叠，同个类目轴上系列配置相同的stack值可以堆叠放置。
+                    itemStyle: {
+                        show: true,
+                        color: barColorBlue
+                    },
+                    z: 3,
+                    xAxisIndex: 1,
+                    emphasis: {
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgba(57, 155, 255, 1)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(0, 105, 224, 1)'
+                            }]),
+                        }
+                    }
+                },
+                {
+                    data: histogramSeriesData2,
+                    name: histogramLegendData[1].name,
+                    type: "bar",
+                    // stack: '1',//数据堆叠，同个类目轴上系列配置相同的stack值可以堆叠放置。
+                    itemStyle: {
+                        show: true,
+                        // barBorderRadius: [6, 6, 0, 0], //（顺时针左上，右上，右下，左下） 柱条圆角
+                        color: 'rgba(224, 241, 251, 1)' //柱条颜色
+                    },
+                    barWidth: barWidth,
+                    emphasis: {
+                        itemStyle: {
+                            color: 'rgba(224, 241, 251, 1)'
+                        }
+                    },
+                },
+                {
+                    data: histogramSeriesData3,
+                    name: histogramLegendData[2].name,
+                    type: "bar",
+                    // stack: '2',//数据堆叠，同个类目轴上系列配置相同的stack值可以堆叠放置。
+                    itemStyle: {
+                        show: true,
+                        color: barColorYellow
+                    },
+                    barWidth: barWidth,
+                    xAxisIndex: 1,
+                    z: 3
+                },
+                {
+                    data: histogramSeriesData4,
+                    name: histogramLegendData[3].name,
+                    type: "bar",
+                    // stack: '2',//数据堆叠，同个类目轴上系列配置相同的stack值可以堆叠放置。
+                    itemStyle: {
+                        show: true,
+                        // barBorderRadius: [6, 6, 0, 0], //（顺时针左上，右上，右下，左下） 柱条圆角
+                        color: 'rgba(240, 240, 240, 1)' //柱条颜色
+                    },
+                    barWidth: barWidth,
+                    emphasis: {
+                        itemStyle: {
+                            color: 'rgba(240, 240, 240, 1)'
+                        }
+                    }
+                },
+
+            ]
+        };
+        // 销售占比 饼状图
+        var saleRatoData = [
+            { value: 334, name: 'POP' },
+            { value: 224, name: '一件代发' },
+            { value: 134, name: '购销B' },
+            { value: 534, name: '购销' }
+        ]
+        var histogram1 = echarts.init(document.getElementById('histogram1'));
+        var option22 = {
+            title: {
+                text: '销售占比',
+                textStyle: {
+                    color: '#2D353E',
+                    fontSize: fontSizeLarge
+                },
+                left: 'center',
+                top: '5%'
+            },
+            tooltip: {//提示框组件
+                trigger: 'item',//触发类型
+                formatter: '{b} : {c} ({d}%)',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+            },
+            series: [
+                {
+                    type: 'pie',
+                    center: ['50%', '54%'],
+                    radius: 120,
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#7C8B92',
+                        // formatter: '{b}: {d}%',
+                        position: 'outside',
+                        formatter: '{a|{b}：{d}%}\n{hr|}',
+                    },
+                    labelLine: {//标签的视觉引导线样式
+                        smooth: true,
+                        // length: 1,
+                        length2: 8
+                    },
+                    data: [
+                        {
+                            value: saleRatoData[0].value,
+                            name: saleRatoData[0].name,
+                            itemStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#1B82EB' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#1B82EB' // 100% 处的颜色
+                                    }],
+                                    global: false // 缺省为 false
+                                }
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#1B82EB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: saleRatoData[1].value,
+                            name: saleRatoData[1].name,
+                            itemStyle: {
+                                color: '#65D7DA'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#65D7DA',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: saleRatoData[2].value,
+                            name: saleRatoData[2].name,
+                            itemStyle: {
+                                color: '#B39FFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#B39FFF',
+                                        // backgroundColor: '#5DADFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: saleRatoData[3].value,
+                            name: saleRatoData[3].name,
+                            itemStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#FFB10B' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#FF720B' // 100% 处的颜色
+                                    }],
+                                    global: false // 缺省为 false
+                                }
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FF720B',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        }
+                    ]   
+                }
+            ]
+        }
+        histogram1.setOption(option22)
+        // 年度进销存分析图表
+        // 柱状图 + 折现图
+        var enterSaleLeft = echarts.init(document.getElementById('enter-sale-l'));
+        var option23 = {
+            grid: {
+                left: '0.5%',
+                right: '0',
+                bottom: '3%',
+                top: '25%',
+                containLabel: true//grid 区域是否包含坐标轴的刻度标签。
+            },
+            legend: {
+                data: ['采购金额', '销售金额', '库存金额'],
+                textStyle: {//图例的公用文本样式。(标签栏)
+                    // fontSize: fontSize,
+                    color: 'rgba(124, 139, 146, 1)',
+                    fontSize: 16,
+                },
+                icon:'rect',
+                selectedMode: false,//图例选择的模式，控制是否可以通过点击图例改变系列的显示状态
+                itemWidth: itemWidth,
+                itemHeight: itemHeight,
+                left: 0,
+                top: 10,
+                orient: 'horizontal',
+                itemGap: itemGap,
+            },
+            tooltip: {//提示框组件。
+                trigger: 'axis',//坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 16
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    var val1 = param[0] ? param[0].value : 0
+                    var val2 = param[1] ? param[1].value : 0
+                    var val3 = param[2] ? param[2].value : 0
+                    var html = '<div style="backgroundColor: #01123E;padding: 0px 10px;">'+
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(0, 105, 224, 1);"></span><span>采购</span></div>' +
+                     '<div style="color: #fff; margin-top: -5px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">销量：'+ val1 +'万</span></div>' +
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(255, 144, 11, 1);"></span><span>销售</span></div>' +
+                     '<div style="color: #fff; margin-top: -5px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">销量：'+ val2 +'万</span></div>' +
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(48, 211, 216, 1);"></span><span>库存</span></div>' +
+                     '<div style="color: #fff; margin-top: -5px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">销量：'+ val3 +'万</span></div>'
+                    +'</div>'
+                    return html
+                }
+            },//提示框组件
+            xAxis: [
+                {
+                    type: 'category',
+                    offset: offset,
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+                    axisLine: {//坐标轴轴线相关设置。
+                    show: true,
+                        lineStyle: {//坐标轴线线的颜色。
+                            color: '#757B80',
+                            width: 1
+                        }
+                    },
+                    data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '单位：万元',
+                    position: 'left',
+                    axisTick: { //y轴刻度线
+                        show: false
+                    },
+                    nameTextStyle: {//坐标轴名称的文字样式
+                        color: 'rgba(117, 123, 128, 1)',
+                    },
+                    axisLine: {//坐标轴轴线相关设置。
+                    show: true,
+                        lineStyle: {//坐标轴线线的颜色。
+                            color: '#F3F6FA',
+                            width: 2
+                        }
+                    },
+                    axisLabel: {//坐标轴名称的文字样式
+                        color: '#757B80'
+                    },
+                    splitLine: {//坐标轴在 grid 区域中的分隔线。
+                    show: true, //是否显示分隔线。默认数值轴显示，类目轴不显示。
+                    lineStyle: {
+                        color: '#F3F6FA',
+                        type: 'dotted'
+                    }
+                    },
+                }
+            ],
+            series: [
+                {
+                    name: '采购金额',
+                    type: 'bar',
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorBlue,
+                    },
+                    data: [130, 200, 250, 230, 330, 420, 350, 550, 569, 679, 646, 240]
+                },
+                {
+                    name: '销售金额',
+                    type: 'bar',
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorYellow,
+                    },
+                    data: [80, 140, 490, 180, 280, 260, 500, 770, 579, 699, 666, 440]
+                },
+                {
+                    name: '库存金额',
+                    type: 'line',
+                    itemStyle: {
+                        show: true,
+                        color: '#30D3D8'
+                    },
+                    lineStyle: lineStyle,
+                    symbol: 'circle',
+                    symbolSize: 6,
+                    data: [122.0, 112.2, 123.3, 154.5, 167.3, 107.2, 230.3, 173.4, 193.0, 176.5, 120.0, 196.2]
+                }
+            ]
+        };
+        enterSaleLeft.setOption(option23)
+        // 饼状图
+        var purData = [
+            { name: 'HC', value: 12 },
+            { name: 'JM', value: 9 },
+            { name: '宝洁', value: 26 },
+            { name: '葛蔡', value: 24 },
+            { name: '亿滋', value: 18 },
+            { name: '美赞臣', value: 14 },
+            { name: '其他', value: 7 },
+            { name: '拜耳', value: 30 }
+        ]
+        var enterSaleRight = echarts.init(document.getElementById('enter-sale-r'));
+        var option24 = {
+            title: {
+                text: '品牌采购金额TOP8占比',
+                textStyle: {
+                    color: '#2D353E',
+                    fontSize: fontSizeLarge
+                },
+                left: 'center',
+                top: '5%'
+            },
+            tooltip: {//提示框组件
+                trigger: 'item',//触发类型
+                formatter: '{b} : {c} ({d}%)',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+            },
+            series: [
+                {
+                    type: 'pie',
+                    center: ['50%', '58%'],
+                    radius: 120,
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#7C8B92',
+                        // formatter: '{b}: {d}%',
+                        position: 'outside',
+                        formatter: '{a|{b}：{d}%}\n{hr|}',
+                    },
+                    labelLine: {//标签的视觉引导线样式
+                        smooth: true,
+                        // length: 1,
+                        length2: 8
+                    },
+                    data: [
+                        {
+                            value: purData[0].value,
+                            name: purData[0].name,
+                            itemStyle: {
+                                color: '#FFF5B0'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FFF5B0',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: purData[1].value,
+                            name: purData[1].name,
+                            itemStyle: {
+                                color: '#A6EDFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#A6EDFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: purData[2].value,
+                            name: purData[2].name,
+                            itemStyle: {
+                                color: '#CCD5D9'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#CCD5D9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: purData[3].value,
+                            name: purData[3].name,
+                            itemStyle: {
+                                color: '#5DADFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#5DADFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: purData[4].value,
+                            name: purData[4].name,
+                            itemStyle: {
+                                color: '#65D7DA'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#65D7DA',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: purData[5].value,
+                            name: purData[5].name,
+                            itemStyle: {
+                                color: '#1B82EB'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#1B82EB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: purData[6].value,
+                            name: purData[6].name,
+                            itemStyle: {
+                                color: '#B39FFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#B39FFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: purData[7].value,
+                            name: purData[7].name,
+                            itemStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#FF720B' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#FFB10B' // 100% 处的颜色
+                                    }],
+                                    global: false // 缺省为 false
+                                }
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FF720B',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        }
+                    ]   
+                }
+            ]
+        }
+        enterSaleRight.setOption(option24)
+        // 年度进销存分析图表 end
+        // 指定图表的配置项和数据（销售总额）
+        var option11 = {
+            // 图表上面tab标签栏
+            legend: {
+                data: ['月度达成', '月度目标', '年度达成', '年度目标'],
+                textStyle: {//图例的公用文本样式。(标签栏)
+                    // fontSize: fontSize,
+                    color: 'rgba(124, 139, 146, 1)'
+                },
+                icon:'rect',
+                selectedMode: false,//图例选择的模式，控制是否可以通过点击图例改变系列的显示状态
+                itemWidth: itemWidth,
+                itemHeight: itemHeight,
+                left: 0,
+                orient: 'horizontal',
+                itemGap: itemGap,//图例每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。
+            },
+            grid: {
+                left: '0',
+                right: '15%',
+                bottom: '3%',
+                top: '14%',
+                containLabel: true//grid 区域是否包含坐标轴的刻度标签。
+            },
+            xAxis: {
+                type: 'value',
+                offset: offset,
+                name: '单位/万',
+                nameTextStyle: {
+                    color: 'rgba(117, 123, 128, 1)'
+                },
+                axisTick: { //x轴刻度线
+                    show: false
+                },
+                axisLine: {//坐标轴轴线相关设置。
+                    show: true,
+                    lineStyle: {//坐标轴线线的颜色。
+                        color: 'rgba(243, 246, 250, 1)'
+                    }
+                },
+                axisLabel: {//坐标轴名称的文字样式
+                    color: 'rgba(117, 123, 128, 1)',
+                    // fontSize: fontSize,
+                    formatter: '{value}',
+                    interval: 0
+                },
+                splitLine: {//坐标轴在 grid 区域中的分隔线。
+                    show: false
+                },
+            },
+            yAxis: [
+                {
+                    type: 'category',
+                    axisTick: { //y轴刻度线
+                        show: false
+                    },
+                    axisLine: {//坐标轴轴线相关设置。
+                        lineStyle: {//坐标轴线线的颜色。
+                            color: '#F3F6FA'
+                        }
+                    },
+                    axisLabel: {//坐标轴名称的文字样式
+                        color: '#757B80',
+                        // fontSize: fontSize,
+                    },
+                    data: ['']// x轴标题
+                },
+                {
+                    type: 'category',
+                    data: [''],// x轴标题
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    splitArea: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                }
+            ],
+            series: [
+                {
+                    name: histogramLegendData[0].name,
+                    type: 'bar',
+                    data: histogramTotalData[0],
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorBlue
+                    },
+                    z: 3,
+                    yAxisIndex: 1,
+                    barGap: barGap,
+                    label: {
+                        show: true,
+                        position: 'insideRight',
+                        formatter: '{c}万',
+                        color: '#fff',
+                        // 相对的百分比
+                        // position: ['85%', '40%']
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{
+                                offset: 0,
+                                color: 'rgba(57, 155, 255, 1)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(0, 105, 224, 1)'
+                            }]),
+                        }
+                    }
+                },
+                {
+                    name: histogramLegendData[1].name,
+                    type: 'bar',
+                    data: histogramTotalData[1],
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        barBorderRadius: [0, 6, 6, 0], //（顺时针左上，右上，右下，左下） 柱条圆角
+                        color: 'rgba(224, 241, 251, 1)' //柱条颜色
+                    },
+                    barGap: barGap,
+                    label: {
+                        show: true,
+                        color: '#757B80',
+                        position: 'right',
+                        formatter: '{c}万'
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: 'rgba(224, 241, 251, 1)'
+                        }
+                    }
+                },
+                {
+                    name: histogramLegendData[2].name,
+                    type: 'bar',
+                    data: histogramTotalData[2],
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorYellow
+                    },
+                    yAxisIndex: 1,
+                    z: 3,
+                    barGap: barGap,
+                    label: {
+                        show: true,
+                        color: '#fff',
+                        position: 'insideRight',
+                        formatter: '{c}万'
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{//柱条颜色
+                                offset: 0,
+                                color: '#FFB10B'
+                            }, {
+                                offset: 1,
+                                color: '#FF720B'
+                            }]),
+                        }
+                    }
+                },
+                {
+                    name: histogramLegendData[3].name,
+                    type: 'bar',
+                    data: histogramTotalData[3],
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        barBorderRadius: [0, 6, 6, 0], //（顺时针左上，右上，右下，左下） 柱条圆角
+                        color: 'rgba(240, 240, 240, 1)' //柱条颜色
+                    },
+                    barGap: barGap,
+                    label: {
+                        show: true,
+                        color: '#757B80',
+                        position: 'right',
+                        formatter: '{c}万'
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: 'rgba(240, 240, 240, 1)'
+                        }
+                    }
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        // 使用刚指定的配置项和数据显示图表。
+        histogram.setOption(option1);
+        /**事业群销售达成柱形图表 end**/
+
+        /**品牌销量TOP8分析折线图表 end**/
+        //折线图 
+        // 基于准备好的dom，初始化echarts实例
+        var brandBroken = echarts.init(document.getElementById('brand_broken'));
+        var option2 = {
+            tooltip: {
+                trigger: 'axis',//坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                axisPointer: {
+                    type: 'shadow',//指示器类型
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    var val1 = param[0] ? param[0].value : 0
+                    var axisValueLabel = param[0] ? param[0].axisValueLabel : 0
+                    var html = '<div style="backgroundColor: #01123E;padding: 0px 10px;">'+
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(0, 105, 224, 1);"></span><span>' + axisValueLabel + '</span></div>' +
+                     '<div style="color: #fff; margin-top: 0px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">销量：'+ val1 +'万</span></div>' +
+                    '</div>'
+                    return html
+                }
+            },
+            grid: {
+                left: '0',
+                right: '0',
+                bottom: '3%',
+                top: '12%',
+                containLabel: true,
+            },
+            xAxis: [{
+                type: 'category',
+                offset: offset,
+                boundaryGap: true,
+                axisLine: {
+                    show: true,
+                    lineStyle: {//坐标轴刻度标签的相关设置。
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                    // fontSize: fontSize,
+                    interval: 0,//坐标轴刻度标签的显示间隔，在类目轴中有效 0 强制显示所有标签。
+                    rotate: 30 //刻度标签旋转的角度
+                },
+                splitLine: {//坐标轴在 grid 区域中的分隔线。(竖线)
+                    show: false,
+                    lineStyle: {
+                        color: 'rgba(243, 246, 250, 1)'
+                    }
+                },
+                data: brandBrokenXAxis,
+            }],
+            yAxis: [{
+                name: '单位：万',//坐标轴名称
+                nameTextStyle: {//坐标轴名称的文字样式
+                    color: 'rgba(117, 123, 128, 1)',
+                    // fontSize: fontSize
+                },
+                type: 'value',
+                // nameGap:20,//坐标轴名称与轴线之间的距离。
+                splitNumber: 5,
+                max: 800,
+                splitLine: {////坐标轴在 grid 区域中的分隔线 (横线)。
+                    show: true,
+                    lineStyle: {
+                        color: 'rgba(243, 246, 250, 1)'
+                    }
+                },
+                axisLine: {//坐标轴轴线相关设置（竖起来的那根先）
+                    show: true,
+                    lineStyle: {
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                    // fontSize: fontSize,
+                }
+            }],
+            series: [
+               {
+                    name: '',
+                    type: 'bar',
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorBlue
+                    },
+                    data: brandBrokenSeriesData
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        brandBroken.setOption(option2);
+
+        // 饼图
+        // 基于准备好的dom，初始化echarts实例
+        var brandPie = echarts.init(document.getElementById('brand_pie'));
+        var option3 = {
+            title: {
+                text: '品牌销量占比',
+                textStyle: {
+                    color: '#2D353E',
+                    fontSize: fontSizeLarge
+                },
+                left: 'center'
+            },
+            tooltip: {//提示框组件
+                trigger: 'item',//触发类型
+                formatter: '{b} : {c} ({d}%)',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+            },
+            series: [
+                {
+                    type: 'pie',
+                    center: ['50%', '60%'],
+                    radius: radius,
+                    roseType: 'radius',
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#7C8B92',
+                        // formatter: '{b}: {d}%'
+                        formatter: '{a|{b}：{d}%}\n{hr|}',
+                    },
+                    labelLine: {//标签的视觉引导线样式
+                        smooth: true,
+                        // length:8,
+                        length2: 8
+                    },
+                    itemStyle: {
+                        borderWidth: borderWidth,
+                        borderColor: borderColor,
+                    },
+                    data: [
+                        {
+                            value: brandPieValue[0],
+                            name: brandPieLegendData[0],
+                            itemStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#FF720B' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#FFB10B' // 100% 处的颜色
+                                    }],
+                                    global: false // 缺省为 false
+                                }
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FF720B',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: brandPieValue[1],
+                            name: brandPieLegendData[1],
+                            itemStyle: {
+                                color: '#1B82EB'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#1B82EB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: brandPieValue[2],
+                            name: brandPieLegendData[2],
+                            itemStyle: {
+                                color: '#55E2E6'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#55E2E6',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: brandPieValue[3],
+                            name: brandPieLegendData[3],
+                            itemStyle: {
+                                color: '#5DADFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#5DADFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: brandPieValue[4],
+                            name: brandPieLegendData[4],
+                            itemStyle: {
+                                color: '#B39FFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#B39FFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: brandPieValue[5],
+                            name: brandPieLegendData[5],
+                            itemStyle: {
+                                color: '#D5CAFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#D5CAFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: brandPieValue[6],
+                            name: brandPieLegendData[6],
+                            itemStyle: {
+                                color: '#CCD5D9'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#CCD5D9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: brandPieValue[7],
+                            name: brandPieLegendData[7],
+                            itemStyle: {
+                                color: '#79F7FB'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#79F7FB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        brandPie.setOption(option3);
+        /**品牌销量TOP8分析折线图表 end**/
+
+        /**客户销量TOP8分析 start**/
+        //折线图 
+        // 基于准备好的dom，初始化echarts实例
+        var salesBroken = echarts.init(document.getElementById('sales_broken'));
+        var option4 = {
+            tooltip: {
+                trigger: 'axis',//坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用
+                axisPointer: {
+                    type: 'shadow',//指示器类型
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    var val1 = param[0] ? param[0].value : 0
+                    var axisValueLabel = param[0] ? param[0].axisValueLabel : 0
+                    var html = '<div style="backgroundColor: #01123E;padding: 0px 10px;">'+
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(255, 144, 11, 1);"></span><span>' + axisValueLabel + '</span></div>' +
+                     '<div style="color: #fff; margin-top: 0px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">销量：'+ val1 +'万</span></div>' +
+                    '</div>'
+                    return html
+                }
+            },
+            grid: {
+                left: '0',
+                right: '0',
+                bottom: '3%',
+                top: '12%',
+                containLabel: true,
+            },
+            xAxis: [{
+                type: 'category',
+                offset: offset,
+                boundaryGap: true,
+                axisLine: {
+                    show: true,
+                    lineStyle: {//坐标轴刻度标签的相关设置。
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                    // fontSize: fontSize,
+                    interval: 0,//坐标轴刻度标签的显示间隔，在类目轴中有效 0 强制显示所有标签。
+                    rotate: 30 //刻度标签旋转的角度
+                },
+                splitLine: {//坐标轴在 grid 区域中的分隔线。(竖线)
+                    show: false,
+                    lineStyle: {
+                        color: 'rgba(243, 246, 250, 1)'
+                    }
+                },
+                data: salesBrokenXAxisData
+            }],
+            yAxis: [{
+                name: '单位：万',//坐标轴名称
+                nameTextStyle: {//坐标轴名称的文字样式
+                    color: 'rgba(117, 123, 128, 1)',
+                    // fontSize: fontSize
+                },
+                type: 'value',
+                min: 0,
+                max: 1000,
+                splitNumber: 5,
+                splitLine: {////坐标轴在 grid 区域中的分隔线 (横线)。
+                    show: true,
+                    lineStyle: {
+                        color: 'rgba(243, 246, 250, 1)'
+                    }
+                },
+                axisLine: {//坐标轴轴线相关设置（竖起来的那根先）
+                    show: true,
+                    lineStyle: {
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                    // fontSize: fontSize,
+                }
+            }],
+            series: [
+                {
+                    name: '',
+                    type: 'bar',
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorYellow
+                    },
+                    data: salesBrokenSeriesData
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        salesBroken.setOption(option4);
+
+        // 饼图
+        // 基于准备好的dom，初始化echarts实例
+        var salesPie = echarts.init(document.getElementById('sales_pie'));
+        var option5 = {
+            title: {
+                text: '渠道销量占比',
+                textStyle: {
+                    color: '#2D353E',
+                    fontSize: fontSizeLarge
+                },
+                left: 'center'
+            },
+            tooltip: {//提示框组件
+                trigger: 'item',//触发类型
+                formatter: '{b} : {c} ({d}%)',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+            },
+            series: [
+                {
+                    type: 'pie',
+                    center: ['50%', '60%'],
+                    radius: radius,
+                    roseType: 'radius',
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#7C8B92',
+                        // formatter: '{b}: {d}%',
+                        formatter: '{a|{b}：{d}%}\n{hr|}',
+                    },
+                    labelLine: {//标签的视觉引导线样式
+                        smooth: true,
+                        length2: 8
+                    },
+                    itemStyle: {
+                        borderWidth: borderWidth,
+                        borderColor: borderColor,
+                    },
+                    data: [
+                        {
+                            value: salesPieValue[0],
+                            name: salesPieLegendData[0],
+                            itemStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#FF720B' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#FFB10B' // 100% 处的颜色
+                                    }],
+                                    global: false // 缺省为 false
+                                }
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FF720B',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: salesPieValue[1],
+                            name: salesPieLegendData[1],
+                            itemStyle: {
+                                color: '#1B82EB'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#1B82EB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: salesPieValue[2],
+                            name: salesPieLegendData[2],
+                            itemStyle: {
+                                color: '#55E2E6'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#55E2E6',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: salesPieValue[3],
+                            name: salesPieLegendData[3],
+                            itemStyle: {
+                                color: '#5DADFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#5DADFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: salesPieValue[4],
+                            name: salesPieLegendData[4],
+                            itemStyle: {
+                                color: '#B39FFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#B39FFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: salesPieValue[5],
+                            name: salesPieLegendData[5],
+                            itemStyle: {
+                                color: '#D5CAFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#D5CAFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: salesPieValue[6],
+                            name: salesPieLegendData[6],
+                            itemStyle: {
+                                color: '#CCD5D9'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#CCD5D9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: salesPieValue[7],
+                            name: salesPieLegendData[7],
+                            itemStyle: {
+                                color: '#79F7FB'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#79F7FB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        salesPie.setOption(option5);
+        /**客户销量TOP8分析 end**/
+
+        /**库存量分析 start**/
+        //折线图 
+        // 基于准备好的dom，初始化echarts实例
+        var stockBroken = echarts.init(document.getElementById('stock_broken'));
+        var option6 = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow',//指示器类型。
+                    shadowStyle: {
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    var val1 = param[0] ? param[0].value : 0
+                    var val2 = param[1] ? param[1].value : 0
+                    var val3 = param[2] ? param[2].value : 0
+                    var html = '<div style="backgroundColor: #01123E;padding: 0px 10px;">'+
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(0, 105, 224, 1);"></span><span>库存量</span></div>' +
+                     '<div style="color: #fff; margin-top: -2px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">'+ val1 +'件</span></div>' +
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(255, 144, 11, 1);"></span><span>库存金额</span></div>' +
+                     '<div style="color: #fff; margin-top: -2px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">'+ val2 +'万</span></div>' +
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(48, 211, 216, 1);"></span><span>预计清空天数</span></div>' +
+                     '<div style="color: #fff; margin-top: -2px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">'+ val3 +'天</span></div>'
+                    +'</div>'
+                    return html
+                }
+            },
+            grid: {
+                left: '4%',
+                right: '18%',
+                bottom: '3%',
+                top: '30%',
+                containLabel: true,
+            },
+            legend: {
+                data: ['库存量', '库存金额', '预计清空天数'],
+                textStyle: {//图例的公用文本样式。(标签栏)
+                    fontSize: 16,
+                    color: '#757B80'
+                },
+                icon:'rect',
+                selectedMode: false,//图例选择的模式，控制是否可以通过点击图例改变系列的显示状态
+                itemWidth: itemWidth,
+                itemHeight: itemHeight,
+                left: 0,
+                orient: 'horizontal',
+                itemGap: 60,//图例间距
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    offset: offset,
+                    data: stockBrokenXAxisData,
+                    axisLine: {//坐标轴轴线相关设置
+                        lineStyle: {
+                            color: '#F3F6FA'
+                        }
+                    },
+                    axisTick: {//坐标轴刻度相关设置。
+                        show: false,
+                    },
+                    axisLabel: {//坐标轴刻度标签的相关设置。
+                        color: '#757B80',
+                        // fontSize: fontSize,
+                        interval: 0,
+                        rotate: 30
+                    },
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: stockBrokenLegendData[0].name + '(件)',
+                    nameTextStyle: {
+                        // fontSize: fontSize,
+                    },
+                    position: 'right',
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#1F8EFF'
+                        }
+                    },
+                    axisLabel: {
+                        formatter: '{value}',
+                        interval: 0
+                    },
+                    axisTick: {//坐标轴刻度相关设置。
+                        show: true
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+                {
+                    type: 'value',
+                    name: stockBrokenLegendData[1].name + '(万)',
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#7C8B92',
+                        formatter: '{b}: \n{d}%',
+                    },
+                    nameTextStyle: {
+                        // fontSize: fontSize
+                    },
+                    position: 'right',
+                    offset: 80,
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#FF720B'
+                        }
+                    },
+                    axisLabel: {
+                        formatter: '{value}',
+                        interval: 0
+                    },
+                    axisTick: {//坐标轴刻度相关设置。
+                        show: true
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+                {
+                    type: 'value',
+                    name: stockBrokenLegendData[2].name,
+                    nameTextStyle: {
+                        color: '#757B80',
+                        // fontSize: fontSize
+                    },
+                    position: 'left',
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#F3F6FA'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#757B80',
+                        // fontSize: fontSize,
+                        interval: 0
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#F3F6FA'
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: stockBrokenLegendData[0].name,
+                    type: 'bar',
+                    data: stockBrokenseriesData1,
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorBlue
+                    }
+                },
+                {
+                    name: stockBrokenLegendData[1].name,
+                    type: 'bar',
+                    yAxisIndex: 1,
+                    data: stockBrokenseriesData2,
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorYellow
+                    }
+                },
+                {
+                    name: stockBrokenLegendData[2].name,
+                    type: 'line',
+                    symbol: 'circle',
+                    symbolSize: 6,
+                    yAxisIndex: 2,
+                    itemStyle: {
+                        show: true,
+                        color: '#30D3D8'
+                    },
+                    lineStyle: lineStyle,
+                    data: stockBrokenseriesData3
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        stockBroken.setOption(option6);
+
+        // 饼图
+        // 基于准备好的dom，初始化echarts实例
+        var stockPie = echarts.init(document.getElementById('stock_pie'));
+        var option7 = {
+            title: {
+                text: '库存金额占比',
+                textStyle: {
+                    color: '#2D353E',
+                    fontSize: fontSizeLarge
+                },
+                left: 'center'
+            },
+            tooltip: {//提示框组件
+                trigger: 'item',//触发类型
+                formatter: '{b} : {c} ({d}%)',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+            },
+            series: [
+                {
+                    type: 'pie',
+                    center: ['50%', '60%'],
+                    radius: ['40%', '80%'],
+                    // roseType: 'radius',
+                    roseType: 'area',
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#7C8B92',
+                        formatter: '{a|{b}：{d}%}\n{hr|}',
+                    },
+                    labelLine: {//标签的视觉引导线样式
+                        smooth: true,
+                        // length: 1,
+                        length2: 8
+                    },
+                    itemStyle: {
+                        borderWidth: borderWidth,
+                        borderColor: borderColor,
+                    },
+                    data: [
+                        {
+                            value: stockPieValue[0],
+                            name: stockPieLegendData[0],
+                            itemStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#FF720B' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#FFB10B' // 100% 处的颜色
+                                    }],
+                                    global: false // 缺省为 false
+                                }
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FFB10B',
+                                        padding: [3, 3, 0, -12],
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: stockPieValue[1],
+                            name: stockPieLegendData[1],
+                            itemStyle: {
+                                color: '#CCD5D9',
+                                global: false
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#CCD5D9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: stockPieValue[2],
+                            name: stockPieLegendData[2],
+                            itemStyle: {
+                                color: '#5DADFF',
+                                global: false
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#5DADFF',
+                                        // backgroundColor: '#5DADFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: stockPieValue[3],
+                            name: stockPieLegendData[3],
+                            itemStyle: {
+                                color: '#55E2E6'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#81E6E9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: stockPieValue[4],
+                            name: stockPieLegendData[4],
+                            itemStyle: {
+                                color: '#1B82EB'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#1B82EB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: stockPieValue[5],
+                            name: stockPieLegendData[5],
+                            itemStyle: {
+                                color: '#B39FFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#B39FFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        stockPie.setOption(option7);
+        /**库存量分析 end**/
+
+        /**商品在库天数分析 start**/
+        //折线图 
+        // 基于准备好的dom，初始化echarts实例
+        var waresBroken = echarts.init(document.getElementById('wares_broken'));
+        var option8 = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow',//指示器类型。
+                    shadowStyle: {
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    var val1 = param[0] ? param[0].value : 0
+                    var val2 = param[1] ? param[1].value : 0
+                    var val3 = param[2] ? param[2].value : 0
+                    var html = '<div style="backgroundColor: #01123E;padding: 0px 10px;">'+
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(0, 105, 224, 1);"></span><span>库存量</span></div>' +
+                     '<div style="color: #fff; margin-top: -5px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">'+ val1 +'ml</span></div>' +
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(255, 144, 11, 1);"></span><span>库存金额</span></div>' +
+                     '<div style="color: #fff; margin-top: -5px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">'+ val2 +'万</span></div>'
+                    +'</div>'
+                    return html
+                }
+            },
+            grid: {
+                left: '5%',
+                right: '18%',
+                bottom: '3%',
+                top: '30%',
+                containLabel: true,
+            },
+            legend: {
+                data: ['库存量', '库存金额'],
+                textStyle: {//图例的公用文本样式。(标签栏)
+                    fontSize: 16,
+                    color: '#757B80'
+                },
+                icon:'rect',
+                selectedMode: false,//图例选择的模式，控制是否可以通过点击图例改变系列的显示状态
+                itemWidth: itemWidth,
+                itemHeight: itemHeight,
+                left: 0,
+                orient: 'horizontal',
+                itemGap: 25,//图例间距
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    offset: offset,
+                    data: waresBrokenXAxisData,
+                    axisLine: {//坐标轴轴线相关设置
+                        lineStyle: {
+                            color: '#F3F6FA'
+                        }
+                    },
+                    axisTick: {//坐标轴刻度相关设置。
+                        show: false,
+                    },
+                    axisLabel: {//坐标轴刻度标签的相关设置。
+                        color: '#757B80',
+                        // fontSize: fontSize,
+                        interval: 0,
+                       // rotate: 30 //刻度标签旋转的角度
+                    },
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: waresBrokenLegendData[0].name + '（单位：件）',
+                    nameTextStyle: {
+                        color: '#757B80',
+                        // fontSize: fontSize
+                    },
+                    position: 'left',
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#F3F6FA'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#757B80',
+                        // fontSize: fontSize
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#F3F6FA'
+                        }
+                    }
+                },
+                {
+                    type: 'value',
+                    name: waresBrokenLegendData[1].name + '（单位：万）',
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#FF7D0B',
+                        formatter: '{b}: \n{d}%',
+                    },
+                    nameTextStyle: {
+                        // fontSize: fontSize
+                    },
+                    position: 'right',
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#FF7D0B'
+                        }
+                    },
+                    axisLabel: {
+                        formatter: '{value}'
+                    },
+                    axisTick: {//坐标轴刻度相关设置。
+                        show: true
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+            ],
+            series: [
+                {
+                    name: waresBrokenLegendData[0].name,
+                    type: 'bar',
+                    yAxisIndex: 0,
+                    data: waresBrokenSeriesData1,
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorBlue
+                    }
+                },
+                {
+                    name: waresBrokenLegendData[1].name,
+                    type: 'line',
+                    symbol: 'circle',
+                    symbolSize: 6,
+                    yAxisIndex: 2,
+                    itemStyle: {
+                        show: true,
+                        color: '#FF7D0B'
+                    },
+                    lineStyle: lineStyle,
+                    yAxisIndex: 1,
+                    data: waresBrokenSeriesData2,
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        waresBroken.setOption(option8);
+
+        // 饼图
+        // 基于准备好的dom，初始化echarts实例
+        var waresPie = echarts.init(document.getElementById('wares_pie'));
+        var option9 = {
+            title: {
+                text: '库存金额占比',
+                textStyle: {
+                    color: '#2D353E',
+                    fontSize: fontSizeLarge
+                },
+                left: 'center'
+            },
+            tooltip: {//提示框组件
+                trigger: 'item',//触发类型
+                formatter: '{b} : {c} ({d}%)',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+            },
+            series: [
+                {
+                    type: 'pie',
+                    center: ['50%', '60%'],
+                    radius: 120,
+                    // roseType: 'radius',
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#7C8B92',
+                        // formatter: '{b}: {d}%',
+                        position: 'outside',
+                        formatter: '{a|{b}：{d}%}\n{hr|}',
+                    },
+                    labelLine: {//标签的视觉引导线样式
+                        smooth: true,
+                        // length:1,
+                        length2: 8
+                    },
+                    data: [
+                        {
+                            value: waresPieValue[0],
+                            name: waresPieLegendData[0],
+                            itemStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#FF720B' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#FFB10B' // 100% 处的颜色
+                                    }],
+                                    global: false // 缺省为 false
+                                }
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FFB10B',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: waresPieValue[1],
+                            name: waresPieLegendData[1],
+                            itemStyle: {
+                                color: '#CCD5D9'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#CCD5D9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: waresPieValue[2],
+                            name: waresPieLegendData[2],
+                            itemStyle: {
+                                color: '#5DADFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#5DADFF',
+                                        // backgroundColor: '#5DADFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: waresPieValue[3],
+                            name: waresPieLegendData[3],
+                            itemStyle: {
+                                color: '#55E2E6'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#81E6E9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: waresPieValue[4],
+                            name: waresPieLegendData[4],
+                            itemStyle: {
+                                color: '#1B82EB'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#1B82EB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: waresPieValue[5],
+                            name: waresPieLegendData[5],
+                            itemStyle: {
+                                color: '#B39FFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#B39FFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        waresPie.setOption(option9);
+        /**商品在库天数分析 end**/
+        /** 品牌在库天数TOP8分析 **/
+        // 柱状图
+        var kucunBrandbroken = echarts.init(document.getElementById('brand-broken'));
+        var option63 = {
+            tooltip: {
+                trigger: 'axis',//坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    var val1 = param[0] ? param[0].value : 0
+                    var axisValueLabel = param[0] ? param[0].axisValueLabel : 0
+                    var html = '<div style="backgroundColor: #01123E;padding: 0px 10px;">'+
+                     '<div style="color: #fff; font-size:14px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:rgba(0, 105, 224, 1);"></span><span>' + axisValueLabel + '</span></div>' +
+                     '<div style="color: #fff; margin-top: 0px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;opacity: 0;"></span><span style="font-size:12px;">库存量：'+ val1 +'件</span></div>' +
+                    '</div>'
+                    return html
+                }
+            },
+            grid: {
+                left: '0',
+                right: '0',
+                bottom: '3%',
+                top: '12%',
+                containLabel: true,
+            },
+            xAxis: [{
+                type: 'category',
+                offset: offset,
+                boundaryGap: true,
+                axisLine: {
+                    show: true,
+                    lineStyle: {//坐标轴刻度标签的相关设置。
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                    // fontSize: fontSize,
+                    interval: 0,//坐标轴刻度标签的显示间隔，在类目轴中有效 0 强制显示所有标签。
+                    // rotate: 30 //刻度标签旋转的角度
+                },
+                splitLine: {//坐标轴在 grid 区域中的分隔线。(竖线)
+                    show: false,
+                    lineStyle: {
+                        color: 'rgba(243, 246, 250, 1)'
+                    }
+                },
+                data: ckBrandBrokenXAxis,
+            }],
+            yAxis: [{
+                name: '单位：件',//坐标轴名称
+                nameTextStyle: {//坐标轴名称的文字样式
+                    color: 'rgba(117, 123, 128, 1)',
+                    // fontSize: fontSize
+                },
+                type: 'value',
+                // nameGap:20,//坐标轴名称与轴线之间的距离。
+                splitNumber: 5,
+                max: 400,
+                splitLine: {////坐标轴在 grid 区域中的分隔线 (横线)。
+                    show: true,
+                    lineStyle: {
+                        color: 'rgba(243, 246, 250, 1)'
+                    }
+                },
+                axisLine: {//坐标轴轴线相关设置（竖起来的那根先）
+                    show: true,
+                    lineStyle: {
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                    // fontSize: fontSize,
+                }
+            }],
+            series: [
+               {
+                    name: '',
+                    type: 'bar',
+                    barWidth: barWidth,
+                    itemStyle: {
+                        show: true,
+                        color: barColorBlue
+                    },
+                    data: ckBrandBrokenSeriesData
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        kucunBrandbroken.setOption(option63);
+        // 饼图
+        var ckBrandPie = echarts.init(document.getElementById('brand-pie'));
+        var option64 = {
+            title: {
+                text: '库存数量占比',
+                textStyle: {
+                    color: '#2D353E',
+                    fontSize: fontSizeLarge
+                },
+                left: 'center'
+            },
+            tooltip: {//提示框组件
+                trigger: 'item',//触发类型
+                formatter: '{b} : {c} ({d}%)',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                    shadowStyle: {//axisPointer.type 为 'shadow' 时有效
+                        color: 'rgba(1, 18, 62, .1)'
+                    }
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+            },
+            series: [
+                {
+                    type: 'pie',
+                    center: ['50%', '60%'],
+                    radius: 120,
+                    // roseType: 'radius',
+                    label: {//饼图图形上的文本标签
+                        // fontSize: fontSize,
+                        color: '#7C8B92',
+                        // formatter: '{b}: {d}%',
+                        position: 'outside',
+                        formatter: '{a|{b}：{d}%}\n{hr|}',
+                    },
+                    labelLine: {//标签的视觉引导线样式
+                        smooth: true,
+                        // length:1,
+                        length2: 8
+                    },
+                    data: [
+                        {
+                            value: ckBrandBrokenSeriesData[0],
+                            name: ckBrandBrokenXAxis[0],
+                            itemStyle: {
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: '#FF720B' // 0% 处的颜色
+                                    }, {
+                                        offset: 1, color: '#FFB10B' // 100% 处的颜色
+                                    }],
+                                    global: false // 缺省为 false
+                                }
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FFB10B',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: ckBrandBrokenSeriesData[1],
+                            name: ckBrandBrokenXAxis[1],
+                            itemStyle: {
+                                color: '#CCD5D9'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#CCD5D9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: ckBrandBrokenSeriesData[2],
+                            name: ckBrandBrokenXAxis[2],
+                            itemStyle: {
+                                color: '#5DADFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#5DADFF',
+                                        // backgroundColor: '#5DADFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: ckBrandBrokenSeriesData[3],
+                            name: ckBrandBrokenXAxis[3],
+                            itemStyle: {
+                                color: '#55E2E6'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#81E6E9',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: ckBrandBrokenSeriesData[4],
+                            name: ckBrandBrokenXAxis[4],
+                            itemStyle: {
+                                color: '#1B82EB'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#1B82EB',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: ckBrandBrokenSeriesData[5],
+                            name: ckBrandBrokenXAxis[5],
+                            itemStyle: {
+                                color: '#B39FFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#B39FFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: ckBrandBrokenSeriesData[6],
+                            name: ckBrandBrokenXAxis[6],
+                            itemStyle: {
+                                color: '#FFF5B0'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#FFF5B0',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: ckBrandBrokenSeriesData[7],
+                            name: ckBrandBrokenXAxis[7],
+                            itemStyle: {
+                                color: '#A6EDFF'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#A6EDFF',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            value: ckBrandBrokenSeriesData[8],
+                            name: ckBrandBrokenXAxis[8],
+                            itemStyle: {
+                                color: '#65D7DA'
+                            },
+                            label: {
+                                rich: {
+                                    hr: {
+                                        borderRadius: 3,
+                                        width: 3,
+                                        height: 3,
+                                        borderWidth: 1,
+                                        borderColor: '#65D7DA',
+                                        padding: [3, 3, 0, -12]
+                                    },
+                                    a: {
+                                        padding: [-13, 15, -20, 5]
+                                    }
+                                }
+                            }
+                        },
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        ckBrandPie.setOption(option64);
+        /** 品牌在库天数TOP8分析 end**/
+        /** 仓库滞销预警 **/
+        var zhixiaoArr = [
+            {
+                name: '美赞臣',
+                data: [100, 180, 100, 90]
+            },
+            {
+                name: '拜耳',
+                data: [190, 132, 120, 270, 230]
+            },
+            {
+                name: 'ONE A DAY',
+                data: [60, 100, 50, 120]
+            },
+            {
+                name: '潘婷',
+                data: [200, 80, 201, 136, 118]
+            },
+            {
+                name: '欧莱雅',
+                data: [10, 121, 236, 103]
+            },
+        ]
+        var zhixiaoArrLabel = ['美赞臣', '拜耳', 'ONE A DAY', '潘婷', '欧莱雅']
+        var yAxisLabel = ['90天-120天', '120天-150天', '1500天-180天', '180天以上']
+        var zhixiaoEchart = echarts.init(document.getElementById('zhixiao-yujing'));
+        var option71 = {
+            title: {
+                show: true,
+                text: '库存金额 单位：万元',
+                textStyle: {
+                    fontSize: 12,
+                    color: '#757B80'
+                },
+                bottom: '12',
+                right: '26'
+            },
+            tooltip: {
+                show: true,
+                // trigger: 'axis',
+                axisPointer: {            // Use axis to trigger tooltip
+                    type: 'shadow'        // 'shadow' as default; can also be 'line' or 'shadow'
+                },
+                shadowStyle: {
+                    color: 'rgb(128, 128, 128)'
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    console.log(param)
+                    var dataIndex = param.dataIndex
+                    var seriesIndex = param.seriesIndex
+                    var seriesId = param.seriesId
+                    var color = param.color
+                    var maxNum = zhixiaoArr[seriesId].data.reduce(function(prev, next) {
+                        return prev + next
+                    })
+                    var str = '<div style="backgroundColor: #01123E;padding: 0px 10px;">'
+                        str += '<div style="color: #fff; margin-top: 0px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:' + param.color + '"></span><span style="font-size:14px;">'+ param.seriesName + ' (' + param.name +')</span></div>'
+                        str += '<div style="color: #fff; margin-top: 0px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;"></span><span style="font-size:12px;">' + '总库存金额: ' + maxNum +'万元</span></div>'
+                        str += '<div style="color: #fff; margin: 10px 0;border-top: dotted 1px #fff;"></div>'
+                    console.log(seriesId)
+                    for (let i = 0; i < zhixiaoArr.length; i++) {
+                        var seriesName = zhixiaoArr[i].name
+                        var value = zhixiaoArr[i].data[dataIndex]
+                        str += '<div style="color: #fff; margin-top: 0px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;"></span><span style="font-size:12px;">'+ seriesName + ': ' + value +'万元</span></div>'
+                    }
+                    var html = str + '</div>' 
+                    return html
+                }
+            },
+            legend: {
+                data: zhixiaoArrLabel,
+                textStyle: {//图例的公用文本样式。(标签栏)
+                    fontSize: 16,
+                    color: '#757B80'
+                },
+                icon:'rect',
+                selectedMode: false,//图例选择的模式，控制是否可以通过点击图例改变系列的显示状态
+                itemWidth: itemWidth,
+                itemHeight: itemHeight,
+                left: 20,
+                orient: 'horizontal',
+                itemGap: 25,
+            },
+            grid: {
+                left: 20,
+                right: '6%',
+                bottom: '10%',
+                top: '18%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                offset: offset,
+                nameGap: 16,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                },
+                axisTick: {
+                    show: true
+                },
+                splitLine: {
+                    show: false
+                },
+                max: 1000,
+                splitNumber: 10
+            },
+            yAxis: {
+                type: 'category',
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                },
+                axisTick: {
+                    show: false
+                },
+                data: yAxisLabel
+            },
+            series: [
+                {
+                    name: zhixiaoArr[0].name,
+                    type: 'bar',
+                    id: '0',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    itemStyle: {
+                        color: '#0069E0'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: zhixiaoArr[0].data
+                },
+                {
+                    name: zhixiaoArr[1].name,
+                    type: 'bar',
+                    id: '1',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    itemStyle: {
+                        color: '#FF740B'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: zhixiaoArr[1].data
+                },
+                {
+                    name: zhixiaoArr[2].name,
+                    type: 'bar',
+                    id: '2',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    itemStyle: {
+                        color: '#5DADFF'
+                    },
+                    data: zhixiaoArr[2].data
+                },
+                {
+                    name: zhixiaoArr[3].name,
+                    type: 'bar',
+                    id: '3',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    itemStyle: {
+                        color: '#5FD1EE'
+                    },
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: zhixiaoArr[3].data
+                },
+                {
+                    name: zhixiaoArr[4].name,
+                    type: 'bar',
+                    id: '4',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    itemStyle: {
+                        color: '#ADBCC3'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: zhixiaoArr[4].data
+                }
+            ]
+        }
+        zhixiaoEchart.setOption(option71)
+        /** 仓库滞销预警 end**/
+        // 仓库效期预警
+        var ckArr = [
+            {
+                name: '1/10以下及过期',
+                data: [0, 100, 180, 100, 90]
+            },
+            {
+                name: '1/10-1/5',
+                data: [120, 190, 132, 120, 270, 230]
+            },
+            {
+                name: '1/5-1/3',
+                data: [100, 60, 100, 50, 120]
+            },
+            {
+                name: '1/3-1/2',
+                data: [160, 200, 80, 201, 136, 118]
+            },
+            {
+                name: '1/2以上',
+                data: [90, 10, 121, 236, 103]
+            },
+        ]
+        var ckArrLabel = ['1/10以下及过期', '1/10-1/5', '1/5-1/3', '1/3-1/2', '1/2以上']
+        var ckyAxisLabel = ['卓志南沙\n大贸仓', '京东南沙\n pop保税仓', '菜鸟天运南沙\n pop保税仓', '卓志香港\n海外仓', '卓志南沙\n综合保税仓']
+        var kucunEchart = echarts.init(document.getElementById('ck-yujing'));
+        var option72 = {
+            title: {
+                show: true,
+                text: '库存金额 单位：万元',
+                textStyle: {
+                    fontSize: 12,
+                    color: '#757B80'
+                },
+                bottom: '12',
+                right: '26'
+            },
+            tooltip: {
+                show: true,
+                trigger: 'axis',
+                axisPointer: {            // Use axis to trigger tooltip
+                    type: 'shadow'        // 'shadow' as default; can also be 'line' or 'shadow'
+                },
+                shadowStyle: {
+                    color: 'rgb(128, 128, 128)'
+                },
+                backgroundColor: 'rgba(1, 18, 62, .8)',//提示框浮层的背景颜色。
+                textStyle: {
+                    color: '#fff',
+                },
+                borderWidth: 0,//提示器边框颜色
+                formatter: function (param) {
+                    var dataIndex = param.dataIndex
+                    var seriesIndex = param.seriesIndex
+                    var seriesId = param.seriesId
+                    var color = param.color
+                    var maxNum = ckArr[seriesId].data.reduce(function(prev, next) {
+                        return prev + next
+                    })
+                    var str = '<div style="backgroundColor: #01123E;padding: 0px 10px;">'
+                        str += '<div style="color: #fff; margin-top: 0px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:' + param.color + '"></span><span style="font-size:14px;">' + param.name +'</span></div>'
+                        str += '<div style="color: #fff; margin-top: 0px;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;opacity: 0;"></span><span style="font-size:12px;">' +  param.seriesName + ': ' + maxNum +'万元</span></div>'
+                    var html = str + '</div>' 
+                    return html
+                }
+            },
+            legend: {
+                data: ckArrLabel,
+                textStyle: {//图例的公用文本样式。(标签栏)
+                    fontSize: 16,
+                    color: '#757B80'
+                },
+                icon:'rect',
+                selectedMode: false,//图例选择的模式，控制是否可以通过点击图例改变系列的显示状态
+                itemWidth: itemWidth,
+                itemHeight: itemHeight,
+                left: 20,
+                orient: 'horizontal',
+                itemGap: 25,
+            },
+            grid: {
+                left: 20,
+                right: '6%',
+                bottom: '10%',
+                top: '18%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                offset: offset,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                },
+                axisTick: {
+                    show: true
+                },
+                splitLine: {
+                    show: false
+                },
+                max: 1000,
+                splitNumber: 10
+            },
+            yAxis: {
+                type: 'category',
+                offset: offset,
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#F3F6FA'
+                    }
+                },
+                axisLabel: {//坐标轴刻度标签的相关设置。
+                    color: '#757B80',
+                },
+                axisTick: {
+                    show: false
+                },
+                data: ckyAxisLabel
+            },
+            series: [
+                {
+                    name: ckArr[0].name,
+                    type: 'bar',
+                    id: '0',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    itemStyle: {
+                        color: '#0069E0'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: ckArr[0].data
+                },
+                {
+                    name: ckArr[1].name,
+                    type: 'bar',
+                    id: '1',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    itemStyle: {
+                        color: '#FF740B'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: ckArr[1].data
+                },
+                {
+                    name: ckArr[2].name,
+                    type: 'bar',
+                    id: '2',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    itemStyle: {
+                        color: '#5DADFF'
+                    },
+                    data: ckArr[2].data
+                },
+                {
+                    name: ckArr[3].name,
+                    type: 'bar',
+                    id: '3',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    itemStyle: {
+                        color: '#5FD1EE'
+                    },
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: ckArr[3].data
+                },
+                {
+                    name: ckArr[4].name,
+                    type: 'bar',
+                    id: '4',
+                    stack: 'total',
+                    barWidth: barWidthMin,
+                    label: {
+                        show: true,
+                        color: '#ffffff'
+                    },
+                    itemStyle: {
+                        color: '#ADBCC3'
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: ckArr[4].data
+                }
+            ]
+        }
+        kucunEchart.setOption(option72)
+        // 仓库效期预警 end
+        // echarts 图表跟随屏幕自适应大小
+        window.onresize = function () {
+            histogram.resize()
+            // histogram1.resize()
+            brandBroken.resize()
+            brandPie.resize()
+            salesBroken.resize()
+            salesPie.resize()
+            stockBroken.resize()
+            stockPie.resize()
+            waresBroken.resize()
+            waresPie.resize()
+            enterSaleLeft.resize()
+            enterSaleRight.resize()
+        }
+        // }
+
+        // 相关点击事件交互
+        $('.x_tab li').click(function () {
+            $(this).addClass('on').siblings().removeClass('on')
+            if ($(this).text() == '事业群汇总') {
+                $('.x_right_tab').show()
+            } else {
+                $('.x_right_tab').hide()
+            }
+        })
+
+        // 改变图表数据
+        // 事业销售达成图表数据变更
+        $('#point1 .x_tab li').click(function () {
+            histogram.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            option1.series[0].data = ["17", "24", "33", "40", "53"]
+            option1.series[1].data = ["27", "39", "45", "54", '87']
+            option1.series[2].data = ["27", "24", "43", "10", "73"]
+            option1.series[3].data = ["37", "44", "53", "60", "83"]
+            histogram.setOption(option1, true);
+            histogram1.clear()
+            for (let index = 0; index < 4; index++) {
+                option22.series[0].data[index].value = randomNumBoth(20, 160)
+            }
+            histogram1.setOption(option22, true);
+        })
+    
+        // 年度进销存分析 Echars
+        function updatPoint2Echars() {
+            // 折线图
+             enterSaleLeft.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            option23.series[0].data = makeNumArr(20, 730, 12)
+            option23.series[1].data = makeNumArr(20, 730, 12)
+            option23.series[2].data = makeNumArr(20, 600, 12)
+            enterSaleLeft.setOption(option23, true);
+            // 饼图
+            enterSaleRight.clear();//清空当前实例
+            for (let index = 0; index < 8; index++) {
+                option24.series[0].data[index].value = randomNumBoth(20, 160)
+            }
+            enterSaleRight.setOption(option24, true);
+        }
+        // 年度进销存分析变更
+        $('#point2 .x_tab li').click(function () {
+            updatPoint2Echars()
+        })
+        // 年度进销存分析 选中checkbox 数据变更
+        choseImg('point2', function() {
+            updatPoint2Echars()
+        })
+
+        // 客户销量TOP8分析数据图表数据变更
+        function updatPoint3Echars() {
+            brandBroken.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            option2.series[0].data = makeNumArr(20, 720, 9)
+            brandBroken.setOption(option2, true);
+            // 饼图
+            brandPie.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            for (let index = 0; index < 8; index++) {
+                option3.series[0].data[index].value = randomNumBoth(20, 160)
+            }
+            brandPie.setOption(option3, true);
+        }
+        $('#point3 .x_tab li').click(function () {
+            updatPoint3Echars()
+        })
+        choseImg('point3', function() {
+            updatPoint3Echars()
+        })
+        // 客户销量TOP8分析数据变更
+        function updatPoint4Echars() {
+           // 折线图
+           salesBroken.clear();//清空当前实例
+           option4.series[0].data = makeNumArr(20, 720, 9)
+           salesBroken.setOption(option4, true);
+            // 饼图
+            salesPie.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            for (let index = 0; index < 8; index++) {
+                option5.series[0].data[index].value = randomNumBoth(20, 160)
+            }
+            salesPie.setOption(option3, true);
+        }
+        $('#point4 .x_tab li').click(function () {
+            updatPoint4Echars()
+        })
+        choseImg('point4', function() {
+            updatPoint4Echars()
+        })
+        // 商品在库天数分析图表数据变更
+        function updatPoint5Echars() {
+           // 折线图
+           stockBroken.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            option6.series[0].data = makeNumArr(10, 56, 5)//库存量
+            option6.series[1].data = makeNumArr(10, 80, 5)//库存金额
+            option6.series[2].data = makeNumArr(10, 80, 5)//预计清空天数
+            stockBroken.setOption(option6, true);
+            // 饼图
+            stockPie.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            for (let index = 0; index < 6; index++) {
+                option7.series[0].data[index].value = randomNumBoth(20, 160)
+            }
+            stockPie.setOption(option7, true);
+        }
+        $('#point5 .x_tab li').click(function () {
+            updatPoint5Echars()
+        })
+        choseImg('point5', function() {
+            updatPoint5Echars()
+        })
+
+        function updatPoint6Echars() {
+           // 折线图
+           waresBroken.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            option8.series[0].data = makeNumArr(10, 48, 6)
+            option8.series[1].data = makeNumArr(10, 90, 6)
+            waresBroken.setOption(option8, true);
+            // 饼图
+            waresPie.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            for (let index = 0; index < 5; index++) {
+                option9.series[0].data[index].value = randomNumBoth(20, 160)
+            }
+            waresPie.setOption(option9, true);
+        }
+        $('#point6 .x_tab li').click(function () {
+            updatPoint6Echars()
+            updatPoint61Echars()
+        })
+       
+        function updatPoint61Echars() {
+            // 折线图
+            kucunBrandbroken.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            option63.series[0].data = makeNumArr(10, 380, 9)
+            kucunBrandbroken.setOption(option63, true);
+            // 饼图
+            ckBrandPie.clear();//清空当前实例
+            // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+            for (let index = 0; index < 9; index++) {
+                option64.series[0].data[index].value = randomNumBoth(20, 160)
+            }
+            ckBrandPie.setOption(option64, true);
+        }
+        choseImg('point6', function() {
+            updatPoint61Echars()
+        })
+
+        function updatPoint7Echars() {
+            zhixiaoEchart.clear()
+            for (let index = 0; index < 5; index++) {
+                option71.series[index].data = makeNumArr(10, 250, 4)
+            }
+            zhixiaoEchart.setOption(option71, true);
+        }
+        choseImg('point7', function() {
+            updatPoint7Echars()
+        })
+
+        function updatPoint8Echars() {
+            kucunEchart.clear()
+            for (let index = 0; index < 5; index++) {
+                option72.series[index].data = makeNumArr(10, 250, 4)
+            }
+            kucunEchart.setOption(option72, true);
+        }
+        choseImg('point8', function() {
+            updatPoint8Echars()
+        })
+        $('.x_right_tab li').click(function () {
+            $(this).addClass('on').siblings().removeClass('on')
+            // 1显示细分对比 0销售汇总
+            if ($(this).index() == 0) {
+                histogram.setOption(option11, true);
+            } else {
+                histogram.setOption(option1, true);
+            }
+        })
+        // 点击菜单导航滚动到固定位置
+        $('.x_right_menu li').click(function () {
+            $(this).addClass('on').siblings().removeClass('on')
+            // 获取索引
+            let index = $(this).index()
+            // 如果是点击第一个导航则滚动到顶部
+            if ($(this).index() == 0) {
+                $('body,html').animate({ scrollTop: 0 }, 1000)
+            } else {
+                // 滚动到某个锚点
+                var _scrolltop = $('#point' + index).offset().top;
+                $('html, body').animate({
+                    scrollTop: _scrolltop
+                }, 1000);
+            }
+        })
+
+        // 滚动到固定位置相应菜单栏激活
+        $(window).scroll(function () {
+            var dom = $('.x_right_menu li')
+            for (let index = 1; index < dom.length; index++) {
+                // 固定位置
+                var offSet = $('#point' + index).offset().top - 200;
+                // 当滚动超过了固定点则激活相应的菜单
+                if ($(window).scrollTop() >= offSet) {
+                    $('.x_right_menu li').eq(index).addClass('on').siblings().removeClass('on')
+                }
+            }
+        })
+
+        // 选择事件改变数据
+        function onChange(item, type) {
+            return false
+            // type='sales' 则为客户销量, "stock"则为库存量分析
+            if (type === 'sales') {
+                $(item).addClass('on').parent('.x_checktab span').siblings().children().removeClass('on')
+                // 折线图
+                salesBroken.clear();//清空当前实例
+                // 此处是选择重新变更的数据（此处为mock数据）
+                option4.series[0].data = [15, 200, 270, 180, 240, 230, 348, 200, 360]
+                salesBroken.setOption(option4, true);
+
+                // 饼图
+                salesPie.clear();//清空当前实例
+                // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+                var arr = [10, 7, 3, 7, 3, 5, 7, 7]
+                for (let index = 0; index < arr.length; index++) {
+                    const element = arr[index];
+                    option5.series[0].data[index].value = element
+                }
+                salesPie.setOption(option5, true);
+            }
+
+            if (type === 'stock') {
+                console.log('库存量分析')
+                $(item).addClass('on').parent('.x_checktab span').siblings().children().removeClass('on')
+                // 折线图
+                stockBroken.clear();//清空当前实例
+                // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+                option6.series[0].data = [13, 24, 49, 43, 59]//库存量
+                option6.series[1].data = [30, 80, 88, 65, 79]//库存金额
+                option6.series[2].data = [25, 36, 90, 70, 89]//预计清空天数
+                stockBroken.setOption(option6, true);
+
+                // 饼图
+                stockPie.clear();//清空当前实例
+                // 此处是选择重新变更的数据（此处为mock数据，后面需要请求接口替换）
+                var arr = [30, 20, 20, 20, 20, 20]
+                for (let index = 0; index < arr.length; index++) {
+                    const element = arr[index];
+                    option7.series[0].data[index].value = element
+                }
+                stockPie.setOption(option7, true);
+            }
+
+        }
+
+        //同时绑定多个
+        lay('.layui-input').each(function (index) {
+            var type = $(this).attr('type') || 'date'
+            var range = $(this).attr('range')
+            laydate.render({
+                elem: this,
+                trigger: 'click',//可以解决多个实例闪退问题
+                // isInitValue: false,//初始值填充（需配合value使用）
+                // value:$('#TimeVal'+index).text(),
+                range: range || false, //或 range: '~' 来自定义分割字符
+                theme: '#0069E0',//主题
+                type: type,
+                // type:index === 0 || index === 1 ? 'month' : 'date',
+                done: function (value, date) {
+                    $('#TimeVal' + index).text(value)
+                }
+            });
+        });
+        lay('.x_date').each(function (index) {
+            var type = $(this).attr('type') || 'date'
+            var range = $(this).attr('range')
+            laydate.render({
+                elem: this,
+                trigger: 'click',//可以解决多个实例闪退问题
+                range: range || false, //或 range: '~' 来自定义分割字符
+                theme: '#0069E0',//主题
+                type: type,
+                done: function (value, date) {
+                    setTimeout(() => {
+                        $('.x_date').eq(index).text('')
+                    }, 0);
+                    $('.x_date').eq(index).siblings('.layui-input').text(value)
+                    $('#TimeVal' + index).text(value)
+                }
+            });
+        });
+        // 随机数
+        function randomNumBoth(Min, Max){
+            var Range = Max - Min;
+            var Rand = Math.random();
+            var num = Min + Math.round(Rand * Range); //四舍五入
+            return parseInt(num)
+        }
+        // 生成数组数字
+        function makeNumArr(min, max, len) {
+            len = len || 6
+            var arr = []
+            for(let i = 1; i <= len; i++) {
+                arr.push(randomNumBoth(min, max))
+            }
+            return arr
+        }
+        function choseImg(id, callback) {
+            $( '#' + id + ' .fen-lei-bx img').click(function () {
+            var src = $(this).attr('src')
+            if (src.indexOf('check2') > 0 ) {
+                src = './imgs/check1.png'
+            } else {
+                src = './imgs/check2.png'
+            }
+            $(this).attr('src', src)
+            if (callback) callback()
+        })
+        }
+    </script>
+</body>
+</html>
