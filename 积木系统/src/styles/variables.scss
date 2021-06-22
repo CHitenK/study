@@ -1,0 +1,46 @@
+// base color
+$blue:#324157;
+$light-blue:#3A71A8;
+$red:#C03639;
+$pink: #E65D6E;
+$green: #30B08F;
+$tiffany: #4AB7BD;
+$yellow:#FEC171;
+$panGreen: #30B08F;
+
+// sidebar
+/*$menuText:#bfcbd9; // 默认 
+$menuActiveText:#409EFF;
+$subMenuActiveText:#f4f4f5; // https://github.com/ElemeFE/element/issues/12951
+
+$menuBg:#304156;  // 默认a00; 
+$menuHover:#263445; // 默认
+
+$subMenuBg:#1f2d3d; // 默认
+$subMenuHover:#001528; // // 默认 */
+
+// sidebar 修改
+$menuText:#303133; // 默认 
+$menuActiveText:#409EFF;
+$subMenuActiveText:#303133; // https://github.com/ElemeFE/element/issues/12951
+
+$menuBg: #6f3a3a00;  // 默认a00; 
+$menuHover: #ecf5ff; // 默认
+
+$subMenuBg:#6f3a3a00; // 默认
+$subMenuHover:#ecf5ff; // // 默认
+
+$sideBarWidth: 210px;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}

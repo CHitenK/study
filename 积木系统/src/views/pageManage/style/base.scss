@@ -1,0 +1,25 @@
+.flex-midlle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.el-color-picker--small .el-color-picker__trigger,
+.el-color-picker--medium .el-color-picker__trigger {
+  width: 70px;
+}
+.btn-box{
+  //margin-bottom: 15px;
+}
+.img-tip-box{
+  width: 100%;
+  position: relative;
+}
+.tip-img-show{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: none;
+}

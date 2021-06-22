@@ -6,8 +6,8 @@
 销售SD核销配置 编辑 saleSDCollateList_edit
 销售SD核销配置 日志 saleSDCollateList_log
              
-应收账龄报告  导出 receivableAccountTab_export
-应收账龄报告  刷新 receivableAccountTab_refresh
-应收账龄报告 tob_baolingList_tab
-To B暂估核销 tob_hexiaoList_tab
+应收账龄报告  导出 receivableAccount_export
+应收账龄报告  刷新 receivableAccount_refresh
 
+发票列表 详情 invoiceList_detail
+To B暂估核销列表  完结核销 toBWriteoffList_hexiao
