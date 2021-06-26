@@ -1,0 +1,12 @@
+/** 工具富辅助类(utils)css*/
+/*左，右浮动*/
+.ut-l{float: left;}
+.ut-r{float: right;}
+/*清除浮动*/
+/*.ut-fixclear{*zoom:1;}*/
+.ut-fixclear:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+/*单行超出省略*/
+.ut-single-line{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+/*多行超出省略，仅仅webkit内核(移动端多数为webkit内核)*/
+.ut-multi-line-2 {display: -webkit-box !important;overflow: hidden;text-overflow: ellipsis;word-break: break-all;-webkit-box-orient: vertical;-webkit-line-clamp: 2;/*行数*/}
+.ut-multi-line-3 {display: -webkit-box !important;overflow: hidden;text-overflow: ellipsis;word-break: break-all;-webkit-box-orient: vertical;-webkit-line-clamp: 3;/*行数*/}
