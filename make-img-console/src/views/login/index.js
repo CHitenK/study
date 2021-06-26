@@ -117,6 +117,10 @@ class Login extends React.Component{
         {/* 注册 */}
         <Register isRegiste={this.state.isRegiste} handleEvent={this.handleEvent} />
         {/* 注册 end */}
+        <div className="bei-an-bx">
+          <span className="pr-15">粤ICP备18110158号-1</span>
+          <a href="https://beian.miit.gov.cn" target="_blank">工业和信息化部政务服务平台</a>
+        </div>
       </div>
     )
   }
