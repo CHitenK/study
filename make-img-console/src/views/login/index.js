@@ -51,7 +51,7 @@ class Login extends React.Component{
       })
       return false
     }
-    this.props.history.push("/content/index");
+    this.props.history.push("/content/list");
   }
   // 验证码
   getYanZheng() {
@@ -60,7 +60,8 @@ class Login extends React.Component{
     const imgLookSrc = window.location.origin + '/api/makeimg?id=MKI1598350477880'
     this.setState({
       random: n,
-      imgSrc: imgLookSrc + '&n=' + n
+      imgSrc: imgLookSrc + '&n=' + n,
+      yanZheng: n
     })
   }
   // 设置验证码
@@ -92,7 +93,7 @@ class Login extends React.Component{
         <div className={this.state.isLogin ? 'login-box pd-15' : 'login-box pd-15 login-box-out'} >
             <div className="f-c fs-16 clr-I f-w mr-t-20">登 录</div>
             <div className="mr-t-20">
-                <Input size="large" value="用户1" className="fs-14 clr-II" placeholder="输入用户名称" prefix={<UserOutlined />} />
+                <Input size="large" value="用户" className="fs-14 clr-II" placeholder="输入用户名称" prefix={<UserOutlined />} />
             </div>
             <div className="mr-t-10">
                 <Input.Password size="large" value="0987654321" className="fs-14 clr-II" placeholder="输入密码" prefix={<UnlockOutlined />} />

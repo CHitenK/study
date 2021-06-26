@@ -17,7 +17,7 @@ const Left = () => {
   return (
     <div className="left-box">
       <div className="logo-img-box f-c pd-15">
-          <span className="fs-20 clr-w">cmk-test</span>
+          <span className="fs-20 clr-w">Image-making</span>
       </div>
       <div>
         {
