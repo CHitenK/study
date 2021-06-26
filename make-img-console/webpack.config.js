@@ -16,9 +16,9 @@ const CompressionPlugin = require("compression-webpack-plugin");
         // filename: '[name].[chunkhash:8].js',//'[name].bundle.js',
         // path: path.resolve(__dirname, 'build')
         // filename: '[name].[chunkhash:8].js',
-        filename: '[name].js', //出口名称
+        // filename: '[name].js', //出口名称
         // filename: 'bundle.js',
-        // filename: "[name]-[hash].js",
+        filename: "[name]-[hash].js",
         path: path.resolve(__dirname, 'build')
     },
     resolve:{
