@@ -38,7 +38,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "antd": "^4.6.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "echarts": "^4.8.0",
     "react": "^16.13.1",
     "react-color": "^2.18.1",
