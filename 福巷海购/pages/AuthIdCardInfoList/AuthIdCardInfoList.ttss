@@ -1,0 +1,73 @@
+page{
+    /* background-color: #fff; */
+}
+/* 缺省页样式 */
+.default_page{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F7F7F7;
+    text-align: center;
+}
+.default_box{
+    color: #999;
+    margin-top: 200rpx;
+}
+.default_img image{
+    width: 440rpx;
+    height: 330rpx;
+}
+.default_box .wait{
+    font-size: 36rpx;
+    margin-bottom: 22rpx;
+}
+.default_box .AuthTips{
+    font-size: 30rpx;
+    margin-bottom: 52rpx;
+}
+.goAuthBtn{
+    width: 294rpx;
+    height: 84rpx;
+    margin:0 auto;
+    color: #fff;
+    font-size: 30rpx;
+    line-height: 84rpx;
+    background-color: #FF3636;
+
+}
+/* 内容部分 */
+.AuthInfoList{
+    width: 100%;
+    padding: 20rpx 0;
+     background-color: #fff;
+}
+.AuthInfoItem{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20rpx 0;
+}
+.AuthInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20rpx;
+}
+.cancelBtn image{
+    width: 23rpx;
+    height: 23rpx;
+    margin-right: 10rpx;
+}
+.cancelBtn text{
+    font-size: 26rpx;
+    color: #666666;
+}
+.AuthName{
+    font-size: 36rpx;
+    color: #333;
+}
+.AuthIdCard{
+    font-size: 30rpx;
+    color: #666;
+}

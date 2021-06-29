@@ -1,0 +1,16 @@
+<view class="mask" catchtap="closeModel" data-type="clickMask" tt:if="{{isMask}}"></view>
+<view class="mask_box" tt:if="{{isMaskBox}}">
+	<view class="pd">
+		<view class="title" tt:if="{{title}}">{{title}}</view>
+		<view class="help">
+			<text class="help_txt" bindtap="help" tt:if="{{HelpText}}">{{HelpText}}</text>
+		</view>
+		<view class="content_box">
+			<block tt:for="{{content}}" tt:key="index">
+				<view class="content"><text tt:if="{{content.length > 1}}">{{index+1}}.</text>{{item}}</view>
+			</block>
+		</view>
+	</view>
+	<view class="btn_bg" style="background-color:{{buttonBackgroundColor}};color:{{buttonTextColor}}" bindtap="comfirm" tt:if="{{buttonStyle == 1}}">{{buttonText}}</view>
+	<view class="btn" style="color:{{buttonTextColor}}" bindtap="comfirm" tt:else>{{buttonText}}</view>
+</view>

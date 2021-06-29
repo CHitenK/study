@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/userCenter/userCenter",
+    "pages/index/index",
+    "pages/AddressList/AddressList",
+    "pages/AddAddress/AddAddress",
+    "pages/Orderlistment/Orderlistment",
+    "pages/producrdetail/producrdetail",
+    "pages/login/login",
+    "pages/submitOrder/submitOrder",
+    "pages/AuthIdCardInfoList/AuthIdCardInfoList",
+    "pages/AuthIdCardInfo/AuthIdCardInfo",
+    "pages/PaymentMethod/PaymentMethod",
+    "pages/paymentResult/paymentResult",
+    "pages/agreement/agreement",
+    "pages/orderDetail/orderDetail",
+    "pages/logistics/logistics",
+    "pages/searchOrder/searchOrder",
+    "pages/searchOrderResult/searchOrderResult",
+    "pages/pid/index",
+    "pages/ToBeRecord/ToBeRecord",
+    "pages/BankCardList/BankCardList",
+    "pages/addBank/addBank",
+    "pages/pid/index",
+    "pages/widthdraw/widthdraw",
+    "pages/mineincome/mineincome",
+    "pages/search/search",
+    "pages/searchResult/searchResult",
+    "pages/bindphone/bindphone"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#CC0000",
+    "navigationBarTitleText": "",
+    "backgroundColor": "#f8f8f8",
+    "navigationBarTextStyle": "white",
+    "backgroundColorBottom": "rgba(0,0,0,0.5)",
+    "enablePullDownRefresh": true
+  },
+  "networkTimeout": {
+    "request": 50000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "同意此应用使用你的地址信息"
+    }
+  },
+  "usingComponents": {},
+  "navigateToMiniProgramAppIdList": [
+    "wx0491550b576aa91f",
+    "wx492a4f46ee2f3a76"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

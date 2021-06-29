@@ -1,0 +1,189 @@
+<!-- pages/orderDetail/orderDetail.ttml -->
+<view class="box">
+	<!-- 订单状态 -->
+	<view class="status">
+		<!-- 待收货 -->
+		<view class="toReceived module1" tt:if="{{productInfo.frontState=='WaitReceive'}}">
+			<view class="top-box">
+				<image class="icon" style="width:47rpx;height:39rpx;margin-top:-4rpx;" src="../../img/icon/toReceived.png" mode="" />
+				<text class="state">待收货</text>
+			</view>
+			<!-- 直邮 -->
+			<view class="desc" tt:if="{{productInfo.orderSkus && productInfo.orderSkus[0] && productInfo.orderSkus[0].itemType == 2}}">自发货起，20天后自动确认收货。</view>
+			<!-- 保税 -->
+			<view class="desc" tt:if="{{productInfo.orderSkus && productInfo.orderSkus[0] && productInfo.orderSkus[0].itemType == 1}}">自发货起，15天后自动确认收货。</view>
+		</view>
+
+		<!-- 待发货 -->
+		<view class="toSend module1" tt:if="{{productInfo.frontState=='WaitDelivery'}}">
+			<view class="top-box">
+				<image class="icon" style="width:40rpx;height:35rpx;margin-top:-4rpx;" src="../../img/icon/toSend.png" mode="" />
+				<text class="state">待发货</text>
+			</view>
+			<view class="desc">正在分拣打包中，请耐心等待。</view>
+		</view>
+
+		<!-- 待支付 -->
+		<view class="toPay module1" tt:if="{{productInfo.frontState=='WaitPay'&&!showClose}}">
+			<view class="top-box">
+	    	<image class="icon" style="width:48rpx;height:48rpx;margin-top:-4rpx;" src="../../img/icon/waitre.png" mode="" />
+				<text class="state">待付款</text>
+			</view>
+			<view class="desc" tt:if="{{!productInfo.isFans}}">请在{{hour}}时{{minute}}分{{sec}}秒内完成付款，超时订单自动取消</view>
+		</view>
+
+		<!-- 待申报 -->
+		<view class="declare module2" tt:if="{{productInfo.frontState=='WaitPass'}}">
+			<view class="top-box">
+				<image class="icon" style="width:44rpx;height:48rpx;margin-top:-4rpx;" src="../../img/icon/toDeclare.png" mode="" />
+				<text class="state">待申报</text>
+			</view>
+		</view>
+
+		<!-- 已关闭 -->
+		<view class="declare module2" tt:if="{{productInfo.frontState=='Cancel'||(productInfo.frontState=='WaitPay'&&showClose)}}">
+			<view class="top-box">
+				<image class="icon" style="width:48rpx;height:48rpx;margin-top:-4rpx;" src="../../img/icon/closed.png" mode="" />
+				<text class="state">交易关闭</text>
+			</view>
+		</view>
+
+		<!-- 已完成 -->
+		<view class="declare module2" tt:if="{{productInfo.frontState=='SignReceiveGoods'}}">
+			<view class="top-box">
+				<image class="icon" style="width:49rpx;height:49rpx;margin-top:-4rpx;" src="../../img/icon/complete.png" mode="" />
+				<text class="state">交易完成</text>
+			</view>
+		</view>
+
+        <!-- 交易关闭已退款 DealClose-->
+    <view class="declare module2" tt:if="{{productInfo.frontState=='DealClose'}}">
+			<view class="top-box">
+				<image class="icon" style="width:48rpx;height:48rpx;margin-top:-4rpx;" src="../../img/icon/closed.png" mode="" />
+				<text class="state">交易关闭-已退款</text>
+			</view>
+		</view>
+
+	</view>
+
+	<!-- 收货地址或物流 -->
+	<!-- 物流信息 -->
+	<view class="modular2 clearfix" tt:if="{{!productInfo.isFans && lastLogistics.content && (productInfo.frontState=='SignReceiveGoods'||productInfo.frontState=='WaitReceive')}}" bindtap="jumpLogistics">
+		<image src="/img/received.png" class="intme-img" mode="" /> 
+		<view class="left-box fl">
+			<view class="logistics">{{lastLogistics.content}}</view>
+			<view class="time">{{lastLogistics.time}}</view>
+		</view>
+		<image class="arrow fr" src="../../img/icon/right.png" mode="" />
+	</view>
+
+	<!-- 地址 -->
+	<view class="modular1" tt:if="{{!productInfo.isFans}}">
+	   <image src="/img/point.png" class="intme-modular1" mode="" /> 
+	   <view class="modular1-item" >
+				<view class="top clearfix">
+					<text class="name fl">{{productInfo.receiverName}}</text>
+					<text class="phone fl" style="margin-left: 10rpx;">{{newTel}}</text>
+				</view>
+				<view class="address">{{productInfo.province}}{{productInfo.city}}{{productInfo.county}}{{productInfo.receiverAddress}}</view>
+			</view>
+	</view>
+	
+
+	<!-- 商品信息 -->
+	<view class="product-info">
+		<view class="shop_box">
+			<view class="shop">
+				<image src="../../img/icon/index.png" mode="" />
+				<text class="shop-name">{{productInfo.storehouse}}</text>
+			</view>
+		</view>
+		<block class="productInfo_box" tt:for="{{productInfo.orderSkus}}" tt:for-item="item" tt:for-index="index" tt:for-index="i">
+			<view class="product clearfix" data-id="{{item.productId}}" data-darenid="{{productInfo.darenId}}">
+				<view class="product_box">
+					<image class="pic fl" src="{{item.imageUrl}}" mode="" />
+					<view class="rightbox fl">
+						<view class="name line-clamp2">{{item.name}}</view>
+						<view>
+							<view class="specifications">
+								<block tt:for="{{item.spec}}" tt:for-item="items">
+									<!-- <text>黑色</text><text>羽绒</text><text>1200床</text> -->
+									<text class="line-clamp1">{{items.value}}</text>
+								</block>
+							</view>
+						</view>
+
+					</view>
+					<view class="rightbox-last fr">
+					  <view class="product-price">
+						   ￥{{item.unitPrice}}
+						</view>
+						 <view class="product-num">
+						  X{{item.num}}
+						</view>
+						<view class="product-tax">税费: ￥{{item.tax}}</view>
+					</view>
+				</view>
+			</view>
+			<view class="line" style="height:10rpx;" tt:if="{{productInfo.orderSkus.length>1}}"></view>
+		</block>
+
+	</view>
+
+	<!-- 客服 -->
+	<view class="services-box" tt:if="{{!productInfo.isFans}}">
+		<button open-type="contact">
+			<view class="services-concat">
+				<image src="/img/icon/contat.png" />
+				<text>联系客服</text>
+			</view>
+			<view class="service-tips">如需申请售后，请联系客服</view>
+		</button>
+	</view>
+
+	<!-- 下单时间编号 -->
+	<view class="order-info">
+		<view class="copy_box">
+			<view class="number">订单编号：<text class="order-info-text">{{productInfo.orderId}}</text></view>
+			<view class="copy" bindtap='copyText' data-text="{{productInfo.orderId}}">复制</view>
+		</view>
+		<view class="date">下单时间：<text  class="order-info-text">{{productInfo.createTime}}</text></view>
+	</view>
+
+	<!-- 订单结算 -->
+	<view class="settlement">
+		<view class="list">
+			<view class="fl left-text">商品金额：</view>
+			<view class="fr right-text">￥{{productInfo.goodsPrice}}</view>
+		</view>
+		<view class="list">
+			<view class="fl left-text">运费：</view>
+			<view class="fr right-text">￥{{productInfo.deliveryPrice || '0.00'}}</view>
+		</view>
+		<view class="list">
+			<view class="fl left-text">税费：</view>
+			<view class="fr right-text">￥{{productInfo.totalTax || '0.00'}}</view>
+		</view>
+		<view class="list total">应付总额：<text class="total-pri"> ¥ {{productInfo.totalPrice}}</text></view>
+	</view>
+
+	<!-- 按钮组合 ||productInfo.frontState=='WaitPass' -->
+	<!-- 待申报/待发货订单没有操作 -->
+	<!-- 
+            WaitReceive 待收货
+            WaitDelivery 待发货
+            WaitPay 待支付
+            SignReceiveGoods 已签收
+            WaitPass 待申报
+         -->
+	<block tt:if="{{!productInfo.isFans && (productInfo.frontState == 'WaitReceive' || productInfo.frontState == 'SignReceiveGoods' || productInfo.frontState == 'WaitPay' || productInfo.frontState == 'Cancel') }}">
+		<view class="btnbox">
+			<view class="btn" bindtap="jumpLogistics" tt:if="{{productInfo.frontState=='WaitReceive'||productInfo.frontState=='SignReceiveGoods'}}">查看物流</view>
+			<view class="btn btn-r" bindtap="confirmReceive" tt:if="{{productInfo.frontState=='WaitReceive'}}">确认收货</view>
+			<view class="btn" bindtap="deleteOrder" tt:if="{{productInfo.frontState=='Cancel'||(productInfo.frontState=='WaitPay'&&showClose)}}">删除订单</view>
+			<view class="btn" bindtap="cancelOrder" tt:if="{{(productInfo.frontState=='WaitPay'&&!showClose)}}">取消订单</view>
+			<view class="btn btn-r" bindtap="toPay" data-surplusDate="{{productInfo.surplusDate}}" data-price="{{productInfo.totalPrice}}" data-createtime="{{productInfo.createTime}}" data-orderid="{{productInfo.orderId}}" tt:if="{{productInfo.frontState=='WaitPay'&&!showClose}}">去付款</view>
+		</view>
+	</block>
+
+</view>

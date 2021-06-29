@@ -1,0 +1,5 @@
+
+<view class="conate">
+   <image  src="{{UserImg}}" mode="widthFix" style="margin:auto;"/>
+    <!-- <image tt:for="{{imgs}}" tt:key="index" src="{{item}}" mode="widthFix" style="margin:auto;" data-url="{{item}}" bindtap="OriginalImage"/> -->
+</view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "auth-info":"../../common/AuthInfo/AuthInfo"
+  },
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText":"确认订单"
+}

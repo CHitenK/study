@@ -1,0 +1,62 @@
+<view class="container">
+	<view class="top_content">
+		<view class="top_box"></view>
+		<view class="info_box">
+			<view class="total_money">¥{{info.totalReturn || 0}}</view>
+			<view class="total_txt">累计收益(元)</view>
+			<view class="money_list">
+				<view class="list_item">
+					<text>可提现(元)</text>
+					<view class="item_money">¥{{info.realizable || 0}}</view>
+				</view>
+				<view class="list_item">
+					<text>提现中(元)</text>
+					<view class="item_money">¥{{info.realizing || 0}}</view>
+				</view>
+				<view class="list_item">
+					<text>已提现(元)</text>
+					<view class="item_money">¥{{info.realized || 0}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="income_list">
+		<view class="title_menu item_pd">
+			<block tt:for="{{menuList}}" tt:key="index">
+				<view class="menu_item {{changesIndex == index ? 'on' : ''}}" data-source="{{item.source}}" data-index="{{index}}" bindtap="distributionList">
+					<text>{{item.name}}</text>
+				</view>
+			</block>
+		</view>
+		<scroll-view class="scroll_box" scroll-y="true" bindscrolltolower="onScrollToBottom">
+			<block tt:if="{{list.length > 0}}">
+				<view class="income_list_item item_pd" tt:for="{{list}}" tt:key="index">
+					<view class="order_money">
+						<view class="left_order">
+                            <block tt:if="{{item.source == 'CashOut'}}">
+                                <view class="title">{{item.negate == true ? '提现失败返利' : '提现'}}</view>
+                            </block>
+                            <block tt:else>
+                                <view class="title">销售佣金</view>
+                            </block>
+							<view class="order" tt:if="{{item.source != 'CashOut'}}" bindtap="to" data-id="{{item.businessId}}">订单号：{{item.businessId}}</view>
+						</view>
+                        <!-- state == 'closed' 已关闭（对于订单就是退款，对于提现就是审核未通过） -->
+                        <!-- CashOut而且negate=true的时候是提现负流水 -->
+						<view class="right_income {{item.negate == true ? '' : 'black'}}" tt:if="{{item.source == 'CashOut'}}">{{item.amount}}</view>
+						<view class="right_income" tt:if="{{item.source == 'SalesRebate'}}">{{item.amount}}</view>
+					</view>
+					<view class="time_and_count">
+						<view class="time" tt:if="{{item.operationTime}}">{{item.source == 'CashOut' ? '提现时间' : '支付时间'}}：{{item.operationTime}}</view>
+						<block tt:if="{{item.state == 'closed'}}">
+							<view class="sales">{{item.source == 'CashOut' ? '审核未通过' : '退款'}}</view>
+						</block>
+						<view class="sales" tt:elif="{{item.source != 'CashOut'}}">订单金额：¥{{item.payPrice}}</view>
+					</view>
+				</view>
+			</block>
+            <view class="noData" tt:if="{{tipsText && list.length == 0}}">{{tipsText}}</view>
+		</scroll-view>
+
+	</view>
+</view>

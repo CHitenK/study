@@ -1,0 +1,40 @@
+.btn-oo-n{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 670px;
+  top: 400px;
+  height: 64px;
+  width: 64px;
+  // border: solid 2px #F93247;
+  border-radius: 50%;
+  z-index: 10;
+  background: rgba(0, 0, 0, .4);
+  .ser-iocn{
+    font-size: 36px;
+  }
+  .ser-iocn-ot{
+    font-size: 40px;
+  }
+}
+.btn-oo-n-act{
+  transform: scale(1.2,1.2);
+}
+.btn-active-pp1{
+  animation: heartbeat 1s infinite;
+}
+@keyframes heartbeat {
+	0% {
+	transform:  scale(0.9,0.9);
+	opacity:1;
+}
+25% {
+	transform: scale(1,1);
+	opacity:0.8;
+}
+100% {
+	transform: scale(0.9,0.9);
+	opacity:1;
+}
+}

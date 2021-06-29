@@ -1,0 +1,71 @@
+<!-- pages/searchResult/searchResult.ttml -->
+<view class="box">
+    <view class="fixed">
+        <!-- 搜索部分 -->
+        <view class="search-view clearfix">
+            <view class="search-box">
+                <image class="searchImg" src="../../img/icon/search.png" mode="" />
+                <input type="text" placeholder="搜索你喜欢的商品" placeholder-style="color:#999;" bindinput="inputSearch"
+                    bindconfirm="confirmSearch" value="{{keyWords}}" maxlength="40" />
+                <image tt:if="{{showClose}}" class="close" src="../../img/icon/cancel.png" mode="" bindtap="close" />
+            </view>
+        </view>
+
+        <!-- tab切换栏 -->
+        <view class="tab-box" tt:if="{{false}}">
+            <view class="tab">
+                <view class="center {{currentClick==1?'current':''}}" bindtap="getProductListByComprehensive">
+                    <text> 综合</text>
+                </view>
+            </view>
+
+            <view class="tab">
+                <view class="center {{currentClick==2?'current':''}}" bindtap="getProductListBySales">
+                    <text> 销量</text>
+                    <image src="{{isRiseBySales?'../../img/icon/up.png':'../../img/icon/down.png'}}" mode="" />
+                </view>
+            </view>
+            <view class="tab">
+                <view class="center {{currentClick==3?'current':''}}" bindtap="getProductListByPrices">
+                    <text> 价格</text>
+                    <image src="{{isRiseByPrices?'../../img/icon/up.png':'../../img/icon/down.png'}}" mode="" />
+                </view>
+            </view>
+        </view>
+    </view>
+<!-- 搜索 end -->
+	<!-- 根据商品分类获取的商品列表 -->
+	<view class="scrollBox" tt:if="{{productList.length > 0}}">
+		<view class="product-list">
+			<block tt:for="{{productList}}" tt:for-item="item">
+				<view class="pro-list" >
+					<image src="{{item.imageUrl}}" data-id="{{item.id}}" bindtap="getProdDetail" data-link="{{item.detailUrl}}" />
+					<view class="bot-box" >
+						<view class="title" data-id="{{item.id}}" bindtap="getProdDetail" data-link="{{item.detailUrl}}" >{{item.name}}</view>
+						<view class="price-box" data-id="{{item.id}}" data-link="{{item.detailUrl}}" bindtap="getProdDetail">
+							<text class="preseprice">¥{{item.price}}</text>
+							<text class="slantbar">/</text>
+							<text class="presoldeprice">赚{{item.commission}}</text>
+						</view>
+						<block wx:if="{{item.detailUrl}}">
+							<view class="link-box">
+								<text class="link-name">推广链接：</text>
+								<text class="link-copy" catchtap="copyText" data-text="{{item.detailUrl}}">复制</text>
+							</view>
+							<view class="link-url">{{item.detailUrl}}</view>
+						</block>
+					</view>
+				</view>
+			</block>
+		</view>
+		<!-- 底线 -->
+		<view class="bot-line" tt:if="{{displayTotalCount == productList.length }}">我是有底线的</view>
+	</view>
+	<!-- 空白页面展示 -->
+	<view class="none" tt:if="{{productList.length==0}}">
+		<view class="inner">
+			<image src="../../img/icon/none.png" mode="" />
+      <view class="text" >暂无商品～</view>
+		</view>
+	</view>
+</view>

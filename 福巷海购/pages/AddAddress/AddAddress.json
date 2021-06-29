@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "auth-info":"../../common/AuthInfo/AuthInfo"
+  },
+  "navigationBarTitleText":"编辑收货地址",
+  "enablePullDownRefresh": false 
+}

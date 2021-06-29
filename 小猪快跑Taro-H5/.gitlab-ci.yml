@@ -1,0 +1,183 @@
+# image: harbor.dtyunxi.cn/library/yunxicibase:0.1.9
+image: registry.cn-hangzhou.aliyuncs.com/yx-repo/yunxicibase:0.1.9
+
+stages:
+  - dev_build
+  - test_build
+  - demo_build
+  - stage_build
+  - prod_build
+  - beta_build
+  - docker_build
+
+dev_build:
+  stage: dev_build
+  only:
+    - tags
+    - ci
+    - master
+    - /^release-dev.*$/
+  script:
+    #    - npm run clean-dist
+    #    - npm cache verify
+    #    - yarn install --registry http://registry-hz.dtyunxi.cn/repository/taobao-npm/ --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+    #    - chmod -R 777 node_modules
+    #    - npm run yunxi-dev
+
+    - mc config host add minio ${MINIO_URL} ${MINIO_USER} ${MINIO_PASSWORD} S3v4
+    - mc mb -p minio/idp
+    - mc policy public minio/idp
+    - mkdir -p /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - cp -r dist  $CI_PROJECT_DIR/docker/  &&  cp -r dist /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - zip -q -r dist.zip dist/
+    - mc cp --recursive dist.zip minio/idp/${GROUP_NAME}/${PROJECT_NAME}/${CI_COMMIT_TAG}/
+    - kaniko --skip-tls-verify -c $CI_PROJECT_DIR/docker -f $CI_PROJECT_DIR/docker/Dockerfile -d ${DOCKER_REGISTRY}/${GROUP_NAME}/${PROJECT_NAME}:${CI_COMMIT_TAG}
+    - chart_build
+
+test_build:
+  stage: test_build
+  only:
+    - tags
+    - ci
+    - /^release-test.*$/
+  script:
+    #   - npm run clean-dist
+    #  - yarn install --registry http://registry-hz.dtyunxi.cn/repository/taobao-npm/ --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+    #  - chmod -R 777 node_modules
+    #    - npm run yunxi-test
+
+    - mc config host add minio ${MINIO_URL} ${MINIO_USER} ${MINIO_PASSWORD} S3v4
+    - mc mb -p minio/idp
+    - mc policy public minio/idp
+    - mkdir -p /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - cp -r dist  $CI_PROJECT_DIR/docker/  && cp -r dist /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - zip -q -r dist.zip dist/
+    - mc cp --recursive dist.zip minio/idp/${GROUP_NAME}/${PROJECT_NAME}/${CI_COMMIT_TAG}/
+    - kaniko --skip-tls-verify -c $CI_PROJECT_DIR/docker -f $CI_PROJECT_DIR/docker/Dockerfile -d ${DOCKER_REGISTRY}/${GROUP_NAME}/${PROJECT_NAME}:${CI_COMMIT_TAG}
+    - chart_build
+
+demo_build:
+  tags:
+    - i-commerce
+  stage: demo_build
+  only:
+    - tags
+    - ci
+    - /^release-demo.*$/
+  script:
+    - npm run clean-dist
+    - yarn install --registry http://registry-hz.dtyunxi.cn/repository/taobao-npm/ --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+    - chmod -R 777 node_modules
+    - npm run yunxi-demo
+
+    - mc config host add minio ${MINIO_URL} ${MINIO_USER} ${MINIO_PASSWORD} S3v4
+    - mc mb -p minio/idp
+    - mc policy public minio/idp
+    - mkdir -p /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - cp -r dist  $CI_PROJECT_DIR/docker/  &&  cp -r dist /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - zip -q -r dist.zip dist/
+    - mc cp --recursive dist.zip minio/idp/${GROUP_NAME}/${PROJECT_NAME}/${CI_COMMIT_TAG}/
+    - kaniko --skip-tls-verify -c $CI_PROJECT_DIR/docker -f $CI_PROJECT_DIR/docker/Dockerfile -d ${DOCKER_REGISTRY}/${GROUP_NAME}/${PROJECT_NAME}:${CI_COMMIT_TAG}
+    - chart_build
+
+stage_build:
+  stage: stage_build
+  only:
+    - tags
+    - ci
+    - /^release-stage.*$/
+  script:
+    - npm run clean-dist
+    - yarn install --registry http://registry-hz.dtyunxi.cn/repository/taobao-npm/ --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+    - chmod -R 777 node_modules
+    - npm run yunxi-stage
+
+    - mc config host add minio ${MINIO_URL} ${MINIO_USER} ${MINIO_PASSWORD} S3v4
+    - mc mb -p minio/idp
+    - mc policy public minio/idp
+    - mkdir -p /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - cp -r dist  $CI_PROJECT_DIR/docker/  && cp -r dist /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - zip -q -r dist.zip dist/
+    - mc cp --recursive dist.zip minio/idp/${GROUP_NAME}/${PROJECT_NAME}/${CI_COMMIT_TAG}/
+    - kaniko --skip-tls-verify -c $CI_PROJECT_DIR/docker -f $CI_PROJECT_DIR/docker/Dockerfile -d ${DOCKER_REGISTRY}/${GROUP_NAME}/${PROJECT_NAME}:${CI_COMMIT_TAG}
+    - chart_build
+
+prod_build:
+  stage: prod_build
+  only:
+    - tags
+    - ci
+    - /^release-prod.*$/
+  script:
+    # - npm run clean-dist
+    # - yarn install --registry http://registry-hz.dtyunxi.cn/repository/taobao-npm/ --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+    # - chmod -R 777 node_modules
+    # - npm run yunxi-prod
+
+    - mc config host add minio ${MINIO_URL} ${MINIO_USER} ${MINIO_PASSWORD} S3v4
+    - mc mb -p minio/idp
+    - mc policy public minio/idp
+    - mkdir -p /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - cp -r dist  $CI_PROJECT_DIR/docker/  &&  cp -r dist /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - zip -q -r dist.zip dist/
+    - mc cp --recursive dist.zip minio/idp/${GROUP_NAME}/${PROJECT_NAME}/${CI_COMMIT_TAG}/
+    - cp -r dist  $CI_PROJECT_DIR/docker/dist
+    - kaniko --skip-tls-verify -c $CI_PROJECT_DIR/docker -f $CI_PROJECT_DIR/docker/Dockerfile -d ${DOCKER_REGISTRY}/${GROUP_NAME}/${PROJECT_NAME}:${CI_COMMIT_TAG}
+    - chart_build
+
+docker_build:
+  tags:
+    - i-de-mpc
+  stage: docker_build
+  only:
+    - tags
+    - /^release-docker.*$/
+  script:
+    - npm install --registry https://registry.npm.taobao.org  --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+    - chmod -R 777 node_modules
+    - npm run yunxi-dev
+
+    - mc config host add minio ${MINIO_URL} ${MINIO_USER} ${MINIO_PASSWORD} S3v4
+    - mc mb -p minio/idp
+    - mc policy public minio/idp
+    - mkdir -p /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - cp -r dist /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - zip -q -r dist.zip dist/
+    - mc cp --recursive dist.zip minio/idp/${GROUP_NAME}/${PROJECT_NAME}/${CI_COMMIT_TAG}/
+    - cp -r dist docker/
+    - kaniko  --skip-tls-verify=true -c $PWD/docker/ -f $PWD/docker/Dockerfile -d ${DOCKER_REGISTRY}/${GROUP_NAME}/${PROJECT_NAME}:${CI_COMMIT_TAG}
+    - chart_build
+
+beta_build:
+  tags:
+    - i-commerce
+  stage: beta_build
+  only:
+    - tags
+    - ci
+    - /^release-beta.*$/
+  script:
+    - npm run clean-dist
+    - yarn install --registry http://registry-hz.dtyunxi.cn/repository/taobao-npm/ --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+    - chmod -R 777 node_modules
+    - npm run yunxi-beta
+
+    - mc config host add minio ${MINIO_URL} ${MINIO_USER} ${MINIO_PASSWORD} S3v4
+    - mc mb -p minio/idp
+    - mc policy public minio/idp
+    - mkdir -p /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - cp -r dist  $CI_PROJECT_DIR/docker/  && cp -r dist /cache/${CI_PROJECT_NAME}-${CI_PROJECT_ID}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}/dist
+    - zip -q -r dist.zip dist/
+    - mc cp --recursive dist.zip minio/idp/${GROUP_NAME}/${PROJECT_NAME}/${CI_COMMIT_TAG}/
+    - chart_build
+.auto_devops: &auto_devops |
+  http_status_code=`curl -o .auto_devops.sh -s -m 10 --connect-timeout 10 -w %{http_code} "${CHOERODON_URL}/devops/ci?token=${Token}&type=front"`
+  if [ "$http_status_code" != "200" ]; then
+    cat .auto_devops.sh
+    exit 1
+  fi
+  source .auto_devops.sh
+  cat .auto_devops.sh
+
+before_script:
+  - *auto_devops

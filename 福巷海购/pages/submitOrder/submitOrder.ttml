@@ -1,0 +1,72 @@
+<view class="maintain " >
+    <view class="box-wrapper">
+        <view class="contain_box">
+            <view class="recipientInfo" tt:if="{{addressData}}" bindtap="SelectAddress">
+                <view class="recipient">
+                    <view class="personal">
+                        <view class="person_name"><text>{{addressData.receiverName}}</text></view>
+                        <view class="person_phone"><text>{{addressData.mobile}}</text></view>
+                    </view>
+                    <view class="person_address"><text>{{addressData.areaFullName}}{{addressData.address}}</text></view>
+                </view>
+                <view class="icon"><image src="../../img/bottom.png" mode="" /></view>
+            </view>
+            <view class="un_address" tt:else bindtap="SelectAddress">+新建收货地址</view>
+        </view>
+    </view>
+    <view class="line"></view>
+    <view class="GoodsInfo">
+        <view class="box-wrapper">
+            <view class="goodsList" >
+                <view class="goodTitle" tt:if="{{productData.mfgrName}}">
+                    <view class="goodStoreIcon"><image src="../../img/icon/cartTit.png" mode="" /></view>
+                    <view class="goodStore"><text>{{productData.mfgrName}}</text></view>
+                </view>
+                <view class="goodsItem">
+                    <view class="goodsImg">
+                        <image src="{{productData.imageUrl}}" mode="" />
+                    </view>
+                    <view class="goodsItemInfo">
+                        <view>
+                            <view class="goodItem_name"><text class="line-clamp2">{{productData.name}}</text></view>
+                            <view class="specifications" tt:for="{{productData.spec}}" tt-for-item="itemA">
+                                <text class="line-clamp1">{{itemA.name}}: {{itemA.value}}</text>
+                            </view>
+                        </view>
+                        <view class="goodsPrice_box">
+                            <view class="goodsPrice"><text>￥{{productData.price}}</text></view>
+                            <view class="goodsCount">
+                                <view  class="inputBtn {{productData.num <=  1 ?'IsMinus':''}}" catchtap="{{productData.num > 1 ? 'ModifyCount':''}}"  data-type="jian"  data-num="{{productData.num}}" > - </view>
+                                <input type="number" size="default" class="inputSBtn" placeholder="" value="{{productData.num}}" data-num="{{productData.num}}"   data-productid="{{productData.productId}}" bindblur="InputNum" />
+                                <view  class="inputBtn"  data-skuid="{{item.skuId}}" data-type="jia" data-num="{{productData.num}}"  catchtap="ModifyCount"> + </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        
+    </view>
+    <view class="priceInfo_box">
+        <view class="priceInfoList">
+            <view class="TotalPrice">
+                <view class="title">商品金额</view>
+                <view class="price">￥{{productData.goodsPrice}}</view>
+            </view>
+             <view class="TotalPrice">
+                <view class="title">运费</view>
+                <view class="price">￥{{productData.deliveryPrice}}</view>
+            </view>
+             <view class="TotalPrice">
+                <view class="title">税费</view>
+                <view class="price">￥{{productData.totalTax}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="marginBottom4"></view>
+    <view class="submit_box">
+        <view class="submit_price">应付金额:<text>￥{{productData.totalPrice}}</text></view>
+        <view class="submitBtn" bindtap="submitOrder">提交订单</view>
+    </view>
+    <auth-info is="auth" type="{{type}}" AddressFrom="1" AuthTips="{{AuthTips}}" IsAuthBox="{{IsAuthBox}}" Name="" businessId="{{businessId}}" IsAuth="{{IsAuth}}" tt:if="{{IsAuth}}" bind:myevent="done"></auth-info>
+</view>

@@ -1,0 +1,55 @@
+body{
+    background:#fff;
+}
+.conate{
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+    overflow:scroll;
+    width: 100%;
+}
+.conate-box{
+    width: 100%;
+}
+.conate image {
+    width: 100%;
+    display: inline-block;
+}
+.in-box{
+    width: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    height: 100rpx;
+    border-bottom: solid 1rpx #eaeaee;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 30rpx;
+}
+input{
+    padding-left: 10rpx;
+    border: solid 1rpx #eaeaee;
+    width: 450rpx;
+    height: 50rpx;
+    font-size: 30rpx;
+    line-height: 50rpx;
+}
+
+page {
+    height: 100%;
+  }
+  
+  .content {
+    height: 100%;
+    font-size: 0;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+  }
+  
+  .images image {
+    text-align: center;
+  }

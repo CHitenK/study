@@ -1,0 +1,39 @@
+<view class="maintain">
+    <view class="payment_box">
+        <view class="paymentInfo">
+            <!-- <view class="paymentPrice">￥<text style="font-size:56rpx">{{payPrice}}</text></view> -->
+            <view class="paymentTimeDown">
+                <text>支付剩余时间：</text>
+                <text>{{DownTime}}</text>
+            </view>
+            <view class="payment_tips">
+                <text>下单后请{{expiredTime}}分钟内付款 </text>
+                <view><text>库存紧张，超时未付款订单将自动取消哦</text></view>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="payment_price_box">
+            <view class="payment_price">
+                <view class="payment_price_left"><text>订单总金额</text></view>
+                <view class="payment_price_right"><text>￥{{payPrice}}</text></view>
+            </view>
+            
+        </view>
+        <view class="line"></view>
+        <view class="zfb_box">
+            <view class="zf_title_box">
+                <view class="zf_title"><text>选择支付方式</text></view>
+            </view>
+            <view class="zfb">
+                <view class="zfb_img">
+                    <image src="../../img/zfb.png" mode="" />
+                    <text>支付宝支付</text>
+                </view>
+                <view class="zfb_select"><icon  type="success"  color="#ff3636"></icon></view>
+            </view>
+            
+        </view>
+        <view class="line"></view>
+    </view>
+    <view class="submitBtn" catchtap="MakeTruePay">确认支付</view>
+</view>

@@ -1,0 +1,28 @@
+<view class="maintain">
+    <view class="AuthInfo_box">
+        <view class="AuthTitle"><text>身份证信息（必填）</text></view>
+        <view class="InputText">
+            <view class="InputBox" style="border-bottom: 1px solid #dedede;">
+                <view class="InputName"><text>您的真实姓名</text></view>
+                <view class="Input_Name"><input type="text" class="trueName" maxlength="10" placeholder="请输入您的姓名" bindinput="InputRealName" /></view>
+            </view>
+        </view>
+        <view class="InputText">
+            <view class="InputBox">
+                <view class="InputName"><text>您的身份证号码</text></view>
+                <view class="Input_Name"><input type="" maxlength="18" placeholder="请输入您的身份证号码" bindInput="InputIdCard" placeholder-color="#999"/></view>
+            </view>
+        </view>
+        <view class="tips_box">
+            <view class="tips_title">为什么需要实名认证？</view>
+            <view class="tips_one">
+                <text>①根据海关规定，购买跨境商品需要办理清关手续，请您配合进行实名认证，以确保您购买的商品顺利通过海关检查。（贸通承诺所传身份证明只用于办理跨境商品清关手续，不作他途使用，其他任何人均无法查看）。</text>
+            </view>
+            <view class="tips_two">
+                <text>②实名认证规则：购买看商品填写注册人的真实姓名、身份证号码。</text>
+                <text style="color:#FF3636;">部分商品下单时需提供收货人的实名信息（含身份证照片），具体以下单时的提示为准</text>
+            </view>
+        </view>
+    </view>
+    <view class="submitBtn" bindtap="AddAuthInfo">提交</view>
+</view>

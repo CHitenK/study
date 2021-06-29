@@ -1,0 +1,23 @@
+<view class="container">
+    <view class="record_top">
+        <text>待入账(元)</text>
+        <view class="total">¥{{totalAmount}}</view>
+    </view>
+    <scroll-view class="record_list" scroll-y="true" bindscrolltolower="onScrollToBottom" tt:if="{{list.length > 0}}">
+        <view class="record_item" tt:for="{{list}}" tt:key="index">
+            <view class="flex_align">
+                <view class="order_number">
+                    订单号：{{item.businessId}}
+                </view>
+                <view class="record_item_money">{{item.amount}}</view>
+            </view>
+            <view class="time">
+                <text class="paytime">下单时间：{{item.operationTime}}</text>
+                <text tt:if="{{item.state == 'canceled'}}">退款单</text>
+                <text tt:else>订单金额¥{{item.payPrice}}</text>
+            </view>
+        </view>
+        
+    </scroll-view>
+</view>
+  

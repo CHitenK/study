@@ -1,0 +1,84 @@
+/* pages/search/search.ttss */
+page{
+    background:#fff;
+    font-family:PingFang SC;    
+}
+.box{
+    padding:0 20rpx;
+    box-sizing:border-box;
+}
+.search-view{
+    margin:20rpx auto 44rpx auto;  
+}
+.search-box{
+    width:624rpx;
+    height:58rpx;
+    background:rgba(235,235,235,0.85);
+    border-radius:4rpx;
+    margin-right:20rpx;
+    overflow:hidden;
+    line-height: 58rpx;
+    float:left;
+    position: relative;
+}
+.search-box image{
+    width:30rpx;
+    height:30rpx;
+    vertical-align:sub;
+    margin:14rpx 20rpx;
+    float:left;
+}
+.cancel_box{
+    position: absolute;
+    top:0px;
+    right: 0;
+    width: 80rpx;
+    height: 58rpx;
+    /* line-height: 58rpx;
+    text-align: center; */
+    z-index:999;
+    /* border: 1px solid #000; */
+}
+.search-box image.close{
+    /* position: absolute;
+    right: 0rpx;
+    top:0rpx; */
+    width: 18px;
+    height: 18px;
+}
+.search-box input{
+    width:468rpx;
+    float:left;
+    font-size:30rpx;
+    line-height:58rpx;
+    height:58rpx;
+    /* border: 1px solid #000; */
+}
+.search-view .right-text{
+    float:right;
+    color:#666;
+    font-size:30rpx;
+    line-height:58rpx;
+}
+.myTop{
+    overflow:hidden;
+}
+.searchHistory{
+    overflow:hidden;
+}
+.history-record {
+    overflow:hidden;
+    margin-top:70rpx;
+}
+.history-record .list{
+    padding:0 44rpx;
+    background:#F7F7F7;
+    font-size:28rpx;
+    font-family:PingFang-SC-Medium;
+    margin-right:20rpx;
+    float:left;
+    margin-bottom:20rpx;
+    color:#333;
+    height:56rpx;
+    line-height:56rpx;
+}

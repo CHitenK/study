@@ -1,0 +1,116 @@
+.maintain{
+    width: 100%;
+}
+.results_box{
+    background-color: #fff;
+    padding:60rpx;
+    text-align: center;
+    padding-bottom:60rpx;
+}
+.result_img image{
+    width: 106rpx;
+    height: 106rpx;
+    border-radius: 50%;
+}
+.result_tips_s,.result_text,.result_success{
+    color: #32C032;
+}
+.result_tips_f,.result_fail{
+    color: #FF3636;
+} 
+.result_success,.result_fail{
+    font-size: 36rpx;
+    margin-top: 44rpx;
+}
+.result_text{
+    font-size: 30rpx;
+    margin-top: 21rpx;
+}
+.result_tips{
+    margin-top: 20rpx;
+    font-size: 30rpx;
+}
+.result_btns{
+    display: flex;
+    align-items: center;
+    width: 393rpx;
+    justify-content: center;
+    font-size: 30rpx;
+    color: #999999;
+    margin:68rpx auto 0;
+}
+.goIndex{
+    margin-right: 20rpx;
+}
+.result_btns view{
+    border-bottom:1px solid #ccc;
+}
+.recommended_box{
+    width: 100%;
+    padding: 30rpx 0;
+    background-color: #f7f7f7;
+    border-top:1px solid #ccc;
+}
+.recommended_tit{
+    text-align: center;
+    margin-bottom:40rpx;
+    margin-top:20rpx;
+}
+.recommended_tit image{
+    width: 38rpx;
+    height: 38rpx;
+    vertical-align: sub;
+    margin-right: 20rpx;
+}
+.recommended_list{
+    width: 100%;
+    padding:20rpx 0;
+  
+}
+.recom_box{
+    width: 95%;
+    margin:0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.recommended_item{
+    width: 48%;
+    height: 536rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    margin-bottom: 40rpx;
+}
+.recommended_img image{
+    width: 100%;
+    height: 300rpx;
+    border-radius: 10rpx;
+    background-color: darkcyan;
+    border-bottom: 1px solid #dedede;
+}
+.recommended_name{
+    color: #333;
+    font-size: 24rpx;
+    padding: 20rpx;
+}
+.bigPrice{
+    font-size: 36rpx;
+    color: #E81717;
+    margin-right: 20rpx;
+}
+.disPrice{
+    text-decoration: line-through;
+    font-size: 24rpx;
+    color: #CCCCCC;
+}
+.tips{
+    color: #8D8D8D;
+    font-size: 26rpx;
+    text-align: left;
+    padding-top: 80rpx;
+}
+.tips .title{
+    font-size: 30rpx;
+    padding-bottom: 20rpx;
+}

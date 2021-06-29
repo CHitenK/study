@@ -1,0 +1,38 @@
+<!-- pages/logistics/logistics.ttml -->
+<view class="box">
+	<view class="fixed">
+		<!-- 包裹 -->
+		<scroll-view class="scroll-box" scroll-x scroll-left>
+			<view style="min-width:100%;white-space: nowrap;">
+				<block tt:for="{{logisticsList}}" tt:for-item="item" tt:for-index="i">
+					<view class="scroll-item {{selectIndex==i?'active':''}}" data-index="{{i}}" bindtap="selectPackage">
+						包裹{{i+1}}
+                    </view>
+				</block>
+			</view>
+		</scroll-view>
+		<!-- 快递公司和物流单号 -->
+		<view class="info">
+			<view class="company">物流公司：{{logisticsInfo.name}}</view>
+			<view class="order-number">物流单号:{{logisticsInfo.no}}</view>
+		</view>
+		<view class="grap"></view>
+		<!-- 物流详情 -->
+		<view class="track">物流跟踪</view>
+	</view>
+	<scroll-view class="logistics-box" scroll-y="true">
+		<block tt:for="{{logisticsInfo.list}}" tt:for-item="item" tt:for-index="i">
+			<view class="list">
+				<view class="right-text">
+					<view class="progress" data-index="{{i}}">{{item.content}}</view>
+					<view class="date">{{item.time}}</view>
+				</view>
+				<view class="icon">
+					<view class="circle"></view>
+					<view class="line" tt:if="{{!onlyOne}}"></view>
+				</view>
+			</view>
+		</block>
+
+	</scroll-view>
+</view>

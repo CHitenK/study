@@ -1,0 +1,51 @@
+<!-- pages/login/login.ttml -->
+<view class="container" tt:if="{{!IsValidation}}">
+    <view class="logo-box">
+        <image src="/img/logo.png" />
+        <view class="text1">全球好货，正品保障</view>
+    </view>
+	<!-- <view class="top-box clearfix"  >
+		<view class="logo fl"><image src="/img/icon/logo.jpg"/> </view>
+		<view class="fl right-box">
+			<view class="text1">福巷海购</view>
+			<view class="text2">全球好货，正品保障</view>
+		</view>
+	</view> -->
+    <!-- 抖音账号一键登录 -->
+    <button class="login" tt:if="{{isChecked}}"  size="default" bindtap="sign" open-type="getUserInfo">授权手机号码登录</button>
+    <button class="login" tt:else size="default" bindtap="handleTips" >授权手机号码登录</button>
+    <!-- 抖音账号一键登录 end -->
+    <view class="agreement-box">
+        <view class="image-box"><image src="{{isChecked?'../../img/tyIcon2.png':'../../img/tyIcon1.png'}}" mode="" bindtap="switchCheckBox"/></view>
+        <view class="xieyi-box">
+            <text bindtap="switchCheckBox">已阅读并同意</text>
+            <navigator  url="{{'/pages/agreement/agreement?type=gerenUrl&name=个人信息保护政策及法律声明' }}"   hover-class="className" class="protocal">《个人信息保护政策及法律声明》</navigator>
+            <navigator url="{{'/pages/agreement/agreement?type=yonghuUrl&name=用户协议' }}"   hover-class="className" class="protocal">《用户协议》</navigator>
+            <!-- <navigator url="{{'/pages/agreement/agreement?type=tuiguangUrl&name=平台推广人服务协议' }}" tt:if="{{from == 2}}"   hover-class="className" class="protocal">《平台推广人服务协议》</navigator> -->
+        </view>
+    </view>
+    <!--  <text>授权成功  </text>-->
+    <view class="tips_box" tt:if="{{IsPhone}}" >
+        <view class="tips_title_box">
+            <view class="tips_title"><text>抖音/头条授权</text></view>
+            <view class="tips_content_box">
+                <view class="tips_content"><view></view><text>获取您在抖音/头条绑定的手机号</text></view>
+            </view>
+            <view class="tip_btn_box">
+                <button class="tips_btn_left" catchtap="CancelgetPhone"><text>拒绝</text></button>
+                <button class="tips_btn_right" catchtap="comfiretPhone" open-type="getPhoneNumber" bindgetphonenumber="Getphonenumber"><text>允许</text></button>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="lay-out" tt:if="{{isShowTips}}">
+   <view class="lay-content">
+      <image  class="lay-content-close" src="../../img/cancelAuth.png" bindtap="closeLay" />
+      <view class="lay-content-I">温馨提示</view>
+      <view class="lay-content-II">恭喜您注册成功！</view>
+      <view class="lay-content-III">由于购买跨境商品需要实名认证，你可以继续完善实名、收货地址信息，避免抢购商品的时候抢不到心仪商品哦！</view>
+      <view class="lay-content-IV" bindtap="linkTo" tt:if="{{!hasAuthentication}}" data-url="/pages/AuthIdCardInfo/AuthIdCardInfo?from=login&hasAddress=true">去实名</view>
+      <view class="lay-content-IV" bindtap="linkTo" tt:else data-url="/pages/AddAddress/AddAddress?from=login">添加收货地址</view>
+   </view>
+</view>
+ 

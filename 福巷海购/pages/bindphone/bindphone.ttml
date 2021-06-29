@@ -1,0 +1,23 @@
+<view class="container">
+    <view class="box">
+        <view class="title">输入短信验证码</view>
+        <view class="tips">已发送至{{mobile}}</view>
+        <view class="phone">
+            <input class="input" type="number" maxlength="6" placeholder="请输入验证码" placeholder-style="{{placeholderClass}}" bindinput="onInput" />
+            <button class="btn {{cooldown ? 'on' : ''}}" disabled="{{cooldown ? true : false}}" bindtap="sendCode">重新获取{{cooldown ? (cooldown) : ''}}</button>
+        </view>
+        <text class="nobind" bindtap="Help">收不到验证码?</text>
+    </view>
+    <view class="bind" bindtap="verify">同 意 并 签 约</view>
+    <view class="treaty" bindtap="onCheck">
+        <!-- <image class="img" src="/img/check1.png" mode="widthFix" /> -->
+        <image class="img" src="/img/tyIcon2.png" mode="widthFix" tt:if="{{ischeck}}" />
+        <image class="img" src="/img/tyIcon1.png" mode="widthFix" tt:else />
+        <!-- <text class="img border"></text> -->
+        <view class="treaty_txt">已阅读并同意<navigator url="{{'/pages/agreement/agreement?type=ziyouUrl&name=自由职业者共享服务信息平台签约协议' }}">《自由职业者共享服务信息平台签约协议》</navigator></view>
+    </view>
+    
+    <!-- 弹窗组件start -->
+    <model id="model" bind:modelevent="onModel" title="{{model.title}}" content="{{model.content}}"><model>
+    <!-- 弹窗组件end -->
+</view>

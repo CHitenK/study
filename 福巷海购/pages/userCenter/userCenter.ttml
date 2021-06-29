@@ -1,0 +1,137 @@
+<!-- pages/UserCenter/UserCenter.ttml -->
+<view class="maintain">
+
+	<view class="user-box">
+		<image class="user-bg" src="/img/usercenter/user_bg.png" mode="widthFix" />
+		<view class="userinfo" catchtap="ClickPhoto">
+			<view class="userhead">
+				<image tt:if="{{userHeadImg}}" src="{{userHeadImg}}" mode="aspectFit" />
+				<image tt:else src="../../img/usercenter/userhead_unlogin.png" mode="aspectFit" />
+			</view>
+
+			<block tt:if="{{isLogin}}">
+				<view class="login flex-item">
+					<view class="login-username">
+						<text>{{nickName}}</text>
+					</view>
+					<view class="login-userphone" tt:if="{{mobilePhone}}">
+						<text>手机号：{{mobilePhone}}</text>
+					</view>
+				</view>
+			</block>
+
+			<view tt:else class="unlogin">
+				<text>请登录</text>
+			</view>
+		</view>
+
+		<!-- 达人显示 -->
+		<view class="income-box" tt:if="{{userType == 'Staff' && isLogin}}">
+            <view class="income-box-list">
+                <view class="income-item" bindtap="to" data-url="/pages/mineincome/mineincome">
+                    <text>累计收益(元)</text>
+                    <view class="income-money">{{realRebate}}</view>
+                </view>
+                <view class="income-item" bindtap="to" data-url="/pages/ToBeRecord/ToBeRecord">
+                    <text>待入账(元)</text>
+                    <view class="income-money">{{preCommission}}</view>
+                </view>
+            </view>
+            <view class="lines"></view>
+			<view class="income-withdrawabe">
+				<!-- <text>可提现金额(元)</text> -->
+				<view class="income-total">
+                    <text>可提现(元)</text>
+                    <text class="income-money income-money-mgleft">{{commissionBalance}}</text>
+                </view>
+                <view class="withdraw-btn" bindtap="to" data-url="/pages/widthdraw/widthdraw">立即提现</view>
+			</view>
+		</view>
+
+	</view>
+
+	<view class="myorder">
+		<view class="myorder-top" data-typeindex="0" catchtap="jumpMyOrder">
+			<view class="myorder-txt">
+				<text>我的订单</text>
+			</view>
+			<view class="allorder">
+				<text>全部订单</text>
+				<image src="../../img/usercenter/more.png" mode="" />
+			</view>
+		</view>
+		<view class="divider" />
+		<view class="orderstate">
+			<view class="orderstate-item" data-typeindex="1" catchtap="jumpMyOrder">
+				<view class="orderstate-imgbg">
+					<image style="width:44rpx; height:41rpx;" src="../../img/usercenter/ic_nopay.png" class="{{order.waitPayOrdersCount ? 'activated' : ''}}" mode="" />
+				</view>
+				<text>待付款</text>
+			</view>
+			<view class="orderstate-item" data-typeindex="2" catchtap="jumpMyOrder">
+				<view class="orderstate-imgbg">
+					<image style="width:32rpx; height:37rpx;" src="../../img/usercenter/ic_nodeclare.png" mode="" />
+				</view>
+				<text>待申报</text>
+			</view>
+			<view class="orderstate-item" data-typeindex="3" catchtap="jumpMyOrder">
+				<view class="orderstate-imgbg">
+					<image style="width:39rpx; height:36rpx;" src="../../img/usercenter/ic_nosend.png" class="{{order.waitDeliveryOrdersCount ? 'activated' : ''}}" mode="" />
+				</view>
+				<text>待发货</text>
+			</view>
+			<view class="orderstate-item" data-typeindex="4" catchtap="jumpMyOrder">
+				<view class="orderstate-imgbg">
+					<image style="width:48rpx; height:37rpx;" src="../../img/usercenter/ic_noreceive.png" class="{{order.waitReceiveOrdersCount ? 'activated' : ''}}" mode="" />
+				</view>
+				<text>待收货</text>
+			</view>
+			<view class="orderstate-item" data-typeindex="5" catchtap="jumpMyOrder">
+				<view class="orderstate-imgbg">
+					<image style="width:32rpx; height:37rpx;" src="../../img/usercenter/ic_finish.png" mode="" />
+				</view>
+				<text>已完成</text>
+			</view>
+		</view>
+	</view>
+
+	<!-- 常用工具start -->
+	<view class="myorder">
+		<view class="myorder-top">
+			<view class="myorder-txt">
+				<text>常用工具</text>
+			</view>
+		</view>
+		<view class="divider" />
+		<view class="orderstate">
+			<view class="orderstate-item" bindtap="addressList">
+				<view class="orderstate-imgbg">
+					<image style="width:44rpx; height:41rpx;" src="../../img/usercenter/ic_address.png" mode="" />
+				</view>
+				<text>收货地址</text>
+			</view>
+			<view class="orderstate-item" bindtap="authIdCardList">
+				<view class="orderstate-imgbg">
+					<image style="width:32rpx; height:37rpx;" src="../../img/usercenter/shimingrenzheng.png" mode="" />
+				</view>
+				<text>实名认证</text>
+			</view>
+			<!-- <view class="orderstate-item" bindtap="collect">
+                <view class="orderstate-imgbg">
+                    <image  style="width:39rpx; height:36rpx;" 
+                            src="../../img/usercenter/ic_collection.png" mode="" />
+                </view>
+                <text>商品收藏</text>
+            </view> -->
+			<view class="orderstate-item">
+				<view class="orderstate-imgbg">
+					<image style="width:48rpx; height:37rpx;" src="../../img/usercenter/ic_service.png" mode="" />
+				</view>
+				<text>联系客服</text>
+				<button class="concat" open-type="contact" class="concat"></button>
+			</view>
+		</view>
+	</view>
+	<!-- 常用工具end -->
+    
+</view>

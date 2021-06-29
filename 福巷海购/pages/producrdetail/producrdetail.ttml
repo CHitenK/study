@@ -1,0 +1,93 @@
+<view class="container" tt:if="{{!isNone}}">
+    <view style="box-sizing:border-box;" class=" {{ishide ? 'hide':''}}"> 
+        <view class="swiper-area">
+            <swiper class="article-swiper"
+                    indicator-dots="true"
+                    indicator-active-color="#FA6E64"
+                    indicator-color="#B3B3B3"
+                    autoplay="true" interval="5000" duration="1000">
+                <block tt:for="{{ProDetailInfo.imageMap && ProDetailInfo.imageMap.Material ? ProDetailInfo.imageMap.Material : []}}">
+                    <swiper-item class="draw-item ">
+                        <image class="draw" src="{{item}}" catchtap='OriginalImage' data-item="{{item}}" mode="aspectFit" />
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class="product-infoprice-box">
+            <!-- <text class="infoprice-str">￥</text> -->
+            <text class="infoprice-presentp">￥{{productCurrentPrice}}</text>
+            <text class="infoprice-Oldp">￥{{ProDetailInfo.originalPrice}}</text>
+            <text class="infoprice-zhuan" tt:if="{{userType == 'Staff'}}">/赚￥{{ProDetailInfo.commission || '0.00'}}</text>
+        </view>
+        <!-- <scroll-view  class="product-infosku" scroll-x scroll-left tt:if="{{GroupModel.length>0}}">
+        <view style="min-width:100%;white-space: nowrap;">
+            <block  tt:for="{{GroupModel}}">
+                <view class="product-skudes {{ GroupType ==  item.productId ? 'selectActive':''}}"    data-index="{{index}}"    bindtap="GetSkuPrice" data-id="{{item.productId}}">{{item.specName}}</view>
+            </block>
+        </view>
+        </scroll-view > -->
+        <view class="product-titledes">{{ProDetailInfo.name}}</view>
+        <view class="product-salesInfo">
+            <text>包邮</text>
+            <text>热销{{ProDetailInfo.salesVolume}}件</text>
+            <text>{{ ProDetailInfo.havaStock ? '库存充足' : '库存不足' }}</text>
+        </view>
+        <view class="product-Taxesfees mr-t-20">
+            <text class="product-Taxesfees-I">税费</text>
+            <text class="product-Taxesfees-II">{{ProDetailInfo.tax && ProDetailInfo.tax > 0  ? ('预计 ￥' + ProDetailInfo.tax) : ( ProDetailInfo.declarePlan != "nm001" ? "已含进口税，无需额外缴纳" : "")  }}</text>
+        </view>
+        <view class="product-Taxesfees">
+            <text class="product-Taxesfees-I">发货</text>
+            <text class="product-Taxesfees-II">{{ProDetailInfo.declareInfo.name}}  {{ProDetailInfo.declareInfo.place=="香港"?'(物流时间7-22天，节假日、清关异常顺延)':'（海关监管）'}}</text>
+        </view>
+        <view class="product-Taxesfees" tt:if="{{endsate}}">
+            <text class="product-Taxesfees-I">有效期</text>
+            <text class="product-Taxesfees-III">{{startTime}}至{{endTime}}  （具体以实际发货批次为准）</text>
+        </view>
+        <view class="mr-t-20"></view>
+        <view class="Display-pic" tt:for="{{ProDetailInfo.imageMap && ProDetailInfo.imageMap.Display ? ProDetailInfo.imageMap.Display : []}}">
+            <image src="{{item}}" mode="widthFix" />
+        </view>
+    </view>
+    <!-- 可购买场景 存在pid 底部 -->
+    <block tt:if="{{darenId}}">
+        <!-- 间隔 相当margin-bottom = 105 -->
+        <view class="jian-ge-pid"></view>
+        <view class="LimitNum" tt:if="{{!ProDetailInfo.havaStock}}" >暂时缺货，正在补货中</view>
+        <view class="LimitNum" tt:if="{{!isPass}}" >商品已经下架啦</view>
+        <view class="product-bottom-con">
+                <view class="product-bottom-leftcon">
+                    <view class="product-bottom-home ">
+                    <view class="product-bottom-homepic"><image src="../../img/icon/contat.png"/></view>
+                    <view class="product-bottom-hometxtx">客服</view>
+                    <button class="concat" open-type="contact" ></button>
+                    </view>
+                </view> 
+                <view class="product-bottom-btcon"  data-skuid="{{ProDetailInfo.skuId}}" data-productid="{{ProDetailInfo.id}}" bindtap="{{BuyNowFlag==1 ?'BuyNow':''}}">立即购买</view>
+        </view>
+    </block>
+    <!-- 可购买场景 存在pid 底部 -->
+    <!-- 复制商品链路 -->
+    <block tt:elif="{{from === 'copy_code'}}">
+       <!-- 间隔 相当margin-bottom == 135 -->
+       <view class="jian-ge-pid"></view>
+       <view class="copy-code-box">
+          <view class="copy-code-item">
+            <text>推广链接：{{link}}</text>
+          </view>
+          <view class="copy-code-btn" bindtap="copyText">复制</view>
+       </view>
+    </block>
+    <!-- 复制商品链路 -->
+</view>
+<!-- 暂无商品 -->
+<view class="container"  tt:if="{{isNone}}">
+    	<view class="none">
+		<view class="inner">
+			<image src="../../img/icon/none.png" mode="" />
+			<view class="text">暂无商品～</view>
+		</view>
+	</view>
+</view>
+<!-- 暂无商品 end-->
+

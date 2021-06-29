@@ -1,0 +1,346 @@
+.global-ab{
+  position: absolute;
+  font-size: 0.7rem;
+  color:#0062FE;
+  font-weight: bold;
+}
+
+.about{
+  overflow: hidden;
+  .banner-msg{
+    p{
+      font-size: 0.54rem;
+      color:#fff;
+      position: absolute;
+      left: 50%;text-align: center;width: 80%;top:50%;
+      .slate(-50%,-50%);
+    }
+  }
+}
+.about-profile{
+  .background(rgba(0,50,126,0.65));
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+  .paddingLr(0.1rem);
+  .about-profile-scroll{
+    height: 2.2rem;
+    @media(max-width: 767px){
+      height: 3.5rem;
+    }
+  }
+  &:before{
+    background-color:rgba(0,50,126,0.65);position: absolute;left: 0;top:0;width: 100%;height: 100%;
+    content:'';
+  }
+  .row{
+    position: relative;
+    z-index: 11;
+    >div{
+      .media-font(0.19rem);
+      .media-line(0.4rem);
+    }
+  }
+  h3{
+    .marginTb(0.5rem);
+    font-size: 0.45rem;
+    font-family: regular;
+  }
+
+}
+.about-global{
+  .background(rgba(211,236,255,0.25));
+  .paddingLr(0.4rem);
+  .paddingTb(0.5rem);
+  text-align: center;
+  .row{
+    >div{
+
+    }
+    span{
+      .marginTb(0.05rem);
+      position: relative;
+      font-size: 0.45rem;
+      color: #444444;
+      display: inline-block;
+      >i{
+        &:first-child{
+          left: -0.8rem;
+          top:-0.1rem;
+        }
+        &:last-child{
+          right: -0.6rem;
+          bottom: -0.1rem;
+        }
+        height: 100%;
+        .global-ab;
+      }
+    }
+  }
+}
+.dtp-about-h3{
+  text-align: center;
+  .media-font(0.45rem);
+  color: #444;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: regular;
+}
+.dtpAbout_en{
+  
+}
+.about-banner-content{
+  height: 3rem;
+  position: relative;
+}
+.about-grow-scroll{
+  height: 100px;
+}
+.about-grow-banner{
+  position: relative;
+  //margin-bottom: 2rem;
+  &:before{
+    .home-center;
+    content:'';
+    height: 1px;
+    background-color:#BCBCBC;
+    width: 100%;
+  }
+  .about-grow-carousel{
+    text-align: center;
+    position: absolute;
+    .home-center;
+    top: inherit;
+    width: 100%;
+    bottom: -23.5%;
+    height: 1.2rem;
+    &.about-grow-carousel-on{
+      bottom:33%;
+      &:before{
+        top: inherit;
+        bottom: -0.25rem;
+      }
+    }
+    &:before{
+      .home-center;
+      .animates();
+      content: '';
+      cursor: pointer;
+      display: inline-block;
+      background-color: #FFFFFF;
+      border: 0.04rem solid #6DB5FC;
+      width: 0.16rem;
+      height: 0.16rem;
+      border-radius: 50%;
+      top:-0.4rem;
+    }
+    &:hover:before {
+      transform: translate(-0.1rem, -0.08rem) scale(1.2);
+    }
+    &:hover .about-grow-carousel-kk:hover {
+
+      // animation-name: wobble-top;
+      // animation-duration: 1s;
+      // animation-timing-function: ease-in-out;
+      // animation-iteration-count: 1;
+      // 心动
+      // animation-name: pulse-shrink;
+      // animation-duration: .3s;
+      // animation-timing-function: linear;
+      // animation-iteration-count: infinite;
+      // animation-direction: alternate;
+      animation-name: wobble-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+    }
+    &:hover .about-grow-title{
+      // transform: scale(1.2);
+    }
+    .about-grow-html{
+      margin-top: 0.1rem;
+      .media-font(0.16rem);
+    }
+    span{
+      .media-font(0.16rem);
+      color:#0062FE;
+      display: inline-block;
+    }
+    >div{
+      color: #444;
+      font-size: 12px;
+      line-height: 20px;
+      padding-top: 0.1rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+}
+.blue-yuan{
+  text-align: center;
+  &:before{
+    content:'';
+    background: #6DB5FC;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+}
+.about-blueprint{
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  .about-blueprint-list{
+    >.row>div{
+      padding:0;
+    }
+    box-shadow: 0 5px 26px 0 #D0DBE8;
+    height: 2.8rem;
+    margin-bottom: 0.4rem;
+    overflow: hidden;
+    .about-blueprint-img{
+      position: relative;
+      &:before{
+        position: absolute;
+        right:0;
+        width: 50%;
+        top:0;
+        height: 100%;
+        content:'';
+        display: inline-block;
+        background-image: linear-gradient(270deg, #FFFFFF 8%, rgba(255,255,255,0.00) 83%);
+      }
+    }
+    .about-blueprint-text{
+      .paddingTb(0.25rem);
+      padding-left: 0.2rem;
+      padding-right: 0.55rem;
+      h3{
+        opacity: 0.5;
+        display: inline-block;
+        font-family: Helvetica;
+        font-size: 0.4rem;
+        color: #CCCCCC;
+        padding-bottom: 0.06rem;
+        border-bottom: 4px solid #CCCCCC;
+      }
+      h4{
+        .marginTb(.2rem);
+        font-size: 0.2rem;
+        color: #444444;
+        line-height: 0.3rem;
+      }
+      p{
+        .media-font(0.16rem);
+        .media-line(0.30rem);
+        color: #757575;
+        text-align: justify;
+      }
+      .about-blueprint-scroll{
+        height: 1.5rem;
+      }
+    }
+  }
+}
+@media (max-width: 1150px) {
+  .about-grow-banner {
+    .about-grow-carousel{
+      height: 1.5rem;
+      bottom: -38.5%;
+      &.about-grow-carousel-on{
+        bottom: 28%;
+      }
+    }
+  }
+  height: 1.5rem;
+}
+@media (max-width: 767px) {
+  .about-grow{
+    .dtp-about-h3{
+      //margin-bottom: 1rem;
+    }
+  }
+  .about-grow-banner{
+    padding:1rem 0.1rem;
+    .about-grow-carousel{
+      height: 3rem;
+      bottom: -113%;
+      &.about-grow-carousel-on{
+        height: 2.5rem;
+        bottom: 11.2%;
+      }
+    }
+  }
+  .about-blueprint{
+    padding:0 0.1rem;
+  }
+  .blue-yuan{display: none;}
+}
+@media (max-width: 500px) {
+  .about-blueprint {
+    .about-blueprint-list{
+      height: auto;
+      >.row>div{
+        width: 100%;
+      }
+      .about-blueprint-img{
+        text-align: center;
+        img{
+          width:100%;
+        }
+      }
+      .about-blueprint-text{
+        padding:0.2rem;
+        .about-blueprint-scroll{
+          height: auto;
+        }
+      }
+    }
+  }
+}
+@keyframes wobble-top {
+  16.65% {
+    transform: skew(-12deg);
+  }
+  33.3% {
+    transform: skew(10deg);
+  }
+  49.95% {
+    transform: skew(-6deg);
+  }
+  66.6% {
+    transform: skew(4deg);
+  }
+  83.25% {
+    transform: skew(-2deg);
+  }
+  100% {
+    transform: skew(0);
+  }
+}
+@keyframes pulse-shrink {
+  100% {
+    transform: scale(.9);
+  }
+}
+@keyframes wobble-bottom{
+  16.65% {
+      transform: skew(-12deg);
+  }
+  33.3% {
+      transform: skew(10deg);
+  }
+  49.95% {
+      transform: skew(-6deg);
+  }
+  66.6% {
+      transform: skew(4deg);
+  }
+  83.25% {
+      transform: skew(-2deg);
+  }
+  100% {
+      transform: skew(0);
+  }
+}

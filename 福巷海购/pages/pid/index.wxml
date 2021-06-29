@@ -1,0 +1,21 @@
+<view class="top-box">
+	<view class="top-box-item">
+		<image src="/img/pid.png" mode="" />
+	</view>
+</view>
+<view class="pid-box">
+	<view class="pid-box-I">您的贸通PID为:</view>
+	<view class="pid-box-II">
+		<text >{{pid}}</text>
+		<view
+		 class="copy-btn"
+		 bindtap="copy"
+		 data-value="{{pid}}"
+		>复制
+		</view>
+	</view>
+	<view class="pid-box-III">
+		请手动复制PID，返回抖音APP的PID页面绑定
+	</view>
+</view>
+

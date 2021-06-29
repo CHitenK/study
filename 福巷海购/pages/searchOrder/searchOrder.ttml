@@ -1,0 +1,26 @@
+<view class="box">
+    <!-- 搜索部分 -->
+    <view class="search-view clearfix">
+        <view class="search-box">
+            <image src="../../img/icon/search.png" mode=""/>
+            <input type="text" placeholder="订单搜索" placeholder-style="color:#999;"  bindinput="inputSearch" bindconfirm="confirmSearch" focus="true" value="{{keyWords}}" confirm-type="search"  maxlength="40"/>
+        </view>
+        <text class="right-text" tt:if="{{!isSearch}}" bindtap="cancel">取消</text>
+        <text class="right-text" tt:else bindtap="toSearch">搜索</text>
+    </view>
+
+    <!-- 搜索历史 -->
+    <view class="searchHistory" tt:if="{{showHistory}}">
+        <view classs="myTop"  style="margin-bottom:35rpx;">
+            <view class="fl" style="color:#B2B2B2;font-size:26rpx;">最近搜索</view>
+            <view class="fr" bindtap="clearHistory" style="color:#B2B2B2;font-size:26rpx;margin-right:2rpx;">清除</view>
+        </view>
+
+        <view class="history-record">
+            <block tt:for="{{historyArr}}" tt:for-item="item" tt:for-index="i">
+                <view class="list" bindtap="searchByHistory" data-index="{{i}}">{{item}}</view>     
+            </block>
+        </view>
+    </view>
+    
+</view>

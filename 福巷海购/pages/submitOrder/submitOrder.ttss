@@ -1,0 +1,190 @@
+.maintain{
+    /* background-color: #fff; */
+    border-top:1rpx solid #dedede;
+}
+.contain_box{
+    width: 95%;
+    margin:0 auto;
+}
+.recipientInfo{
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    justify-content: space-between;
+    padding:20rpx 0;
+}
+.recipient{
+    width: 86%;
+}
+.un_address{
+    text-align: center;
+    height: 168rpx;
+    line-height: 168rpx;
+    color: #333;
+    font-size: 28rpx;
+ 
+}
+.icon{
+    width: 10%;
+    text-align: center;
+} 
+.icon image{
+    width:14rpx;
+    height: 26rpx;
+}
+.personal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:20rpx;
+}
+.GoodsInfo{
+    width: 100%;
+    padding: 0;
+    font-size: 28rpx;
+}
+.goodsList{
+    width:  95%;
+    margin: 0 auto 20rpx;
+    padding: 20rpx 0;
+}
+.goodTitle{
+    display: flex;
+    align-items: center;
+    padding:20rpx 0;
+    border-bottom:1px solid #dedede;
+}
+.goodStoreIcon image{
+    width: 32rpx;
+    height: 30rpx;
+    vertical-align: sub;
+    margin-right: 20px;
+}
+.goodStore{
+   color: #272727;
+}
+.goodsItem{
+    height: 200rpx;
+    display: flex;
+    align-items: center;
+    padding: 30rpx 0;
+}
+.goodsImg image{
+    width: 200rpx;
+    height: 200rpx;
+}
+.hide{
+  display: none!important
+}
+.goodsItemInfo{
+    width: 80%;
+    height: 200rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20rpx;
+}
+.specifications{
+    /* margin-top:20rpx; */
+}
+.specifications text{
+    font-size: 24rpx;
+    color: #999;
+    margin-right: 20rpx;
+}
+.goodsPrice_box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.goodsCount{
+    display: flex;
+    align-items: center;
+}
+.goodsCount .inputBtn{
+    width: 60rpx;
+    height: 50rpx;
+    background-color: #fff;
+    line-height: 50rpx;
+    border: 1px solid #dedede;
+    text-align: center;
+}
+.goodsCount button:after{
+    border-radius:0;
+    border:2px solid #dedede;
+}
+.goodsCount input{
+    height: 50rpx;
+    min-height: 50rpx;
+}
+.goodsCount input.inputSBtn{
+    width: 80rpx;
+    height: 50rpx;
+    border: 1px solid #dedede;
+    text-align: center;
+    outline: none;
+    background:none;
+    border-top:1px solid #dedede;
+    border-bottom:1px solid #dedede;
+    border-left:0;
+    border-right:0;
+    font-size:28rpx;
+    line-height: 50rpx;
+}
+.goodsPrice{
+    color: #333;
+    font-size: 32rpx;
+}
+.priceInfo_box{
+    width: 100%;
+    padding: 0;
+    background:#fff;
+}
+.priceInfoList{
+    width: 95%;
+    margin: 0 auto;
+    font-size: 28rpx;
+}
+.TotalPrice{
+    padding: 20rpx;
+    border-bottom: 1px solid #dedede;
+    display: flex;
+    justify-content: space-between;
+}
+.TotalPrice .price{
+    color: #FF3636;
+}
+.submit_box{
+    width: 100%;
+    height: 98rpx;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom:0rpx;
+    left: 0rpx;
+    font-size: 28rpx;
+    background: #fff;
+    border-top:1px solid #dedede;
+    z-index:997;
+}
+.submit_box view{
+    width: 50%;
+    text-align: center;
+}
+.submitBtn{
+    height: 100%;
+    background: #FF3636;
+    color: #fff;
+    line-height: 98rpx;
+    font-size: 30rpx;
+    border-top: 1px solid #FF3636;
+
+}
+.goodsCount .IsMinus{
+    background-color: rgb(204, 204, 204);
+}
+.box-wrapper{
+    background:#fff;
+    width:100%;
+}

@@ -1,0 +1,19 @@
+<view class="form_box">
+	<view class="item_line">
+		<text>姓名<text class="label">*</text>：</text>
+		<input class="" type="text" placeholder="请输入真实姓名" placeholder-class="input-placeholder" data-name="name" maxlength="50" bindinput="onInput" />
+	</view>
+    <view class="item_line">
+		<text>身份证号码<text class="label">*</text>：</text>
+		<input class="" type="text" value="{{idcard}}" placeholder="请输入真实姓名对应的身份证号码" placeholder-class="input-placeholder" data-name="idcard" maxlength="18" bindinput="onInput" />
+	</view>
+    <view class="item_line">
+		<text>银行卡卡号<text class="label">*</text>：</text>
+		<input class="" type="number" placeholder="输入真实姓名下的储蓄卡号" placeholder-class="input-placeholder" data-name="bankcard" maxlength="19" bindinput="onInput" />
+	</view>
+    <view class="item_line">
+		<text>预留手机号<text class="label">*</text>：</text>
+		<input class="" type="number" placeholder="请输入您在银行开户时预留的手机号" placeholder-class="input-placeholder" data-name="phone" maxlength="11" bindinput="onInput" />
+	</view>
+</view>
+<view class="sumbit_btn" bindtap="sumbit">提交</view>

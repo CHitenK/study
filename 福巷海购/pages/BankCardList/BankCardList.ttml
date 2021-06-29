@@ -1,0 +1,23 @@
+<view class="container">
+    <scroll-view class="bank_card_list" scroll-y="true" style="{{cardList.length >= 5 ? 'height:100%' : ''}}">
+        <block tt:if="{{cardList.length > 0}}">
+            <view class="bank_card_item" tt:for="{{cardList}}" tt:key="index" data-item="{{item}}" data-index="{{index}}" catchtap="setDefBankcard">
+                <image class="bg" src="/img/income/bankCard.png" mode="widthFix" lazy-load="true" />
+                <view class="content">
+                    <image class="card_logo" src="{{item.bankIcon}}" mode="widthFix" lazy-load="true" tt:if="{{item.bankIcon}}" />
+                    <view class="info_box">
+                        <view class="bank_name" tt:if="{{item.bankName}}">{{item.bankName}}</view>
+                        <view class="bank_type" tt:if="{{item.bankType}}">{{item.bankType}}</view>
+                        <view class="bank_num">**** **** **** {{item.bankCard}}</view>
+                    </view>
+                </view>
+                <view class="bank_del" data-id="{{item.id}}" data-index="{{index}}" catchtap="onDelBank">删除</view>
+            </view>
+        </block>
+        <view class="no_list" tt:else>
+            <image class="" src="/img/income/NoBankCard.png" mode="widthFix" />
+            <text>暂无银行卡</text>
+        </view>
+    </scroll-view>
+    <view class="footer_btn" bindtap="to" tt:if="{{cardList.length < 5}}">新增银行卡</view>
+</view>

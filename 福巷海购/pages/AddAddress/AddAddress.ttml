@@ -1,0 +1,66 @@
+<view class="maintian">
+	<view class="AddAddress_box">
+		<view class="AddressItem_box">
+			<view class="AddressItem">
+				<view class="InputVal_box">
+					<view class="InputVal_text"><text>收货人:</text></view>
+					<view class="InputBox"><input type="text"   placeholder="请输入收货人姓名" name="name" data-name="name" maxlength="12" bindinput="onInput" value="{{curAddInfo.name}}"/></view>
+                </view>
+            </view>
+            <view class="AddressItem">
+                <view class="InputVal_box">
+                    <view class="InputVal_text"><text>手机号:</text></view>
+                    <view class="InputBox"><input type="number" maxlength="11" placeholder="请输入手机号" name="phone" data-name="phone" bindinput="onInput" value="{{curAddInfo.phone}}"/></view>
+                </view>
+            </view>
+            <view class="AddressItem" bindtap="selectarea">
+                    <view class="InputVal_box">
+                        <view class="InputVal_text"><text>省市区:</text></view>
+                        <view class="InputBox selectInput"><input type="" disabled="true" placeholder="请选择省市区"  value="{{addrInfo}}"/></view>
+                        <view class="InputTips">
+                            <text>请选择</text>
+                            <image src="../../img/bottom.png" mode="" />
+                        </view>
+                    </view>
+            </view>
+            <view class="AddressItem">
+                <view class="InputVal_box">
+                    <view class="InputVal_text"><text>详细地址:</text></view>
+                    <view class="InputBox"><input type="text" maxlength="50" placeholder="街道、小区门牌等详细地址" name="address" data-name="address" bindinput="onInput" value="{{curAddInfo.address}}"/></view>
+                </view>
+            </view>
+        </view>
+        
+    </view>
+    <view class="line"></view>
+    <view class="SetDefalut_box" bindtap="defalutAddress">
+       <view style="width:36rpx;height:36rpx;border-radius:100%"><image src="{{checked ?'/img/icon/icon-d.png':'/img/icon/icon-s.png'}}" style="width:36rpx;height:36rpx;"/></view>
+        <text>设为默认地址</text>
+    </view>
+    <view class="submitBtn {{IsModify ? 'active' :'IsModify'}}" bindtap="SaveAddress">保存</view>
+</view>
+<!-- 身份认证 -->
+<auth-info is="auth" type="{{type}}" AuthTips="{{AuthTips}}" AddressFrom="{{AddressFrom}}" Name="" businessId="{{businessId}}" IsAuth="{{IsAuth}}" IsAuthBox="{{IsAuthBox}}" tt:if="{{IsAuth}}" bind:myevent="ComponentEvent" bind:close="closeAuth"></auth-info>
+<view class="picker-view" tt:if="{{IsShow}}">
+    <view style="height:90rpx ;font-weight:Medium;color:#E81717;width:100%;background:#cccccc;display:flex;flex-direction:row;align-items:center;padding:0rpx 69rpx 0rpx 69rpx;box-sizing:border-box;justify-content: space-between;">
+        <text catchtap="cityCancel">取消</text>
+        <text  catchtap="citySure">确定</text>
+    </view>
+    <picker-view style="width: 100%; height: 418rpx;" bindchange="bindchange" value="{{val}}" wx:key="">
+        <picker-view-column>
+        <view tt:for="{{Province}}">
+            {{item.name}}
+            </view>
+        </picker-view-column>
+        <picker-view-column>
+        <view   tt:for="{{CityName}}" >
+                {{item.name}}
+            </view>
+        </picker-view-column>
+        <picker-view-column>
+        <view   tt:for="{{CountyName}}">
+                {{item.name}}
+            </view>
+        </picker-view-column>
+    </picker-view>
+</view>

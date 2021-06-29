@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "model": "../../common/model/model"
+    },
+    "navigationBarTitleText":"提现",
+    "enablePullDownRefresh": false
+}

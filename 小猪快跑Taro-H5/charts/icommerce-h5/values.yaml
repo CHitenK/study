@@ -1,0 +1,45 @@
+# Default values for choerodon-front.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: c7n-registry.dtyunxi.cn:443/idp/icommerce-h5
+  pullPolicy: Always
+
+logs:
+  parser: nginx
+
+service:
+  enabled: false
+  port: 80
+  type: ClusterIP
+  name: icommerce-h5
+
+ingress:
+  enabled: false
+  host: y.dtyunxi.cn
+
+env:
+  open:
+    FRONTENV: dev
+
+resources: 
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources,such as Minikube. If you do want to specify resources,uncomment the following
+  # lines,adjust them as necessary,and remove the curly braces after 'resources:'.
+  limits:
+    # cpu: 100m
+    # memory: 2Gi
+  requests:
+    # cpu: 100m
+    # memory: 1Gi
+  args:
+  - -mem-total
+  - 4Gi
+  - -mem-alloc-size
+  - 10Mi
+  - -mem-alloc-sleep
+  - 1s

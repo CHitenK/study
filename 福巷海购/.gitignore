@@ -1,0 +1,6 @@
+project.config.json
+.idea/
+jsconfig.json
+.vscode/settings.json
+typings/wx.d.ts
+*.less

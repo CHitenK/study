@@ -1,0 +1,77 @@
+<view style="width:100%;position:relative;">
+	<block tt:for="{{orderList}}" tt:for-item="item" data-index="{{index}}" tt:key="index">
+		<view class="orderlist-main" bindtap="jumpOrderDetail" data-orderid="{{item.orderId}}">
+			<view class="orderlist-main-pro">
+				<view class="orderlist-main-prohead">
+					<view class="orderlist-main-pic order-pic-icon" tt:if="{{item.firstOrder==1}}">
+						<image src="/img/icon/order-new.png" mode="aspectFit" />
+					</view>
+					<view class="orderlist-main-pic order-pic-icon" tt:if="{{item.isFans}}">
+						<image src="/img/icon/order-sale.png" mode="aspectFit" />
+					</view>
+					<view class="orderlist-main-pic order-pic-icon" tt:else>
+						<image src="/img/icon/order-buy.png" mode="aspectFit" />
+					</view>
+					<!-- <view class="orderlist-main-pic">
+						<image src="/img/icon/order.png" />
+					</view> -->
+					<view class="orderlist-main-ordernum">订单号：{{item.orderId}}</view>
+					<view class="orderlist-copy-btn" catchtap='copyText' data-text="{{item.orderId}}">复制</view>
+				</view>
+
+				<view class="orderlist-main-prolist" tt:if="{{item.frontState=='WaitPay'&&item.surplusDate>0}}">待付款</view>
+				<view class="orderlist-main-prolist" tt:if="{{item.frontState=='WaitPass'}}">待申报</view>
+				<view class="orderlist-main-prolist" tt:if="{{item.frontState=='WaitDelivery'}}">待发货</view>
+				<view class="orderlist-main-prolist" tt:if="{{item.frontState=='WaitReceive'}}">待收货</view>
+				<view class="orderlist-main-prolist" tt:if="{{item.frontState=='SignReceiveGoods'}}">交易完成</view>
+				<view class="orderlist-main-prolist" tt:if="{{item.frontState=='Cancel'||(item.frontState=='WaitPay'&&item.surplusDate==0)}}">交易关闭</view>
+				<view class="orderlist-main-prolist" tt:if="{{item.frontState=='DealClose'}}">交易关闭-已退款</view>
+			</view>
+			<view class="orderlist-main-procon">
+				<view style="display:flex;flex-direction:row;">
+					<view class="orderlist-goods-pic">
+						<image src="{{item.imageUrl}}" mode="" />
+					</view>
+					<view class="orderlist-goods-info">
+						<view class="orderlist-goods-infotitle line-clamp2">{{item.name}}</view>
+						<view class="orderlist-goods-sku line-clamp1">
+							<text>{{item.specName}}</text>
+							<text>{{item.specValue}}</text>
+						</view>
+					</view>
+				</view>
+				<view class="orderlist-goods-skuinfo">
+					<view class="orderlist-goods-skuprice" style="font-size:26rpx;">￥{{item.price}}</view>
+					<view class="orderlist-goods-num" style="font-size:28rpx;">X{{item.num}}</view>
+				</view>
+			</view>
+			<view class="orderlist-goodsprices-infos">
+				<view style="display:flex;flex-direction:row;align-items:center;">
+					<view class="orderlist-goodsprices-infos-num" style="margin-top:6rpx;">共{{item.goodsNum}}件</view>
+					<view class="orderlist-goodsprices-infos-txt">应付总额<text style="font-size:30rpx;font-weight:bold;">￥{{item.totalPrice}}</text></view>
+				</view>
+			</view>
+			<!-- isFans 是否是粉丝订单 -->
+			<view class="orderlist-confor-infos" tt:if="{{!item.isFans}}">
+				<view class="orderlist-confor-infos-btns">
+					<view class="orderlist-confirm-transition" tt:if="{{item.frontState=='WaitReceive'||item.frontState=='SignReceiveGoods'}}" catchtap="jumpLogistics" data-orderid="{{item.orderId}}">查看物流</view>
+					<view class="orderlist-confirm-transition" tt:if="{{(item.frontState=='WaitPay'&&item.surplusDate>0)}}" catchtap="cancelOrder" data-orderid="{{item.orderId}}" data-key="{{index}}">取消订单</view>
+					<view class="orderlist-confirm-transition" tt:if="{{item.frontState=='Cancel'||(item.frontState=='WaitPay'&&item.surplusDate==0)}}" catchtap="deleteOrder" data-orderid="{{item.orderId}}" data-key="{{index}}">删除订单</view>
+					<view class="orderlist-confirm-gettransition" tt:if="{{item.frontState=='WaitPay'&&item.surplusDate>0}}" catchtap="toPay" data-orderid="{{item.orderId}}" data-createtime="{{item.createTime}}" >去付款</view>
+					<view class="orderlist-confirm-gettransition" tt:if="{{item.frontState=='WaitReceive'}}" catchtap="confirmReceive" data-orderid="{{item.orderId}}" data-key="{{index}}">确认收货</view>
+				</view>
+			</view>
+		</view>
+	</block>
+	<!-- 底线 -->
+	<view class="bot-line" tt:if="{{showLine}}">我是有底线的</view>
+</view>
+
+
+<!-- 空白页面展示 -->
+<view class="none" tt:if="{{isNone}}">
+	<view class="inner">
+		<image src="../../img/icon/noneList.png" mode="" />
+		<view class="text">您还没有相关的订单～</view>
+	</view>
+</view>

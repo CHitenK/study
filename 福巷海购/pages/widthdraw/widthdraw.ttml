@@ -1,0 +1,52 @@
+<view class="container">
+	<view class="form_box">
+		<view class="item_line">
+			<text>可提现金额：</text>
+			<input class="red" type="text" value="{{info.realizable}}元" disabled />
+		</view>
+		<view class="item_line">
+			<text>提现金额：</text>
+			<input type="digit" placeholder-class="input-placeholder" value="{{amount}}" placeholder="请输入金额" bindinput="onInput" />
+			<button class="all_btn" bindtap="setAll">全部提现</button>
+		</view>
+		<view class="item_line">
+			<text>提现手续费：</text>
+			<input class="red" type="text" value="{{commission}}元" disabled />
+		</view>
+		<view class="item_line">
+			<text>实际到账金额：</text>
+			<input class="red" type="text" value="{{shijiMoney}}元" disabled />
+		</view>
+	</view>
+	<view class="bank" bindtap="to" data-url="/pages/BankCardList/BankCardList?checkBank=true" tt:if="{{info.bankCardId}}">
+		<image class="logo" src="{{info.bankIcon}}" mode="widthFix" tt:if="{{info.bankIcon}}" />
+		<text>{{info.bankName ? info.bankName : ''}}{{'**** **** **** '+info.bankAccount}}</text>
+		<image class="right" src="/img/icon/right.png" mode="widthFix" />
+	</view>
+    <view class="bank" bindtap="to" data-url="/pages/addBank/addBank" tt:else>
+		<view class="bank_text">新增银行卡</view>
+		<view class="bank_add">+</view>
+	</view>
+	<view class="sumbit_btn" bindtap="sumbitApply">提交申请</view>
+	<view class="tips">
+		<view class="tips_title">
+			<text class="icon">!</text>
+			<text>提现说明：</text>
+		</view>
+		<view class="txt_content">
+			1.订单为已完成且过七天无理由退换货期后，该订单佣金则自动审核并录入在可提现金额中，未满足条件订单则不计入
+		</view>
+		<view class="txt_content">
+			2.首次提现需填写您银行卡绑定的身份证信息、填写后即可提交申请
+		</view>
+		<view class="txt_content">
+			3.收益仅限于每月20号前申请提现，错过则要等下个月申请，当月多次申请将统一合并发放。佣金到账时间约为10个工作日。
+		</view>
+		<view class="txt_content">
+			4.每次提现金额需大于30元，申请金额将直接发放至您的银行卡中
+		</view>
+	</view>
+    <!-- 弹窗组件start -->
+    <model id="model" bind:modelevent="onModel" title="{{model.title}}" content="{{model.content}}" buttonStyle="{{model.buttonStyle}}" HelpText="{{model.HelpText}}" buttonText="{{model.buttonText}}" buttonTextColor="{{model.buttonTextColor}}"><model>
+    <!-- 弹窗组件end -->
+</view>

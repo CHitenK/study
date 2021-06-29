@@ -1,0 +1,102 @@
+.container {
+  padding-top: 20rpx;
+}
+
+.box {
+  margin-bottom: 160rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 75rpx 32rpx 36rpx 32rpx;
+}
+
+.title {
+  color: #000;
+  font-size: 36rpx;
+}
+
+.tips {
+  font-size: 24rpx;
+  color: #000;
+  margin-top: 34rpx;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  margin-top: 88rpx;
+  height: 84rpx;
+}
+
+.phone input.input {
+  height: 84rpx !important;
+  line-height: 84rpx !important;
+  flex: 1;
+  font-size: 60rpx;
+}
+
+.phone button.btn {
+  color: #fff;
+  font-size: 24rpx;
+  width: 176rpx !important;
+  height: 56rpx !important;
+  line-height: 62rpx !important;
+  text-align: center;
+  border-radius: 30rpx;
+  background-color: #ff3636;
+  padding: 0 !important;
+  min-height: auto !important;
+}
+
+.phone .btn.on {
+  background-color: #f8f8f8;
+  color: #a6a6a6;
+  font-size: 24rpx;
+}
+
+.nobind {
+  margin-top: 30rpx;
+  padding-bottom: 5rpx;
+  color: #a6a6a6;
+  font-size: 24rpx;
+  border-bottom: 2rpx solid #a6a6a6;
+  display: inline-flex;
+}
+.treaty {
+  font-size: 24rpx;
+  display: flex;
+  /* align-items: baseline; */
+  padding: 0 34rpx;
+  box-sizing: border-box;
+  
+}
+.treaty .img {
+  width: 36rpx;
+  height: 36rpx;
+  display: inline-block;
+  margin-right: 8rpx;
+  vertical-align: baseline;
+  margin-top: -3rpx;
+}
+.treaty_txt {
+  margin-top: -8rpx;
+}
+.treaty text,.treaty navigator {
+  display: inline-block;
+  padding: 8rpx 0rpx;
+  color:rgb(4, 70, 252);
+  text-decoration: underline;
+}
+.bind {
+  /* width: 328rpx; */
+  width: 690rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #ff3636;
+  margin: 0 auto;
+  font-size: 34rpx;
+  color: #fff;
+  border-radius: 45rpx;
+  margin-bottom: 30rpx;
+}

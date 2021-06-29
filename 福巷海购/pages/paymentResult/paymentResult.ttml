@@ -1,0 +1,15 @@
+<view class="maintain">
+    <view class="results_box">
+        <view class="result_img"><image src="{{ResultFlag==1?'../../img/success.png':'../../img/fail.png'}}" mode="" /></view>
+        <view class="{{ResultFlag==1?'result_success':'result_fail'}}"><text>{{ResultFlag==1?'订单支付成功':'订单支付失败'}}</text></view>
+        <view class="result_text {{ResultFlag==1?'result_tips_s':'result_tips_f'}}" ><text>{{ResultFlag==1?'我们将尽快安排发货，请保持手机畅通':'请检查支付通道及产品库存'}}</text></view>
+        <view class="result_btns">
+            <!-- 00 -->
+            <view class="seeMyOrder" catchtap="LookMyorder">查看我的订单</view>
+        </view>
+        <view class="tips">
+            <view class="title">温馨提示</view>
+            <view>您购买的是跨境商品，如果出现清关失败的情况，我们给您安排退款，如有不便，敬请谅解！</view>
+        </view>
+    </view>
+</view>

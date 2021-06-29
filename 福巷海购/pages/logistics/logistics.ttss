@@ -1,0 +1,140 @@
+/* pages/logistics/logistics.ttss */
+page{
+    background:#fff;
+}
+.box{
+    overflow:hidden;
+}
+.fixed{
+    position:fixed;
+    height:320rpx;
+    top:0;
+    left:0;
+    z-index:99;
+}
+
+.scroll-box{
+    width:750rpx;
+    height:74rpx;
+    margin: 0 auto;
+    line-height:69rpx;
+    background:#fff;
+    position:relative;
+    z-index:99;
+    border-bottom:1px solid rgba(242,242,242,0.8);
+    border-top:1px solid rgba(242,242,242,0.8);
+}
+.scroll-item{
+    font-size:30rpx;
+    border-bottom:none;
+    display:inline-block;
+    line-height:69rpx;
+    height:69rpx;
+    font-family:Source Han Sans CN;
+    color:#333;
+    font-weight:550;
+    padding:0 32rpx;
+}
+.scroll-item:nth-child(1){
+    margin-left:30rpx;
+}
+.scroll-item.active{
+    color:#333333;
+    border-bottom: 4rpx solid #E81717;
+}
+.info{
+    padding:38rpx 30rpx 31rpx 30rpx;
+    box-sizing:border-box;
+    font-size:24rpx;
+    color:#AAAAAA;
+    font-family:PingFang SC;
+    background:#fff;
+}
+.grap{
+    width:100%;
+    height:18rpx;
+    background:#F3FAFC;
+}
+
+.track{
+    width:100%;
+    height:88rpx;
+    background:#fff;
+    line-height:88rpx;
+    color:#888;
+    font-size:30rpx;
+    font-family:PingFang SC;
+    padding-left:30rpx;
+    box-sizing:border-box;
+    border-bottom:1px solid rgba(242,242,242,0.8);
+}
+.logistics-box{
+    margin-top:320rpx;
+    height: calc(100vh - 260rpx);
+    padding:0 30rpx 48rpx 30rpx;
+    box-sizing:border-box;
+}
+.logistics-box .list{
+    position:relative;
+    font-family:PingFang SC;
+    background:#fff;
+    padding-bottom:80rpx;
+}
+.logistics-box .list .progress{
+    color:#888888;
+    font-size:30rpx;
+    margin-top:-5rpx;
+}
+.logistics-box .list .date{
+    font-size:24rpx;
+    color:#AAAAAA;
+    margin-top:17rpx;
+}
+.logistics-box .list .icon{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+}
+.logistics-box .list .icon .circle{
+    width:32rpx;
+    height:32rpx;
+    background:#DDDDDD;
+    border-radius:50%;
+}
+.logistics-box .list .icon .line{
+    width:2rpx;
+    height:100%;
+    background:#DDDDDD;
+    position:absolute;
+    left:50%;
+    margin-left:-1rpx;
+}
+.logistics-box .list .right-text{
+    margin-left:62rpx;
+    overflow:hidden;
+}
+.logistics-box .list:nth-child(1){
+    margin-top:46rpx;
+}
+.logistics-box .list:nth-child(1) .circle{
+    width:24rpx;
+    height:24rpx;
+    background:linear-gradient(90deg,rgba(255,115,80,1),rgba(253,182,150,1));
+    border-radius:50%;
+    margin-left:2rpx;
+}
+.logistics-box .list:nth-child(1) .icon .line{
+    width:2rpx;
+    height:100%;
+    background:#DDDDDD;
+    position:absolute;
+    left:50%;
+    margin-left:0;
+}
+.logistics-box .list:nth-child(1) .progress{
+    color:#FF7350;
+}
+.logistics-box .list:last-child .line{
+    height:0;
+}

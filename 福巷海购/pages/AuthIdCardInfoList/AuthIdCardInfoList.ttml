@@ -1,0 +1,25 @@
+<view class="maintain">
+    <view class="AuthInfo_box" wx:if="{{flag}}">
+        <view class="AuthInfoList" >
+            <view class="AuthInfoItem">
+                <view class="AuthName"><text>{{AuthList.realName}}</text></view>
+                <view class="AuthInfo">
+                    <view class="AuthIdCard">身份证 <text>{{AuthList.idCardStr}}</text></view>
+                    <view class="cancelBtn" bindtap="remove" >
+                        <image src="../../img/delete.png" mode="" />
+                        <text>删除</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 缺省页 -->
+    <view class="default_page" wx:if="{{showNone}}">
+        <view class="default_box">
+            <view class="default_img"><image src="../../img/AuthInfo.png" mode="" /></view>
+            <view class="wait"><text>暂无信息~</text></view>
+            <view class="AuthTips"><text>请与支付宝认证信息保持一致</text></view>
+            <view class="goAuthBtn" bindtap="AddAuthInfo">添加实名认证信息</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,95 @@
+page{
+    background-color: #fff;
+}
+
+.paymentInfo{
+    width: 90%;
+    margin:0 auto;
+    text-align: center;
+    padding: 50rpx 0;
+}
+.paymentPrice{
+    color: #2A2A2A;
+    /* font-size: 40rpx; */
+    margin-bottom:20rpx;
+}
+.paymentTimeDown{
+    width: 390rpx;
+    height:59rpx;
+    margin:0 auto;
+    font-size: 34rpx;
+    line-height: 59rpx;
+    /* background-color: #E5E5E5; */
+    border-radius: 10rpx;
+}
+.payment_tips{
+    width: 70%;
+    margin:20rpx auto 0;
+    color: #999;
+    font-size: 26rpx;
+}
+.payment_price_box{
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 34rpx;
+}
+.payment_price{
+    width: 90%;
+    margin:0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.payment_price_right{
+    color: #ff3636;
+}
+.zfb_box{
+    width: 100%;
+    /* padding: 20rpx 0; */
+    background-color: #fff;
+    /* border-bottom:1px solid #E5E5E5; */
+}
+.zf_title_box{
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin:0 auto;
+    border-bottom: 1px solid #dedede;
+}
+.zf_title{
+    width: 90%;
+    margin:0 auto;
+    font-size: 28rpx;
+    color: #999;
+}
+.zfb{
+    width: 90%;
+    margin:0 auto;
+    padding: 30rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* color: #666666; */
+}
+.zfb_img image{
+    width: 44rpx;
+    height: 44rpx;
+    vertical-align: sub;
+    margin-right: 20rpx;
+}
+.zfb_img text{
+    font-size:34rpx;
+}
+.submitBtn{
+    width: 80%;
+    height: 100rpx;
+    background-color: #E83A30;
+    color: #fff;
+    text-align: center;
+    line-height: 100rpx;
+    position: fixed;
+    bottom: 200rpx;
+    left: 10%;
+    border-radius: 50rpx;
+    
+}

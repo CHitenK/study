@@ -1,0 +1,62 @@
+.flex_align{
+    display: flex;
+    align-items: center;
+}
+page{
+    height: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.record_top{
+    height: 279rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 28rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin-bottom: 10rpx;
+}
+.record_top .total{
+    font-weight: bold;
+    font-size: 52rpx;
+    color: #E60012;
+    margin-top: 10rpx;
+}
+.record_list{
+    padding: 0 24rpx;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    height: calc(100% - 279rpx);
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.record_item{
+    padding: 32rpx 18rpx 0 18rpx;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #eee;
+}
+
+.order_number{
+    flex: 1;
+    margin-bottom: 20rpx;
+}
+.record_item_money{
+    color: #E60012;
+    font-size: 36rpx;
+}
+.time{
+    color: #9F9F9F;
+    font-size: 22rpx;
+    margin-bottom: 30rpx;
+    padding: 0 4rpx;
+    display: flex;
+    align-items: center;
+}
+.paytime{
+    flex: 1;
+}

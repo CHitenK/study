@@ -1,0 +1,22 @@
+<view class="AuthInfoBox" tt:if="{{IsAuth}}" catchtap="ClosePlat">
+    
+</view>
+<view class="AuthInfo_box" tt:if="{{IsAuthBox}}">
+        <view class="AuthInfo">
+            <view class="AuthTitle_box">
+                <view class="AuthTit"><text>{{AuthTips}}</text></view>
+                <view class="cancelAuth" bindtap="CloseBox"><image src="../../img/cancelAuth.png" mode="" /></view>
+            </view>
+            <view class="AuthInfo_cont">
+                <!-- value="{{identityCode}} "  bindInput="{{type == 2?'InputName':''}}"-->
+                <view class="AuthTrueName"><input type="text" placeholder="您的真实姓名" cursor-spacing="60"  maxlength="15" bindInput="InputName" value="{{Name}}"  /></view>
+                <view class="AuthIdCard"><input type="text" placeholder="您的身份证号码（将加密处理）" value="{{IdCard}}"  maxlength="18" bindInput="InputIdCard" /></view>
+                <view class="WhyAuth_box">
+                    <view class="WhyAuth_tit">为什么上传身份证信息？</view>
+                    <view class="WhyAuth_one"><text>1、根据海关规定，购买跨境商品需要办理清关手续，请您配合进行实名认证，以确保您购买的商品顺利通过海关检查。（贸通承诺所传身份证明只用于办理跨境清关手续，不作他途使用，其他任何人均无法查看。）</text></view>
+                    <view class="WhyAuth_one"><text>2、实名认证规则：购买看商品填写注册人的真实姓名、身份证号码。部分商品下单时需提供收货人的实名信息（含身份照片），具体以下单的提示为准。</text></view>
+                </view>
+            </view>
+            <view class="submitBtn" bindtap="Authorise">提交</view>
+        </view>
+    </view>

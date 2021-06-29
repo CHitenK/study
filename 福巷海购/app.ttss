@@ -1,0 +1,251 @@
+@import "style/animate.min.ttss";
+@import "style/iconfont.ttss";
+
+/*页面重置样式 start*/
+
+page {
+  background-color: #fff;
+  font-family: PingFang-SC-Regular,-apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  min-height: 100vh;
+  /* padding-bottom: 96rpx; */
+}
+body{
+    background:#F0F0F0;
+}
+/*页面重置样式 start*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+button::after {
+  border: none;
+}
+
+.clearfix {
+    zoom: 1;
+    display: block;
+    _height: 1px;
+    clear: both;
+} 
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}
+.line{
+    width: 100%;
+    height: 20rpx;
+    background-color: #f1f1f1;
+}
+.marginBottom{
+  height: 200rpx;
+}
+.marginBottom4{
+  height: 300rpx;
+}
+
+/* 订单列表共用样式*/
+.orderlist-main{
+    width:100%;
+    /* height:417rpx; */
+    background:#fff;
+    padding:0rpx 20rpx 0rpx 20rpx;
+    box-sizing: border-box;
+    margin-top:20rpx;
+}
+.orderlist-main-pro{
+    width:100%;
+height:72rpx;
+border-bottom:solid 1px #eeeeee;
+display: flex;
+flex-direction:row;
+justify-content: space-between;
+align-items: center;
+color:#333333;
+font-size:24rpx;
+font-weight:Regular;
+}
+.orderlist-main-prolist{
+color:#FF3636;
+}
+.orderlist-main-prohead{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.orderlist-main-pic{
+    width:21rpx;
+    height:26rpx;
+}
+.orderlist-main-pic image{
+     width:21rpx;
+    height:26rpx; 
+}
+.orderlist-main-ordernum{
+    margin-left:11rpx;
+}
+.orderlist-copy-btn{
+    width:88rpx;
+    height: 36rpx;
+    border:solid 1px #eeeeee;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left:29.5rpx;
+    color:#333333;
+    font-size:24rpx;
+}
+.orderlist-main-procon{
+    padding:20rpx 0rpx 20rpx 0rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom:solid 1px #eeeeee;
+}
+.orderlist-goods-pic{
+    width:106rpx;
+    height:106rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.orderlist-goods-pic image{
+ max-width:106rpx;
+ max-height:106rpx;
+}
+.orderlist-goods-info{
+    margin-left:23rpx;
+    display: flex;
+    flex-direction: column;
+    width:414rpx;
+    position: relative;
+}
+.orderlist-goods-infotitle{
+    width:100%;
+    height:auto;
+    color:#333333;
+    font-size:26rpx;
+    font-weight: Regular;
+    overflow: hidden;
+}
+.orderlist-goods-sku{
+    /* position: absolute; */
+    /* bottom: 0rpx; */
+    font-size:24rpx;
+    color:#999999;
+    font-weight: Regular;
+    font-family:PingFang SC;
+    margin-left: 23rpx;
+    margin-top:10rpx;
+}
+.orderlist-goods-sku text{
+    margin-right: 10rpx;
+}
+.orderlist-goods-skuinfo{
+    display: flex;
+    flex-direction: column;
+    color:#333333;
+    font-size:22rpx;
+    font-weight: Regular;
+}
+.orderlist-goods-num{
+    width:100%;
+display: flex;
+flex-direction: row-reverse;
+margin-top:6rpx;
+}
+.orderlist-goodsprices-infos{
+    width:100%;
+    height:100rpx;
+    border-bottom:solid 1px #eeeeee;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    color:#cccccc;
+    font-size:22rpx;
+font-weight: Regular;
+}
+.orderlist-goodsprices-infos-txt{
+ margin-left:40rpx;
+}
+.orderlist-goodsprices-infos-txt text{
+    color:#FF3636;
+    margin-left:10rpx;
+    font-size:26rpx;
+    font-weight: Regular;
+}
+.orderlist-confor-infos{
+    width:100%;
+    height:92rpx;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.orderlist-confor-infos-btns{
+    display: flex;
+    flex-direction: row;
+}
+.orderlist-confirm-transition{
+    width:140rpx;
+    height:54rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size:22rpx;
+    color:#333333;
+    font-weight: Regular;
+    justify-content: center;
+    border:solid 1px #eeeeee;
+    border-radius:10rpx;
+}
+.orderlist-confirm-gettransition{
+   width:140rpx;
+    height:54rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size:22rpx;
+    color:#fff;
+    font-weight: Regular;
+    border-radius:10rpx;
+    justify-content: center;
+    background:#FF3636;
+    margin-left:20rpx;
+}
+.inp{
+    font-family:PingFang SC;
+    font-size:30rpx;
+    height:58rpx;
+    line-height:58rpx;
+    display:inline-block;
+    color:#333;
+}
+.orderlist-goodsprices-infos-num,.orderlist-goodsprices-infos-txt{
+    color:#333;
+    font-family:PingFang SC;
+}
+.line-clamp2 {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .line-clamp1 {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+

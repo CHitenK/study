@@ -1,0 +1,158 @@
+ 
+.addressList{
+    width: 90%;
+    padding: 20rpx;
+    border:1px solid #dedede;
+    background-color: #fff;
+    margin:20rpx auto;
+}
+.adressInfo{
+    padding-bottom: 20rpx;
+    border-bottom:1px solid #dedede;
+}
+.AuthInfoBox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+.AuthInfo_box{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height:735rpx; 
+    padding: 20rpx 0;
+    background: #fff;
+}
+.check-authInfo_box{
+    height: 560rpx; 
+}
+.AuthInfo{
+    width: 95%;
+    margin:0 auto;
+}
+.AuthTitle_box{
+   padding: 30rpx 0; 
+   font-size: 28rpx;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.cancelAuth{
+    flex: 1;
+    text-align: right;
+}
+.cancelAuth image{
+    width: 27rpx;
+    height: 27rpx;
+}
+.AuthInfo_cont{
+    margin-bottom:70rpx;
+}
+.AuthInfo_cont input{
+    width: 95%;
+    height: 68rpx;
+    background-color: #F0ECE9;
+    padding:10rpx 20rpx;
+    margin-bottom: 20rpx;
+    font-size: 28rpx;
+    
+}
+.WhyAuth_tit{
+    margin-bottom: 20rpx;
+    font-size: 28rpx;
+}
+.WhyAuth_box .WhyAuth_one{
+    font-size: 22rpx;
+    margin-bottom:20rpx;
+    color: #666;
+}
+.submitBtn{
+    width: 100%;
+    height: 90rpx;
+    background-color: #E83A30;
+    text-align: center;
+    line-height: 90rpx;
+    color: #fff;
+    border-radius: 10rpx;
+}
+.personInfo text{
+    color: #333;
+    font-size: 30rpx;
+}
+.personInfo .perName{
+    margin-right: 20rpx;
+}
+.person_add text{
+    font-size: 24rpx;
+    color: #666666;
+}
+.person_add .defText{
+    color: #FF3636;
+}
+.handleAdd_box,.handleAdd {
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    color: #333;
+}
+.handleAdd_box{
+    justify-content: space-between;
+    padding:20rpx 0 10rpx;
+
+}
+.handleAdd_box image{
+    vertical-align: sub;
+    margin-right: 20rpx;
+}
+.handleAdd .editAdd{
+    margin-right: 30rpx;
+}
+.editAdd image{
+    width: 31rpx;
+    height: 28rpx;
+}
+.deleteAdd image{
+    width: 27rpx;
+    height: 27rpx;
+}
+.prefectInfo image{
+    width: 34rpx;
+    height: 29rpx;
+}
+
+
+
+
+
+
+
+
+.AddBtn{
+    width: 100%;
+    height: 100rpx;
+    text-align: center;
+    color: #fff;
+    background-color: #FF3636;
+    line-height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.defalut_box{
+    width: 100%;
+    text-align: center;
+    padding-top:300rpx;
+}
+.default_img image{
+    width: 194rpx;
+    height: 184rpx;
+}
+.default_text{
+    font-size: 30rpx;
+    color: #A9A9A9;
+    margin-top:20rpx;
+}
