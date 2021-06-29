@@ -1,0 +1,32 @@
+/* 覆盖mint-ui*/
+.home {
+  .mint-swipe-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid rgba($lineColor, .6);
+    background-color: rgba(#fff, .6);
+    opacity: 1;
+    margin: 0 8px;
+    &.is-active {
+      background-color: $primaryColor;
+    }
+  }
+}
+.mine-router-next{
+  .picker-toolbar {
+    height: 100px;
+  }
+  .mint-datetime-action {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    line-height: 100px;
+    @include font-dpr(30px);
+    color: #26a2ff;
+  }
+  .picker-slot {
+    @include font-dpr(32px);
+  }
+  
+}

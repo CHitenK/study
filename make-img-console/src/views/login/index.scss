@@ -330,3 +330,17 @@
   height: 100%;
   width: 80px;
 }
+.bei-an-bx{
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #fff;
+  font-size: 12px;
+  .pr-15{
+    margin-right: 15px;
+  }
+}

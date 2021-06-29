@@ -1,0 +1,19 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc","closure"]
+  },
+  "recurseDepth": 10,
+  "source": {
+    "include": [
+      "./src/api"
+    ],
+    "includePattern": ".+\\.(js|vue)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": [],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  }
+}

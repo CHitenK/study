@@ -1,0 +1,81 @@
+@import "reset";
+@import "utils";
+@import "base";
+@import "mint-ui";
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
+
+//基础按钮
+.btn {
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  border: 2px solid $primaryColor;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  height: 60px;
+  border-radius: 30px;
+  padding: 0 30px;
+  text-align: center;
+  color: $blackColor;
+  outline: none;
+  user-select: none;
+  font-size: 26px;
+  line-height: 1;
+  &:link {
+    color: $blackColor;
+  }
+  &.btn-primary {
+    background: $btnGradientBgColor;
+    border: none;
+    color: #fff;
+  }
+  &:active, &:focus {
+    opacity: .8;
+  }
+  &.disabled, &[disabled='disabled'], &[disabled='true'], &[disabled] {
+    opacity: .3;
+    cursor: none;
+  }
+}
+
+// 1px 下边框
+.border-b{
+  position: relative;
+  
+  &::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    height: 1Px;
+    background-color: $lineColor;
+  }
+}
+
+// itme 两边靠
+.list-betten{
+  display: flex;
+  justify-content: space-between;
+}
+
+// 旋转 180
+.rotate-180{
+  transform:rotate(180deg);
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.5){
+  .border-b::after{
+    transform: scaleY(.7);
+  }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2){
+  .border-b::after{
+    transform: scaleY(.5);
+  }
+}

@@ -40,6 +40,7 @@ const  Layout = () => {
                   </div>}
         >
           <div className="content-right-content">
+              <Route path="/" component={Layout} exact />
                 {
                     router.map((item, i) => {
                         return <Route key={i} path={item.path} component={item.component}  />

@@ -1,0 +1,24 @@
+$primaryColor: #ee3f3f;
+$primaryGrayColor: #f8f8f8;
+$lineColor: #e1e1e1;
+$bgColor: #f2f2f2;
+$blueColor: #0096ff;
+$blackColor: #333;
+$blackColor-1: #333;
+$blackColor-2: #666;
+$blackColor-3: #999;
+$blackColor-4: #f8f8f8;
+$primaryGradientBgColor: linear-gradient(to right, #f2693d, #cb191d);
+$btnGradientBgColor: linear-gradient(to right, #f5863c, #ee3f3f);
+$btnGradientBgColor-2: linear-gradient(to right, #f5863c, #f68f4a);
+
+//@include font-dpr(16px);
+@mixin font-dpr($font-size) {
+  font-size: $font-size;
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+}

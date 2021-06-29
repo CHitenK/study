@@ -1,0 +1,114 @@
+.dialog-fade-enter-active{
+  -webkit-animation:dialog-fade-in .3s;
+  animation:dialog-fade-in .3s
+}
+.dialog-fade-leave-active{
+  -webkit-animation:dialog-fade-out .3s;
+  animation:dialog-fade-out .3s
+}
+@-webkit-keyframes dialog-fade-in{
+  0%{-webkit-transform:translate(-50%,-55%,0);transform:translate3d(-50%,-55%,0);opacity:0}
+  100%{-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);opacity:1}
+}
+@keyframes dialog-fade-in{
+  0%{-webkit-transform:translate3d(-50%,-55%,0);transform:translate3d(-50%,-55%,0);opacity:0}
+  100%{-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);opacity:1}
+}
+@-webkit-keyframes dialog-fade-out{
+  0%{-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);opacity:1}
+  100%{-webkit-transform:translate3d(-50%,-45%,0);transform:translate3d(-50%,-45%,0);opacity:0}
+}
+@keyframes dialog-fade-out{
+  0%{-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);opacity:1}
+  100%{-webkit-transform:translate3d(-50%,-45%,0);transform:translate3d(-50%,-45%,0);opacity:0}
+}
+
+.mask-fade-enter-active{
+  -webkit-animation:mask-fade-in .3s;
+  animation:mask-fade-in .3s
+}
+.mask-fade-leave-active{
+  -webkit-animation:mask-fade-out .3s;
+  animation:mask-fade-out .3s
+}
+@-webkit-keyframes mask-fade-in{
+  0%{opacity:0}
+  100%{opacity:1}
+}
+@keyframes mask-fade-in{
+  0%{opacity:0}
+  100%{opacity:1}
+}
+@-webkit-keyframes mask-fade-out{
+  0%{opacity:1}
+  100%{opacity:0}
+}
+@keyframes mask-fade-out{
+  0%{opacity:1}
+  100%{opacity:0}
+}
+
+.v-dlg{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 2222;
+
+  width: 540px;
+  padding-top: 60px;
+  border-radius: 24px;
+  color: $blackColor-1;
+  background-color: #ffffff;
+  text-align: center;
+
+  .dlg-title,
+  .dlg-body{
+    padding: 0px 60px;
+  }
+
+  .dlg-title{
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  .dlg-body{
+    font-size: 32px;
+    padding-bottom: 60px;
+  }
+
+
+  .dlg-tools{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: $blackColor-1;
+    font-size: 30px;
+
+    .tool-active{
+      color: #43b4fb;
+    }
+
+    span{
+      flex: 1;  
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    span + span{
+      border-left: 1px solid #edf0f5;
+    }
+  }
+}
+.v_mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  background-color: rgba($color: $blackColor-2, $alpha: .6);
+}

@@ -4,20 +4,21 @@ const HtmlPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin') // 压缩
 // const CleanWebpackPlugin  = require('clean-webpack-plugin')
+const CompressionPlugin = require("compression-webpack-plugin");
  module.exports = {
     devtool: false, //'inline-source-map',
     entry: {
         index: './src/index.js',
-        vendor: ['react','react-dom','react-router-dom', 'antd', 'axios', 'echarts']
+        vendor: ['react','react-dom','react-router-dom', 'antd', 'axios']
     },
     output: {
         publicPath: '/',
         // filename: '[name].[chunkhash:8].js',//'[name].bundle.js',
         // path: path.resolve(__dirname, 'build')
         // filename: '[name].[chunkhash:8].js',
-        filename: '[name].js', //出口名称
+        // filename: '[name].js', //出口名称
         // filename: 'bundle.js',
-        // filename: "[name]-[hash].js",
+        filename: "[name]-[hash].js",
         path: path.resolve(__dirname, 'build')
     },
     resolve:{
@@ -60,12 +61,24 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin') // 压缩
         }
     },
     plugins: [
+      new CompressionPlugin({
+        //asset: "[path].gz[query]",
+        algorithm: "gzip",
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8
+      }),
         new ExtractTextPlugin("[name].[hash].css"),
         // new ExtractTextPlugin("/css/[name].css"),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlPlugin({
             template: 'src/index.html'
         }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //   names: ['vendor'],
+        //   minChunks: Infinity,
+        //   filename: 'common.bundle.[chunkhash].js',
+        // }),
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: 'vendor',
         //     filename: "vendor.js",
@@ -75,7 +88,8 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin') // 压缩
         //     // (with more entries, this ensures that no other module
         //     //  goes into the vendor chunk)
         //   }),
-        new UglifyJSPlugin()
+        new UglifyJSPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ]
     // optimization: {
     //     splitChunks: {
