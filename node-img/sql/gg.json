@@ -1,13 +1,17 @@
 
 
+销售SD核销配置 返利管理新增菜单
 销售SD核销配置 新增 saleSDCollateList_add
 销售SD核销配置 删除 saleSDCollateList_del
 销售SD核销配置 停用 saleSDCollateList_stop
 销售SD核销配置 编辑 saleSDCollateList_edit
 销售SD核销配置 日志 saleSDCollateList_log
              
+应收账龄报告  收款管理新增菜单
 应收账龄报告  导出 receivableAccountList_export
 应收账龄报告  刷新 receivableAccountList_refresh
 
+发票列表 采购管理新增菜单
 发票列表 详情 invoiceList_detail
+
 To B暂估核销列表  完结核销 toBWriteoffList_hexiao
